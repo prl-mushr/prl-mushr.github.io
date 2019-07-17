@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tutorials on MuSHR: The UW Open Racecar Project</title>
-    <link>www.example.com/tutorials/</link>
+    <link>prl-mushr.github.io/tutorials/</link>
     <description>Recent content in Tutorials on MuSHR: The UW Open Racecar Project</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 28 Nov 2018 15:15:34 +1000</lastBuildDate>
     
-	<atom:link href="www.example.com/tutorials/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="prl-mushr.github.io/tutorials/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Quickstart</title>
-      <link>www.example.com/tutorials/quickstart/</link>
+      <link>prl-mushr.github.io/tutorials/quickstart/</link>
       <pubDate>Sun, 18 Nov 2018 12:33:46 +1000</pubDate>
       
-      <guid>www.example.com/tutorials/quickstart/</guid>
+      <guid>prl-mushr.github.io/tutorials/quickstart/</guid>
       <description>Lorem markdownum aequalis strigis. Saetigeri iubeas, vultu huic alvum nondum de obside ut laniavit arbor palmis, cum quin. Rupes vetat videndo, armigerae crimen habet Priamum nec.
 Ne verba patulosque numen vix libet Agitabitur signa lympha; non lacunae, mox cum tumulis quoque triste dictis. Ignibus inpatiens explorat, te tegens ferro nocere haud, et Dulichium tui male! Quo sed fuit flexit et hic die solido, gloria?
  Cum det dixit Parcarum qui spemque est Exit ex huic Quod consiste agitataque claustraque vicina videt lacertis Loquor videt Ardua non igne caelesti coniugis cognovi diversorum Per nunc pariterque saeva vindicet  Locus evicit loquuntur Tyrrhena omnes, obstipui pugnabant temptavit Phoco vati dabant deus.</description>
@@ -24,10 +24,10 @@ Ne verba patulosque numen vix libet Agitabitur signa lympha; non lacunae, mox cu
     
     <item>
       <title>Intro to ROS</title>
-      <link>www.example.com/tutorials/first-ros-node/</link>
+      <link>prl-mushr.github.io/tutorials/first-ros-node/</link>
       <pubDate>Wed, 28 Nov 2018 15:14:54 +1000</pubDate>
       
-      <guid>www.example.com/tutorials/first-ros-node/</guid>
+      <guid>prl-mushr.github.io/tutorials/first-ros-node/</guid>
       <description>Lorem markdownum aequalis strigis. Saetigeri iubeas, vultu huic alvum nondum de obside ut laniavit arbor palmis, cum quin. Rupes vetat videndo, armigerae crimen habet Priamum nec.
 Ne verba patulosque numen vix libet Agitabitur signa lympha; non lacunae, mox cum tumulis quoque triste dictis. Ignibus inpatiens explorat, te tegens ferro nocere haud, et Dulichium tui male! Quo sed fuit flexit et hic die solido, gloria?
  Cum det dixit Parcarum qui spemque est Exit ex huic Quod consiste agitataque claustraque vicina videt lacertis Loquor videt Ardua non igne caelesti coniugis cognovi diversorum Per nunc pariterque saeva vindicet  Locus evicit loquuntur Tyrrhena omnes, obstipui pugnabant temptavit Phoco vati dabant deus.</description>
@@ -35,10 +35,10 @@ Ne verba patulosque numen vix libet Agitabitur signa lympha; non lacunae, mox cu
     
     <item>
       <title>Motion Planning</title>
-      <link>www.example.com/tutorials/motion-planning/</link>
+      <link>prl-mushr.github.io/tutorials/motion-planning/</link>
       <pubDate>Wed, 28 Nov 2018 15:14:54 +1000</pubDate>
       
-      <guid>www.example.com/tutorials/motion-planning/</guid>
+      <guid>prl-mushr.github.io/tutorials/motion-planning/</guid>
       <description>Lorem markdownum aequalis strigis. Saetigeri iubeas, vultu huic alvum nondum de obside ut laniavit arbor palmis, cum quin. Rupes vetat videndo, armigerae crimen habet Priamum nec.
 Ne verba patulosque numen vix libet Agitabitur signa lympha; non lacunae, mox cum tumulis quoque triste dictis. Ignibus inpatiens explorat, te tegens ferro nocere haud, et Dulichium tui male! Quo sed fuit flexit et hic die solido, gloria?
  Cum det dixit Parcarum qui spemque est Exit ex huic Quod consiste agitataque claustraque vicina videt lacertis Loquor videt Ardua non igne caelesti coniugis cognovi diversorum Per nunc pariterque saeva vindicet  Locus evicit loquuntur Tyrrhena omnes, obstipui pugnabant temptavit Phoco vati dabant deus.</description>
@@ -46,10 +46,10 @@ Ne verba patulosque numen vix libet Agitabitur signa lympha; non lacunae, mox cu
     
     <item>
       <title>Reinforcement Learning</title>
-      <link>www.example.com/tutorials/reinforcement-learning/</link>
+      <link>prl-mushr.github.io/tutorials/reinforcement-learning/</link>
       <pubDate>Wed, 28 Nov 2018 15:15:34 +1000</pubDate>
       
-      <guid>www.example.com/tutorials/reinforcement-learning/</guid>
+      <guid>prl-mushr.github.io/tutorials/reinforcement-learning/</guid>
       <description>Lorem markdownum aequalis strigis. Saetigeri iubeas, vultu huic alvum nondum de obside ut laniavit arbor palmis, cum quin. Rupes vetat videndo, armigerae crimen habet Priamum nec.
 Ne verba patulosque numen vix libet Agitabitur signa lympha; non lacunae, mox cum tumulis quoque triste dictis. Ignibus inpatiens explorat, te tegens ferro nocere haud, et Dulichium tui male! Quo sed fuit flexit et hic die solido, gloria?
  Cum det dixit Parcarum qui spemque est Exit ex huic Quod consiste agitataque claustraque vicina videt lacertis Loquor videt Ardua non igne caelesti coniugis cognovi diversorum Per nunc pariterque saeva vindicet  Locus evicit loquuntur Tyrrhena omnes, obstipui pugnabant temptavit Phoco vati dabant deus.</description>
