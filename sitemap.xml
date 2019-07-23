@@ -73,7 +73,22 @@
   </url>
   
   <url>
+    <loc>https://prl-mushr.github.io/</loc>
+    <lastmod>2018-11-28T15:15:34+10:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://prl-mushr.github.io/services/mergers/</loc>
+    <lastmod>2018-11-28T15:15:34+10:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://prl-mushr.github.io/services/</loc>
+    <lastmod>2018-11-28T15:15:34+10:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://prl-mushr.github.io/tutorials/</loc>
     <lastmod>2018-11-28T15:15:34+10:00</lastmod>
   </url>
   
@@ -90,6 +105,11 @@
   <url>
     <loc>https://prl-mushr.github.io/services/business-advisory/</loc>
     <lastmod>2018-11-28T15:14:39+10:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://prl-mushr.github.io/team/</loc>
+    <lastmod>2018-11-19T10:47:58+10:00</lastmod>
   </url>
   
   <url>
@@ -112,28 +132,8 @@
   </url>
   
   <url>
-    <loc>https://prl-mushr.github.io/</loc>
-    <lastmod>2018-11-19T10:47:58+10:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://prl-mushr.github.io/services/</loc>
-    <lastmod>2018-11-18T12:33:46+10:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://prl-mushr.github.io/tags/</loc>
     <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://prl-mushr.github.io/team/</loc>
-    <lastmod>2018-11-19T10:47:58+10:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://prl-mushr.github.io/tutorials/</loc>
-    <lastmod>2018-11-18T12:33:46+10:00</lastmod>
   </url>
   
 </urlset>
