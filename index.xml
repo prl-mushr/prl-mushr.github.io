@@ -54,17 +54,6 @@ Ne verba patulosque numen vix libet Agitabitur signa lympha; non lacunae, mox cu
     </item>
     
     <item>
-      <title>Motion Planning</title>
-      <link>https://prl-mushr.github.io/tutorials/motion-planning/</link>
-      <pubDate>Wed, 28 Nov 2018 15:14:54 +1000</pubDate>
-      
-      <guid>https://prl-mushr.github.io/tutorials/motion-planning/</guid>
-      <description>Lorem markdownum aequalis strigis. Saetigeri iubeas, vultu huic alvum nondum de obside ut laniavit arbor palmis, cum quin. Rupes vetat videndo, armigerae crimen habet Priamum nec.
-Ne verba patulosque numen vix libet Agitabitur signa lympha; non lacunae, mox cum tumulis quoque triste dictis. Ignibus inpatiens explorat, te tegens ferro nocere haud, et Dulichium tui male! Quo sed fuit flexit et hic die solido, gloria?
- Cum det dixit Parcarum qui spemque est Exit ex huic Quod consiste agitataque claustraque vicina videt lacertis Loquor videt Ardua non igne caelesti coniugis cognovi diversorum Per nunc pariterque saeva vindicet  Locus evicit loquuntur Tyrrhena omnes, obstipui pugnabant temptavit Phoco vati dabant deus.</description>
-    </item>
-    
-    <item>
       <title>Sanjiban Choudhury</title>
       <link>https://prl-mushr.github.io/team/sanjiban-choudhury/</link>
       <pubDate>Mon, 19 Nov 2018 10:47:58 +1000</pubDate>
@@ -84,11 +73,20 @@ Ne verba patulosque numen vix libet Agitabitur signa lympha; non lacunae, mox cu
     </item>
     
     <item>
-      <title>Reinforcement Learning</title>
-      <link>https://prl-mushr.github.io/tutorials/reinforcement-learning/</link>
-      <pubDate>Wed, 28 Nov 2018 15:15:34 +1000</pubDate>
+      <title>Basic Autonomous Navigation</title>
+      <link>https://prl-mushr.github.io/tutorials/navigation/</link>
+      <pubDate>Wed, 28 Nov 2018 15:14:54 +1000</pubDate>
       
-      <guid>https://prl-mushr.github.io/tutorials/reinforcement-learning/</guid>
+      <guid>https://prl-mushr.github.io/tutorials/navigation/</guid>
+      <description>This tutorial will teach you how to initialize and operate MuSHRs out-of-the-box autonomous navigation stack.</description>
+    </item>
+    
+    <item>
+      <title>Motion Planning</title>
+      <link>https://prl-mushr.github.io/tutorials/motion-planning/</link>
+      <pubDate>Wed, 28 Nov 2018 15:14:54 +1000</pubDate>
+      
+      <guid>https://prl-mushr.github.io/tutorials/motion-planning/</guid>
       <description>Lorem markdownum aequalis strigis. Saetigeri iubeas, vultu huic alvum nondum de obside ut laniavit arbor palmis, cum quin. Rupes vetat videndo, armigerae crimen habet Priamum nec.
 Ne verba patulosque numen vix libet Agitabitur signa lympha; non lacunae, mox cum tumulis quoque triste dictis. Ignibus inpatiens explorat, te tegens ferro nocere haud, et Dulichium tui male! Quo sed fuit flexit et hic die solido, gloria?
  Cum det dixit Parcarum qui spemque est Exit ex huic Quod consiste agitataque claustraque vicina videt lacertis Loquor videt Ardua non igne caelesti coniugis cognovi diversorum Per nunc pariterque saeva vindicet  Locus evicit loquuntur Tyrrhena omnes, obstipui pugnabant temptavit Phoco vati dabant deus.</description>
@@ -111,6 +109,17 @@ Ne verba patulosque numen vix libet Agitabitur signa lympha; non lacunae, mox cu
       <guid>https://prl-mushr.github.io/team/matt-schmittle/</guid>
       <description>Matt &amp;ldquo;Schmittle&amp;rdquo; Schmittle is a second year P.h.D. student at the University of Washington Allen School of Computer Science. He is advised by Prof. Siddhartha Srinivasa and Prof. Dieter Fox. His general research interests are in multi-agent collaborative learning, perception, and navigation.
 Schmittle works on the core software components that run on each car and general management for the project. He was a TA for the undergraduate course “Mobile Robotics” in Spring 2019, helping design assignments, teach classes, and grading.</description>
+    </item>
+    
+    <item>
+      <title>Reinforcement Learning</title>
+      <link>https://prl-mushr.github.io/tutorials/reinforcement-learning/</link>
+      <pubDate>Wed, 28 Nov 2018 15:15:34 +1000</pubDate>
+      
+      <guid>https://prl-mushr.github.io/tutorials/reinforcement-learning/</guid>
+      <description>Lorem markdownum aequalis strigis. Saetigeri iubeas, vultu huic alvum nondum de obside ut laniavit arbor palmis, cum quin. Rupes vetat videndo, armigerae crimen habet Priamum nec.
+Ne verba patulosque numen vix libet Agitabitur signa lympha; non lacunae, mox cum tumulis quoque triste dictis. Ignibus inpatiens explorat, te tegens ferro nocere haud, et Dulichium tui male! Quo sed fuit flexit et hic die solido, gloria?
+ Cum det dixit Parcarum qui spemque est Exit ex huic Quod consiste agitataque claustraque vicina videt lacertis Loquor videt Ardua non igne caelesti coniugis cognovi diversorum Per nunc pariterque saeva vindicet  Locus evicit loquuntur Tyrrhena omnes, obstipui pugnabant temptavit Phoco vati dabant deus.</description>
     </item>
     
     <item>

@@ -23,11 +23,6 @@
   </url>
   
   <url>
-    <loc>https://prl-mushr.github.io/tutorials/motion-planning/</loc>
-    <lastmod>2018-11-28T15:14:54+10:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://prl-mushr.github.io/team/sanjiban-choudhury/</loc>
     <lastmod>2018-11-19T10:47:58+10:00</lastmod>
   </url>
@@ -38,8 +33,13 @@
   </url>
   
   <url>
-    <loc>https://prl-mushr.github.io/tutorials/reinforcement-learning/</loc>
-    <lastmod>2018-11-28T15:15:34+10:00</lastmod>
+    <loc>https://prl-mushr.github.io/tutorials/navigation/</loc>
+    <lastmod>2018-11-28T15:14:54+10:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://prl-mushr.github.io/tutorials/motion-planning/</loc>
+    <lastmod>2018-11-28T15:14:54+10:00</lastmod>
   </url>
   
   <url>
@@ -50,6 +50,11 @@
   <url>
     <loc>https://prl-mushr.github.io/team/matt-schmittle/</loc>
     <lastmod>2018-11-19T10:47:58+10:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://prl-mushr.github.io/tutorials/reinforcement-learning/</loc>
+    <lastmod>2018-11-28T15:15:34+10:00</lastmod>
   </url>
   
   <url>
