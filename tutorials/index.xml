@@ -54,6 +54,24 @@ Ne verba patulosque numen vix libet Agitabitur signa lympha; non lacunae, mox cu
     </item>
     
     <item>
+      <title>MuSHR System Overview</title>
+      <link>https://prl-mushr.github.io/tutorials/overview/</link>
+      <pubDate>Wed, 28 Nov 2018 15:14:54 +1000</pubDate>
+      
+      <guid>https://prl-mushr.github.io/tutorials/overview/</guid>
+      <description>You will learn the basic components of the car and their associated software counterparts.</description>
+    </item>
+    
+    <item>
+      <title>Workflow &amp; Troubleshooting</title>
+      <link>https://prl-mushr.github.io/tutorials/workflow/</link>
+      <pubDate>Wed, 28 Nov 2018 15:14:54 +1000</pubDate>
+      
+      <guid>https://prl-mushr.github.io/tutorials/workflow/</guid>
+      <description>This tutorial will cover techniques for devloping and troubleshooting with the cars.</description>
+    </item>
+    
+    <item>
       <title>Reinforcement Learning</title>
       <link>https://prl-mushr.github.io/tutorials/reinforcement-learning/</link>
       <pubDate>Wed, 28 Nov 2018 15:15:34 +1000</pubDate>
