@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>MuSHR System Overview</title>
+      <link>https://prl-mushr.github.io/tutorials/overview/</link>
+      <pubDate>Wed, 28 Nov 2018 15:14:54 +1000</pubDate>
+      
+      <guid>https://prl-mushr.github.io/tutorials/overview/</guid>
+      <description>Basic components of the car and their associated software counterparts.</description>
+    </item>
+    
+    <item>
       <title>Siddhartha Srinivasa</title>
       <link>https://prl-mushr.github.io/team/sidd-srinivasa/</link>
       <pubDate>Mon, 19 Nov 2018 10:47:58 +1000</pubDate>
@@ -44,13 +53,11 @@ Ne verba patulosque numen vix libet Agitabitur signa lympha; non lacunae, mox cu
     
     <item>
       <title>Intro to ROS</title>
-      <link>https://prl-mushr.github.io/tutorials/first-ros-node/</link>
+      <link>https://prl-mushr.github.io/tutorials/intro-to-ros/</link>
       <pubDate>Wed, 28 Nov 2018 15:14:54 +1000</pubDate>
       
-      <guid>https://prl-mushr.github.io/tutorials/first-ros-node/</guid>
-      <description>Lorem markdownum aequalis strigis. Saetigeri iubeas, vultu huic alvum nondum de obside ut laniavit arbor palmis, cum quin. Rupes vetat videndo, armigerae crimen habet Priamum nec.
-Ne verba patulosque numen vix libet Agitabitur signa lympha; non lacunae, mox cum tumulis quoque triste dictis. Ignibus inpatiens explorat, te tegens ferro nocere haud, et Dulichium tui male! Quo sed fuit flexit et hic die solido, gloria?
- Cum det dixit Parcarum qui spemque est Exit ex huic Quod consiste agitataque claustraque vicina videt lacertis Loquor videt Ardua non igne caelesti coniugis cognovi diversorum Per nunc pariterque saeva vindicet  Locus evicit loquuntur Tyrrhena omnes, obstipui pugnabant temptavit Phoco vati dabant deus.</description>
+      <guid>https://prl-mushr.github.io/tutorials/intro-to-ros/</guid>
+      <description>Fundamental ROS concepts using the MuSHR system.</description>
     </item>
     
     <item>
@@ -78,7 +85,7 @@ Ne verba patulosque numen vix libet Agitabitur signa lympha; non lacunae, mox cu
       <pubDate>Wed, 28 Nov 2018 15:14:54 +1000</pubDate>
       
       <guid>https://prl-mushr.github.io/tutorials/navigation/</guid>
-      <description>This tutorial will teach you how to initialize and operate MuSHRs out-of-the-box autonomous navigation stack.</description>
+      <description>Initialize and operate MuSHRs out-of-the-box autonomous navigation stack.</description>
     </item>
     
     <item>
@@ -93,21 +100,12 @@ Ne verba patulosque numen vix libet Agitabitur signa lympha; non lacunae, mox cu
     </item>
     
     <item>
-      <title>MuSHR System Overview</title>
-      <link>https://prl-mushr.github.io/tutorials/overview/</link>
-      <pubDate>Wed, 28 Nov 2018 15:14:54 +1000</pubDate>
-      
-      <guid>https://prl-mushr.github.io/tutorials/overview/</guid>
-      <description>You will learn the basic components of the car and their associated software counterparts.</description>
-    </item>
-    
-    <item>
       <title>Workflow &amp; Troubleshooting</title>
       <link>https://prl-mushr.github.io/tutorials/workflow/</link>
       <pubDate>Wed, 28 Nov 2018 15:14:54 +1000</pubDate>
       
       <guid>https://prl-mushr.github.io/tutorials/workflow/</guid>
-      <description>This tutorial will cover techniques for devloping and troubleshooting with the cars.</description>
+      <description>Techniques for devloping and troubleshooting with the cars.</description>
     </item>
     
     <item>
@@ -237,8 +235,9 @@ Ne verba patulosque numen vix libet Agitabitur signa lympha; non lacunae, mox cu
       <pubDate>Thu, 22 Feb 2018 17:01:34 +0700</pubDate>
       
       <guid>https://prl-mushr.github.io/contact/</guid>
-      <description>Lorem markdownum aequalis strigis. Saetigeri iubeas, vultu huic alvum nondum de obside ut laniavit arbor palmis, cum quin. Rupes vetat videndo, armigerae crimen habet Priamum nec.
-   Day Opening Hours     Tuesday 8:30am - 5:00pm   Wednesday 8:30am - 5:00pm   Thursday 8:30am - 5:00pm   Friday 8:30am - 5:00pm   Saturday 10:am - 4:00pm   Saturday Closed    </description>
+      <description>The MuSHR team is located in the Paul G. Allen School for Computer Science and Engineering at the University of Washington in Seattle, Washington.
+We want to hear from you! Get in touch about:
+ Using MuSHR for education See the course website for &amp;ldquo;Mobile Robotics&amp;rdquo; for an example. A project you&amp;rsquo;ve done with the car. Potential collaborations and research opportunities. Questions you have about the platform. (Also see the Troubleshooting Tutorial).</description>
     </item>
     
     <item>

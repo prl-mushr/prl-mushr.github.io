@@ -11,7 +11,7 @@
 
   
   
-  <link rel="stylesheet" href="/css/style.min.ce88ed80d786db0145b32939c7aefa3c77dea869d071eaef6135f6d04689a6cf.css">
+  <link rel="stylesheet" href="/css/style.min.c1dd52847089bb2ef07be453d787755408d9c2f8d1ef7f91caf57fead716a52a.css">
   
 
   
@@ -153,7 +153,7 @@
         <h1 class="title">Workflow &amp; Troubleshooting</h1>
         <div class="content"> 
           
-          <p>This tutorial will cover techniques for devloping and troubleshooting with the cars.</p> 
+          <p>Techniques for devloping and troubleshooting with the cars.</p> 
           
           <h4 class="properties">Beginner Tutorial | Expected duration is 30 minutes</h4> 
           
@@ -168,38 +168,40 @@
 
 <h3 id="common-workflows">Common Workflows</h3>
 
-<p>There are two common workflows, in sim and in the real world. Sim is easier because you do not need to connect and communicate over the WIFI. We recommend getting comfortable working in sim before trying to test on the car.</p>
+<p>There are two common workflows, in sim and in the real world. Sim is easier because you do not need to connect and communicate with the car over the WiFi. We recommend getting comfortable working in sim before trying to test on the car.</p>
 
 <h4 id="simulation-workflow">Simulation Workflow</h4>
 
-<p>To work in sim you need to have either have the docker image working or a ubuntu machine with ROS melodic that has mushr_sim, mushr, mushr_base, vesc and rviz installed. Docker container is definetly easier to setup, but if you don&rsquo;t like working in a container we recommend the latter. Eac has a slightly different workflow coverd below.</p>
+<p>To work in sim you need to have either have the docker image working or an Ubuntu machine with ROS melodic that has <code>mushr_sim</code>, <code>mushr</code>, <code>mushr_base</code>, <code>vesc</code> and <code>rviz</code> installed. The Docker container is straight-forward to set up, but if you don&rsquo;t like working in a container we recommend the latter. Each has a slightly different workflow covered below.</p>
 
 <h5 id="docker-container">Docker Container</h5>
 
-<p>If you have setup the docker container through the <a href="https://prl-mushr.github.io/tutorials/quickstart/">quickstart</a> tutorial then to get the sim running simply enter <code>mushr_sim/docker</code> and run:
+<p>If you have set up the docker container through the <a href="/tutorials/quickstart/">quickstart</a> tutorial then to get the sim running simply enter <code>mushr_sim/docker</code> and run:
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker compose up -d</code></pre></div></p>
 
-<p>The default .rviz file has the basic topics, but you can save a more custom one if you like. If you exit rviz/the sim the container will stop. You can always restart it with</p>
+<p>The default <code>.rviz</code> file has the basic topics, but you can save a more custom one if you like. If you exit rviz/sim the container will stop. You can always restart it with</p>
 
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker start CONTAINER-ID</code></pre></div>
 
-<p>And you can get your CONTAINER-ID by running:</p>
+<p>And you can get your CONTAINER-ID <sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup> by running:</p>
 
-<p><div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker ps</code></pre></div>
-We recommend storing your code on a git repo so it is easier to move it from container to container. To enter the container to edit/run your code execute:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker ps</code></pre></div>
+
+<p>We recommend storing your code on a git repository so it is easier to move it from container to container. To enter the container to edit or run your code execute:</p>
 
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker <span class="nb">exec</span> -it CONTAINER-ID bash</code></pre></div>
 
-<p>This will get you a non-root user shell to edit/run code. If you wish to install additional software, enter the container as root</p>
+<p>This will get you a non-root user shell to edit and run code. If you wish to install additional software, enter the container as root:</p>
 
-<p><div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker <span class="nb">exec</span> -it -u <span class="m">0</span> CONTAINER-ID bash</code></pre></div>
-The reason we have two different users is because developer is tied to the host computer user so that gui apps like rviz, and the sim gray box can come through.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker <span class="nb">exec</span> -it -u <span class="m">0</span> CONTAINER-ID bash</code></pre></div>
+
+<p>The reason we have two different users is that <code>developer</code> is tied to the host computer user so that gui apps like rviz, and the sim gray box can come through.</p>
 
 <p>You can save your container to an image with</p>
 
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker commit CONTAINER-ID IMAGE-NAME </code></pre></div>
 
-<p>You may want the container to not run the sim/rviz when you start it. To change it to just turn on change line 16 docker-compose.yml to</p>
+<p>You may want the container to not run the sim and rviz when you start it. To change it to just turn on change line 16 <code>docker-compose.yml</code> to</p>
 
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">entrypoint: bash </code></pre></div>
 
@@ -207,84 +209,106 @@ The reason we have two different users is because developer is tied to the host 
 
 <h5 id="regular-install">Regular Install</h5>
 
-<p><div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ roscore</code></pre></div>
-This starts the rosmaster that the other programs will latch to. If you don&rsquo;t run this then rviz can act up. Why? Because rviz needs a rosmaster to talk to and if the rosmaster is teleop, or some other node then when you restart, rviz will be lost. Now start rviz.</p>
+<p>Use these instructions to operate the simulator on an Ubuntu system where ROS melodic and <code>mushr_sim</code>, <code>mushr</code>, <code>mushr_base</code>, <code>vesc</code> and <code>rviz</code> are installed.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ roscore</code></pre></div></p>
 
-<p><div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ rviz</code></pre></div>
-Ideally you want to open your previously saved .rviz file (file -&gt; save as) that has your most commonly used topics all setup. But if not then wait till everything is running, subscribe, then save a file. Also, since you are working with a 2D map, make sure the camera is set to TopDownOrtho.</p>
+<p>The above command starts the <a href="http://wiki.ros.org/Master">ROS master</a> that the other programs will latch to. If you don&rsquo;t run this then rviz can act up. Why? Because rviz needs a rosmaster to talk to and if the rosmaster is teleop, or some other node then when you restart, rviz will lose its connection with ROS master. Now start rviz:</p>
 
-<p>Launch the sim and the map server</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ rviz</code></pre></div>
 
-<p><div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ roslaunch mushr_sim teleop.launch </code></pre></div>
-Launch your code.</p>
+<p>Ideally you want to open your previously saved <code>.rviz</code> file (file &rarr; save as) that has your most commonly used topics all set up. But if not then wait until everything is running, subscribe, then save a file. Also, because you are working with a 2D map, make sure the camera is set to TopDownOrtho.</p>
+
+<p>Launch the sim and the map server:</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ roslaunch mushr_sim teleop.launch </code></pre></div>
+
+<p>Launch your code:</p>
 
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ roslaunch your_package your_launchfile.launch</code></pre></div>
 
 <p>Subscribe to all the necessary topics (and save a .rviz file!). All topics can be found by clicking <strong>Add &rarr; By topic</strong>. To get the robot model: <strong>Add &rarr; By display type &rarr; RobotModel</strong>. Use the gray box and the W, A, S, D keys to drive</p>
 
-<p>If you need to restart/edit your code then make sure to reset the rviz topics so you get the most up to date data. When done, press <code>q</code> in the gray box.</p>
+<p>If you need to restart or edit your code then make sure to reset the rviz topics so you get the most up to date data. This can be done by pressing the <code>reset</code> button in the bottom left corner. When finished with your session, press <code>q</code> in the gray box.</p>
 
 <h4 id="real-world-workflow">Real World Workflow</h4>
 
-<p>Real world has a similar process to simulation, but with added hardware setup and connecting remotely. The key to a solid workflow, is to make sure to separate hardware and software failures clearly which is something that we will discuss more in the next section.</p>
+<p>Operating the robot in the real world has a similar process to that of simulation, but with added hardware setup and connecting remotely. The key to a solid workflow is to make sure to separate hardware and software failures clearly which is something that we will discuss more in the next section.</p>
 
-<p>The first step is to make sure both batteries have sufficient charge (not dead at least). When the batteries are charged the vesc will blink 3 times when powered. The below image show batteries in a charged state. When charging there should be a solid red light(hold start/stop to toggle). The solid green light indicates full.</p>
+<p>The first step is to make sure both batteries have sufficient charge (not dead at least). When the batteries are charged the VESC will blink 3 times when connected and powered. The below image show batteries in a charged state. When charging there should be a solid red light (hold start/stop to toggle). The solid green light indicates full.</p>
 
-<p><img src="https://gitlab.cs.washington.edu/cse490r/19sp/mushr_workflow_tutorial/raw/master/20190508_102753.jpg" width=300px></div></p>
+<figure>
+    <img src="/tutorials/workflow/battery.jpg"
+         alt="Batteries in a charged state. A solid red light indicates charging; solid green light indicates full." width="600"/> <figcaption>
+            <p>Batteries in a charged state. A solid red light indicates charging; solid green light indicates full.</p>
+        </figcaption>
+</figure>
 
-<p>Once you have comfirmed your batteries are charged, you have eliminated many of the most common issues. The next thing to do is to plug in the batteries starting with the vesc. If you want to start right into teleoperation then hold the front button till you see the lidar spin (approximately 1 minute). Once you have plugged both batteries in, you should see the vesc and the jetson nano light up. If the nano does not light up (and the battery is charged) check to make sure the barrel connector is plugged in.</p>
 
-<p><img src="https://gitlab.cs.washington.edu/cse490r/19sp/mushr_workflow_tutorial/raw/master/20190508_102503.jpg" width=300px></p>
+<p>Once you have comfirmed that your batteries are charged, you have eliminated many of the most common issues. The next thing to do is to plug in the batteries starting with the VESC. If you want to start right into teleoperation then hold the front button until you see the lidar spin (approximately 1 minute). Once you have plugged both batteries in, you should see the vesc and the Jetson Nano light up. If the Nano does not light up (and the battery is charged) check to make sure the barrel connector is plugged in.</p>
 
-<p>You should also see a blue Vesc light shown below.</p>
+<figure>
+    <img src="/tutorials/workflow/nano_light.jpg"
+         alt="Green light on nano indicates the computer is powered and on." width="600"/> <figcaption>
+            <p>Green light on nano indicates the computer is powered and on.</p>
+        </figcaption>
+</figure>
 
-<p><img src="https://gitlab.cs.washington.edu/cse490r/19sp/mushr_workflow_tutorial/raw/master/20190508_102427.jpg" width=500px></p>
 
-<p>Now it is time to connect to the computer! If you have the default network setting where the robot makes its own network then connect to Robot AP and</p>
+<figure>
+    <img src="/tutorials/workflow/vesc_light.jpg"
+         alt="Blue light on vesc indicates vesc is on. The wheels will also straighten." width="600"/> <figcaption>
+            <p>Blue light on vesc indicates vesc is on. The wheels will also straighten.</p>
+        </figcaption>
+</figure>
+
+
+<p>Now it is time to connect to the computer! If you have the default network setting where the robot makes its own network then connect to Robot AP and (TODO: should this say IP?, what&rsquo;s the end of the sentence?)</p>
 
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ssh robot@10.42.0.171</code></pre></div>
 
-<p>If you have the robot connect to a local network then connect to that network yourself and ssh but replace the IP with the robot&rsquo;s static IP that you set.</p>
+<p>If you have the robot connect to a local network, then connect to that network yourself and ssh but replace the IP with the robot&rsquo;s static IP that you set. (TODO: can we clarify this sentence? can we discuss how to connect the car to the local network?)</p>
 
-<p>If you are having trouble connecting see <a href="#troubleshooting">Troubleshooting</a>. We need to setup the ROS_IP and the ROS_MASTER_URI environment variables on both devices. ROS_IP tells your ROS node what IP to communicate under. Localhost will not work because it will prevent remote components from communicating with it. So use <code>ifconfig</code> in the terminal to find your IP (car and desktop) and set that number to your ROS_IP. Each device should use its own IP.</p>
+<p>If you are having trouble connecting see <a href="#troubleshooting">Troubleshooting</a>. We need to set up the ROS_IP and the ROS_MASTER_URI environment variables on both devices. ROS_IP tells your ROS node what IP to communicate under. Localhost will not work because it will prevent remote components from communicating with it. So use <code>ifconfig</code> in the terminal to find your IP (car and desktop) and set that number to your ROS_IP. Each device should use its own IP.</p>
 
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">export</span> <span class="nv">ROS_IP</span><span class="o">=</span>ROBOT/DESKTOP-IP</code></pre></div>
 
-<p>If your IP is static (the car should be) then you can put this command at the bottom of your <code>~/.bashrc</code> and it will run everytime you login. You can check if an environment variable is set using <code>echo</code></p>
+<p>If your IP is static (the car ought to have a static IP) then you can put this command at the bottom of your <code>~/.bashrc</code> and it will run everytime you log in. You can check if an environment variable is set using <code>echo</code></p>
 
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">echo</span> <span class="nv">$ROS_IP</span></code></pre></div>
 
-<p>Now that you have set your ROS_IP for both the car and computer, we need to set the ROS_MASTER_URI. The ROS_MASTER_URI tells your ROS nodes where to look for rosmaster. The default is localhost:11311. Since your program is running on the car we will set the ROS_MASTER_URI to the car. Luckly since the car is already set to itself, we only have to set the desktop/laptop. On the base computer run:</p>
+<p>Now that you have set your <code>ROS_IP</code> for both the car and computer, we need to set the <code>ROS_MASTER_URI</code> environment variable. The <code>ROS_MASTER_URI</code> tells your ROS nodes where to look for <code>rosmaster</code>. The default is <code>localhost:11311</code>. Since your program is running on the car we will set the <code>ROS_MASTER_URI</code> to the car. Luckly because the car is already set to itself, we only have to set the desktop or laptop (whichever is your remote workstation). On the base computer run:</p>
 
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">export</span> <span class="nv">ROS_MASTER_URI</span><span class="o">=</span>http://ROBOT-IP:11311</code></pre></div>
 
-<p>11311 is the port. If this isn&rsquo;t set your base computer will start a separate rosmaster and if it is set incorrectly it will throw a error that it cannot find rosmaster. Now we are ready to run stuff!</p>
+<p>&ldquo;11311&rdquo; is the port ROS connects to. If this isn&rsquo;t set your base computer will start a separate <code>rosmaster</code> and if it is set incorrectly it will throw a error that it cannot find rosmaster. Now we are ready to run stuff! (TODO: clarify what &ldquo;ROS-IP&rdquo; is &ndash; is it the same as <code>$ROS_IP</code>?)</p>
 
-<p>On the car:</p>
+<p>Ssh into the car, and run:</p>
 
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ roscore</code></pre></div>
 
 <p>On the base:
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ rviz</code></pre></div>
-rviz setup should be the same as sim</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ rviz</code></pre></div></p>
+
+<p>rviz set up should be the same as sim (TODO: clarify this sentence?)</p>
 
 <p>On the car:</p>
 
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ roslaunch mushr_base teleop.launch</code></pre></div>
 
-<p>Make sure you can drive the car and steer. On the base, visualize topics in rviz.</p>
+<p>The <code>teleop.launch</code> launch file activates the car&rsquo;s hardware, sensors and remote control. Make sure you can drive the car and steer. On the base, visualize topics in rviz.</p>
 
 <p>On the car:
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ roslaunch your_package your_launch.launch</code></pre></div>
-It is good practice to keep your package separate from teleop so that you can restart your program without killing teleop.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ roslaunch your_package your_launch.launch</code></pre></div></p>
 
-<h3 id="troubleshooting">Troubleshooting</h3>
+<p>It is good practice to keep your package separate from teleop so that you can restart your program without killing teleop. (TODO: clarify this sentence &ndash; in what way do they need to be seperate?)</p>
 
-<p>Troubleshooting is what 80% of a roboticist time is spent on. If we know it is inevitable, we need to design systems and use tools to narrow down a diagnosis for the problem as fast as possible. Diagnosis can usually be the hardest part because it could be hardware or software or both. In addition, a robotic system is highly interconnected so a weird behavior in one component may only manifest itself in another component down the road. This section will cover the main debugging tools you should use on the car and some common problems and fixes.</p>
+<h2 id="troubleshooting">Troubleshooting</h2>
 
-<h4 id="debugging-questions">Debugging Questions</h4>
+<p>Troubleshooting is what 80% of a roboticist&rsquo;s time is spent on. If we know it is inevitable, we need to design systems and use tools to narrow down a diagnosis for the problem as fast as possible. Diagnosis can usually be the hardest part because it could be hardware or software or both. In addition, a robotic system is highly interconnected so a weird behavior in one component may only manifest itself in another component down the road. This section will cover the main debugging tools you should use on the car and some common problems and fixes.</p>
 
-<p>The following questions should be answered in order to work towards a diagnosis.</p>
+<h3 id="debugging-questions">Debugging Questions</h3>
+
+<p>You should try answering the following questions in order to work towards a diagnosis.</p>
 
 <h4 id="is-the-issue-hardware-or-software">Is the issue hardware or software?</h4>
 
@@ -292,16 +316,16 @@ It is good practice to keep your package separate from teleop so that you can re
 
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>FATAL<span class="o">]</span> <span class="o">[</span><span class="m">1455208235</span>.408745600<span class="o">]</span>: Failed to connect to the VESC, SerialException Failed to open the serial port to the VESC. IO Exception <span class="o">(</span><span class="m">2</span><span class="o">)</span>: No such file or directory, file /tmp/binarydeb/ros-kinetic-serial-1.2.1/src/impl/unix.cc, line <span class="m">151</span>. failed..</code></pre></div>
 
-<p>Now this issue is hardware. There is a key clue here, the word &ldquo;IO Exception.&rdquo; We know the Vesc is not connected because we can&rsquo;t start a serial connection with the Vesc. Here is another example:</p>
+<p>Now this issue is hardware. There is a key clue here, the word &ldquo;IO Exception.&rdquo; We know the VESC is not connected because we can&rsquo;t start a <a href="https://en.wikipedia.org/wiki/Serial_communication">serial connection</a> with the VESC. Here is another example:</p>
 
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ERROR: unable to contact ROS master at <span class="o">[</span>http://172.16.77.06:11311<span class="o">]</span>
 The traceback <span class="k">for</span> the exception was written to the log file</code></pre></div>
 
-<p>Now this is also a connection issue, but this time it is software. We know because it is trying to connect to rosmaster at the set IP. So in software we are setting this IP from the environment variable ROS_MASTER_URI and the computer is trying to connect to this IP over wifi. Either we set the IP wrong, or the wifi isn&rsquo;t working. But we know the wifi is functional because we can ssh into the car, so it must be an incorrect IP!</p>
+<p>Now this is also a connection issue, but this time it is software. We know because the ROS node is trying to connect to <code>rosmaster</code> at the set IP. So in software we are setting this IP from the environment variable <code>ROS_MASTER_URI</code> and the computer is trying to connect to this IP over WiFi. Either we set the IP wrong, or the WiFi isn&rsquo;t working. But we know the WiFi is functional because we can ssh into the car, so it must be an incorrect IP!</p>
 
 <h4 id="what-component-is-causing-the-issue">What component is causing the issue?</h4>
 
-<p>So now that you have determined that it is hardware vs. software, we need to narrow down the problem. Sometimes, in the above examples, it explicitly tells you, but we aren&rsquo;t always that lucky. Take the following example:</p>
+<p>So now that you have determined that the issue is in hardware vs. software, we need to narrow down the problem. Sometimes, in the above examples, it explicitly tells you, but we aren&rsquo;t always that lucky. Take the following example:</p>
 
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>teleop.launch<span class="o">]</span> is neither a launch file in package <span class="o">[</span>labx<span class="o">]</span> nor is <span class="o">[</span>labx<span class="o">]</span> a launch file name
 The traceback <span class="k">for</span> the exception was written to the log file</code></pre></div>
@@ -311,72 +335,215 @@ The traceback <span class="k">for</span> the exception was written to the log fi
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ rospack find labx
 /home/nvidia/catkin_ws/src/labx</code></pre></div>
 
-<p>It found the package! Which means you don&rsquo;t have a <code>teleop.launch</code> file in your labx package</p>
+<p>It found the package! Which means you don&rsquo;t have a <code>teleop.launch</code> file in your labx package. (TODO: How would you fix this?)</p>
 
 <h4 id="is-the-error-ros-related-or-pure-code-related">Is the error ROS related or pure code related?</h4>
 
-<p>A helpful thing to determine is if the problem has anything to do with ROS. If the error looks like a standard python/C++ error then great, you can rule out all ROS stuff. If not, then it could be either your ROS interface (publishers/subscribers) in your code, or your launchfiles, or your ROS environment. This question is relatively easy to answer if you answer the previous questions, the one difficulty is that ROS will add a bunch of node failure gibberish even if your code logic is the problem. So just make sure to scroll the error to the very beginning to find the core issue.</p>
+<p>A helpful thing to determine is if the problem has anything to do with ROS. If the error looks like a standard python/C++ error then great, you can rule out all ROS stuff. If not, then it could be either your ROS interface (publishers/subscribers) in your code, or your launchfiles, or your ROS environment. This question is relatively easy to answer if you answer the previous questions. But the one difficulty is that ROS will add a bunch of node failure gibberish even if your code logic is the problem. So just make sure to scroll the error to the very beginning to find the core issue.</p>
 
-<h3 id="debugging-tools">Debugging Tools</h3>
+<h2 id="debugging-tools">Debugging Tools</h2>
 
 <p>ROS provides a suite of tools to help debug issues. We&rsquo;ll cover each a bit and when to use.</p>
 
-<p><strong>rostopic</strong><br />
-This tool is really useful to checking if topics are publishing, get a sense of latency, see what is being published, and more info about specific topics.<br />
-<code>rostopic list</code> allows you to see all the topics<br />
-<code>rostopic echo topic_name</code> allows you to see what is actually being published<br />
-<code>rostopic info topic_name</code> lets you see the message type and other important info about a topic<br />
-<code>rostopic hz topic_name</code> lets you see the publish rate of the topic. A quick way to detect a bottleneck.</p>
+<h4 id="rostopic">rostopic</h4>
 
-<p><strong>rosnode</strong><br />
-This tool works very similar to rostopic except on a node level. It is useful to see what nodes are publishing/subscribing to.<br />
-<code>rosnode list</code> list all the nodes<br />
-<code>rosnode info node_name</code> see what the node is publishing/subscribing to and other important info</p>
+<p>This tool is really useful for checking if topics are publishing, get a sense of latency, see what is being published, and more info about specific topics.</p>
 
-<p><strong>rosparam</strong><br />
-If you have params that are set dynamically (erpm gain) then this a good tool to make sure a param is what you expect it to be and if not change it.<br />
-<code>rosparam list</code> list all params<br />
-<code>rosparam get param_name</code> get param value<br />
-<code>rosparam set param_name</code> set param value</p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Function</th>
+</tr>
+</thead>
 
-<p><strong>rospack</strong><br />
-This tool is useful if you need to find a package.<br />
-<code>rospack list</code> list all packages<br />
-<code>rospack find package_name</code> gives you the location of the specified package if it finds it</p>
+<tbody>
+<tr>
+<td><code>rostopic list</code></td>
+<td>allows you to see all the topic</td>
+</tr>
 
-<p><strong>rosrun tf</strong><br />
-If you are having transform issues, this tool is a good way to debug.<br />
-<code>rosrun tf tf_echo frame1 frame2</code>  will output the transform from frame1 to frame2<br />
-<code>rosrun tf view_frame</code> will create a pdf diagram of the transforms present<br />
-<code>rosrun tf tf_monitor</code> show all frames and publish rates</p>
+<tr>
+<td><code>rostopic echo topic_name</code></td>
+<td>allows you to see what is actually being published</td>
+</tr>
 
-<p><strong>rqt_graph</strong><br />
-This will give you a sense of the overall system of nodes and topics connecting them.<br />
-<code>rqt_graph</code> creates pdf of nodes and topics running</p>
+<tr>
+<td><code>rostopic info topic_name</code></td>
+<td>lets you see the message type and other important info about a topic</td>
+</tr>
 
-<ul>
-<li><strong>ssh</strong><br />
-While this is not really a debugging tool, it is a tool commonly used and should be touched on. ssh stands for Secure Shell. It is an encrypted network protocol that amongst other things gives you a shell session on a remote machine. It is super useful for remote work and connecting to robots because then you do not need an additional monitor and keyboard. So when you connect, you supply the username (nvidia) and the IP of the car and it will connect you to that user specifically. There are some other potentially useful things you can do with ssh in addition to a standard shell.<br />
-<br /></li>
-</ul>
+<tr>
+<td><code>rostopic hz topic_name</code></td>
+<td>lets you see the publish rate of the topic. A quick way to detect a bottleneck.</td>
+</tr>
+</tbody>
+</table>
+
+<p><br>
+Give this a try as you&rsquo;re getting acquainted with your system! <br></p>
+
+<h4 id="rosnode">rosnode</h4>
+
+<p>This tool works very similar to rostopic except on a node level. It is useful to see what nodes are publishing/subscribing to.</p>
+
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Function</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>rosnode list</code></td>
+<td>list all the ROS nodes</td>
+</tr>
+
+<tr>
+<td><code>rosnode info node_name</code></td>
+<td>see what the node is publishing/subscribing to and other important info</td>
+</tr>
+</tbody>
+</table>
+
+<p><br></p>
+
+<h4 id="rosparam">rosparam</h4>
+
+<p>If you have params that are set dynamically (erpm gain) then this a good tool to make sure a param is what you expect it to be and if not change it.</p>
+
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Function</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>rosparam list</code></td>
+<td>list all params</td>
+</tr>
+
+<tr>
+<td><code>rosparam get param_name</code></td>
+<td>get param value</td>
+</tr>
+
+<tr>
+<td><code>rosparam set param_name</code></td>
+<td>set param value</td>
+</tr>
+</tbody>
+</table>
+
+<p><br></p>
+
+<h4 id="rospack">rospack</h4>
+
+<p>This tool is useful if you need to find a package.</p>
+
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Function</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>rospack list</code></td>
+<td>list all packages</td>
+</tr>
+
+<tr>
+<td><code>rospack find package_name</code></td>
+<td>gives you the location of the specified package if it finds it</td>
+</tr>
+</tbody>
+</table>
+
+<p><br></p>
+
+<h4 id="rosrun-tf">rosrun tf</h4>
+
+<p>If you are having transform issues, this tool is a good way to debug.</p>
+
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Function</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>rosrun tf tf_echo frame1 frame2</code></td>
+<td>will output the transform from frame1 to frame2</td>
+</tr>
+
+<tr>
+<td><code>rosrun tf view_frame</code></td>
+<td>will create a pdf diagram of the transforms present</td>
+</tr>
+
+<tr>
+<td><code>rosrun tf tf_monitor</code></td>
+<td>show all frames and publish rates</td>
+</tr>
+</tbody>
+</table>
+
+<p><br></p>
+
+<h4 id="rqt-graph">rqt_graph</h4>
+
+<p>This will give you a sense of the overall system of nodes and topics connecting them.</p>
+
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Function</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>rqt_graph</code></td>
+<td>creates pdf of nodes and topics running</td>
+</tr>
+</tbody>
+</table>
+
+<p><br></p>
+
+<h4 id="ssh">ssh</h4>
+
+<p>While this is not really a debugging tool, it is a tool commonly used and should be touched on. ssh stands for Secure Shell. It is an encrypted network protocol that amongst other things gives you a shell session on a remote machine. It is super useful for remote work and connecting to robots because then you do not need an additional monitor and keyboard. So when you connect, you supply the username (robot) and the IP address of the car and it will connect you to that user specifically. There are some other potentially useful things you can do with ssh in addition to a standard shell.</p>
 
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ssh robot@10.42.0.171 -X</code></pre></div>
 
-<p>This connects a X session so you can run graphical applications remotely, but it will be very slow because everything needs to be encrypted</p>
+<p>This connects an X session so you can run graphical applications remotely, but it will be very slow because everything needs to be encrypted.</p>
 
-<p><div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sftp nvidia@10.42.0.171</code></pre></div>
-Secure file transfer protocol is the best way to get files from another machine. It allows you to <code>cd</code> and <code>ls</code> like a shell but also <code>get</code> files and <code>put</code> files from your local machine on the remote machine.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sftp nvidia@10.42.0.171</code></pre></div>
 
-<p><strong>tmux</strong><br />
-The terminal multiplexer is a famous and commonly used tool for working with multiple shell sessions from one window. For us, this is particularly useful when you ssh into the car. You don&rsquo;t have to keep sshing in for each new window, but instead ssh in once then use tmux to have multiple sessions. This <a href="https://hackernoon.com/a-gentle-introduction-to-tmux-8d784c404340">tutorial</a> goes into more detail.</p>
+<p>Secure file transfer protocol is the best way to get files from another machine. It allows you to <code>cd</code> and <code>ls</code> like a shell but also <code>get</code> files and <code>put</code> files from your local machine on the remote machine.</p>
 
-<h3 id="common-issues-how-to-fix">Common Issues &amp; How to Fix</h3>
+<h4 id="tmux">tmux</h4>
+
+<p>The terminal multiplexer is a famous and commonly used tool for working with multiple shell sessions from one window. For us, this is particularly useful when you ssh into the car. You don&rsquo;t have to keep sshing in for each new window, but instead ssh in once then use tmux to have multiple sessions. This <a href="https://hackernoon.com/a-gentle-introduction-to-tmux-8d784c404340">tutorial</a> goes into more detail.</p>
+
+<h2 id="common-issues-how-to-fix">Common Issues &amp; How to Fix</h2>
 
 <p>Alright, now that we know how to narrow down issues, let&rsquo;s look at the most common issues on the cars and how to fix them.</p>
 
-<ul>
-<li><strong>Vesc Failure</strong><br /></li>
-</ul>
+<h4 id="vesc-failure">Vesc Failure</h4>
 
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>FATAL<span class="o">]</span> <span class="o">[</span><span class="m">1455208235</span>.408745600<span class="o">]</span>: Failed to connect to the VESC, SerialException Failed to open the serial port to the VESC. IO Exception <span class="o">(</span><span class="m">2</span><span class="o">)</span>: No such file or directory, file /tmp/binarydeb/ros-kinetic-serial-1.2.1/src/impl/unix.cc, line <span class="m">151</span>. failed..</code></pre></div>
 
@@ -385,41 +552,43 @@ The terminal multiplexer is a famous and commonly used tool for working with mul
 <strong>ROS Related:</strong> No, but it manifests itself through ROS<br />
 <strong>Fix:</strong> Make sure the Vesc battery is charged and plugged in. The Vesc should have a blue light. If you have to change the battery, make sure to re-source your workspace so the computer can detect the vesc. If continues, check connections to the computer.</p>
 
-<ul>
-<li><p><strong>ROS Workspace Not Setup (bash not recognizing ROS commands):</strong></p>
+<h4 id="ros-workspace-not-setup-bash-not-recognizing-ros-commands">ROS Workspace Not Setup (bash not recognizing ROS commands):</h4>
 <div class="highlight"><pre class="chroma">-bash: roscore: command not found</pre></div>
 <p><strong>Hardware/Software:</strong> Software<br />
 <strong>Component:</strong> ROS<br />
 <strong>ROS Related:</strong> Yes<br />
-<strong>Fix:</strong> <code>source ~/catkin_ws/devel/setup.bash</code>. We recommend putting this at the end of your <code>~/.bashrc</code> so you never experience this issue.</p></li>
+<strong>Fix:</strong> <code>source ~/catkin_ws/devel/setup.bash</code>. We recommend putting this at the end of your <code>~/.bashrc</code> so you never experience this issue.</p>
 
-<li><p><strong>Car Only Has Steering</strong><br />
-<strong>Hardware/Software:</strong> Hardware<br />
+<h4 id="car-only-has-steering">Car Only Has Steering</h4>
+
+<p><strong>Hardware/Software:</strong> Hardware<br />
 <strong>Component:</strong> Vesc Battery<br />
 <strong>ROS Related:</strong> No<br />
-<strong>Fix:</strong> Charge the Vesc battery, it doesn&rsquo;t have enough juice to power the motor.</p></li>
+<strong>Fix:</strong> Charge the Vesc battery, it doesn&rsquo;t have enough juice to power the motor.</p>
 
-<li><p><strong>Car Drifts When Driving Straight</strong><br />
-This can also manifest when using a particle filter that works in sim but not on the car because the expected control is to go straight when commanded straight. It could also manifest in a controller, when the car cannot seem to follow a trajectory because what it is commanding to the car is not what the car is doing.<br />
+<h4 id="car-drifts-when-driving-straight">Car Drifts When Driving Straight</h4>
+
+<p>This can also manifest when using a particle filter that works in sim but not on the car because the expected control is to go straight when commanded straight. It could also manifest in a controller, when the car cannot seem to follow a trajectory because what it is commanding to the car is not what the car is doing.<br />
 <strong>Hardware/Software:</strong> Software<br />
 <strong>Component:</strong> Vesc config<br />
 <strong>ROS Related:</strong> No<br />
-<strong>Fix:</strong> edit the <code>steering_angle_to_servo_offset</code> in  <code>~/catkin_ws/src/mushr/mushr_base/vesc/vesc_main/config/racecar-uw-nano/vesc.yaml</code> to a value that when the car is commanded straight it goes straight.</p></li>
+<strong>Fix:</strong> edit the <code>steering_angle_to_servo_offset</code> in  <code>~/catkin_ws/src/mushr/mushr_base/vesc/vesc_main/config/racecar-uw-nano/vesc.yaml</code> to a value that when the car is commanded straight it goes straight.</p>
 
-<li><p><strong>ROS Topics Not Appearing in rviz</strong><br />
-<strong>Hardware/Software:</strong> Software<br />
+<h4 id="ros-topics-not-appearing-in-rviz">ROS Topics Not Appearing in rviz</h4>
+
+<p><strong>Hardware/Software:</strong> Software<br />
 <strong>Component:</strong> Your component/rviz<br />
 <strong>ROS Related:</strong> Yes<br />
-<strong>Fix:</strong> Either your component is not publishing the topic (use rostopic to double check!) or rviz needs to be refreshed or the transform is not publishing (rosrun tf to double check!). Click &ldquo;Reset&rdquo; in rviz and try restarting your node. If the error says not transform from x to /map then you need to make sure the transform is being published (use rosrun tf tf_echo! See <a href="#debugging-tools">Debugging Tools</a>)</p></li>
+<strong>Fix:</strong> Either your component is not publishing the topic (use rostopic to double check!) or rviz needs to be refreshed or the transform is not publishing (rosrun tf to double check!). Click &ldquo;Reset&rdquo; in rviz and try restarting your node. If the error says not transform from x to /map then you need to make sure the transform is being published (use rosrun tf tf_echo! See <a href="#debugging-tools">Debugging Tools</a>)</p>
 
-<li><p><strong>ssh Not Connecting</strong><br />
-<strong>Hardware/Software:</strong> Hardware<br />
-<strong>Component:</strong> WIFI
+<h4 id="ssh-not-connecting">ssh Not Connecting</h4>
+
+<p><strong>Hardware/Software:</strong> Hardware<br />
+<strong>Component:</strong> WiFi <br>
 <strong>ROS Related:</strong> No<br />
-<strong>Fix:</strong> If ssh is not working first do a dumby check to make sure your IP and username are correct. Then try to <code>ping</code> the car IP. If it does not respond, then make sure the car is powered. If powered and still not pinging, then it likely is struggling to pickup wifi. Plug a HDMI cable into the jetson and use <code>ifconfig</code> to confirm wifi. If nothing still, then use the graphical interface to try to connect to wifi. Also, make sure your base computer is on the same network as the car.</p></li>
+<strong>Fix:</strong> If ssh is not working first do a dumby check to make sure your IP and username are correct. Then try to <code>ping</code> the car IP. If it does not respond, then make sure the car is powered. If powered and still not pinging, then it likely is struggling to pickup wifi. Plug a HDMI cable into the jetson and use <code>ifconfig</code> to confirm wifi. If nothing still, then use the graphical interface to try to connect to wifi. Also, make sure your base computer is on the same network as the car.</p>
 
-<li><p><strong>Roscore Already Running</strong></p></li>
-</ul>
+<h4 id="roscore-already-running">Roscore Already Running</h4>
 
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">roscore cannot run as another roscore/master is already running.</code></pre></div>
 
@@ -429,6 +598,15 @@ This can also manifest when using a particle filter that works in sim but not on
 <strong>Fix:</strong> You left a ROS process running and tried to start a new roscore/node. Simply stop that process.</p>
 
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ pkill ros</code></pre></div>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:1"><code>CONTAINER-ID</code> is just a stand in for the value provided by the command <code>docker ps</code>.
+ <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
+</ol>
+</div>
 
         </div>
       </div>
@@ -471,8 +649,8 @@ This can also manifest when using a particle filter that works in sim but not on
       <div class="col-12">
         <div class="sub-footer-inner">
           <ul>
-            <li><strong>Email: </strong><a href="mailto:mushr@cs.uw.edu">
-                mushr@cs.uw.edu</a></li>
+            <li><strong>Email: </strong><a href="mailto:mushr@cs.washington.edu">
+                mushr@cs.washington.edu</a></li>
           </ul>
           <ul>
             <li class="prl"><a href="https://personalrobotics.cs.washington.edu/">Made with <font color="#FF1690">♥</font> at the Personal Robotics Lab</a></li>
