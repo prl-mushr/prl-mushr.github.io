@@ -12,6 +12,24 @@
     
     
     <item>
+      <title>Quickstart</title>
+      <link>https://prl-mushr.github.io/tutorials/quickstart/</link>
+      <pubDate>Wed, 28 Nov 2018 15:14:54 +1000</pubDate>
+      
+      <guid>https://prl-mushr.github.io/tutorials/quickstart/</guid>
+      <description>Run the MuSHR platform on your machine!</description>
+    </item>
+    
+    <item>
+      <title>Intro to ROS</title>
+      <link>https://prl-mushr.github.io/tutorials/intro-to-ros/</link>
+      <pubDate>Wed, 28 Nov 2018 15:14:54 +1000</pubDate>
+      
+      <guid>https://prl-mushr.github.io/tutorials/intro-to-ros/</guid>
+      <description>Fundamental ROS concepts using MuSHR.</description>
+    </item>
+    
+    <item>
       <title>MuSHR System Overview</title>
       <link>https://prl-mushr.github.io/tutorials/overview/</link>
       <pubDate>Wed, 28 Nov 2018 15:14:54 +1000</pubDate>
@@ -21,32 +39,12 @@
     </item>
     
     <item>
-      <title>Quickstart</title>
-      <link>https://prl-mushr.github.io/tutorials/quickstart/</link>
-      <pubDate>Sun, 18 Nov 2018 12:33:46 +1000</pubDate>
-      
-      <guid>https://prl-mushr.github.io/tutorials/quickstart/</guid>
-      <description>Lorem markdownum aequalis strigis. Saetigeri iubeas, vultu huic alvum nondum de obside ut laniavit arbor palmis, cum quin. Rupes vetat videndo, armigerae crimen habet Priamum nec.
-Ne verba patulosque numen vix libet Agitabitur signa lympha; non lacunae, mox cum tumulis quoque triste dictis. Ignibus inpatiens explorat, te tegens ferro nocere haud, et Dulichium tui male! Quo sed fuit flexit et hic die solido, gloria?
- Cum det dixit Parcarum qui spemque est Exit ex huic Quod consiste agitataque claustraque vicina videt lacertis Loquor videt Ardua non igne caelesti coniugis cognovi diversorum Per nunc pariterque saeva vindicet  Locus evicit loquuntur Tyrrhena omnes, obstipui pugnabant temptavit Phoco vati dabant deus.</description>
-    </item>
-    
-    <item>
-      <title>Intro to ROS</title>
-      <link>https://prl-mushr.github.io/tutorials/intro-to-ros/</link>
-      <pubDate>Wed, 28 Nov 2018 15:14:54 +1000</pubDate>
-      
-      <guid>https://prl-mushr.github.io/tutorials/intro-to-ros/</guid>
-      <description>Fundamental ROS concepts using the MuSHR system.</description>
-    </item>
-    
-    <item>
       <title>Autonomous Navigation</title>
       <link>https://prl-mushr.github.io/tutorials/navigation/</link>
       <pubDate>Wed, 28 Nov 2018 15:14:54 +1000</pubDate>
       
       <guid>https://prl-mushr.github.io/tutorials/navigation/</guid>
-      <description>Initialize and operate MuSHRs out-of-the-box autonomous navigation stack.</description>
+      <description>Initialize and operate MuSHRs out-of-the-box autonomous navigation stack!</description>
     </item>
     
     <item>

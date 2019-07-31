@@ -153,58 +153,127 @@
         <h1 class="title">Quickstart</h1>
         <div class="content"> 
           
+          <p>Run the MuSHR platform on your machine!</p> 
           
+          <h4 class="properties">Beginner Tutorial | Expected duration is 30 minutes</h4> 
           
 
-<p>Lorem markdownum aequalis strigis. <em>Saetigeri iubeas</em>, vultu huic alvum nondum
-de obside ut laniavit arbor palmis, cum quin. Rupes vetat videndo, armigerae
-crimen habet Priamum nec.</p>
+<h3 id="introduction">Introduction</h3>
 
-<h2 id="ne-verba-patulosque-numen-vix-libet">Ne verba patulosque numen vix libet</h2>
+<p>This tutorial will get you started with mushr in simulation!</p>
 
-<p>Agitabitur signa lympha; non lacunae, mox cum tumulis quoque triste dictis.
-Ignibus inpatiens explorat, te tegens <em>ferro nocere haud</em>, et Dulichium tui
-male! Quo sed <a href="#vexant-achivi">fuit flexit et</a> hic die solido, gloria?</p>
+<h3 id="goal">Goal</h3>
 
-<ol>
-<li>Cum det dixit Parcarum qui spemque est</li>
-<li>Exit ex huic</li>
-<li>Quod consiste agitataque claustraque vicina videt lacertis</li>
-<li>Loquor videt</li>
-<li>Ardua non igne caelesti coniugis cognovi diversorum</li>
-<li>Per nunc pariterque saeva vindicet</li>
-</ol>
+<p>To get the simulator running on your machine so that you can begin hacking immediately!</p>
 
-<p>Locus evicit loquuntur Tyrrhena omnes, obstipui pugnabant temptavit Phoco <em>vati</em>
-dabant deus. Memorata haberet sepulcrales gentisque dum sic, in flumina templa!
-Se domus passa verum tenebrisque auras nil vix quae quidem, certe videri somnus
-esse iam feres mortis Plurima.</p>
+<h3 id="requirements">Requirements</h3>
 
-<h2 id="postquam-tamen">Postquam tamen</h2>
+<p>A linux machine (OSX and Windows support coming soon!). If you don&rsquo;t run linux natively then get a linux VM: <a href="https://www.instructables.com/id/How-to-Create-an-Ubuntu-Virtual-Machine-with-Virtu/">OSX</a>, <a href="https://itsfoss.com/install-linux-in-virtualbox/">Windows</a>.</p>
 
-<p>Et nec ingentem est minus faciunt praecipue posse auctoremque sedes transmittere
-et pedes miratur erat animaeque. Tellus admonuit humanam funes, sagittis et
-licet! Inserui quamvis Clymeni.</p>
+<h2 id="setup">Setup</h2>
+
+<p>First we need to make sure you have a few dependencies installed. To make it easier, we have created a Docker container with the mushr stack and sim running inside it. Here is what you need:</p>
 
 <ul>
-<li>Parens est studiisque interea</li>
-<li>Pro istis mediis carnes iste nec imperat</li>
-<li>Te vocas orat nisi quantumque castra</li>
-<li>Gestumque crepuscula esse videntur coegit</li>
-<li>Ambo videtque gerat aquae ferens vagina</li>
-<li>Adde leviter faciam tetigisse regunt concava in</li>
+<li><a href="https://docs.docker.com/v17.12/install/">docker</a></li>
+<li><a href="https://docs.docker.com/compose/install/">docker-compose</a></li>
+<li>git</li>
+<li>A github account. You can signup for one <a href="https://github.com/join?source=header-home">here</a></li>
+<li>An nvidia graphics card</li>
 </ul>
 
-<p>Superi monilia omnes Cyprio Scylla cibos punica quae succincta pallent de
-incubat hostes montibus, de moderato efficiet vulnere. Letum Atalanta Pallas,
-vis, saxo recepta <a href="#fati">membra contractosque</a> remigis <a href="#dissipat">vulnere vetus
-parte</a> indignata supera.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo apt install git-all</code></pre></div>
 
-<p>Quantum auxilium datus; sed pineta et, iuvenes redito; credas mensae, meum. Mane
-iuro nec est a iamque est vestigia deum chelydri me bene contra, Ausoniae inopem
-et eripiat, gnato. Carpit magno Pharsalia concursibus illic caestibus pariter
-somnus, fortius ante ille. Superasse induit <em>celare</em> cadunt, ut Armeniae per
-tamen lentis spectat, Titania est animo.</p>
+<p>Once you have these, you&rsquo;re good to go!</p>
+
+<h2 id="install-sim">Install Sim</h2>
+
+<p>Now that we have the dependencies, lets get started! Note, we are assuming you have set up Docker to not need sudo with every call. You can set that up by following <a href="https://docs.docker.com/install/linux/linux-postinstall/">these</a> steps. Now, open a terminal (CTRL + ALT + T) check if Docker is running:</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker run hello-world</code></pre></div>
+
+<p>If you get a error then run:</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ systemctl start docker</code></pre></div>
+
+<p>Let&rsquo;s clone the sim repo:</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ git clone https://github.com/prl-mushr/mushr_sim <span class="o">&amp;&amp;</span> <span class="nb">cd</span> mushr_sim/docker/</code></pre></div>
+
+<p>Alright, so you are in the Docker directory of the sim. There are two configuration changes we need to make. First let&rsquo;s change the uid/gid of your Docker user to match the current user. This is required for GUI apps like rviz to connect. Check your UID/GID with the following command</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ id -u <span class="nv">$USER</span></code></pre></div>
+
+<p>for UID and</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ id -g <span class="nv">$USER</span></code></pre></div>
+
+<p>for GID. They usually are the same. Now that you know these values use your favorite text editor to change line 4 in Dockerfile. We will use gedit here</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ gedit Dockerfile</code></pre></div>
+
+<p>And change line 4&rsquo;s UID/GID to match yours. The last configuration we need to do is make sure your nvidia driver matches the one the sim is looking for. This is required because OpenGL is needed for rviz. To see which nvidia driver your computer has run</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ls /usr/lib/ <span class="p">|</span> grep nvidia</code></pre></div>
+
+<p>The default is <code>nvidia-390</code>. If your&rsquo;s is not that then open <code>.env</code> and change the number to match.</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ gedit .env</code></pre></div>
+
+<p>That&rsquo;s it for setting up! We&rsquo;re done the hard part :)</p>
+
+<h2 id="run-sim">Run Sim</h2>
+
+<p>To start the sim run</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker-compose up -d</code></pre></div>
+
+<p>You should see a small gray window pop up and rviz with the car model (see below). We&rsquo;ve just created a container that you can see if you run</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker ps</code></pre></div>
+
+<figure>
+    <img src="/tutorials/quickstart/rviz_docker.png"
+         alt="The rviz window that should pop up after running docker-compose" width="800"/> <figcaption>
+            <p>The rviz window that should pop up after running <code>docker-compose</code></p>
+        </figcaption>
+</figure>
+
+
+<p>Give the car an initial position by clicking <code>2D Pose Estimate</code> in rviz and clicking and dragging in the main window. Now you can click on the small gray window and use the WSAD keys to drive the car around!</p>
+
+<h2 id="going-further">Going Further</h2>
+
+<p>So driving the car around is fun, but what if you want to program it? So while everything else is running, in a new terminal run</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker <span class="nb">exec</span> -it CONTAINER-ID bash</code></pre></div>
+
+<p>You can get the <code>CONTAINER-ID</code> from</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker ps</code></pre></div>
+
+<p>This gets you a bash shell inside the container. You will find all the sim code in <code>~/catkin_ws/src/mushr_sim</code>. The user developer won&rsquo;t have root privileges so you can&rsquo;t install software. To enter the container as root run</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker <span class="nb">exec</span> -it -u <span class="m">0</span> CONTAINER-ID bash</code></pre></div>
+
+<p>You can also separate launching the container from launching the sim. To do that edit line 16 in <code>docker-compose.yml</code> to <code>entrypoint: bash</code>. Then run</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker-compose build
+$ docker-compose up -d</code></pre></div>
+
+<p>Then enter the container using the commands mentioned previously and source your workspace.</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ . ~/.bashrc</code></pre></div>
+
+<p>You can start the sim with</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ roslaunch mushr_sim teleop.launch</code></pre></div>
+
+<p>And start rviz with</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ rviz</code></pre></div>
+
+<p>To learn about programming the car continue to the <a href="/tutorials/intro-to-ros">Intro to ROS Tutorial</a></p>
 
         </div>
       </div>
