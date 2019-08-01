@@ -45,7 +45,7 @@
     </li>
     
     <li class="menu-item-hardware">
-      <a href="https://github.com/prl-mushr/mushr">
+      <a href="/hardware/">
         
         <span>Hardware</span>
       </a>
@@ -109,7 +109,7 @@
     </li>
     
     <li class="menu-item-hardware">
-      <a href="https://github.com/prl-mushr/mushr">
+      <a href="/hardware/">
         
         <span>Hardware</span>
       </a>
@@ -262,11 +262,11 @@
 </figure>
 
 
-<p>Now it is time to connect to the computer! If you have the default network setting where the robot makes its own network then connect to Robot AP and (TODO: should this say IP?, what&rsquo;s the end of the sentence?)</p>
+<p>Now it is time to connect to the computer! If you have the default network setting where the robot makes its own network then connect to &ldquo;Robot AP&rdquo; and ssh into the car.</p>
 
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ssh robot@10.42.0.171</code></pre></div>
 
-<p>If you have the robot connect to a local network, then connect to that network yourself and ssh but replace the IP with the robot&rsquo;s static IP that you set. (TODO: can we clarify this sentence? can we discuss how to connect the car to the local network?)</p>
+<p>If you have the robot setup connect to a local network (see <a href="/tutorials/robot_setup">Robot Setup Tutorial</a>), then connect to the local network yourself and ssh but replace the IP with the robot&rsquo;s static IP that you set.</p>
 
 <p>If you are having trouble connecting see <a href="#troubleshooting">Troubleshooting</a>. We need to set up the ROS_IP and the ROS_MASTER_URI environment variables on both devices. ROS_IP tells your ROS node what IP to communicate under. Localhost will not work because it will prevent remote components from communicating with it. So use <code>ifconfig</code> in the terminal to find your IP (car and desktop) and set that number to your ROS_IP. Each device should use its own IP.</p>
 
@@ -280,7 +280,7 @@
 
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">export</span> <span class="nv">ROS_MASTER_URI</span><span class="o">=</span>http://ROBOT-IP:11311</code></pre></div>
 
-<p>&ldquo;11311&rdquo; is the port ROS connects to. If this isn&rsquo;t set your base computer will start a separate <code>rosmaster</code> and if it is set incorrectly it will throw a error that it cannot find rosmaster. Now we are ready to run stuff! (TODO: clarify what &ldquo;ROS-IP&rdquo; is &ndash; is it the same as <code>$ROS_IP</code>?)</p>
+<p>&ldquo;11311&rdquo; is the port ROS connects to, and ROBOT-IP is the robot&rsquo;s IP address you ssh with to connect to the car. If this isn&rsquo;t set your base computer will start a separate <code>rosmaster</code> and if it is set incorrectly it will throw a error that it cannot find rosmaster. Now we are ready to run stuff!</p>
 
 <p>Ssh into the car, and run:</p>
 
@@ -289,7 +289,7 @@
 <p>On the base:
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ rviz</code></pre></div></p>
 
-<p>rviz set up should be the same as sim (TODO: clarify this sentence?)</p>
+<p>rviz should be setup to listen to the same topics as the simulator</p>
 
 <p>On the car:</p>
 
@@ -300,7 +300,7 @@
 <p>On the car:
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ roslaunch your_package your_launch.launch</code></pre></div></p>
 
-<p>It is good practice to keep your package separate from teleop so that you can restart your program without killing teleop. (TODO: clarify this sentence &ndash; in what way do they need to be seperate?)</p>
+<p>It is good practice to make a ros package for your code that is separate from the mushr_base package. That way if you need to update mushr code, your code remains unaffected. This can be done by making a <a href="http://wiki.ros.org/ROS/Tutorials/CreatingPackage">separate catkin package</a>.</p>
 
 <h2 id="troubleshooting">Troubleshooting</h2>
 
@@ -335,7 +335,11 @@ The traceback <span class="k">for</span> the exception was written to the log fi
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ rospack find labx
 /home/nvidia/catkin_ws/src/labx</code></pre></div>
 
-<p>It found the package! Which means you don&rsquo;t have a <code>teleop.launch</code> file in your labx package. (TODO: How would you fix this?)</p>
+<p>It found the package! Which means you don&rsquo;t have a <code>teleop.launch</code> file in your labx package. To fix this, you would need to go to the labx package.</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ roscd labx/launch</code></pre></div>
+
+<p>And see if you have mispelled <code>teleop.launch</code>. If there is no file matching <code>teleop.launch</code> then you would have to make one.</p>
 
 <h4 id="is-the-error-ros-related-or-pure-code-related">Is the error ROS related or pure code related?</h4>
 
