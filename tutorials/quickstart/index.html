@@ -11,7 +11,7 @@
 
   
   
-  <link rel="stylesheet" href="/css/style.min.dc9053e86b4ecc7be281008c93de6154fa4f906da9c695a49c228d43614b57a4.css">
+  <link rel="stylesheet" href="/css/style.min.27a096120a5b9a88eee134a2f60f76945796034b0458b4ab5a6de4e4e59b2ae5.css">
   
 
   
@@ -250,8 +250,7 @@
 
 <h2 id="going-further">Going Further</h2>
 
-<p>(TODO: explain why the user needs to teletype into the docker container in order to program code for the MuSHR system. This second part shows you can connect to the container, but doesn&rsquo;t actually have you writing any code. Why not? What&rsquo;s the main takeaway from this section? I think we should say something like: you will need to use these commands frequently to do our other tutorials if you continue to use the container&ndash;as all code editing will happen within the context of a docker container.)
-Driving the car around is fun, but what if you want to program it? While everything else is running, in a new terminal run:</p>
+<p>Driving the car around is fun, but what if you want to program it? In order to do that you must enter the container and write code like you would on a normal ROS linux system. The remaining tutorials that use the simulator assume you are in the container. To enter the container while everything else is running, run:</p>
 
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker <span class="nb">exec</span> -it CONTAINER-ID bash</code></pre></div>
 
@@ -263,14 +262,18 @@ Driving the car around is fun, but what if you want to program it? While everyth
 
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker <span class="nb">exec</span> -it -u <span class="m">0</span> CONTAINER-ID bash</code></pre></div>
 
-<p>(TODO: this sentence should have more context: what are the cases where people would want this?)
-You can also separate launching the container from launching the sim. To do that edit line 16 in <code>docker-compose.yml</code> to <code>entrypoint: bash</code>. Then run:</p>
+<p>By being root you can install additional software that you may want.</p>
+
+<p>You can also separate launching the container from launching the sim. To do that edit line 16 in <code>docker-compose.yml</code> to <code>entrypoint: bash</code>. Then run:</p>
 
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker-compose build
 $ docker-compose up -d</code></pre></div>
 
-<p>(TODO: i would probably show the commands explicitly again. are they supposed to ssh in as root or not?)
-Then enter the container using the commands mentioned previously and source your workspace.</p>
+<p>Then enter the container</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker <span class="nb">exec</span> -it CONTAINER-ID bash</code></pre></div>
+
+<p>And source your workspace.</p>
 
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ . ~/.bashrc</code></pre></div>
 
