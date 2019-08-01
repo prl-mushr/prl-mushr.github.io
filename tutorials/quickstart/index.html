@@ -11,7 +11,7 @@
 
   
   
-  <link rel="stylesheet" href="/css/style.min.449b869e3c764d65b7acfcc7da005475441cedf9481f3cda34b26846c3c09d1a.css">
+  <link rel="stylesheet" href="/css/style.min.dc9053e86b4ecc7be281008c93de6154fa4f906da9c695a49c228d43614b57a4.css">
   
 
   
@@ -185,7 +185,7 @@
 <li><a href="https://docs.docker.com/compose/install/">docker-compose</a></li>
 <li>git</li>
 <li>A github account. You can signup for one <a href="https://github.com/join?source=header-home">here</a></li>
-<li>An nvidia graphics card</li>
+<li>An NVIDIA graphics card</li>
 </ul>
 
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo apt install git-all</code></pre></div>
@@ -206,23 +206,23 @@
 
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ git clone https://github.com/prl-mushr/mushr_sim <span class="o">&amp;&amp;</span> <span class="nb">cd</span> mushr_sim/docker/</code></pre></div>
 
-<p>Alright, so you are in the Docker directory of the sim. There are two configuration changes we need to make. First let&rsquo;s change the uid/gid of your Docker user to match the current user. This is required for GUI apps like rviz to connect. Check your UID/GID with the following command</p>
+<p>Alright, so you are in the Docker directory of the sim. There are two configuration changes we need to make. First let&rsquo;s change the uid/gid of your Docker user to match the current user. This is required for GUI apps like rviz to connect. Check your UID/GID with the following command:</p>
 
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ id -u <span class="nv">$USER</span></code></pre></div>
 
-<p>for UID and</p>
+<p>for UID and:</p>
 
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ id -g <span class="nv">$USER</span></code></pre></div>
 
-<p>for GID. They usually are the same. Now that you know these values use your favorite text editor to change line 4 in Dockerfile. We will use gedit here</p>
+<p>for GID. They usually are the same. Now that you know these values use your favorite text editor to change line 4 in Dockerfile. We will use gedit here:</p>
 
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ gedit Dockerfile</code></pre></div>
 
-<p>And change line 4&rsquo;s UID/GID to match yours. The last configuration we need to do is make sure your nvidia driver matches the one the sim is looking for. This is required because OpenGL is needed for rviz. To see which nvidia driver your computer has run</p>
+<p>And change line 4&rsquo;s UID/GID to match yours. The last configuration we need to do is make sure your NVIDIA driver matches the one the sim is looking for. This is required because OpenGL is needed for rviz. To see which NVIDIA driver your computer has run:</p>
 
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ls /usr/lib/ <span class="p">|</span> grep nvidia</code></pre></div>
 
-<p>The default is <code>nvidia-390</code>. If your&rsquo;s is not that then open <code>.env</code> and change the number to match.</p>
+<p>The default is <code>nvidia-390</code>. If your&rsquo;s is not that then open <code>.env</code> and change the number to match:</p>
 
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ gedit .env</code></pre></div>
 
@@ -230,18 +230,18 @@
 
 <h2 id="run-sim">Run Sim</h2>
 
-<p>To start the sim run</p>
+<p>To start the sim run:</p>
 
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker-compose up -d</code></pre></div>
 
-<p>You should see a small gray window pop up and rviz with the car model (see below). We&rsquo;ve just created a container that you can see if you run</p>
+<p>You should see a small gray window pop up and rviz with the car model (see below). We&rsquo;ve just created a container that you can see if you run:</p>
 
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker ps</code></pre></div>
 
 <figure>
     <img src="/tutorials/quickstart/rviz_docker.png"
-         alt="The rviz window that should pop up after running docker-compose" width="800"/> <figcaption>
-            <p>The rviz window that should pop up after running <code>docker-compose</code></p>
+         alt="The rviz window that should pop up after running docker-compose." width="800"/> <figcaption>
+            <p>The rviz window that should pop up after running <code>docker-compose</code>.</p>
         </figcaption>
 </figure>
 
@@ -250,32 +250,35 @@
 
 <h2 id="going-further">Going Further</h2>
 
-<p>So driving the car around is fun, but what if you want to program it? So while everything else is running, in a new terminal run</p>
+<p>(TODO: explain why the user needs to teletype into the docker container in order to program code for the MuSHR system. This second part shows you can connect to the container, but doesn&rsquo;t actually have you writing any code. Why not? What&rsquo;s the main takeaway from this section? I think we should say something like: you will need to use these commands frequently to do our other tutorials if you continue to use the container&ndash;as all code editing will happen within the context of a docker container.)
+Driving the car around is fun, but what if you want to program it? While everything else is running, in a new terminal run:</p>
 
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker <span class="nb">exec</span> -it CONTAINER-ID bash</code></pre></div>
 
-<p>You can get the <code>CONTAINER-ID</code> from</p>
+<p>You can get the <code>CONTAINER-ID</code> from:</p>
 
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker ps</code></pre></div>
 
-<p>This gets you a bash shell inside the container. You will find all the sim code in <code>~/catkin_ws/src/mushr_sim</code>. The user developer won&rsquo;t have root privileges so you can&rsquo;t install software. To enter the container as root run</p>
+<p>This gets you a bash shell inside the container. You will find all the sim code in <code>~/catkin_ws/src/mushr_sim</code>. The user developer will not have root privileges, so you cannot install software. To enter the container as root run:</p>
 
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker <span class="nb">exec</span> -it -u <span class="m">0</span> CONTAINER-ID bash</code></pre></div>
 
-<p>You can also separate launching the container from launching the sim. To do that edit line 16 in <code>docker-compose.yml</code> to <code>entrypoint: bash</code>. Then run</p>
+<p>(TODO: this sentence should have more context: what are the cases where people would want this?)
+You can also separate launching the container from launching the sim. To do that edit line 16 in <code>docker-compose.yml</code> to <code>entrypoint: bash</code>. Then run:</p>
 
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker-compose build
 $ docker-compose up -d</code></pre></div>
 
-<p>Then enter the container using the commands mentioned previously and source your workspace.</p>
+<p>(TODO: i would probably show the commands explicitly again. are they supposed to ssh in as root or not?)
+Then enter the container using the commands mentioned previously and source your workspace.</p>
 
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ . ~/.bashrc</code></pre></div>
 
-<p>You can start the sim with</p>
+<p>You can start the sim with:</p>
 
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ roslaunch mushr_sim teleop.launch</code></pre></div>
 
-<p>And start rviz with</p>
+<p>And start rviz with:</p>
 
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ rviz</code></pre></div>
 

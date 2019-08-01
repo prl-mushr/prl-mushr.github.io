@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Your Racecar&#39;s First &#39;&#39;Steps&#39;&#39; - MuSHR: The UW Open Racecar Project</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel="icon" href="https://prl-mushr.github.io/favicon.png">
+
+  
+  
+  <link rel="stylesheet" href="/css/style.min.dc9053e86b4ecc7be281008c93de6154fa4f906da9c695a49c228d43614b57a4.css">
+  
+
+  
+
+</head>
+
+<body class='page page-tutorials-single'>
+  <div id="main-menu-mobile" class="main-menu-mobile">
+  <ul>
+    
+    
+    <li class="menu-item-quickstart">
+      <a href="/tutorials/quickstart/">
+        
+        <span>Quickstart</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-tutorials">
+      <a href="/tutorials/">
+        
+        <span>Tutorials</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-docs">
+      <a href="https://github.com/prl-mushr/mushr">
+        
+        <span>Docs</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-hardware">
+      <a href="/hardware/">
+        
+        <span>Hardware</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-team">
+      <a href="/team/">
+        
+        <span>Team</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-about">
+      <a href="/about/">
+        
+        <span>About</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-contact">
+      <a href="/contact/">
+        
+        <span>Contact</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+  <div class="wrapper">
+    <div class='header'>
+  <div class="container">
+    <div class="logo">
+      <a href="https://prl-mushr.github.io/"><img alt="Figurit Homepage" src="https://prl-mushr.github.io/imgs/mushr-logo.svg" /></a>
+    </div>
+    <div class="logo-mobile">
+      <a href="https://prl-mushr.github.io/"><img alt="Figurit Homepage" src="https://prl-mushr.github.io/imgs/mushr-logo.svg" /></a>
+    </div>
+    <div id="main-menu" class="main-menu">
+  <ul>
+    
+    
+    <li class="menu-item-quickstart">
+      <a href="/tutorials/quickstart/">
+        
+        <span>Quickstart</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-tutorials">
+      <a href="/tutorials/">
+        
+        <span>Tutorials</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-docs">
+      <a href="https://github.com/prl-mushr/mushr">
+        
+        <span>Docs</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-hardware">
+      <a href="/hardware/">
+        
+        <span>Hardware</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-team">
+      <a href="/team/">
+        
+        <span>Team</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-about">
+      <a href="/about/">
+        
+        <span>About</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-contact">
+      <a href="/contact/">
+        
+        <span>Contact</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+    <button id="toggle-main-menu-mobile" class="hamburger hamburger--slider" role="presentation" aria-label="mobile menu trigger">
+  <span class="hamburger-box">
+    <span class="hamburger-inner"></span>
+  </span>
+</button>
+  </div>
+</div>
+    
+<div class="container pb-6 pt-6 pt-md-10 pb-md-10">
+  <div class="row justify-content-start">
+    <div class="col-12 col-md-8">
+      <div class="tutorial tutorial-single">
+        <h1 class="title">Your Racecar&#39;s First &#39;&#39;Steps&#39;&#39;</h1>
+        <div class="content"> 
+          
+          <p>Get your car started and teleop running</p> 
+          
+          <h4 class="properties">Beginner Tutorial | Expected duration is 15 - 30 minutes</h4> 
+          
+
+<h3 id="introduction">Introduction</h3>
+
+<p>This tutorial will get your car up and running teleoperation.</p>
+
+<h3 id="goal">Goal</h3>
+
+<p>To get you driving your car around in teleop.</p>
+
+<h3 id="requirements">Requirements</h3>
+
+<ul>
+<li>Complete the [hardware]() setup with your car</li>
+<li>A desktop/laptop computer that can ssh into the car.</li>
+<li>Monitor (Wi-Fi Setup Only)</li>
+<li>HDMI/Display Cable (Wi-Fi Setup Only)</li>
+<li>USB Keyboard/Mouse (Wi-Fi Setup Only)</li>
+</ul>
+
+<h2 id="booting-up">Booting Up</h2>
+
+<p>Make sure your sd card is plugged into your Jetson Nano and flush, this should be done from the hardware tutorial. If you have an AC to 5V power adapter you can plug that into the barrel connector on the USB port side of the Jetson Nano. If not, place a battery in the right side of the car and plug the connector into the matching connector going into the top half of the car. Plug in the right angled barrel connector into the Jetson Nano. The green light on the right side should turn on. The correct configuration is shown below.</p>
+
+<figure>
+    <img src="/tutorials/first_steps/plugged_in.jpg"
+         alt="Everything plugged in correctly. Notice the barrel connector in the top right, the battery in the right slot, and the green light in the top left." width="600"/> <figcaption>
+            <p>Everything plugged in correctly. Notice the barrel connector in the top right, the battery in the right slot, and the green light in the top left.</p>
+        </figcaption>
+</figure>
+
+
+<p>By default your car creates it on network called <code>ROBOT AP</code>. On your separate computer, connect to this network and ssh into your car.</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ssh robot@10.42.0.1 -X</code></pre></div>
+
+<p><strong>Password:</strong> prl_robot</p>
+
+<p>If you experience any errors, make sure you are connected to <code>ROBOT AP</code> and you typed the above properly.</p>
+
+<h2 id="configure-user-hostname">Configure User &amp; Hostname</h2>
+
+<p>Your connected! So let&rsquo;s change the password and hostname. This section is all done on the robot side. First let&rsquo;s change the password.</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ passwd </code></pre></div>
+
+<p>Enter prl_robot as the current password and then type your new password with the prompts. Now let&rsquo;s configure the hostname, it is currently set to goose. Open the hostname file.</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo gedit /etc/hostname </code></pre></div>
+
+<p>You will be prompted to enter the password. Change goose to whatever you want to use and save &amp; exit. Similarly open the <code>/etc/hosts</code> file.</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo gedit /etc/hosts</code></pre></div>
+
+<p>And replace any goose with your new hostname. Save &amp; exit. Reboot the car, to see the effect. Note: you will have to ssh in again.</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo reboot</code></pre></div>
+
+<h2 id="configure-visualization">Configure Visualization</h2>
+
+<p>On your laptop with rviz make sure to set your <code>default.rviz</code> to ours found in <code>mushr/mushr_utils/default.rviz</code>.</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ cp ~/catkin_ws/src/mushr/mushr_utils/default.rviz ~/.rviz/</code></pre></div>
+
+<p>Set the <code>ROS_IP</code> to your IP. Your IP can be found with <code>ifconfig</code>.</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ifconfig</code></pre></div>
+
+<p>Set <code>ROS_IP</code> with:</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">export</span> <span class="nv">ROS_IP</span><span class="o">=</span>YOUR-IP</code></pre></div>
+
+<p>Set the <code>ROS_MASTER_URI</code> to the IP of the car.</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">export</span> <span class="nv">ROS_MASTER_URI</span><span class="o">=</span>http://CAR-IP:11311</code></pre></div>
+
+<p>You are configured! Wait till teleop is running to launch rviz</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ rviz</code></pre></div>
+
+<p>If you get errors make sure the following are correct:</p>
+
+<ul>
+<li>Teleop is running<br /></li>
+<li>Your laptop is connnected properly<br />
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ rostopic list</code></pre></div>
+This should output a bunch of topics. If not, check your <code>ROS_MASTER_URI</code> and <code>ROS_IP</code> to ensure they are correct.</li>
+</ul>
+
+<h2 id="launch-teleop-the-easy-way">Launch Teleop the Easy Way</h2>
+
+<p>Turn on the car and vesc by plugging their batteries in. Hold down the front button as the car is starting. After a minute or so the lidar should start spinning indicating teleop is running.</p>
+
+<h2 id="launch-teleop-the-hard-way">Launch Teleop the Hard Way</h2>
+
+<p>This is better for debugging your code. Turn on the car and vesc by plugging their batteries in. This will involve multiple windows. You can either make a bunch of windows on your laptop and ssh from each of them or use <a href="https://www.hamvocke.com/blog/a-quick-and-easy-guide-to-tmux/">tmux</a> from one window. Tmux is installed on the car image. First, ssh into the car. Then start <code>roscore</code>.</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ roscore</code></pre></div>
+
+<p>In a new window, launch teleop.</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ roslaunch mushr_base teleop.launch</code></pre></div>
+
+<p>You should see the lidar spinning and be able to steer with the controller.</p>
+
+<h2 id="setup-wi-fi-optional">Setup Wi-Fi (Optional)</h2>
+
+<p>If you want to install additional software on the car, or be able to use the internet on your laptop while connected to the car then you will want to set the car up with a static IP instead of it&rsquo;s own network. To do this, you will need to plug a monitor, keyboard, and mouse into the car. The keyboard/mouse can go in any of the USB ports, Wi-Fi setup does not require the sensors to be connected.</p>
+
+<p>Once hooked up, you should see the login screen or the desktop. Login using your new password. Then use the mouse to click on the Wi-Fi icon in the top right. Disconnect from <code>ROBOT_AP</code>. Then open the connection manager.</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo nm-connection-editor</code></pre></div>
+
+<p>Click on <strong>Robot AP</strong> then the <strong>General</strong> Tab. Uncheck <strong>Automatically connect to this network when it is available</strong>. Exit.</p>
+
+<p>Open <code>/etc/modprobe.d/bcmdhd.conf</code> with sudo privileges.</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo gedit /etc/modprobe.d/bcmdhd.conf</code></pre></div>
+
+<p>If the second line (<code>options bcmdhd op_mode=2</code>) is not commented out then comment it out (<code>#options bcmdhd op_mode=2</code>), save the file and reboot the Nano. Otherwise, just close the file.</p>
+
+<p>Connect to the network that the robot should have a static IP on. Do this by clicking on the opposing arrows symbol in the top right hand corner of the Ubuntu GUI and inspecting the Wi-Fi network list. If your robot is already connected to the correct network, then proceed to the next step. If it is already connected but to the wrong network, click <em>Disconnect</em> and then allow the Wi-Fi network list to refresh. Once the desired network appears in the Wi-Fi network list, click on it to connect. If the network does not appear in the Wi-Fi list, try using the <strong>Connect to Hidden Wi-Fi Network...</strong> option.</p>
+
+<p>Open the network connection editor again.</p>
+
+<p>Highlight the connection that corresponds to the network the robot should be connected to and click <strong>Edit...</strong>. The connection should have the same name as the network if the robot has never connected to this network before. If the robot has connected to this network before, it might have the same name but post-fixed with a number. If this is the case, choose the one with the highest post-fixed number.</p>
+
+<p>Click on the <strong>General</strong> tab and check that <strong>Automatically connect to this network when it is available</strong> and <strong>All users may connect to thisnetwork</strong> are enabled.</p>
+
+<figure>
+    <img src="/tutorials/first_steps/general.png"
+         alt="General tab with auto connect set" width="600"/> <figcaption>
+            <p>General tab with auto connect set</p>
+        </figcaption>
+</figure>
+
+
+<p>Click on the <strong>Wi-Fi</strong> tab. Make sure that the <strong>SSID:</strong> field is set to be the name of the network that the robot will have a static IP on. For example, it could be <em>University of Washington</em>. Make sure that the <strong>Mode:</strong> dropdown is set to <strong>Client</strong>. In the <strong>BSSID:</strong> dropdown, choose the last option. In the <strong>Device:</strong> dropdown, choose the last option.</p>
+
+<figure>
+    <img src="/tutorials/first_steps/wifi.png"
+         alt="Wi-Fi tab with BSSID and SSID set" width="600"/> <figcaption>
+            <p>Wi-Fi tab with BSSID and SSID set</p>
+        </figcaption>
+</figure>
+
+
+<p>Click on the <strong>Wi-Fi Security</strong> tab. Check that the <strong>Security:</strong> dropdown is set to <strong>None</strong>.</p>
+
+<p>Click on the <strong>IPv4 Settings</strong> tab. Set the following fields:</p>
+
+<ul>
+<li><strong>Method:</strong> dropdown to be <strong>Manual</strong>.<br /></li>
+<li>Click <strong>Add</strong>. Under <strong>Address</strong>, enter:<br />
+
+<ul>
+<li>The Static IP: for example <code>172.16.77.Z</code>.<br /></li>
+<li>Netmask: for example <code>255.255.255.0</code>.<br /></li>
+<li>Gateway: for example <code>172.16.77.100</code>.<br />
+<code>Z</code> is usually the robot number on the car, but it&rsquo;s up to you!<br /></li>
+</ul></li>
+<li><strong>DNS servers:</strong> field, enter <code>8.8.8.8</code>.<br /></li>
+</ul>
+
+<figure>
+    <img src="/tutorials/first_steps/ipv4.png"
+         alt="IPv4 tab with an example IP setup" width="600"/> <figcaption>
+            <p>IPv4 tab with an example IP setup</p>
+        </figcaption>
+</figure>
+
+
+<p>Click the <strong>Save</strong> button and close the connection editor.</p>
+
+<p>Edit <code>/home/robot/.bashrc</code> editing the line that sets the <code>ROS_IP</code> (near end of file). Alter this line so that the <code>ROS_IP</code> is set to the static ip, for example <code>172.16.77.Z</code>.</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ gedit ~/.bashrc</code></pre></div>
+
+<p>Alternatively if you know the network interface, you can use the command (should be <code>wlan0</code> interface on the Jetson):</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">export</span> <span class="nv">ROS_IP</span><span class="o">=</span><span class="k">$(</span>ifconfig wlan0 <span class="p">|</span> awk /inet<span class="se">\ </span>/<span class="s1">&#39;{print $2}&#39;</span><span class="k">)</span></code></pre></div>
+
+<p>Reboot the Nano.</p>
+
+<p>After the Jetson reboots, verify that the robot has obtained the expected static ip.</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ifconfig</code></pre></div>
+
+<h3 id="logging-in">Logging In</h3>
+
+<p>Once the Nano has fully booted, it will connect to the existing network at the specified static ip. You should then be able to ssh into it.</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ssh robot@172.16.77.Z<span class="sb">`</span></code></pre></div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </div>
+
+  <div class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="footer-inner">
+          <h3 class="footer-title">MuSHR: The UW Open Racecar Project</h3>
+          <ul>
+            
+            
+            <li class="menu-item-home">
+              <a href="/">
+                Home
+              </a>
+            </li>
+            
+            <li class="menu-item-contact">
+              <a href="/contact/">
+                Contact
+              </a>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <div class="sub-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="sub-footer-inner">
+          <ul>
+            <li><strong>Email: </strong><a href="mailto:mushr@cs.washington.edu">
+                mushr@cs.washington.edu</a></li>
+          </ul>
+          <ul>
+            <li class="prl"><a href="https://personalrobotics.cs.washington.edu/">Made with <font color="#FF1690">♥</font> at the Personal Robotics Lab</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+  
+
+
+
+
+  <script type="text/javascript" src="/js/services.min.59bfd7d7aaf7e918e4271e11ef3cb4d91e22c83b70437eec78bdffdcd2d51c0a.js"></script>
+  
+
+
+  
+  <script type="text/javascript" src="/js/scripts.min.bf1e1f7ae8e03db5f012356e825843facdff51c0a559cb0d27fe2bbe1db405c2.js"></script>
+  
+
+  
+
+
+
+
+
+
+</body>
+
+</html>

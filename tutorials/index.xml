@@ -21,12 +21,21 @@
     </item>
     
     <item>
+      <title>Your Racecar&#39;s First &#39;&#39;Steps&#39;&#39;</title>
+      <link>https://prl-mushr.github.io/tutorials/first_steps/</link>
+      <pubDate>Wed, 28 Nov 2018 15:14:54 +1000</pubDate>
+      
+      <guid>https://prl-mushr.github.io/tutorials/first_steps/</guid>
+      <description>Get your car started and teleop running</description>
+    </item>
+    
+    <item>
       <title>Intro to ROS</title>
       <link>https://prl-mushr.github.io/tutorials/intro-to-ros/</link>
       <pubDate>Wed, 28 Nov 2018 15:14:54 +1000</pubDate>
       
       <guid>https://prl-mushr.github.io/tutorials/intro-to-ros/</guid>
-      <description>Fundamental ROS concepts using MuSHR.</description>
+      <description>Fundamental Robot Operating System (ROS) concepts using MuSHR.</description>
     </item>
     
     <item>
