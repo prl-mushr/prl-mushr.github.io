@@ -50,6 +50,15 @@ Ne verba patulosque numen vix libet Agitabitur signa lympha; non lacunae, mox cu
     </item>
     
     <item>
+      <title>Build Instructions</title>
+      <link>https://prl-mushr.github.io/hardware/build_instructions/</link>
+      <pubDate>Wed, 28 Nov 2018 15:14:54 +1000</pubDate>
+      
+      <guid>https://prl-mushr.github.io/hardware/build_instructions/</guid>
+      <description>Build your own MuSHR Racecar!</description>
+    </item>
+    
+    <item>
       <title>Intro to ROS</title>
       <link>https://prl-mushr.github.io/tutorials/intro-to-ros/</link>
       <pubDate>Wed, 28 Nov 2018 15:14:54 +1000</pubDate>
@@ -93,15 +102,6 @@ Ne verba patulosque numen vix libet Agitabitur signa lympha; non lacunae, mox cu
       
       <guid>https://prl-mushr.github.io/tutorials/navigation/</guid>
       <description>Initialize and operate MuSHRs out-of-the-box autonomous navigation stack!</description>
-    </item>
-    
-    <item>
-      <title>Motion Planning</title>
-      <link>https://prl-mushr.github.io/hardware/motion-planning/</link>
-      <pubDate>Wed, 28 Nov 2018 15:14:54 +1000</pubDate>
-      
-      <guid>https://prl-mushr.github.io/hardware/motion-planning/</guid>
-      <description>hi i&amp;rsquo;m a crab</description>
     </item>
     
     <item>

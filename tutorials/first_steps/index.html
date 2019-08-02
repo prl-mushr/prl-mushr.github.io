@@ -214,6 +214,14 @@
 
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo reboot</code></pre></div>
 
+<h2 id="update-repos">Update Repos</h2>
+
+<p>Because mushr is always updating, you may have outdated code on your image. To fix this just enter <code>~/catkin_ws/src/mushr</code> and pull via vcstool.</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> ~/catkin_ws/src/mushr <span class="o">&amp;&amp;</span> vcs pull -n</code></pre></div>
+
+<p>Note: If you edited mushr source code, this will be overwritten. You can instead pull repos individually</p>
+
 <h2 id="configure-visualization">Configure Visualization</h2>
 
 <p>On your laptop with rviz make sure to set your <code>default.rviz</code> to ours found in <code>mushr/mushr_utils/default.rviz</code>.</p>
