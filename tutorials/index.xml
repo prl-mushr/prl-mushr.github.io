@@ -2,66 +2,66 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tutorials on MuSHR: The UW Open Racecar Project</title>
-    <link>https://prl-mushr.github.io/tutorials/</link>
+    <link>https://mushr.io/tutorials/</link>
     <description>Recent content in Tutorials on MuSHR: The UW Open Racecar Project</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 28 Nov 2018 15:15:34 +1000</lastBuildDate>
     
-	<atom:link href="https://prl-mushr.github.io/tutorials/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://mushr.io/tutorials/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Quickstart</title>
-      <link>https://prl-mushr.github.io/tutorials/quickstart/</link>
+      <link>https://mushr.io/tutorials/quickstart/</link>
       <pubDate>Wed, 28 Nov 2018 15:14:54 +1000</pubDate>
       
-      <guid>https://prl-mushr.github.io/tutorials/quickstart/</guid>
+      <guid>https://mushr.io/tutorials/quickstart/</guid>
       <description>Run the MuSHR platform on your machine!</description>
     </item>
     
     <item>
       <title>Your Racecar&#39;s First &#39;&#39;Steps&#39;&#39;</title>
-      <link>https://prl-mushr.github.io/tutorials/first_steps/</link>
+      <link>https://mushr.io/tutorials/first_steps/</link>
       <pubDate>Wed, 28 Nov 2018 15:14:54 +1000</pubDate>
       
-      <guid>https://prl-mushr.github.io/tutorials/first_steps/</guid>
+      <guid>https://mushr.io/tutorials/first_steps/</guid>
       <description>Get your car started and teleop running</description>
     </item>
     
     <item>
       <title>Intro to ROS</title>
-      <link>https://prl-mushr.github.io/tutorials/intro-to-ros/</link>
+      <link>https://mushr.io/tutorials/intro-to-ros/</link>
       <pubDate>Wed, 28 Nov 2018 15:14:54 +1000</pubDate>
       
-      <guid>https://prl-mushr.github.io/tutorials/intro-to-ros/</guid>
+      <guid>https://mushr.io/tutorials/intro-to-ros/</guid>
       <description>Fundamental Robot Operating System (ROS) concepts using MuSHR.</description>
     </item>
     
     <item>
       <title>MuSHR System Overview</title>
-      <link>https://prl-mushr.github.io/tutorials/overview/</link>
+      <link>https://mushr.io/tutorials/overview/</link>
       <pubDate>Wed, 28 Nov 2018 15:14:54 +1000</pubDate>
       
-      <guid>https://prl-mushr.github.io/tutorials/overview/</guid>
+      <guid>https://mushr.io/tutorials/overview/</guid>
       <description>Basic components of the car and their associated software counterparts.</description>
     </item>
     
     <item>
       <title>Autonomous Navigation</title>
-      <link>https://prl-mushr.github.io/tutorials/navigation/</link>
+      <link>https://mushr.io/tutorials/navigation/</link>
       <pubDate>Wed, 28 Nov 2018 15:14:54 +1000</pubDate>
       
-      <guid>https://prl-mushr.github.io/tutorials/navigation/</guid>
+      <guid>https://mushr.io/tutorials/navigation/</guid>
       <description>Initialize and operate MuSHRs out-of-the-box autonomous navigation stack!</description>
     </item>
     
     <item>
       <title>Motion Planning</title>
-      <link>https://prl-mushr.github.io/tutorials/motion-planning/</link>
+      <link>https://mushr.io/tutorials/motion-planning/</link>
       <pubDate>Wed, 28 Nov 2018 15:14:54 +1000</pubDate>
       
-      <guid>https://prl-mushr.github.io/tutorials/motion-planning/</guid>
+      <guid>https://mushr.io/tutorials/motion-planning/</guid>
       <description>Lorem markdownum aequalis strigis. Saetigeri iubeas, vultu huic alvum nondum de obside ut laniavit arbor palmis, cum quin. Rupes vetat videndo, armigerae crimen habet Priamum nec.
 Ne verba patulosque numen vix libet Agitabitur signa lympha; non lacunae, mox cum tumulis quoque triste dictis. Ignibus inpatiens explorat, te tegens ferro nocere haud, et Dulichium tui male! Quo sed fuit flexit et hic die solido, gloria?
  Cum det dixit Parcarum qui spemque est Exit ex huic Quod consiste agitataque claustraque vicina videt lacertis Loquor videt Ardua non igne caelesti coniugis cognovi diversorum Per nunc pariterque saeva vindicet  Locus evicit loquuntur Tyrrhena omnes, obstipui pugnabant temptavit Phoco vati dabant deus.</description>
@@ -69,19 +69,19 @@ Ne verba patulosque numen vix libet Agitabitur signa lympha; non lacunae, mox cu
     
     <item>
       <title>Workflow &amp; Troubleshooting</title>
-      <link>https://prl-mushr.github.io/tutorials/workflow/</link>
+      <link>https://mushr.io/tutorials/workflow/</link>
       <pubDate>Wed, 28 Nov 2018 15:14:54 +1000</pubDate>
       
-      <guid>https://prl-mushr.github.io/tutorials/workflow/</guid>
+      <guid>https://mushr.io/tutorials/workflow/</guid>
       <description>Techniques for devloping and troubleshooting with the cars.</description>
     </item>
     
     <item>
       <title>Reinforcement Learning</title>
-      <link>https://prl-mushr.github.io/tutorials/reinforcement-learning/</link>
+      <link>https://mushr.io/tutorials/reinforcement-learning/</link>
       <pubDate>Wed, 28 Nov 2018 15:15:34 +1000</pubDate>
       
-      <guid>https://prl-mushr.github.io/tutorials/reinforcement-learning/</guid>
+      <guid>https://mushr.io/tutorials/reinforcement-learning/</guid>
       <description>Lorem markdownum aequalis strigis. Saetigeri iubeas, vultu huic alvum nondum de obside ut laniavit arbor palmis, cum quin. Rupes vetat videndo, armigerae crimen habet Priamum nec.
 Ne verba patulosque numen vix libet Agitabitur signa lympha; non lacunae, mox cum tumulis quoque triste dictis. Ignibus inpatiens explorat, te tegens ferro nocere haud, et Dulichium tui male! Quo sed fuit flexit et hic die solido, gloria?
  Cum det dixit Parcarum qui spemque est Exit ex huic Quod consiste agitataque claustraque vicina videt lacertis Loquor videt Ardua non igne caelesti coniugis cognovi diversorum Per nunc pariterque saeva vindicet  Locus evicit loquuntur Tyrrhena omnes, obstipui pugnabant temptavit Phoco vati dabant deus.</description>

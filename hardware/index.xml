@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Hardware on MuSHR: The UW Open Racecar Project</title>
-    <link>https://prl-mushr.github.io/hardware/</link>
+    <link>https://mushr.io/hardware/</link>
     <description>Recent content in Hardware on MuSHR: The UW Open Racecar Project</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 28 Nov 2018 15:14:54 +1000</lastBuildDate>
     
-	<atom:link href="https://prl-mushr.github.io/hardware/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://mushr.io/hardware/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Build Instructions</title>
-      <link>https://prl-mushr.github.io/hardware/build_instructions/</link>
+      <link>https://mushr.io/hardware/build_instructions/</link>
       <pubDate>Wed, 28 Nov 2018 15:14:54 +1000</pubDate>
       
-      <guid>https://prl-mushr.github.io/hardware/build_instructions/</guid>
+      <guid>https://mushr.io/hardware/build_instructions/</guid>
       <description>Build your own MuSHR Racecar!</description>
     </item>
     

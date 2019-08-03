@@ -2,48 +2,48 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Home on MuSHR: The UW Open Racecar Project</title>
-    <link>https://prl-mushr.github.io/</link>
+    <link>https://mushr.io/</link>
     <description>Recent content in Home on MuSHR: The UW Open Racecar Project</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 28 Nov 2018 15:15:34 +1000</lastBuildDate>
     
-	<atom:link href="https://prl-mushr.github.io/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://mushr.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Quickstart</title>
-      <link>https://prl-mushr.github.io/tutorials/quickstart/</link>
+      <link>https://mushr.io/tutorials/quickstart/</link>
       <pubDate>Wed, 28 Nov 2018 15:14:54 +1000</pubDate>
       
-      <guid>https://prl-mushr.github.io/tutorials/quickstart/</guid>
+      <guid>https://mushr.io/tutorials/quickstart/</guid>
       <description>Run the MuSHR platform on your machine!</description>
     </item>
     
     <item>
       <title>Your Racecar&#39;s First &#39;&#39;Steps&#39;&#39;</title>
-      <link>https://prl-mushr.github.io/tutorials/first_steps/</link>
+      <link>https://mushr.io/tutorials/first_steps/</link>
       <pubDate>Wed, 28 Nov 2018 15:14:54 +1000</pubDate>
       
-      <guid>https://prl-mushr.github.io/tutorials/first_steps/</guid>
+      <guid>https://mushr.io/tutorials/first_steps/</guid>
       <description>Get your car started and teleop running</description>
     </item>
     
     <item>
       <title>Siddhartha Srinivasa</title>
-      <link>https://prl-mushr.github.io/team/sidd-srinivasa/</link>
+      <link>https://mushr.io/team/sidd-srinivasa/</link>
       <pubDate>Mon, 19 Nov 2018 10:47:58 +1000</pubDate>
       
-      <guid>https://prl-mushr.github.io/team/sidd-srinivasa/</guid>
+      <guid>https://mushr.io/team/sidd-srinivasa/</guid>
       <description>Siddhartha Srinivasa is the Boeing Endowed Professor at The Paul G. Allen School of Computer Science &amp;amp; Engineering at the University of Washington, and an IEEE Fellow. He is a full-stack roboticist, with the goal of enabling robots to perform complex manipulation tasks under uncertainty and clutter, with and around people. To this end, he founded the Personal Robotics Lab in 2005. He was a PI on the Quality of Life Technologies NSF ERC, DARPA ARM-S and the DARPA Robotics Challenge, has built several robots (HERB, ADA, CHIMP), and has written software frameworks (OpenRAVE, DART) and best-paper award winning algorithms (CBiRRT, CHOMP, BIT*, Legibility) used extensively by roboticists around the world.</description>
     </item>
     
     <item>
       <title>Accounting</title>
-      <link>https://prl-mushr.github.io/services/accounting/</link>
+      <link>https://mushr.io/services/accounting/</link>
       <pubDate>Sun, 18 Nov 2018 12:33:46 +1000</pubDate>
       
-      <guid>https://prl-mushr.github.io/services/accounting/</guid>
+      <guid>https://mushr.io/services/accounting/</guid>
       <description>Lorem markdownum aequalis strigis. Saetigeri iubeas, vultu huic alvum nondum de obside ut laniavit arbor palmis, cum quin. Rupes vetat videndo, armigerae crimen habet Priamum nec.
 Ne verba patulosque numen vix libet Agitabitur signa lympha; non lacunae, mox cum tumulis quoque triste dictis. Ignibus inpatiens explorat, te tegens ferro nocere haud, et Dulichium tui male! Quo sed fuit flexit et hic die solido, gloria?
  Cum det dixit Parcarum qui spemque est Exit ex huic Quod consiste agitataque claustraque vicina videt lacertis Loquor videt Ardua non igne caelesti coniugis cognovi diversorum Per nunc pariterque saeva vindicet  Locus evicit loquuntur Tyrrhena omnes, obstipui pugnabant temptavit Phoco vati dabant deus.</description>
@@ -51,65 +51,65 @@ Ne verba patulosque numen vix libet Agitabitur signa lympha; non lacunae, mox cu
     
     <item>
       <title>Build Instructions</title>
-      <link>https://prl-mushr.github.io/hardware/build_instructions/</link>
+      <link>https://mushr.io/hardware/build_instructions/</link>
       <pubDate>Wed, 28 Nov 2018 15:14:54 +1000</pubDate>
       
-      <guid>https://prl-mushr.github.io/hardware/build_instructions/</guid>
+      <guid>https://mushr.io/hardware/build_instructions/</guid>
       <description>Build your own MuSHR Racecar!</description>
     </item>
     
     <item>
       <title>Intro to ROS</title>
-      <link>https://prl-mushr.github.io/tutorials/intro-to-ros/</link>
+      <link>https://mushr.io/tutorials/intro-to-ros/</link>
       <pubDate>Wed, 28 Nov 2018 15:14:54 +1000</pubDate>
       
-      <guid>https://prl-mushr.github.io/tutorials/intro-to-ros/</guid>
+      <guid>https://mushr.io/tutorials/intro-to-ros/</guid>
       <description>Fundamental Robot Operating System (ROS) concepts using MuSHR.</description>
     </item>
     
     <item>
       <title>MuSHR System Overview</title>
-      <link>https://prl-mushr.github.io/tutorials/overview/</link>
+      <link>https://mushr.io/tutorials/overview/</link>
       <pubDate>Wed, 28 Nov 2018 15:14:54 +1000</pubDate>
       
-      <guid>https://prl-mushr.github.io/tutorials/overview/</guid>
+      <guid>https://mushr.io/tutorials/overview/</guid>
       <description>Basic components of the car and their associated software counterparts.</description>
     </item>
     
     <item>
       <title>Sanjiban Choudhury</title>
-      <link>https://prl-mushr.github.io/team/sanjiban-choudhury/</link>
+      <link>https://mushr.io/team/sanjiban-choudhury/</link>
       <pubDate>Mon, 19 Nov 2018 10:47:58 +1000</pubDate>
       
-      <guid>https://prl-mushr.github.io/team/sanjiban-choudhury/</guid>
+      <guid>https://mushr.io/team/sanjiban-choudhury/</guid>
       <description>Sanjiban Choudhury is a postdoctoral research associate Fellow at the Allen School of Computer Science and Engineering at the University of Washington, where he works with Professor Siddhartha Srinivasa in the Personal Robotics Lab. He is interested in problems at the intersection of learning and planning. His thesis work is on the design of planning algorithms that can adapt to the environment, the perception capabilities and the dynamics constraints of a robot.</description>
     </item>
     
     <item>
       <title>Tax Preperation</title>
-      <link>https://prl-mushr.github.io/services/tax-preperation/</link>
+      <link>https://mushr.io/services/tax-preperation/</link>
       <pubDate>Sun, 18 Nov 2018 12:33:46 +1000</pubDate>
       
-      <guid>https://prl-mushr.github.io/services/tax-preperation/</guid>
+      <guid>https://mushr.io/services/tax-preperation/</guid>
       <description>Lorem markdownum Achaica revolutaque amore, penitus puppes nec furit, clipeus fatetur, mira inter accedere. Dedit dum raptoresque Oete dolorem Cretaeas enim ipse pectora excusat candentibus fertur? Furtiva Orontes Erysicthona dona, est per Achille viridi draconis cultis mota milia.
  Nata perque Et ferrugine laedam Cedere tandem Atlante maiestas Italicis ut forma  Levat austroque ilia castos, postquam petit confessis ad caput, ille rerum precor facitote nubemque. Potuit Celadon Martem?</description>
     </item>
     
     <item>
       <title>Autonomous Navigation</title>
-      <link>https://prl-mushr.github.io/tutorials/navigation/</link>
+      <link>https://mushr.io/tutorials/navigation/</link>
       <pubDate>Wed, 28 Nov 2018 15:14:54 +1000</pubDate>
       
-      <guid>https://prl-mushr.github.io/tutorials/navigation/</guid>
+      <guid>https://mushr.io/tutorials/navigation/</guid>
       <description>Initialize and operate MuSHRs out-of-the-box autonomous navigation stack!</description>
     </item>
     
     <item>
       <title>Motion Planning</title>
-      <link>https://prl-mushr.github.io/tutorials/motion-planning/</link>
+      <link>https://mushr.io/tutorials/motion-planning/</link>
       <pubDate>Wed, 28 Nov 2018 15:14:54 +1000</pubDate>
       
-      <guid>https://prl-mushr.github.io/tutorials/motion-planning/</guid>
+      <guid>https://mushr.io/tutorials/motion-planning/</guid>
       <description>Lorem markdownum aequalis strigis. Saetigeri iubeas, vultu huic alvum nondum de obside ut laniavit arbor palmis, cum quin. Rupes vetat videndo, armigerae crimen habet Priamum nec.
 Ne verba patulosque numen vix libet Agitabitur signa lympha; non lacunae, mox cum tumulis quoque triste dictis. Ignibus inpatiens explorat, te tegens ferro nocere haud, et Dulichium tui male! Quo sed fuit flexit et hic die solido, gloria?
  Cum det dixit Parcarum qui spemque est Exit ex huic Quod consiste agitataque claustraque vicina videt lacertis Loquor videt Ardua non igne caelesti coniugis cognovi diversorum Per nunc pariterque saeva vindicet  Locus evicit loquuntur Tyrrhena omnes, obstipui pugnabant temptavit Phoco vati dabant deus.</description>
@@ -117,48 +117,48 @@ Ne verba patulosque numen vix libet Agitabitur signa lympha; non lacunae, mox cu
     
     <item>
       <title>Workflow &amp; Troubleshooting</title>
-      <link>https://prl-mushr.github.io/tutorials/workflow/</link>
+      <link>https://mushr.io/tutorials/workflow/</link>
       <pubDate>Wed, 28 Nov 2018 15:14:54 +1000</pubDate>
       
-      <guid>https://prl-mushr.github.io/tutorials/workflow/</guid>
+      <guid>https://mushr.io/tutorials/workflow/</guid>
       <description>Techniques for devloping and troubleshooting with the cars.</description>
     </item>
     
     <item>
       <title>Christoforos Mavrogiannis</title>
-      <link>https://prl-mushr.github.io/team/christoforos-mavrogiannis/</link>
+      <link>https://mushr.io/team/christoforos-mavrogiannis/</link>
       <pubDate>Mon, 19 Nov 2018 10:47:58 +1000</pubDate>
       
-      <guid>https://prl-mushr.github.io/team/christoforos-mavrogiannis/</guid>
+      <guid>https://mushr.io/team/christoforos-mavrogiannis/</guid>
       <description>Christoforos (Chris) Mavrogiannis is a postdoctoral research associate in the Paul G. Allen School of Computer Science &amp;amp; Engineering at the University of Washington, working with Prof. Siddhartha Srinivasa and the Personal Robotics Lab. He is broadly interested in the algorithmic foundations of robotics, with a particular emphasis on the design of efficient, safe and robust motion planning algorithms for robot navigation, multi-robot manipulation and human-robot interaction applications. He is passionate about enabling robots to integrate seamlessly in human environments.</description>
     </item>
     
     <item>
       <title>Fereshteh Sadeghi</title>
-      <link>https://prl-mushr.github.io/team/fereshteh-sadeghi/</link>
+      <link>https://mushr.io/team/fereshteh-sadeghi/</link>
       <pubDate>Mon, 19 Nov 2018 10:47:58 +1000</pubDate>
       
-      <guid>https://prl-mushr.github.io/team/fereshteh-sadeghi/</guid>
+      <guid>https://mushr.io/team/fereshteh-sadeghi/</guid>
       <description>Fereshteh Sadeghi is a postdoctoral researcher at the University of Washington working with Prof. Siddhartha Srinivasa. She completed her PhD at University of Washington where she worked on domain invariant vision-based policy learning for robotics. Her research is focused on developing learning algorithms that combine perception and control for learning robot skills.
 Fereshteh is interested in how learning can be used to enable machines acquire behavioral skills that can generalize to unstructured real world settings.</description>
     </item>
     
     <item>
       <title>Matt Schmittle</title>
-      <link>https://prl-mushr.github.io/team/matt-schmittle/</link>
+      <link>https://mushr.io/team/matt-schmittle/</link>
       <pubDate>Mon, 19 Nov 2018 10:47:58 +1000</pubDate>
       
-      <guid>https://prl-mushr.github.io/team/matt-schmittle/</guid>
+      <guid>https://mushr.io/team/matt-schmittle/</guid>
       <description>Matt &amp;ldquo;Schmittle&amp;rdquo; Schmittle is a second year P.h.D. student at the University of Washington Allen School of Computer Science. He is advised by Prof. Siddhartha Srinivasa and Prof. Dieter Fox. His general research interests are in multi-agent collaborative learning, perception, and navigation.
 Schmittle works on the core software components that run on each car and general management for the project. He was a TA for the undergraduate course “Mobile Robotics” in Spring 2019, helping design assignments, teach classes, and grading.</description>
     </item>
     
     <item>
       <title>Reinforcement Learning</title>
-      <link>https://prl-mushr.github.io/tutorials/reinforcement-learning/</link>
+      <link>https://mushr.io/tutorials/reinforcement-learning/</link>
       <pubDate>Wed, 28 Nov 2018 15:15:34 +1000</pubDate>
       
-      <guid>https://prl-mushr.github.io/tutorials/reinforcement-learning/</guid>
+      <guid>https://mushr.io/tutorials/reinforcement-learning/</guid>
       <description>Lorem markdownum aequalis strigis. Saetigeri iubeas, vultu huic alvum nondum de obside ut laniavit arbor palmis, cum quin. Rupes vetat videndo, armigerae crimen habet Priamum nec.
 Ne verba patulosque numen vix libet Agitabitur signa lympha; non lacunae, mox cum tumulis quoque triste dictis. Ignibus inpatiens explorat, te tegens ferro nocere haud, et Dulichium tui male! Quo sed fuit flexit et hic die solido, gloria?
  Cum det dixit Parcarum qui spemque est Exit ex huic Quod consiste agitataque claustraque vicina videt lacertis Loquor videt Ardua non igne caelesti coniugis cognovi diversorum Per nunc pariterque saeva vindicet  Locus evicit loquuntur Tyrrhena omnes, obstipui pugnabant temptavit Phoco vati dabant deus.</description>
@@ -166,50 +166,50 @@ Ne verba patulosque numen vix libet Agitabitur signa lympha; non lacunae, mox cu
     
     <item>
       <title>Johan Michalove</title>
-      <link>https://prl-mushr.github.io/team/johan-michalove/</link>
+      <link>https://mushr.io/team/johan-michalove/</link>
       <pubDate>Mon, 19 Nov 2018 10:47:58 +1000</pubDate>
       
-      <guid>https://prl-mushr.github.io/team/johan-michalove/</guid>
+      <guid>https://mushr.io/team/johan-michalove/</guid>
       <description>Johan Michalove is a BS/MS student at the Allen School of the University of Washington advised by Prof. Siddhartha Srinivasa. His research focuses on uncertainty in model-predictive control and the ethics of intelligent machines.
 Johan works on designing tutorials and course material for the MuSHR platform, in addition to the design and implementation of core MuSHR packages and infrastructure. He has helped support the use of the MuSHR cars in the Winter 2019 Graduate Robotics course and Spring 2019 Undergraduate Mobile Robotics course.</description>
     </item>
     
     <item>
       <title>Patrick Lancaster</title>
-      <link>https://prl-mushr.github.io/team/patrick-lancaster/</link>
+      <link>https://mushr.io/team/patrick-lancaster/</link>
       <pubDate>Mon, 19 Nov 2018 10:47:58 +1000</pubDate>
       
-      <guid>https://prl-mushr.github.io/team/patrick-lancaster/</guid>
+      <guid>https://mushr.io/team/patrick-lancaster/</guid>
       <description>Patrick Lancaster is a PhD candidate at the Allen School of Computer Science and Engineering at the University of Washington advised by Prof. Joshua Smith and Prof. Siddhartha Srinivasa. His research focuses on sensing for robot manipulation.
 Patrick designs and builds hardware prototypes for the MuSHR platform, and develops the software drivers necessary for both simulation and real-world execution of the robot. In Autumn 2018, he was the primary instructor for a Masters level course focused on autonomous navigation using the MuSHR platform.</description>
     </item>
     
     <item>
       <title>Matthew Rockett</title>
-      <link>https://prl-mushr.github.io/team/matthew-rockett/</link>
+      <link>https://mushr.io/team/matthew-rockett/</link>
       <pubDate>Mon, 19 Nov 2018 10:47:58 +1000</pubDate>
       
-      <guid>https://prl-mushr.github.io/team/matthew-rockett/</guid>
+      <guid>https://mushr.io/team/matthew-rockett/</guid>
       <description>Matthew is a BS/MS student at the Allen School of Computer Science and Engineering at the University of Washington advised by Prof. Siddhartha Srinivasa. He&amp;rsquo;s interested in mobile robotics and multi-agent robotic systems.
 Matthew works to maintain the growing MuSHR fleet at UW. He was a TA for the undergraduate course &amp;ldquo;Mobile Robotics&amp;rdquo; in Spring 2019, helping design assignments and iterate on the development of software for the cars. In the past he has done research with the Systems lab at UW.</description>
     </item>
     
     <item>
       <title>Colin Summers</title>
-      <link>https://prl-mushr.github.io/team/colin-summers/</link>
+      <link>https://mushr.io/team/colin-summers/</link>
       <pubDate>Mon, 19 Nov 2018 10:47:58 +1000</pubDate>
       
-      <guid>https://prl-mushr.github.io/team/colin-summers/</guid>
+      <guid>https://mushr.io/team/colin-summers/</guid>
       <description>Colin Summers is a BS/MS student in the Paul G. Allen School of Computer Science &amp;amp; Engineering and is advised by Prof. Siddhartha Srinivasa. He is primarily interested in algorithms that enable intelligent machines to acquire general notions of intelligence in order to robustly solve complex and temporally-extended tasks in real-world settings.
 Colin works to design and implement performant control and perception algorithms that enable realtime autonomous operation of MuSHR. He also helps wrangle the growing MuSHR software ecosystem.</description>
     </item>
     
     <item>
       <title>Mergers</title>
-      <link>https://prl-mushr.github.io/services/mergers/</link>
+      <link>https://mushr.io/services/mergers/</link>
       <pubDate>Wed, 28 Nov 2018 15:15:34 +1000</pubDate>
       
-      <guid>https://prl-mushr.github.io/services/mergers/</guid>
+      <guid>https://mushr.io/services/mergers/</guid>
       <description>Lorem markdownum aequalis strigis. Saetigeri iubeas, vultu huic alvum nondum de obside ut laniavit arbor palmis, cum quin. Rupes vetat videndo, armigerae crimen habet Priamum nec.
 Ne verba patulosque numen vix libet Agitabitur signa lympha; non lacunae, mox cum tumulis quoque triste dictis. Ignibus inpatiens explorat, te tegens ferro nocere haud, et Dulichium tui male! Quo sed fuit flexit et hic die solido, gloria?
  Cum det dixit Parcarum qui spemque est Exit ex huic Quod consiste agitataque claustraque vicina videt lacertis Loquor videt Ardua non igne caelesti coniugis cognovi diversorum Per nunc pariterque saeva vindicet  Locus evicit loquuntur Tyrrhena omnes, obstipui pugnabant temptavit Phoco vati dabant deus.</description>
@@ -217,20 +217,20 @@ Ne verba patulosque numen vix libet Agitabitur signa lympha; non lacunae, mox cu
     
     <item>
       <title>Business Sales</title>
-      <link>https://prl-mushr.github.io/services/business-sales/</link>
+      <link>https://mushr.io/services/business-sales/</link>
       <pubDate>Wed, 28 Nov 2018 15:15:26 +1000</pubDate>
       
-      <guid>https://prl-mushr.github.io/services/business-sales/</guid>
+      <guid>https://mushr.io/services/business-sales/</guid>
       <description>Cyanee nec pedicis positi. Esse et diem forte quoque et ieiunia vixque dixit negari ullis stamina: trahit. Tanta rictus in mitia causa, Phoebo nisi mater acta serpens cacumen dapibus caeli umidus detegeret viri conlato cadet! Ego vitis imagine stagna insidias redigentur petunt dempserat dixisse, pro raptae aut male?
  Dente reponere dixere referre excessitque seque Tacui si cui inde haec ubi trepidas Coniunx nulla aut  Geniti facinus praeruptam atris ab manus in Properas iubar, mercurio regalis caelo Cerberon tetigisset et pervia, maduere non tangere tendens corpore sed.</description>
     </item>
     
     <item>
       <title>Superannuation</title>
-      <link>https://prl-mushr.github.io/services/superannuation/</link>
+      <link>https://mushr.io/services/superannuation/</link>
       <pubDate>Wed, 28 Nov 2018 15:14:54 +1000</pubDate>
       
-      <guid>https://prl-mushr.github.io/services/superannuation/</guid>
+      <guid>https://mushr.io/services/superannuation/</guid>
       <description>Lorem markdownum aequalis strigis. Saetigeri iubeas, vultu huic alvum nondum de obside ut laniavit arbor palmis, cum quin. Rupes vetat videndo, armigerae crimen habet Priamum nec.
 Ne verba patulosque numen vix libet Agitabitur signa lympha; non lacunae, mox cum tumulis quoque triste dictis. Ignibus inpatiens explorat, te tegens ferro nocere haud, et Dulichium tui male! Quo sed fuit flexit et hic die solido, gloria?
  Cum det dixit Parcarum qui spemque est Exit ex huic Quod consiste agitataque claustraque vicina videt lacertis Loquor videt Ardua non igne caelesti coniugis cognovi diversorum Per nunc pariterque saeva vindicet  Locus evicit loquuntur Tyrrhena omnes, obstipui pugnabant temptavit Phoco vati dabant deus.</description>
@@ -238,19 +238,19 @@ Ne verba patulosque numen vix libet Agitabitur signa lympha; non lacunae, mox cu
     
     <item>
       <title>Business Advisory</title>
-      <link>https://prl-mushr.github.io/services/business-advisory/</link>
+      <link>https://mushr.io/services/business-advisory/</link>
       <pubDate>Wed, 28 Nov 2018 15:14:39 +1000</pubDate>
       
-      <guid>https://prl-mushr.github.io/services/business-advisory/</guid>
+      <guid>https://mushr.io/services/business-advisory/</guid>
       <description>Lorem markdownum, dictis umbrosum dextrum, Lelegeia quamquam distantes pares ignisque quaerit dederat gemino Aethiopesque caelo ulciscitur est. Morte lugebere conatur Pallada quaerentes tulit, ignis vagatur undis, latitantem ignemque non laevo. Terras seu favoni tectas movit hunc motuque damno tutoque quattuor. Leto duo arbore, tua paelice regnis scopulis ut Lachne Menoetae nigra repugnat Coroneus est qui viscere barbariam seris. Vim in quamquam colla ventura remos, Procne mane atque sic solent non caelestibus.</description>
     </item>
     
     <item>
       <title>Contact</title>
-      <link>https://prl-mushr.github.io/contact/</link>
+      <link>https://mushr.io/contact/</link>
       <pubDate>Thu, 22 Feb 2018 17:01:34 +0700</pubDate>
       
-      <guid>https://prl-mushr.github.io/contact/</guid>
+      <guid>https://mushr.io/contact/</guid>
       <description>The MuSHR team is located in the Paul G. Allen School for Computer Science &amp;amp; Engineering at the University of Washington in Seattle, Washington.
 We want to hear from you! Get in touch about:
  Using MuSHR for education See the course website for &amp;ldquo;Mobile Robotics&amp;rdquo; for an example. A project you&amp;rsquo;ve done with the car. Potential collaborations and research opportunities. Questions you have about the platform. (Also see the Troubleshooting Tutorial).</description>
@@ -258,10 +258,10 @@ We want to hear from you! Get in touch about:
     
     <item>
       <title>About</title>
-      <link>https://prl-mushr.github.io/about/</link>
+      <link>https://mushr.io/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://prl-mushr.github.io/about/</guid>
+      <guid>https://mushr.io/about/</guid>
       <description>The Multi-agent System for non-Holonomic Racing (MuSHR)  is an open-source, full-stack robotics platform designed to advance robotics research and education by making a fully integrated robotic race car available in an easy-to-assemble and economic package.
 Using rapid-prototyping techniques and off-the-shelf parts, we provide the instructions you need to assemble a robotic race car and code to hit the ground running. MuSHR also contains an ever-expanding set of tutorials to make you acquainted with the race car and robotic principles.</description>
     </item>
