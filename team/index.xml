@@ -36,7 +36,7 @@ Sanjiban completed his Ph.D. in Robotics with Sebastian Scherer at Carnegie Mell
       <pubDate>Mon, 19 Nov 2018 10:47:58 +1000</pubDate>
       
       <guid>https://mushr.io/team/christoforos-mavrogiannis/</guid>
-      <description>Christoforos (Chris) Mavrogiannis is a postdoctoral research associate in the Paul G. Allen School of Computer Science &amp;amp; Engineering at the University of Washington, working with Prof. Siddhartha Srinivasa and the Personal Robotics Lab. He is broadly interested in the algorithmic foundations of robotics, with a particular emphasis on the design of efficient, safe and robust motion planning algorithms for robot navigation, multi-robot manipulation and human-robot interaction applications. He is passionate about enabling robots to integrate seamlessly in human environments.</description>
+      <description>Christoforos (Chris) Mavrogiannis is a postdoctoral research associate in the Paul G. Allen School of Computer Science &amp;amp; Engineering at the University of Washington, working with Prof. Siddhartha Srinivasa and the Personal Robotics Lab. Chris received his Ph.D. from Cornell University, where he worked on the design of motion planning algorithms for social robot navigation in crowded human environments. His current research interests include consensus problems for multi-robot navigation, and human-robot collaboration applications.</description>
     </item>
     
     <item>
@@ -66,7 +66,7 @@ Schmittle works on the core software components that run on each car and general
       
       <guid>https://mushr.io/team/johan-michalove/</guid>
       <description>Johan Michalove is a BS/MS student at the Allen School of the University of Washington advised by Prof. Siddhartha Srinivasa. His research focuses on uncertainty in model-predictive control and the ethics of intelligent machines.
-Johan works on designing tutorials and course material for the MuSHR platform, in addition to the design and implementation of core MuSHR packages and infrastructure. He has helped support the use of the MuSHR cars in the Winter 2019 Graduate Robotics course and Spring 2019 Undergraduate Mobile Robotics course.</description>
+Johan leads the design of MuSHR&amp;rsquo;s tutorials and outreach efforts, contributes to course material for the MuSHR platform, and has designed and implemented core MuSHR packages and infrastructure. He helped support the use of the MuSHR cars in the Winter 2019 Graduate Robotics course and Spring 2019 Undergraduate Mobile Robotics course.</description>
     </item>
     
     <item>
@@ -96,7 +96,7 @@ Matthew works to maintain the growing MuSHR fleet at UW. He was a TA for the und
       
       <guid>https://mushr.io/team/colin-summers/</guid>
       <description>Colin Summers is a BS/MS student in the Paul G. Allen School of Computer Science &amp;amp; Engineering and is advised by Prof. Siddhartha Srinivasa. He is primarily interested in algorithms that enable intelligent machines to acquire general notions of intelligence in order to robustly solve complex and temporally-extended tasks in real-world settings.
-Colin works to design and implement performant control and perception algorithms that enable realtime autonomous operation of MuSHR. He also helps wrangle the growing MuSHR software ecosystem.</description>
+Colin works to design and implement perception algorithms that enable realtime autonomous operation of MuSHR. He also helps wrangle the growing MuSHR software ecosystem.</description>
     </item>
     
   </channel>
