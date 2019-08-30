@@ -215,10 +215,10 @@
 <p>Now that we have the dependencies, lets get started! We&rsquo;ll start by making sure we have all the necessary ROS packages. Select <strong>one</strong> of the following, based off the version of ROS you installed.</p>
 
 <p><strong>Melodic:</strong>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo apt install -y ros-melodic-ackermann-msgs ros-melodic-map-server ros-melodic-serial ros-melodic-urg-node ros-melodic-robot-state-publisher </code></pre></div></p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo apt install -y ros-melodic-ackermann-msgs ros-melodic-map-server ros-melodic-serial ros-melodic-urg-node ros-melodic-robot-state-publisher ros-melodic-xacro</code></pre></div></p>
 
 <p><strong>Kinetic:</strong>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo apt install -y ros-kinetic-ackermann-msgs ros-kinetic-map-server ros-kinetic-serial ros-kinetic-urg-node ros-kinetic-robot-state-publisher </code></pre></div></p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo apt install -y ros-kinetic-ackermann-msgs ros-kinetic-map-server ros-kinetic-serial ros-kinetic-urg-node ros-kinetic-robot-state-publisher ros-kinetic-xacro</code></pre></div></p>
 
 <p>Now, let&rsquo;s clone the necessary repos. First go to your <code>catkin_ws/src</code> directory:</p>
 
@@ -243,14 +243,27 @@ $ <span class="nb">cd</span> ~/catkin_ws/src <span class="o">&amp;&amp;</span> r
 <p>We will now run <code>catkin_make</code> to setup all the packages:
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> ~/catkin_ws <span class="o">&amp;&amp;</span> catkin_make</code></pre></div></p>
 
-<p>To make sure our environment is setup we run:
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">echo</span> <span class="s1">&#39;source /opt/ros/{melodic,kinetic}/setup.bash&#39;</span> &gt; ~/.bashrc
-$ <span class="nb">echo</span> <span class="s1">&#39;source ~/catkin_ws/devel/setup.bash&#39;</span> &gt; ~/.bashrc
-$ . ~/.bashrc</code></pre></div></p>
+<h3 id="setting-up-our-environment">Setting up our environment</h3>
 
-<p>These commands will now run with every new terminal session.</p>
+<p>To make sure our environment is setup we run:</p>
 
-<p>Finally, move the <code>.rviz</code> file to <code>~/.rviz</code> to get our default setup:
+<p><em>If you are using a shell other than bash, be sure to put these &ldquo;source&rdquo; commands in the analagous file for your shell.</em></p>
+
+<h4 id="kinetic-ubuntu-16-04">Kinetic (Ubuntu 16.04)</h4>
+
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">echo</span> <span class="s1">&#39;source /opt/ros/kinetic/setup.bash&#39;</span> &gt;&gt; ~/.bashrc
+$ <span class="nb">echo</span> <span class="s1">&#39;source ~/catkin_ws/devel/setup.bash&#39;</span> &gt;&gt; ~/.bashrc
+$ . ~/.bashrc</code></pre></div>
+
+<h4 id="melodic-ubuntu-18-04">Melodic (Ubuntu 18.04)</h4>
+
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">echo</span> <span class="s1">&#39;source /opt/ros/melodic/setup.bash&#39;</span> &gt;&gt; ~/.bashrc
+$ <span class="nb">echo</span> <span class="s1">&#39;source ~/catkin_ws/devel/setup.bash&#39;</span> &gt;&gt; ~/.bashrc
+$ . ~/.bashrc</code></pre></div>
+
+<p>Putting these lines in the <code>~/.bashrc</code> guarantee they run on the startup of a new shell.</p>
+
+<p>Finally, move the &ldquo;Outrun&rdquo; themed <code>.rviz</code> file to <code>~/.rviz</code> to get our default setup:
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ cp ~/catkin_ws/src/mushr/mushr_utils/rviz/default.rviz ~/.rviz/</code></pre></div></p>
 
 <p>That&rsquo;s it! Time to run it.</p>
