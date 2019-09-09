@@ -204,12 +204,15 @@
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo apt install git-all</code></pre></div>
 
 <ul>
+<<<<<<< HEAD
 <li>tkinter:</li>
 </ul>
 
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo apt install python-tk</code></pre></div>
 
 <ul>
+=======
+>>>>>>> abd7f9edc47b0a8073727d668dc5ca012492782a
 <li>A github account. You can sign up for one <a href="https://github.com/join?source=header-home">here</a>.</li>
 <li><a href="https://github.com/dirk-thomas/vcstool.git">vcstool</a></li>
 </ul>
@@ -219,6 +222,7 @@
 <h2 id="install-sim">Install Sim</h2>
 
 <p>Now that we have the dependencies, lets get started! We&rsquo;ll start by making sure we have all the necessary ROS packages. Select <strong>one</strong> of the following, based off the version of ROS you installed.</p>
+<<<<<<< HEAD
 
 <p><strong>Melodic:</strong>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo apt install -y ros-melodic-ackermann-msgs ros-melodic-map-server ros-melodic-serial ros-melodic-urg-node ros-melodic-robot-state-publisher ros-melodic-xacro</code></pre></div></p>
@@ -279,6 +283,63 @@ $ . ~/.bashrc</code></pre></div>
 
 <p>That&rsquo;s it! Time to run it.</p>
 
+=======
+
+<p><strong>Melodic:</strong>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo apt install -y ros-melodic-ackermann-msgs ros-melodic-map-server ros-melodic-serial ros-melodic-urg-node ros-melodic-robot-state-publisher ros-melodic-xacro</code></pre></div></p>
+
+<p><strong>Kinetic:</strong>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo apt install -y ros-kinetic-ackermann-msgs ros-kinetic-map-server ros-kinetic-serial ros-kinetic-urg-node ros-kinetic-robot-state-publisher ros-kinetic-xacro</code></pre></div></p>
+
+<p>Now, let&rsquo;s clone the necessary repos. First go to your <code>catkin_ws/src</code> directory:</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> ~/catkin_ws/src</code></pre></div>
+
+<p>Download <a href="/tutorials/quickstart/repos.yaml">repos.yaml</a> into <code>~/catkin_ws/src</code>.</p>
+
+<p>And clone the necessary repos using vcstool:</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ vcs import &lt; repos.yaml</code></pre></div>
+
+<p>We need the realsense2_description directory only:</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ mv ~/catkin_ws/src/mushr/mushr_hardware/realsense/realsense2_description ~/catkin_ws/src/mushr/mushr_hardware/realsense2_description
+$ rm -rf ~/catkin_ws/src/mushr/mushr_hardware/realsense</code></pre></div>
+
+<p>We need to also install rangelibc:
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> ~/catkin_ws/src/range_libc/pywrapper
+$ python setup.py install
+$ <span class="nb">cd</span> ~/catkin_ws/src <span class="o">&amp;&amp;</span> rm -rf range_libc</code></pre></div></p>
+
+<p>We will now run <code>catkin_make</code> to setup all the packages:
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> ~/catkin_ws <span class="o">&amp;&amp;</span> catkin_make</code></pre></div></p>
+
+<h3 id="setting-up-our-environment">Setting up our environment</h3>
+
+<p>To make sure our environment is setup we run:</p>
+
+<p><em>If you are using a shell other than bash, be sure to put these &ldquo;source&rdquo; commands in the analagous file for your shell.</em></p>
+
+<h4 id="kinetic-ubuntu-16-04">Kinetic (Ubuntu 16.04)</h4>
+
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">echo</span> <span class="s1">&#39;source /opt/ros/kinetic/setup.bash&#39;</span> &gt;&gt; ~/.bashrc
+$ <span class="nb">echo</span> <span class="s1">&#39;source ~/catkin_ws/devel/setup.bash&#39;</span> &gt;&gt; ~/.bashrc
+$ . ~/.bashrc</code></pre></div>
+
+<h4 id="melodic-ubuntu-18-04">Melodic (Ubuntu 18.04)</h4>
+
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">echo</span> <span class="s1">&#39;source /opt/ros/melodic/setup.bash&#39;</span> &gt;&gt; ~/.bashrc
+$ <span class="nb">echo</span> <span class="s1">&#39;source ~/catkin_ws/devel/setup.bash&#39;</span> &gt;&gt; ~/.bashrc
+$ . ~/.bashrc</code></pre></div>
+
+<p>Putting these lines in the <code>~/.bashrc</code> guarantee they run on the startup of a new shell.</p>
+
+<p>Finally, move the &ldquo;Outrun&rdquo; themed <code>.rviz</code> file to <code>~/.rviz</code> to get our default setup:
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ cp ~/catkin_ws/src/mushr/mushr_utils/rviz/default.rviz ~/.rviz/</code></pre></div></p>
+
+<p>That&rsquo;s it! Time to run it.</p>
+
+>>>>>>> abd7f9edc47b0a8073727d668dc5ca012492782a
 <h2 id="running-the-simulator">Running the Simulator</h2>
 
 <p>To start the sim run:</p>
