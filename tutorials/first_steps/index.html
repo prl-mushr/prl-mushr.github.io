@@ -11,7 +11,7 @@
 
   
   
-  <link rel="stylesheet" href="/css/style.min.c2afc1cc4aaac1ae8d3c6236f926d4fa21d34d80395cf9445c90f953db695e44.css">
+  <link rel="stylesheet" href="/css/style.min.a4e5a1a996add294e0b2e1af036b7f9d26cc80fc9e1bbdcb4825b6471074f2dd.css">
   
 
   
@@ -197,10 +197,8 @@
 <h3 id="requirements">Requirements</h3>
 
 <ul>
-<li>Complete the <a href="/hardware/build_instructions">hardware</a> setup with your car</li>
-<li>Complete the <a href="/tutorials/quickstart">quickstart</a> tutorial. (Required for rviz)</li>
+<li>Complete the [hardware]() setup with your car</li>
 <li>A desktop/laptop computer that can ssh into the car.</li>
-<li>Ethernet Cable</li>
 <li>Monitor (Wi-Fi Setup Only)</li>
 <li>HDMI/Display Cable (Wi-Fi Setup Only)</li>
 <li>USB Keyboard/Mouse (Wi-Fi Setup Only)</li>
@@ -246,7 +244,7 @@
 
 <h2 id="update-repos">Update Repos</h2>
 
-<p>Because mushr is always updating, you may have outdated code on your image. To fix this just enter <code>~/catkin_ws/src/mushr</code> and pull via vcstool. For this to work, you need to give your car access to the internet. The easiest way to do this is by plugging an ethernet cable from an ethernet port on your home router to the car. If you don&rsquo;t have an ethernet cable, you can plug in a monitor, mouse, and keyboard into the Jetson Nano and connect the car to a wifi network.</p>
+<p>Because mushr is always updating, you may have outdated code on your image. To fix this just enter <code>~/catkin_ws/src/mushr</code> and pull via vcstool.</p>
 
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> ~/catkin_ws/src/mushr <span class="o">&amp;&amp;</span> vcs pull -n</code></pre></div>
 
@@ -254,11 +252,13 @@
 
 <h2 id="configure-visualization">Configure Visualization</h2>
 
-<p>Visualization is important for seeing what your car is thinking such as which trajectory it will follow or its current position in the map. On your laptop with rviz make sure to set your <code>default.rviz</code> to ours found in <code>mushr/mushr_utils/rviz/default.rviz</code>.</p>
+<p>On your laptop with rviz make sure to set your <code>default.rviz</code> to ours found in <code>mushr/mushr_utils/default.rviz</code>.</p>
 
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ cp ~/catkin_ws/src/mushr/mushr_utils/rviz/default.rviz ~/.rviz/</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ cp ~/catkin_ws/src/mushr/mushr_utils/default.rviz ~/.rviz/</code></pre></div>
 
-<p>Set the <code>ROS_IP</code> to your IP. Your IP can be found in a variety of ways: <a href="https://www.howtogeek.com/howto/17012/how-to-find-your-ip-address-in-ubuntu/">Linux</a>, <a href="http://osxdaily.com/2010/08/08/lan-ip-address-mac/">Mac</a>, <a href="https://kb.netgear.com/20878/Finding-your-IP-address-without-using-the-command-prompt">Windows</a>.</p>
+<p>Set the <code>ROS_IP</code> to your IP. Your IP can be found with <code>ifconfig</code>.</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ifconfig</code></pre></div>
 
 <p>Set <code>ROS_IP</code> with:</p>
 
@@ -266,9 +266,9 @@
 
 <p>Set the <code>ROS_MASTER_URI</code> to the IP of the car.</p>
 
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">export</span> <span class="nv">ROS_MASTER_URI</span><span class="o">=</span>http://10.42.0.1:11311</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">export</span> <span class="nv">ROS_MASTER_URI</span><span class="o">=</span>http://CAR-IP:11311</code></pre></div>
 
-<p>You are configured! Wait till teleop is running to launch <code>rviz</code> on your laptop.</p>
+<p>You are configured! Wait till teleop is running to launch rviz</p>
 
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ rviz</code></pre></div>
 
@@ -291,20 +291,11 @@ This should output a bunch of topics. If not, check your <code>ROS_MASTER_URI</c
 
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ roscore</code></pre></div>
 
-<p>In a new window, ssh into the car.</p>
-
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ssh robot@10.42.0.1 -X</code></pre></div>
-
-<p>And launch teleop.</p>
+<p>In a new window, launch teleop.</p>
 
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ roslaunch mushr_base teleop.launch</code></pre></div>
 
-<p>You should see the lidar spinning and be able to steer with the controller. While holding down the left bumper, use the left joystick to throttle, and the right joystick to turn. See diagram below.</p>
-
-<figure>
-    <img src="/tutorials/first_steps/teleop_controls.png" width="350"/> 
-</figure>
-
+<p>You should see the lidar spinning and be able to steer with the controller.</p>
 
 <h2 id="setup-wi-fi-optional">Setup Wi-Fi (Optional)</h2>
 
@@ -391,13 +382,9 @@ This should output a bunch of topics. If not, check your <code>ROS_MASTER_URI</c
 
 <h3 id="logging-in">Logging In</h3>
 
-<p>Once the Nano has fully booted, it will connect to the existing network at the specified static ip. You should then be able to ssh into it with the static IP you set earlier.</p>
+<p>Once the Nano has fully booted, it will connect to the existing network at the specified static ip. You should then be able to ssh into it.</p>
 
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ssh robot@172.16.77.Z<span class="sb">`</span></code></pre></div>
-
-<h2 id="next-steps">Next Steps</h2>
-
-<p>To learn about programming the car continue to the <a href="/tutorials/intro-to-ros">Intro to ROS Tutorial</a></p>
 
         </div>
       </div>
