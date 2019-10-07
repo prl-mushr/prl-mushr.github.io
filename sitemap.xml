@@ -173,10 +173,12 @@
   
   <url>
     <loc>https://mushr.io/categories/</loc>
+    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://mushr.io/tags/</loc>
+    <priority>0</priority>
   </url>
   
 </urlset>
