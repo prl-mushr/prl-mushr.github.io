@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Logo Modification - MuSHR: The UW Open Racecar Project</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel="icon" href="https://mushr.io/favicon.png">
+
+  
+  
+  <link rel="stylesheet" href="/css/style.min.c2afc1cc4aaac1ae8d3c6236f926d4fa21d34d80395cf9445c90f953db695e44.css">
+  
+
+  
+
+</head>
+
+<body class='page page-tutorials-single'>
+  <div id="main-menu-mobile" class="main-menu-mobile">
+  <ul>
+    
+    
+    <li class="menu-item-quickstart">
+      <a href="/tutorials/quickstart/">
+        
+        <span>Quickstart</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-tutorials">
+      <a href="/tutorials/">
+        
+        <span>Tutorials</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-docs">
+      <a href="https://github.com/prl-mushr/mushr#component-documentation">
+        
+        <span>Docs</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-hardware">
+      <a href="/hardware/">
+        
+        <span>Hardware</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-press">
+      <a href="/press/">
+        
+        <span>Press</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-team">
+      <a href="/team/">
+        
+        <span>Team</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-about">
+      <a href="/about/">
+        
+        <span>About</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-forum">
+      <a href="/forum/">
+        
+        <span>Forum</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-contact">
+      <a href="/contact/">
+        
+        <span>Contact</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+  <div class="wrapper">
+    <div class='header'>
+  <div class="container">
+    <div class="logo">
+      <a href="https://mushr.io/"><img alt="Figurit Homepage" src="https://mushr.io/imgs/mushr-logo.svg" /></a>
+    </div>
+    <div class="logo-mobile">
+      <a href="https://mushr.io/"><img alt="Figurit Homepage" src="https://mushr.io/imgs/mushr-logo.svg" /></a>
+    </div>
+    <div id="main-menu" class="main-menu">
+  <ul>
+    
+    
+    <li class="menu-item-quickstart">
+      <a href="/tutorials/quickstart/">
+        
+        <span>Quickstart</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-tutorials">
+      <a href="/tutorials/">
+        
+        <span>Tutorials</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-docs">
+      <a href="https://github.com/prl-mushr/mushr#component-documentation">
+        
+        <span>Docs</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-hardware">
+      <a href="/hardware/">
+        
+        <span>Hardware</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-press">
+      <a href="/press/">
+        
+        <span>Press</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-team">
+      <a href="/team/">
+        
+        <span>Team</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-about">
+      <a href="/about/">
+        
+        <span>About</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-forum">
+      <a href="/forum/">
+        
+        <span>Forum</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-contact">
+      <a href="/contact/">
+        
+        <span>Contact</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+    <button id="toggle-main-menu-mobile" class="hamburger hamburger--slider" role="presentation" aria-label="mobile menu trigger">
+  <span class="hamburger-box">
+    <span class="hamburger-inner"></span>
+  </span>
+</button>
+  </div>
+</div>
+    
+<div class="container pb-6 pt-6 pt-md-10 pb-md-10">
+  <div class="row justify-content-start">
+    <div class="col-12 col-md-8">
+      <div class="tutorial tutorial-single">
+        <h1 class="title">Logo Modification</h1>
+        <div class="content"> 
+          
+          <p>Change the MuSHR Racecar&#39;s logo!</p> 
+          
+          
+
+<p>This page provides instructions for modifying the logo displayed on the back of the MuSHR Racecar.</p>
+
+<hr />
+
+<h2 id="prerequisites">Prerequisites</h2>
+
+<p>Before altering the MuSHR Racecar&rsquo;s logo, the following steps should be taken:</p>
+
+<ol>
+<li>Download/clone the <a href="https://github.com/prl-mushr/mushr_cad">mushr_cad</a> repo</li>
+<li>Download and install <a href="https://www.openscad.org/downloads.html">OpenSCAD</a></li>
+<li>Download and install <a href="http://wiki.inkscape.org/wiki/index.php/Installing_Inkscape">InkScape</a></li>
+</ol>
+
+<h2 id="generate-dxf-file">Generate DXF File</h2>
+
+<p>In this section, we will transform the desired image into a file format that OpenSCAD can import, i.e. .dxf.</p>
+
+<ol>
+<li><p>Find a .png or .jpg image to use as the logo. Images that are highly complex and/or consist of many colors will most likely be difficult to generate the correct file for, render in OpenSCAD, and/or feasibly manufacture with the 3D printer. For example, the image in Fig. 1.1 below is probably too complex.</p>
+
+<figure>
+    <img src="/hardware/logo_modification/husky_logo_complicated.png"
+         alt="Fig. 1.1" width="800"/> <figcaption>
+            <p>Fig. 1.1</p>
+        </figcaption>
+</figure>
+
+
+<p>In this tutorial, we will use the image in Fig. 1.2 below.</p>
+
+<figure>
+    <img src="/hardware/logo_modification/husky_logo_simple.png"
+         alt="Fig. 1.2" width="800"/> <figcaption>
+            <p>Fig. 1.2</p>
+        </figcaption>
+</figure>
+</li>
+
+<li><p>Open the image in Inkscape, for example as in Fig. 1.3 below.
+<figure>
+    <img src="/hardware/logo_modification/inkscape_open.png"
+         alt="Fig. 1.3" width="800"/> <figcaption>
+            <p>Fig. 1.3</p>
+        </figcaption>
+</figure>
+</p></li>
+
+<li><p>Highlight your image by clicking on it. Then choose <strong>Path-&gt;TraceBitmap</strong>. Click the <strong>Update</strong> button. You may have to adjust some of the parameters until the bitmap in the <strong>Preview</strong> window looks as desired. Once you are satisifed, click <strong>OK</strong>. Then close the <strong>TraceBitmap</strong> window.</p></li>
+
+<li><p>The previous step caused a bitmap to be drawn over our original image. We now want to delete the original image (and keep the bitmap). Drag the bitmap to the side and delete the original image below it. Fig. 1.4 below shows the bitmap on the right and original image to delete on the left. Note that the bitmap is less blurry than the original image.
+<figure>
+    <img src="/hardware/logo_modification/bitmap_generate.png"
+         alt="Fig. 1.4" width="800"/> <figcaption>
+            <p>Fig. 1.4</p>
+        </figcaption>
+</figure>
+</p></li>
+
+<li><p>After deleting the original image, re-center the bitmap within the canvas. Next, we need to pologonize our path. To do this, choose <strong>Extensions-&gt;Modify Path-&gt;Flatten Beziers</strong>. We used a flateness value of 0.5 - we suggest starting with this value and modifying it if the design does not look correct when imported into OpenSCAD.</p></li>
+
+<li><p>Next, click <strong>File-&gt;Save As&hellip;</strong>. Set the file destination to be <strong>mushr_cad/images</strong>. Set the file type to be <strong>Desktop Cutting Plotter (AutoCAD DXF R14) (*.dxf)</strong>. Then click <strong>Save</strong>. The <strong>Desktop Cutting Plotter</strong> dialog should pop up. Here, make sure that <strong>use ROBO-Master type of spline output</strong> is <strong>unchecked</strong>, and that <strong>use LWPOLYLINE type of line output</strong> is <strong>checked</strong>. Then click <strong>OK</strong> to save the file as a .dxf.</p></li>
+</ol>
+
+<h2 id="generate-back-cover-stl-files">Generate Back Cover STL Files</h2>
+
+<p>In this section, we will use our desired logo to generate new .stl files for the sides of the racecar&rsquo;s back cover.</p>
+
+<ol>
+<li><p>Open <strong>mushr_cad/misc/racecar_cover_image.scad</strong>. Change the <strong>rci_dst</strong> variable to be the file path of your logo&rsquo;s .dxf file. You should only need to change the file name, the parent directories should not need to be changed.</p></li>
+
+<li><p>Save the OpenSCAD file. Then render the model (i.e. press F6). Our rendered is model is shown below in Fig. 2.1.</p>
+
+<figure>
+    <img src="/hardware/logo_modification/husky_openscad.png"
+         alt="Fig. 2.1" width="800"/> <figcaption>
+            <p>Fig. 2.1</p>
+        </figcaption>
+</figure>
+</li>
+
+<li><p>Examine the code in the Editor window. The block that uses <strong>difference()</strong> and <strong>minkowski</strong> (lines 13-26 in Fig. 2.1) generates a version of the logo that has its edges trimmed. This is so that we can create an inset of the logo that can be printed in a different color from the racecar&rsquo;s back cover and then be super-glued into the inset hole. In order to print this inset (you will want to print a pair), click the <strong>STL</strong> button and save it to <strong>mushr_cad/v3/stl</strong> (you can overwrite the existing racecar_cover_image.stl), which is the directory that contains all of the other parts that you will want to print.</p></li>
+
+<li><p>While keeping <strong>racecar_cover_image.scad</strong> open, open <strong>mushr_cad/v3/scad/racecar_back_cover_left_side.scad</strong>. Render the model by pressing F6.</p></li>
+
+<li><p>Once the model has rendered, click and drag in the viewer window so that you can see underneath the model, as shown in Fig. 2.2 below.</p>
+
+<figure>
+    <img src="/hardware/logo_modification/husky_back_cover.png"
+         alt="Fig. 2.2" width="800"/> <figcaption>
+            <p>Fig. 2.2</p>
+        </figcaption>
+</figure>
+</li>
+
+<li><p>If you would like to change the size or position of the logo, go back to <strong>racecar_cover_image.scad</strong>. Modify the <strong>rci_x_scale</strong> and <strong>rci_y_scale</strong> parameters to change the logo&rsquo;s size, and the <strong>rci_x_offset</strong> and <strong>rci_y_offset</strong> parameters to change the logo&rsquo;s position. <strong>NOTE: In order for these changes to take effect, you must save the racecar_cover_image.scad file before re-rendering racecar_back_cover_left_side.scad</strong>. After altering the parameters, return to <strong>racecar_back_cover_left_side.scad</strong> and re-render by pressing F6. If your logo does not show up after rendering <strong>racecar_back_cover_left_side.scad</strong>, try making <strong>rci_x_scale</strong> and <strong>rci_y_scale</strong> increasingly large. Continue to alter the parameters until the logo is sized/position as desired.</p></li>
+
+<li><p>In <strong>racecar_back_cover_left_side.scad</strong>, click the <strong>STL</strong> button to save the model in <strong>mushr_cad/v3/stl</strong> (you can overwrite the existing racecar_back_cover_left_side.stl).</p></li>
+
+<li><p>Return to step 4, except open <strong>racecar_back_cover_right_side.scad</strong> instead of <strong>racecar_back_cover_left_side.scad</strong>.</p></li>
+
+<li><p><strong>Congratulations!</strong> You are ready to 3D print your own personalized MuSHR robot! All necessary .stl files can be found in <strong>mushr_cad/v3/stl</strong>.</p></li>
+</ol>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="strip strip-primary-gradient-top-bottom">
+  <div class="container pt-3 pb-3 pt-md-6 pb-md-3 px-2">
+    <div class="row justify-content-left citation-row">
+        <h1 id="citation">Citation</h1>
+        <p>If you plan to use any part of the the MuSHR platform, including tutorials, codebase, or hardware instructions for a project or paper, please cite 
+        <em><a href="https://arxiv.org/abs/1908.08031">MuSHR: A Low-Cost,
+        Open-Source Robotic Racecar for Education and Research
+        </a></em>:</p></font>
+        <div class="highlight"><pre class="chroma">@article{srinivasa2019mushr,
+ title={{M}u{SHR}: {A} Low-Cost, Open-Source Robotic Racecar for Education and Research},
+ author={Srinivasa, Siddhartha S. and Lancaster, Patrick and Michalove, Johan and Schmittle, Matt and Summers, Colin and Rockett, Matthew and Smith, Joshua R. and Chouhury, Sanjiban and Mavrogiannis, Christoforos and Sadeghi, Fereshteh},
+ journal={CoRR},
+ volume={abs/1908.08031},
+ year={2019}
+}
+</pre></div>
+        <p><br></p>
+    </div>
+  </div>
+</div>
+
+
+  </div>
+
+  <div class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="footer-inner">
+          <h3 class="footer-title">MuSHR: The UW Open Racecar Project</h3>
+          <ul>
+            
+            
+            <li class="menu-item-home">
+              <a href="/">
+                Home
+              </a>
+            </li>
+            
+            <li class="menu-item-forum">
+              <a href="/forum/">
+                Forum
+              </a>
+            </li>
+            
+            <li class="menu-item-contact">
+              <a href="/contact/">
+                Contact
+              </a>
+            </li>
+            
+            <li class="menu-item-newsletter">
+              <a href="https://tinyletter.com/mushr">
+                Newsletter
+              </a>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <div class="sub-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="sub-footer-inner">
+          <ul>
+            <li><strong>Email: </strong><a href="mailto:mushr@cs.washington.edu">
+                mushr@cs.washington.edu</a></li>
+          </ul>
+          <ul>
+            <li class="prl"><a href="https://personalrobotics.cs.washington.edu/">Made with <font color="#FF1690">♥</font> at the Personal Robotics Lab</a></li>
+          </ul>
+          <ul>
+            <li class="prl">Website by <a href="http://johanam.com/"><font color="#36CDC4">Johan</font></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+  
+
+
+
+
+  <script type="text/javascript" src="/js/services.min.96db5a4d9a7ea2d1759fd6847940367b5207c4ef5686df932179e04aefccdf37.js"></script>
+  
+
+
+  
+  <script type="text/javascript" src="/js/scripts.min.bf1e1f7ae8e03db5f012356e825843facdff51c0a559cb0d27fe2bbe1db405c2.js"></script>
+  
+
+  
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-146151202-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+  gtag('config', 'UA-146151202-1');
+</script>
+
+
+
+
+</body>
+
+</html>
