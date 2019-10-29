@@ -283,6 +283,18 @@ This should output a bunch of topics. If not, check your <code>ROS_MASTER_URI</c
 
 <h2 id="launch-teleop-the-easy-way">Launch Teleop the Easy Way</h2>
 
+<p>To do this you need a push button on the front of the car. This method turns on teleop whenever you hold the button on teleop. By default it is disabled. The following will enable it. First, turn on the car by plugging a battery into the top connector. Then connect to the <code>ROBOT_AP</code> WIFI network. Then ssh into the car.</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ssh robot@10.42.0.1 -X</code></pre></div>
+
+<p>Next, we need to uncomment the startup command for the button teleop. Open <code>/etc/rc.local</code> and uncomment line 9.</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo vim /etc/rc.local</code></pre></div>
+
+<p>Use the default password. Now you can turnoff the car by running the following and unplugging the batterie.</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo shutdown now</code></pre></div>
+
 <p>Turn on the car and vesc by plugging their batteries in. Hold down the front button as the car is starting. After a minute or so the lidar should start spinning indicating teleop is running.</p>
 
 <h2 id="launch-teleop-the-hard-way">Launch Teleop the Hard Way</h2>
