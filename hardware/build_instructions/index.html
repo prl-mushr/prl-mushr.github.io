@@ -207,6 +207,7 @@
 <li><a href="#back-cover-installation">Back Cover Installation</a></li>
 <li><a href="#front-cover-installation">Front Cover Installation</a></li>
 <li><a href="#final-assembly">Final Assembly</a></li>
+<li><a href="#software-setup">Software Setup</a></li>
 <li><a href="#teleoperate-the-robot">Teleoperate the Robot</a></li>
 </ol>
 
@@ -1678,7 +1679,7 @@
 
 <li><p>After uploading the firmware, the VESC will automatically reboot. If the <strong>BLDC Tool</strong> GUI closes, re-open as described in step 9. Click on the <strong>Motor Configuration</strong> tab (in the case that the GUI did not close), and re-connect to the VESC as described in step 10.</p></li>
 
-<li><p>In the lower left corner of the GUI, click the <strong>Read configuration</strong> button. Many of the fields should now be populated with non-zero values. Next, click the <strong>Load XML</strong> button. Choose the file at the path <strong>catkin_ws/src/mushr/mushr_base/vesc/vesc_configs/mushr_vesc_sensorless_config.xml</strong>. Then click <strong>Write configuration</strong> (which is to the right of the <strong>Read configuration</strong> button). Next, <strong>make sure that the robot&rsquo;s wheels are suspended in air, because we are about to make the wheels move</strong>. Press (and hold) any of the arrow keys. This should cause the wheels to move. Close the <strong>BLDC Tool</strong> gui. (Fig. 15.7)</p>
+<li><p>In the lower left corner of the GUI, click the <strong>Read configuration</strong> button. Many of the fields should now be populated with non-zero values. Next, click the <strong>Load XML</strong> button. Choose the file at the path <strong>catkin_ws/src/mushr/mushr_base/vesc/vesc_configs/mushr_vesc_sensorless_config.xml</strong>. Then click <strong>Write configuration</strong> (which is to the right of the <strong>Read configuration</strong> button). Next, <strong>make sure that the robot&rsquo;s wheels are suspended in air, because we are about to make the wheels move</strong>. Press (and hold) any of the arrow keys. This should cause the wheels to move. Close the <strong>BLDC Tool</strong> GUI. (Fig. 15.7)</p>
 
 <figure>
     <img src="/hardware/build_instructions/15_07_load_xml.png"
@@ -1747,7 +1748,7 @@ This causes the Jetson Nano to correctly recognize all of the camera devices on 
 <p><div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">    roslaunch ydlidar lidar.launch
     </code></pre></div> <br/></p>
 
-<p>If you get the error <strong>YDLIDAR Cannot bind to the specified serial port /dev/ydlidar</strong>, this means that the <strong>USB micro end</strong> of the LIDAR cable was plugged in backwards. Use <strong>CTRL-C</strong> to shutdown the node. Then swap the two USB micro ends so that they are plugged into the opposite receptacles, and then try the above command again. When they are plugged in correctly, the LIDAR will begin spinning. Use <strong>CTRL-C</strong> to shutdown the node.</p></li>
+<p>If you get the error <strong>YDLIDAR Cannot bind to the specified serial port /dev/ydlidar</strong>, this means that the <strong>USB micro end</strong> of the LIDAR cable was plugged in backwards. Use <strong>CTRL-C</strong> to shutdown the node. Then swap the two USB micro ends of the LIDAR cable so that they are plugged into the opposite receptacles, and then try the above command again. When they are plugged in correctly, the LIDAR will begin spinning. Use <strong>CTRL-C</strong> to shutdown the node.</p></li>
 
 <li><p>Shutdown the robot with the following command:</p>
 
