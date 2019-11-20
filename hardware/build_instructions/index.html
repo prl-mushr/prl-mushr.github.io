@@ -1385,16 +1385,19 @@
 <p><strong>Required Materials and Tools</strong></p>
 
 <ul>
-<li>Intel D435i Camera</li>
+<li>Intel D435i Camera and/or Intel T265 Camera</li>
 <li>USB 3.0 1ft Cable</li>
 <li>3D Printed Parts:
 
 <ul>
 <li>Racecar Front Cover Whole</li>
+<li>Racecar T265 Mounting Plate (If using 2 Cameras)</li>
 </ul></li>
 <li>Racecar Chasis</li>
 <li>5x Flat Head Screws</li>
-<li>2x 6mm M3 Pan Head Screws</li>
+<li>2x 6mm M3 Pan Head Screws (If using 1 Camera)</li>
+<li>4x 14mm M3 Pan Head Screws (If using 2 Cameras)</li>
+<li>8x Nylon Spacers (If using 2 Cameras)</li>
 <li>Pliers</li>
 <li>Hex Keys</li>
 <li>Philips Screwdriver</li>
@@ -1405,7 +1408,7 @@
 <ol>
 <li><p>Plug the 1ft USB 3.0 cable into the D435i camera. Note that we are not using the USB cable that comes with the camera because it is excessively long.</p></li>
 
-<li><p>Guide the USB cable from the outside of the front cover to the inside through the gap near the mounting holes. (Fig. 13.1)</p>
+<li><p><strong>Single Camera</strong> Guide the USB cable from the outside of the front cover to the inside through the gap near the mounting holes. (Fig. 13.1)</p>
 
 <figure>
     <img src="/hardware/build_instructions/13_01_guide_d435_usb.png"
@@ -1415,7 +1418,7 @@
 </figure>
 </li>
 
-<li><p>Use two 6mm M3 screws to mount the D435i camera to the front cover.(Fig. 13.2)</p>
+<li><p><strong>Single Camera</strong> Use two 6mm M3 screws to mount the D435i camera to the front cover.(Fig. 13.2)</p>
 
 <figure>
     <img src="/hardware/build_instructions/13_02_mount_d435.png"
@@ -1425,12 +1428,42 @@
 </figure>
 </li>
 
-<li><p>Use five M2.5 flat head screws to mount the front cover to the race car. (Fig. 13.3)</p>
+<li><p><strong>Dual Camera</strong> Use two 14mm M3 screws to attach the mounting plate and D435i camera to the front cover. (Fig. 13.3)</p>
 
 <figure>
-    <img src="/hardware/build_instructions/13_03_mount_front_cover.png"
+    <img src="/hardware/build_instructions/13_03_mount_d435_double.JPG"
          alt="Fig. 13.3" width="800"/> <figcaption>
             <p>Fig. 13.3</p>
+        </figcaption>
+</figure>
+</li>
+
+<li><p><strong>Dual Camera</strong> Take two 14mm M3 screws and slip 4 nylon spacers onto each of them. Use these screws to attach the T265 camera to the mounting plate. (Fig. 13.4).</p>
+
+<figure>
+    <img src="/hardware/build_instructions/13_04_mount_t265_double.JPG"
+         alt="Fig. 13.4" width="800"/> <figcaption>
+            <p>Fig. 13.4</p>
+        </figcaption>
+</figure>
+</li>
+
+<li><p><strong>Dual Camera</strong> Guide the USB cables from the inside of the front cover to the outside, and attach them to the cameras. (Fig. 13.5).</p>
+
+<figure>
+    <img src="/hardware/build_instructions/13_05_guide_usb_double.JPG"
+         alt="Fig. 13.5" width="800"/> <figcaption>
+            <p>Fig. 13.5</p>
+        </figcaption>
+</figure>
+</li>
+
+<li><p>Use five M2.5 flat head screws to mount the front cover to the race car. (Fig. 13.6)</p>
+
+<figure>
+    <img src="/hardware/build_instructions/13_06_mount_front_cover.png"
+         alt="Fig. 13.6" width="800"/> <figcaption>
+            <p>Fig. 13.6</p>
         </figcaption>
 </figure>
 </li>
@@ -1440,8 +1473,7 @@
 
 <h2 id="final-assembly">Final Assembly</h2>
 
-<p>In this section, we will finish assembling the racecar.
-<iframe width="800" height="450" src="https://www.youtube.com/embed/F9R5IC6I4wE?list=PLU9BrzGX4PH2DHZzxOg2gEkLMXhpkS7fV" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+<p>In this section, we will finish assembling the racecar.</p>
 
 <p><strong>Required Materials and Tools</strong></p>
 
@@ -1456,39 +1488,48 @@
 </ul></li>
 <li>Zip Ties</li>
 <li>Super Glue</li>
+<li>Electrical Tape</li>
 </ul>
 
 <p><strong>Steps</strong></p>
 
 <ol>
-<li><p>Plug the wireless controller&rsquo;s dongle into the included range extender. Note that you could skip steps 1-5 of this section and just directly plug the dongle into the Jeton Nano&rsquo;s USB. However, we have observed that the range extender improves the controller&rsquo;s wireless connection.</p></li>
+<li><p>Re-attach the back bumper to the chassis if not already done.</p></li>
 
-<li><p>Remove the two screws that mount the back bumper to chassis. Place the range extender&rsquo;s wire inbetween the two screw holes before re-inserting the screws. (Fig. 14.1)</p>
+<li><p>Place tape around the connections between the VESC and motor. (Fig. 14.1)</p>
 
 <figure>
-    <img src="/hardware/build_instructions/14_01_remove_back_bumper.png"
+    <img src="/hardware/build_instructions/14_01_motor_tape.JPG"
          alt="Fig. 14.1" width="800"/> <figcaption>
             <p>Fig. 14.1</p>
         </figcaption>
 </figure>
 </li>
 
-<li><p>Mount the range extender to the back bumper with two daisy chained zip ties. (Fig. 14.2)</p>
+<li><p>Attach velcro to the back right side of the foundation. (Fig. 14.3)</p>
 
 <figure>
-    <img src="/hardware/build_instructions/14_02_mount_range_extender.png"
+    <img src="/hardware/build_instructions/14_02_foundation_velcro.JPG"
          alt="Fig. 14.2" width="800"/> <figcaption>
             <p>Fig. 14.2</p>
         </figcaption>
 </figure>
 </li>
 
-<li><p>Plug the range extender into one of the Jetson Nano&rsquo;s USB ports.</p></li>
-
-<li><p>Tightly bundle the range extender&rsquo;s wire and attach it below the back bumper with a zip tie. (Fig. 14.3)</p>
+<li><p>Place velcro on the corresponding area of the battery. (Fig. 14.3)</p>
 
 <figure>
-    <img src="/hardware/build_instructions/14_03_bundle_extender.png"
+    <img src="/hardware/build_instructions/14_03_battery_velcro.JPG"
+         alt="Fig. 14.3" width="800"/> <figcaption>
+            <p>Fig. 14.3</p>
+        </figcaption>
+</figure>
+</li>
+
+<li><p>If using the T265 Camera, use zip ties to organize the USB cable. Use zip ties as necessary to manage cables. (Fig. 14.4)</p>
+
+<figure>
+    <img src="/hardware/build_instructions/14_04_zip_ties.JPG"
          alt="Fig. 14.4" width="800"/> <figcaption>
             <p>Fig. 14.4</p>
         </figcaption>
@@ -1499,20 +1540,28 @@
 
 <li><p>Plug the YDLIDAR&rsquo;s USB cable into one of the Jetson Nano&rsquo;s USB ports.</p></li>
 
-<li><p>Plug Realsense D435i&rsquo;s USB cable into one of the Jetson Nano&rsquo;s USB ports.</p></li>
+<li><p>Plug the USB cable(s) of any installed Realsense cameras into the Jetson Nano&rsquo;s USB ports.</p></li>
 
-<li><p>Make sure that the 5000 mAH battery is not plugged into the buck converter. Then plug the barrel connector into the Jetson Nano.</p></li>
+<li><p>Make sure that the 5000 mAH battery is not plugged into the buck converter. Then plug the barrel connector into the Jetson Nano. (Fig. 14.5)</p>
+
+<figure>
+    <img src="/hardware/build_instructions/14_05_usb_plugged.JPG"
+         alt="Fig. 14.5" width="800"/> <figcaption>
+            <p>Fig. 14.5</p>
+        </figcaption>
+</figure>
+</li>
 
 <li><p>Apply super glue to one of the insets on the outside of the back cover. Insert one of the 3D printed cover images into the inset.</p></li>
 
-<li><p>Repeat step 10 for the cover image on the other side of the back cover, and for the cover number in the center of the front cover.</p></li>
+<li><p>Repeat the previous step for the cover image on the other side of the back cover, and for the cover number in the center of the front cover.</p></li>
 
-<li><p>Congratulations, you have finished building the MuSHR Racecar! (Fig 14.4)</p>
+<li><p>Congratulations, you have finished building the MuSHR Racecar! (Fig 14.6)</p>
 
 <figure>
-    <img src="/hardware/build_instructions/14_04_car_complete.jpg"
-         alt="Fig. 14.4" width="800"/> <figcaption>
-            <p>Fig. 14.4</p>
+    <img src="/hardware/build_instructions/14_06_car_complete.jpg"
+         alt="Fig. 14.6" width="800"/> <figcaption>
+            <p>Fig. 14.6</p>
         </figcaption>
 </figure>
 </li>
