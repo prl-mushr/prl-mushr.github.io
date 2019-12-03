@@ -72,7 +72,7 @@ Ne verba patulosque numen vix libet Agitabitur signa lympha; non lacunae, mox cu
       <pubDate>Wed, 28 Nov 2018 15:14:54 +1000</pubDate>
       
       <guid>https://mushr.io/hardware/logo_modification/</guid>
-      <description>Change the MuSHR Racecar&amp;rsquo;s logo!</description>
+      <description>Change the MuSHR Racecar&#39;s logo!</description>
     </item>
     
     <item>
@@ -101,7 +101,8 @@ Sanjiban completed his Ph.D. in Robotics with Sebastian Scherer at Carnegie Mell
       
       <guid>https://mushr.io/services/tax-preperation/</guid>
       <description>Lorem markdownum Achaica revolutaque amore, penitus puppes nec furit, clipeus fatetur, mira inter accedere. Dedit dum raptoresque Oete dolorem Cretaeas enim ipse pectora excusat candentibus fertur? Furtiva Orontes Erysicthona dona, est per Achille viridi draconis cultis mota milia.
- Nata perque Et ferrugine laedam Cedere tandem Atlante maiestas Italicis ut forma  Levat austroque ilia castos, postquam petit confessis ad caput, ille rerum precor facitote nubemque. Potuit Celadon Martem?</description>
+ Nata perque Et ferrugine laedam Cedere tandem Atlante maiestas Italicis ut forma  Levat austroque ilia castos, postquam petit confessis ad caput, ille rerum precor facitote nubemque. Potuit Celadon Martem?
+ Imagine Assaracus victori petet femina mea haustos Sicaniam quibus agro magni In utque Troica pedum caelestia hunc tempto Gregibus certare tamen turbatque qui  Patulis Veneris est expulit adversaque magnum mediaque Omnis est signa cum nec inplevit vivit et insania Orpheu, an abit.</description>
     </item>
     
     <item>
@@ -180,7 +181,7 @@ Ne verba patulosque numen vix libet Agitabitur signa lympha; non lacunae, mox cu
       
       <guid>https://mushr.io/team/johan-michalove/</guid>
       <description>Johan Michalove is a BS/MS student at the Allen School of the University of Washington advised by Prof. Siddhartha Srinivasa. His research focuses on uncertainty in model-predictive control and the ethics of intelligent machines.
-Johan leads the design of MuSHR&amp;rsquo;s tutorials and outreach efforts, contributes to course material for the MuSHR platform, and has designed and implemented core MuSHR packages and infrastructure. He helped support the use of the MuSHR cars in the Winter 2019 Graduate Robotics course and Spring 2019 Undergraduate Mobile Robotics course.</description>
+Johan leads the design of MuSHR&#39;s tutorials and outreach efforts, contributes to course material for the MuSHR platform, and has designed and implemented core MuSHR packages and infrastructure. He helped support the use of the MuSHR cars in the Winter 2019 Graduate Robotics course and Spring 2019 Undergraduate Mobile Robotics course.</description>
     </item>
     
     <item>
@@ -199,7 +200,7 @@ Patrick designs and builds hardware prototypes for the MuSHR platform, and devel
       <pubDate>Mon, 19 Nov 2018 10:47:58 +1000</pubDate>
       
       <guid>https://mushr.io/team/matthew-rockett/</guid>
-      <description>Matthew is a BS/MS student at the Allen School of Computer Science and Engineering at the University of Washington advised by Prof. Siddhartha Srinivasa. He&amp;rsquo;s interested in mobile robotics and multi-agent robotic systems.
+      <description>Matthew is a BS/MS student at the Allen School of Computer Science and Engineering at the University of Washington advised by Prof. Siddhartha Srinivasa. He&#39;s interested in mobile robotics and multi-agent robotic systems.
 Matthew works to maintain the growing MuSHR fleet at UW. He was a TA for the undergraduate course &amp;ldquo;Mobile Robotics&amp;rdquo; in Spring 2019, helping design assignments and iterate on the development of software for the cars. In the past he has done research with the Systems lab at UW.</description>
     </item>
     
@@ -270,7 +271,7 @@ Ne verba patulosque numen vix libet Agitabitur signa lympha; non lacunae, mox cu
       
       <guid>https://mushr.io/forum/</guid>
       <description>Use the forum below to ask questions about the platform. The MuSHR team regularly monitors this message board to give you the most up to date answer. A couple reminders before posting:
- Check whether your question has been previously answered. If you suspect there&amp;rsquo;s a bug, or would like to request a feature, consider filing a bug. Be civil!  </description>
+ Check whether your question has been previously answered. If you suspect there&#39;s a bug, or would like to request a feature, consider filing a bug. Be civil!  </description>
     </item>
     
     <item>
@@ -288,7 +289,7 @@ Ne verba patulosque numen vix libet Agitabitur signa lympha; non lacunae, mox cu
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://mushr.io/about/</guid>
-      <description>The Multi-agent System for non-Holonomic Racing (MuSHR)  is an open-source, full-stack robotics platform designed to advance robotics research and education by making a fully integrated robotic race car available in an easy-to-assemble and economic package.
+      <description>The Multi-agent System for non-Holonomic Racing (MuSHR) is an open-source, full-stack robotics platform designed to advance robotics research and education by making a fully integrated robotic race car available in an easy-to-assemble and economic package.
 Using rapid-prototyping techniques and off-the-shelf parts, we provide the instructions you need to assemble a robotic race car and code to hit the ground running. MuSHR also contains an ever-expanding set of tutorials to make you acquainted with the race car and robotic principles.</description>
     </item>
     

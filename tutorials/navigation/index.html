@@ -184,91 +184,57 @@
           <p>Initialize and operate MuSHRs out-of-the-box autonomous navigation stack!</p> 
           
           <h4 class="properties">Intermediate Tutorial | Expected duration is 30 minutes</h4> 
-          
-
-<h2 id="introduction">Introduction</h2>
-
+          <h2 id="introduction">Introduction</h2>
 <h3 id="goal">Goal</h3>
-
-<p>This tutorial will teach you to set up and operating MuSHR&rsquo;s baseline autonomous navigation stack. By the end of the tutorial, the car will be able to autonomously navigate around known obstacles on a known map.</p>
-
+<p>This tutorial will teach you to set up and operating MuSHR's baseline autonomous navigation stack. By the end of the tutorial, the car will be able to autonomously navigate around known obstacles on a known map.</p>
 <h3 id="requirements">Requirements</h3>
-
-<p>If you intend to run this tutorial on the real car, construct a map of the environment in which you&rsquo;ll be building the car. Our team recommends using <a href="https://wiki.ros.org/slam_gmapping">gmapping</a> or <a href="https://google-cartographer-ros.readthedocs.io/en/latest/">cartographer</a> We will also assume you have built your car with the LiDaR. We recommend access to a secondary linux computer for viewing the visualizations of the localization module, as well as for initializing the particle filter.</p>
-
+<p>If you intend to run this tutorial on the real car, construct a map of the environment in which you'll be building the car. Our team recommends using <a href="https://wiki.ros.org/slam_gmapping">gmapping</a> or <a href="https://google-cartographer-ros.readthedocs.io/en/latest/">cartographer</a> We will also assume you have built your car with the LiDaR. We recommend access to a secondary linux computer for viewing the visualizations of the localization module, as well as for initializing the particle filter.</p>
 <h2 id="navigation-stack-overview">Navigation Stack Overview</h2>
-
-<p>At the highest level MuSHR&rsquo;s navigation stack consists of two principal components:</p>
-
+<p>At the highest level MuSHR's navigation stack consists of two principal components:</p>
 <ol>
-<li><strong>Receding Horizon Controller (RHC) Node:</strong> This node is responsible for planning the motions and generating controls for the car. The implementation we ship with the car uses Model Predictive Control (MPC) to generate control signals which are sent to the car&rsquo;s motor controller (VESC).</li>
+<li><strong>Receding Horizon Controller (RHC) Node:</strong> This node is responsible for planning the motions and generating controls for the car. The implementation we ship with the car uses Model Predictive Control (MPC) to generate control signals which are sent to the car's motor controller (VESC).</li>
 <li><strong>Localization Node:</strong> In order for the controller to know whether it is in the proximity of obstacles, it must know its location on a known map. Solving this problem is called &ldquo;localization&rdquo;. The Localization Node is implemented using a method called Particle Filtering which in this case relies primarily on a data stream from the laser scanner.</li>
 </ol>
-
 <p>This tutorial does not cover Model Predictive Control and Particle Filtering in depth. However we recommend this tutoral to learn more about MPC and this one for Particle Filtering.</p>
-
 <h2 id="installing-the-navigation-stack">Installing the Navigation Stack</h2>
-
 <p>First we will install the RHC and Localization nodes on your robot. If you have already installed them, skip this step.</p>
-
 <p>Ssh onto your racecar.</p>
-
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ssh robot@RACECAR_IP</code></pre></div>
-
 <p>Ensure your racecar has a connection to the internet:
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ping google.com</code></pre></div></p>
-
 <p>This should return a result such as:</p>
-<div class="highlight"><pre class="chroma">64 bytes from 172.217.3.174: icmp_seq=0 ttl=53 time=7.327 ms</pre></div>
-<p>Then download the RHC and localization nodes:
+<pre><code>64 bytes from 172.217.3.174: icmp_seq=0 ttl=53 time=7.327 ms
+</code></pre><p>Then download the RHC and localization nodes:
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Go to your catkin workspace</span>
 $ <span class="nb">cd</span> ~/catkin_ws/src
 <span class="c1"># Clone the RHC node</span>
 $ git clone git@github.com:prl-mushr/mushr_rhc.git 
 <span class="c1"># Clone the localization node</span>
 $ git clone git@github.com:prl-mushr/mushr_pf.git</code></pre></div></p>
-
-<p>Both repositories contain ROS packages that reproduce the desired functionality. However, you need only concern yourself with each package&rsquo;s launch files to use them effectively. You can find the lauch files in each package&rsquo;s <code>launch</code> directory.</p>
-
+<p>Both repositories contain ROS packages that reproduce the desired functionality. However, you need only concern yourself with each package's launch files to use them effectively. You can find the lauch files in each package's <code>launch</code> directory.</p>
 <h2 id="running-the-navigation-stack">Running the navigation stack</h2>
-
 <p>Now we will launch the navigation stack directly on the robot. To learn about strategies for effectively operating and experimenting with the MuSHR car, visit the workflow tutorial series. We suggest using <a href="https://hackernoon.com/a-gentle-introduction-to-tmux-8d784c404340"><code>tmux</code></a> to manage multiple ROSlaunch sessions.</p>
-
-<p>Once you&rsquo;ve ssh&rsquo;d into your robot, activate <code>tmux</code>:
+<p>Once you've ssh'd into your robot, activate <code>tmux</code>:
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ tmux</code></pre></div></p>
-
 <p>Then, to create two vertical panes, type <code>ctrl+b</code> (<code>ctrl</code> and <code>b</code>) then <code>%</code> (or alternatively <code>&quot;</code> to split horizontally). We will need three panes for this tutorial.</p>
-
-<p>First, we will launch <code>teleop.launch</code>, which activates the robot&rsquo;s sensors and hardware, including the motor controller. You will need to activate this launch file for any project which requires using the car&rsquo;s sensors:
+<p>First, we will launch <code>teleop.launch</code>, which activates the robot's sensors and hardware, including the motor controller. You will need to activate this launch file for any project which requires using the car's sensors:
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ roslaunch mushr_base teleop.launch</code></pre></div></p>
-
 <p>Then, to go to the next tmux pane type <code>ctrl+b</code> then <code>[arrow key]</code>. Now, we will launch the localization node in the second tmux pane:
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ roslaunch mushr_pf ParticleFilter.launch</code></pre></div></p>
-
 <p>Then activate the RHC node:
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">roslaunch mushr_rhc real.launch</code></pre></div></p>
-
 <h2 id="operating-the-navigation-stack">Operating the navigation stack</h2>
-
-<p>Now it&rsquo;s time to initialize the particle filter, giving it an initial estimate of the distribution of possible poses. On your separate workstation, we will initialize <code>rviz</code>. <a href="http://wiki.ros.org/rviz/UserGuide">Rviz</a> allows us to visualize the robot&rsquo;s telemetry, such as position, laser scan messages, etc. You&rsquo;ve likely already used it in the simulator.</p>
-
+<p>Now it's time to initialize the particle filter, giving it an initial estimate of the distribution of possible poses. On your separate workstation, we will initialize <code>rviz</code>. <a href="http://wiki.ros.org/rviz/UserGuide">Rviz</a> allows us to visualize the robot's telemetry, such as position, laser scan messages, etc. You've likely already used it in the simulator.</p>
 <p><em>Note: be sure that your <code>ROS_IP</code> and <code>ROS_MASTER_URI</code> environment variables are correctly set before initializaing <code>rviz</code>. See the workflow tutorial for more details.</em>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ rosrun rviz rviz -d <span class="nv">$MUSHR</span>/mushr_utils/rviz/real.rviz</code></pre></div></p>
-
 <p>If you are running this tutorial in sim, run:
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ rosrun rviz rviz -d <span class="nv">$MUSHR</span>/mushr_utils/rviz/sim.rviz</code></pre></div></p>
-
-<p>Initializing <code>rviz</code> with the <code>.rviz</code> files allows you to configure RVIZ&rsquo;s settings, including which ROS topics, in advance. This is handy if you&rsquo;re working on a specific task, or have preferences in how you would like to view the car&rsquo;s telemetry. You can always modify the existing <code>.rviz</code> files and save new ones to taste.</p>
-
-<p>You may now set the initial pose of the car on the map, in a similar position to where you would expect it to be. Press the button labeled &ldquo;2D Pose Estimate&rdquo;. The cursor will become an arrow, and you can press it where you think the car is. Try driving the car around using the joystick, and notice to what extent the localization is able to track the car&rsquo;s position.</p>
-
+<p>Initializing <code>rviz</code> with the <code>.rviz</code> files allows you to configure RVIZ's settings, including which ROS topics, in advance. This is handy if you're working on a specific task, or have preferences in how you would like to view the car's telemetry. You can always modify the existing <code>.rviz</code> files and save new ones to taste.</p>
+<p>You may now set the initial pose of the car on the map, in a similar position to where you would expect it to be. Press the button labeled &ldquo;2D Pose Estimate&rdquo;. The cursor will become an arrow, and you can press it where you think the car is. Try driving the car around using the joystick, and notice to what extent the localization is able to track the car's position.</p>
 <p>Now, we will choose a goal for the car to navigate towards. We recommend starting with simple goal poses and gradually increasing the complexity. To select a goal position, choose the button labeled &ldquo;2D Nav Goal&rdquo; and select the goal pose.</p>
-
-<p>Once you&rsquo;ve seen the session for the rhc node output the text <code>Goal set</code>, hold the left-hand deadman switch to allow the car to track towards its goal. Release the button if you suspect the car is close to a collision.</p>
-
+<p>Once you've seen the session for the rhc node output the text <code>Goal set</code>, hold the left-hand deadman switch to allow the car to track towards its goal. Release the button if you suspect the car is close to a collision.</p>
 <p>If the car loses localization, simply re-click with the &ldquo;2D Pose Estimate&rdquo; button. You can set a new goal at any time, even if the car has not reached the goal you specified.</p>
-
-<p>That&rsquo;s it, now you have basic autonomous navigation!</p>
+<p>That's it, now you have basic autonomous navigation!</p>
 
         </div>
       </div>
