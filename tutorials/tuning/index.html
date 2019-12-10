@@ -188,7 +188,9 @@
 <p>The VESC maps input velocities (m/s) and steering angles (radians) to Electrical RPMs and servo positions. Due to small physical differences in the car, the parameters of the conversion need to be tuned to the specific car. This guide will provide you with the steps needed to tune the parameters of the VESC.</p>
 <p>If incorrectly tuned, the commands applied by your autonomous controller may not correspond to what's being executed on the physical hardware, making it difficult to debug issues with the controller. You as a controller turn out to be pretty good at self correcting, but your autonomous controllers may not fair as well.</p>
 <p><strong>Note:</strong> The conversion from velocity to ERPM and steering angle to servo position is a linear function of the input command:</p>
-<!-- raw HTML omitted -->
+<center>
+`output = f(command) = gain * command + bias`,
+</center>
 <p>so the values may not be acurate for large ranges of speeds. Try to tune around the speed you expect to drive at (and consider retuning if your speed regime changes drasically).</p>
 <h3 id="goal">Goal</h3>
 <p>Set the VESC gains (multiplier/strength of an input) and offsets (defualt value when no control is applied).</p>
@@ -201,7 +203,9 @@
 <p>Find a relatively open space to run your car. We'll be driving it straight for ~9ft (3m) and turning in a semi-circle of diameter ~6ft (2m).</p>
 <p>Plug the batteries into the car, connect to the car's network and <code>ssh</code> into the car.</p>
 <p>The file will be located at:</p>
-<!-- raw HTML omitted -->
+<center>
+`~/catkin_ws/src/mushr_base/vesc/vesc_main/config/racecar-uw-nano/vesc.yaml`.
+</center>
 <p>If you have a different version of the car, you'll choose that one instead. If you don't know which car you have, you likely have the <code>racecar-uw-nano</code> version.</p>
 <p>The file will look like this:</p>
 <div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="c"># erpm (electrical rpm) = speed_to_erpm_gain * speed (meters / second) + speed_to_erpm_offset</span><span class="w">
@@ -236,8 +240,14 @@
 <li>Stop teleop (<code>Ctrl-C</code> in the window you started <code>teleop.launch</code> in) and go back to Step 1.</li>
 </ul>
 <p><strong>Note: Usually this value is between 0.4 and 0.6</strong></p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<figure>
+  <img src="/tutorials/tuning/steering_angle_offset/left.gif" style="width: 32%;" />
+  <img src="/tutorials/tuning/steering_angle_offset/straight.gif" style="width: 32%;" />
+  <img src="/tutorials/tuning/steering_angle_offset/right.gif" style="width: 32%;" />
+  <figcaption>
+	<p>The car during the tuning process. In all tests, the car is commanded to drive straight forward. In the left image, the car's steering angle offset is too high. In the center image, the offset is good. In the right image the offset is too low. <b>Note: the car will never drive perfectly straight. It just has to be good enough. In the future your controller will be able to make small corrections!</b></p>
+  </figcaption>
+</figure>
 <h2 id="speed-to-erpm-gain">Speed to ERPM Gain</h2>
 <p>This gain converts velocity to ERPM.</p>
 <h3 id="how-to-tune1">How to Tune</h3>
@@ -279,7 +289,7 @@
 <p>A good stopping criteria is when the reported distance is within 2-3 inches (0.05-0.076m) of the actual distance. Sometimes the servo will get stuck and veer off course. You can restart teleop and move the car back and try again if this happens. Remember we are looking to get &ldquo;good&rdquo; gains, not perfect gains.</p>
 <h2 id="steering-angle-gain">Steering Angle Gain</h2>
 <p>This gain takes a steering angle in radians and converts it to a servo position. In order to find the desired turn radius, we look to the <a href="https://github.com/prl-mushr/mushr/blob/master/mushr_description/kinematic_car_model.pdf">kinematic car model</a>. At low enough speeds (avoiding slipping and skidding) this model farily accurately represents the movement of the car. The turn radius is:</p>
-<!-- raw HTML omitted -->
+<center>`R = L/2sin(beta)`,</center>
 <p>where <code>L</code> is the length of the car (0.3 meters), and beta is <code>arctan(1/2 * tan(delta))</code>, where delta is the turn radius. We will be setting the turn radius to the max turn radius (0.34 by default).</p>
 <p>We will instead the length of a half cirlce, so <code>2 * R</code>. Calculting this with the defaults, comes out to 1.722 meters (67.79 inches). If you tweak the max turning radius, or change the chassis, you will have to recompute this number.</p>
 <h3 id="how-to-tune2">How to Tune</h3>

@@ -329,7 +329,8 @@ The traceback <span class="k">for</span> the exception was written to the log fi
 </tr>
 </tbody>
 </table>
-<!-- raw HTML omitted -->
+<br>
+Give this a try as you're getting acquainted with your system! <br>
 <h4 id="rosnode">rosnode</h4>
 <p>This tool works very similar to rostopic except on a node level. It is useful to see what nodes are publishing/subscribing to.</p>
 <table>
@@ -349,7 +350,7 @@ The traceback <span class="k">for</span> the exception was written to the log fi
 <td>see what the node is publishing/subscribing to and other important info</td>
 </tr>
 <tr>
-<td><!-- raw HTML omitted --></td>
+<td><br></td>
 <td></td>
 </tr>
 </tbody>
@@ -377,7 +378,7 @@ The traceback <span class="k">for</span> the exception was written to the log fi
 <td>set param value</td>
 </tr>
 <tr>
-<td><!-- raw HTML omitted --></td>
+<td><br></td>
 <td></td>
 </tr>
 </tbody>
@@ -401,7 +402,7 @@ The traceback <span class="k">for</span> the exception was written to the log fi
 <td>gives you the location of the specified package if it finds it</td>
 </tr>
 <tr>
-<td><!-- raw HTML omitted --></td>
+<td><br></td>
 <td></td>
 </tr>
 </tbody>
@@ -429,7 +430,7 @@ The traceback <span class="k">for</span> the exception was written to the log fi
 <td>show all frames and publish rates</td>
 </tr>
 <tr>
-<td><!-- raw HTML omitted --></td>
+<td><br></td>
 <td></td>
 </tr>
 </tbody>
@@ -449,7 +450,7 @@ The traceback <span class="k">for</span> the exception was written to the log fi
 <td>creates pdf of nodes and topics running</td>
 </tr>
 <tr>
-<td><!-- raw HTML omitted --></td>
+<td><br></td>
 <td></td>
 </tr>
 </tbody>
@@ -494,7 +495,7 @@ The traceback <span class="k">for</span> the exception was written to the log fi
 <strong>Fix:</strong> Either your component is not publishing the topic (use rostopic to double check!) or rviz needs to be refreshed or the transform is not publishing (rosrun tf to double check!). Click &ldquo;Reset&rdquo; in rviz and try restarting your node. If the error says not transform from x to /map then you need to make sure the transform is being published (use rosrun tf tf_echo! See <a href="#debugging-tools">Debugging Tools</a>)</p>
 <h4 id="ssh-not-connecting">ssh Not Connecting</h4>
 <p><strong>Hardware/Software:</strong> Hardware<br>
-<strong>Component:</strong> WiFi <!-- raw HTML omitted -->
+<strong>Component:</strong> WiFi <br>
 <strong>ROS Related:</strong> No<br>
 <strong>Fix:</strong> If ssh is not working first do a dumby check to make sure your IP and username are correct. Then try to <code>ping</code> the car IP. If it does not respond, then make sure the car is powered. If powered and still not pinging, then it likely is struggling to pickup wifi. Plug a HDMI cable into the jetson and use <code>ifconfig</code> to confirm wifi. If nothing still, then use the graphical interface to try to connect to wifi. Also, make sure your base computer is on the same network as the car.</p>
 <h4 id="roscore-already-running">Roscore Already Running</h4>
