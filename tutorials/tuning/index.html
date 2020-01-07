@@ -188,9 +188,11 @@
 <p>The VESC maps input velocities (m/s) and steering angles (radians) to Electrical RPMs and servo positions. Due to small physical differences in the car, the parameters of the conversion need to be tuned to the specific car. This guide will provide you with the steps needed to tune the parameters of the VESC.</p>
 <p>If incorrectly tuned, the commands applied by your autonomous controller may not correspond to what's being executed on the physical hardware, making it difficult to debug issues with the controller. You as a controller turn out to be pretty good at self correcting, but your autonomous controllers may not fair as well.</p>
 <p><strong>Note:</strong> The conversion from velocity to ERPM and steering angle to servo position is a linear function of the input command:</p>
-<center>
-`output = f(command) = gain * command + bias`,
-</center>
+<div style="text-align: center;" />
+<code>output = f(command) = gain * command + bias</code>,
+<br />
+<br />
+</div>
 <p>so the values may not be acurate for large ranges of speeds. Try to tune around the speed you expect to drive at (and consider retuning if your speed regime changes drasically).</p>
 <h3 id="goal">Goal</h3>
 <p>Set the VESC gains (multiplier/strength of an input) and offsets (defualt value when no control is applied).</p>
@@ -203,9 +205,11 @@
 <p>Find a relatively open space to run your car. We'll be driving it straight for ~9ft (3m) and turning in a semi-circle of diameter ~6ft (2m).</p>
 <p>Plug the batteries into the car, connect to the car's network and <code>ssh</code> into the car.</p>
 <p>The file will be located at:</p>
-<center>
-`~/catkin_ws/src/mushr_base/vesc/vesc_main/config/racecar-uw-nano/vesc.yaml`.
-</center>
+<div style="text-align: center;" />
+<code>~/catkin_ws/src/mushr_base/vesc/vesc_main/config/racecar-uw-nano/vesc.yaml</code>.
+<br />
+<br />
+</div>
 <p>If you have a different version of the car, you'll choose that one instead. If you don't know which car you have, you likely have the <code>racecar-uw-nano</code> version.</p>
 <p>The file will look like this:</p>
 <div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="c"># erpm (electrical rpm) = speed_to_erpm_gain * speed (meters / second) + speed_to_erpm_offset</span><span class="w">
@@ -233,8 +237,8 @@
 <ol>
 <li>Start teleop:</li>
 </ol>
-<pre><code>roslaunch mushr_base teleop.launch
-</code></pre><ul>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">roslaunch mushr_base teleop.launch
+</code></pre></div><ul>
 <li>Drive car in a straight line a few times. It's never going to be perfectly straight, so as long as it goes straight most of the time, it'll be fine. You can always come back to retune if it's not sufficiently precise.</li>
 <li>Adjust <code>steering_angle_offset</code> in <code>vesc.yaml</code>. Increase the offset if the car veers too much left, decrease if it veers too much right.</li>
 <li>Stop teleop (<code>Ctrl-C</code> in the window you started <code>teleop.launch</code> in) and go back to Step 1.</li>
@@ -250,7 +254,7 @@
 </figure>
 <h2 id="speed-to-erpm-gain">Speed to ERPM Gain</h2>
 <p>This gain converts velocity to ERPM.</p>
-<h3 id="how-to-tune1">How to Tune</h3>
+<h3 id="how-to-tune-1">How to Tune</h3>
 <p>You will be changing the variable: <code>speed_to_erpm_gain</code>.</p>
 <h4 id="before-tuning">Before tuning:</h4>
 <ol>
@@ -260,7 +264,7 @@
 </figure>
 </li>
 </ol>
-<h4 id="tuning-loop1">Tuning loop:</h4>
+<h4 id="tuning-loop-1">Tuning loop:</h4>
 <p>Now, while the car does not drive the reported distance (by <code>rostopic echo</code> command):</p>
 <ol>
 <li>Place car at the base of the tape measure with the back wheelbase (indicated with a white line) lined up with 0.
@@ -273,8 +277,8 @@
 <li>Start teleop.</li>
 <li>Open another terminal on the car and run the command:</li>
 </ul>
-<pre><code>rostopic echo /vesc/odom/pose/pose/position/x
-</code></pre><p>This will echo all the odometry information &ndash; how far the car has driven (in meters) in the <code>x</code> direction since teleop started. The value should be <code>0.0</code> at the start, as the car hasn't moved yet.</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">rostopic echo /vesc/odom/pose/pose/position/x
+</code></pre></div><p>This will echo all the odometry information &ndash; how far the car has driven (in meters) in the <code>x</code> direction since teleop started. The value should be <code>0.0</code> at the start, as the car hasn't moved yet.</p>
 <ul>
 <li>Drive the car forward about 7-8 ft. The car will drive slightly further as it decelerates and stops. Make sure you only drive forward, not altering the servo position, otherwise you'll have both <code>x</code> and <code>y</code> directional changes (which makes it only slightly harder to check distance traveled).</li>
 <li>Record the distance traveled. If your tape measure is in inches, convert to meters.
@@ -292,13 +296,13 @@
 <center>`R = L/2sin(beta)`,</center>
 <p>where <code>L</code> is the length of the car (0.3 meters), and beta is <code>arctan(1/2 * tan(delta))</code>, where delta is the turn radius. We will be setting the turn radius to the max turn radius (0.34 by default).</p>
 <p>We will instead the length of a half cirlce, so <code>2 * R</code>. Calculting this with the defaults, comes out to 1.722 meters (67.79 inches). If you tweak the max turning radius, or change the chassis, you will have to recompute this number.</p>
-<h3 id="how-to-tune2">How to Tune</h3>
+<h3 id="how-to-tune-2">How to Tune</h3>
 <p>You will be changing the variable: <code>steering_angle_to_servo_gain</code>.</p>
-<h4 id="before-tuning1">Before tuning:</h4>
+<h4 id="before-tuning-1">Before tuning:</h4>
 <ol>
 <li>Extend your tape measure to around 7-8 ft on the floor, similar to the tuning procedure above.</li>
 </ol>
-<h4 id="tuning-loop2">Tuning loop:</h4>
+<h4 id="tuning-loop-2">Tuning loop:</h4>
 <p>While the car doesn't drive :</p>
 <ol>
 <li>Place car at the base of the tape measure with the back wheelbase (indicated with a white line) lined up with 0.
