@@ -106,6 +106,15 @@ Sanjiban completed his Ph.D. in Robotics with Sebastian Scherer at Carnegie Mell
     </item>
     
     <item>
+      <title>Global Planner</title>
+      <link>https://mushr.io/tutorials/global_planner/</link>
+      <pubDate>Sat, 25 Jan 2020 15:14:54 +1000</pubDate>
+      
+      <guid>https://mushr.io/tutorials/global_planner/</guid>
+      <description>Plan paths from start to goal in known map</description>
+    </item>
+    
+    <item>
       <title>Autonomous Navigation</title>
       <link>https://mushr.io/tutorials/navigation/</link>
       <pubDate>Wed, 28 Nov 2018 15:14:54 +1000</pubDate>
