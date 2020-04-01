@@ -337,19 +337,19 @@ $ rosparam set validity_resolution 0.0005
 </thead>
 <tbody>
 <tr>
-<td><code>/mushr_global_planner_start</code>|<a href="http://docs.ros.org/api/geometry_msgs/html/msg/Pose.html">geometry_msgs/Pose</a></td>
+<td><code>/mushr_global_planner_start</code></td>
+<td><a href="http://docs.ros.org/api/geometry_msgs/html/msg/Pose.html">geometry_msgs/Pose</a></td>
 <td>Start position</td>
-<td></td>
 </tr>
 <tr>
-<td><code>/mushr_global_planner_goal</code>|<a href="http://docs.ros.org/api/geometry_msgs/html/msg/Pose.html">geometry_msgs/Pose</a></td>
+<td><code>/mushr_global_planner_goal</code></td>
+<td><a href="http://docs.ros.org/api/geometry_msgs/html/msg/Pose.html">geometry_msgs/Pose</a></td>
 <td>Goal position</td>
-<td></td>
 </tr>
 <tr>
-<td><code>/mushr_global_planner_result</code>|<a href="http://docs.ros.org/api/geometry_msgs/html/msg/PoseArray.html">geometry_msgs/PoseArray</a></td>
+<td><code>/mushr_global_planner_result</code></td>
+<td><a href="http://docs.ros.org/api/geometry_msgs/html/msg/PoseArray.html">geometry_msgs/PoseArray</a></td>
 <td>Planned path of poses in world coordinates from start to goal</td>
-<td></td>
 </tr>
 </tbody>
 </table>
@@ -364,9 +364,9 @@ $ rosparam set validity_resolution 0.0005
 </thead>
 <tbody>
 <tr>
-<td><code>/mushr_global_planner</code>|<a href="srv/MushrGlobalPlanner.srv">mushr_global_planner/MushrGlobalPlanner</a></td>
+<td><code>/mushr_global_planner</code></td>
+<td><a href="srv/MushrGlobalPlanner.srv">mushr_global_planner/MushrGlobalPlanner</a></td>
 <td>Calls for a path to be created with a given start, goal, turning radius, and planning time</td>
-<td></td>
 </tr>
 </tbody>
 </table>
@@ -391,9 +391,9 @@ $ rosparam set validity_resolution 0.0005
 <td>The kernal that convolves over the map. A higher kernal size results in a planner that has a larger buffer from walls but may not find a path through tight spaces. Smaller sizes result in less of a buffer from walls.</td>
 </tr>
 <tr>
-<td><code>interpolation_density</code>| <a href="https://docs.python.org/2/c-api/int.html">Integer</a></td>
+<td><code>interpolation_density</code></td>
+<td><a href="https://docs.python.org/2/c-api/int.html">Integer</a></td>
 <td>A number of states in a path so that the path is made up of exactly <code>interpolation_density</code> states.</td>
-<td></td>
 </tr>
 <tr>
 <td><code>validity_resolution</code></td>
