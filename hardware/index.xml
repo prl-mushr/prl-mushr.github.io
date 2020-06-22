@@ -20,6 +20,15 @@
     </item>
     
     <item>
+      <title>Jetson Nano Driver Installation</title>
+      <link>https://mushr.io/hardware/nano_install/</link>
+      <pubDate>Wed, 28 Nov 2018 15:14:54 +1000</pubDate>
+      
+      <guid>https://mushr.io/hardware/nano_install/</guid>
+      <description>Use a script to setup your SD card</description>
+    </item>
+    
+    <item>
       <title>Logo Modification</title>
       <link>https://mushr.io/hardware/logo_modification/</link>
       <pubDate>Wed, 28 Nov 2018 15:14:54 +1000</pubDate>

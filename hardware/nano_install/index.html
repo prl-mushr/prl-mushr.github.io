@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Jetson Nano Driver Installation - MuSHR: The UW Open Racecar Project</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel="icon" href="https://mushr.io/favicon.png">
+
+  
+  
+  <link rel="stylesheet" href="/css/style.min.c2afc1cc4aaac1ae8d3c6236f926d4fa21d34d80395cf9445c90f953db695e44.css">
+  
+
+  
+
+</head>
+
+<body class='page page-tutorials-single'>
+  <div id="main-menu-mobile" class="main-menu-mobile">
+  <ul>
+    
+    
+    <li class="menu-item-quickstart">
+      <a href="/tutorials/quickstart/">
+        
+        <span>Quickstart</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-about">
+      <a href="/about/">
+        
+        <span>About</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-docs">
+      <a href="https://github.com/prl-mushr/mushr#component-documentation">
+        
+        <span>Docs</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-hardware">
+      <a href="/hardware/">
+        
+        <span>Hardware</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-tutorials">
+      <a href="/tutorials/">
+        
+        <span>Tutorials</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-press">
+      <a href="/press/">
+        
+        <span>Press</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-team">
+      <a href="https://personalrobotics.cs.washington.edu/people/">
+        
+        <span>Team</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-contact">
+      <a href="/contact/">
+        
+        <span>Contact</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+  <div class="wrapper">
+    <div class='header'>
+  <div class="container">
+    <div class="logo">
+      <a href="https://mushr.io/"><img alt="Figurit Homepage" src="https://mushr.io/imgs/mushr-logo.svg" /></a>
+    </div>
+    <div class="logo-mobile">
+      <a href="https://mushr.io/"><img alt="Figurit Homepage" src="https://mushr.io/imgs/mushr-logo.svg" /></a>
+    </div>
+    <div id="main-menu" class="main-menu">
+  <ul>
+    
+    
+    <li class="menu-item-quickstart">
+      <a href="/tutorials/quickstart/">
+        
+        <span>Quickstart</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-about">
+      <a href="/about/">
+        
+        <span>About</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-docs">
+      <a href="https://github.com/prl-mushr/mushr#component-documentation">
+        
+        <span>Docs</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-hardware">
+      <a href="/hardware/">
+        
+        <span>Hardware</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-tutorials">
+      <a href="/tutorials/">
+        
+        <span>Tutorials</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-press">
+      <a href="/press/">
+        
+        <span>Press</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-team">
+      <a href="https://personalrobotics.cs.washington.edu/people/">
+        
+        <span>Team</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-contact">
+      <a href="/contact/">
+        
+        <span>Contact</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+    <button id="toggle-main-menu-mobile" class="hamburger hamburger--slider" role="presentation" aria-label="mobile menu trigger">
+  <span class="hamburger-box">
+    <span class="hamburger-inner"></span>
+  </span>
+</button>
+  </div>
+</div>
+    
+<div class="container pb-6 pt-6 pt-md-10 pb-md-10">
+  <div class="row justify-content-start">
+    <div class="col-12 col-md-8">
+      <div class="tutorial tutorial-single">
+        <h1 class="title">Jetson Nano Driver Installation</h1>
+        <div class="content"> 
+          
+          <p>Use a script to setup your SD card</p> 
+          
+          <p>This page provides instructions for installing libraries necessary for operating the MuSHR racecar. Before proceeding with these instructions, we first suggest trying our <a href="/hardware/build_instructions#sd-card-setup">Jetson Nano image</a> that has everything described on this page already installed. However, if your Jetson Nano fails to boot when using our image, you can flash NVIDIA's stock Jetson Nano image to your SD card, and then follow these instructions to install the necessary libraries.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>The following are required before continuing with installing the necessary libraries.</p>
+<ol>
+<li>SD card flashed with <a href="https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit#write">NVIDIA stock image</a></li>
+<li>Internet connection for Jetson Nano (either WiFi or ethernet)</li>
+<li>HDMI cable, mouse, keyboard</li>
+</ol>
+<h2 id="running-install-script">Running Install Script</h2>
+<p>The following steps will setup the required libraries on the Jetson Nano.</p>
+<ol>
+<li>Power on and boot the Jetson Nano.</li>
+<li>Follow the on-screen prompts to complete setup of the Jetson Nano operating system. If you would like your setup to be consistent with our tutorials, we suggest using the following values: <br/>
+<strong>Username: robot</strong><br/>
+<strong>Name: robot</strong><br/>
+<strong>Computer Name: goose</strong><br/></li>
+<li>Download the install script:
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">    wget https://raw.githubusercontent.com/prl-mushr/mushr/master/mushr_utils/install_scripts/mushr_install.sh
+    </code></pre></div> <br/></li>
+<li>Make the install script executable:
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">    chmod +x mushr_install.sh
+    </code></pre></div> <br/></li>
+<li>Execute the script, following the prompts and entering the user password as needed:
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">    ./mushr_install.sh
+    </code></pre></div> <br/></li>
+<li>All of the necessary libraries should now be installed. Now continue finishing software setup <a href="/hardware/build_instructions#software-setup">here</a>.</li>
+</ol>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="strip strip-primary-gradient-top-bottom">
+  <div class="container pt-3 pb-3 pt-md-6 pb-md-3 px-2">
+    <div class="row justify-content-left citation-row">
+        <h1 id="citation">Citation</h1>
+        <p>If you plan to use any part of the the MuSHR platform, including tutorials, codebase, or hardware instructions for a project or paper, please cite 
+        <em><a href="https://arxiv.org/abs/1908.08031">MuSHR: A Low-Cost,
+        Open-Source Robotic Racecar for Education and Research
+        </a></em>:</p></font>
+        <div class="highlight"><pre class="chroma">@article{srinivasa2019mushr,
+ title={{M}u{SHR}: {A} Low-Cost, Open-Source Robotic Racecar for Education and Research},
+ author={Srinivasa, Siddhartha S. and Lancaster, Patrick and Michalove, Johan and Schmittle, Matt and Summers, Colin and Rockett, Matthew and Smith, Joshua R. and Chouhury, Sanjiban and Mavrogiannis, Christoforos and Sadeghi, Fereshteh},
+ journal={CoRR},
+ volume={abs/1908.08031},
+ year={2019}
+}
+</pre></div>
+        <p><br></p>
+    </div>
+  </div>
+</div>
+
+
+  </div>
+
+  <div class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="footer-inner">
+          <h3 class="footer-title">MuSHR: The UW Open Racecar Project</h3>
+          <ul>
+            
+            
+            <li class="menu-item-home">
+              <a href="/">
+                Home
+              </a>
+            </li>
+            
+            <li class="menu-item-contact">
+              <a href="/contact/">
+                Contact
+              </a>
+            </li>
+            
+            <li class="menu-item-newsletter">
+              <a href="https://tinyletter.com/mushr">
+                Newsletter
+              </a>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <div class="sub-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="sub-footer-inner">
+          <ul>
+            <li><strong>Email: </strong><a href="mailto:mushr@cs.washington.edu">
+                mushr@cs.washington.edu</a></li>
+          </ul>
+          <ul>
+            <li class="prl"><a href="https://personalrobotics.cs.washington.edu/">Made with <font color="#FF1690">♥</font> at the Personal Robotics Lab</a></li>
+          </ul>
+          <ul>
+            <li class="prl">Website by <a href="http://johanam.com/"><font color="#36CDC4">Johan</font></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+  
+
+
+
+
+  <script type="text/javascript" src="/js/services.min.96db5a4d9a7ea2d1759fd6847940367b5207c4ef5686df932179e04aefccdf37.js"></script>
+  
+
+
+  
+  <script type="text/javascript" src="/js/scripts.min.bf1e1f7ae8e03db5f012356e825843facdff51c0a559cb0d27fe2bbe1db405c2.js"></script>
+  
+
+  
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-146151202-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+  gtag('config', 'UA-146151202-1');
+</script>
+
+
+
+
+</body>
+
+</html>
