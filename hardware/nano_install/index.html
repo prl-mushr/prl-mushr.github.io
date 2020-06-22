@@ -180,21 +180,39 @@
 <h2 id="running-install-script">Running Install Script</h2>
 <p>The following steps will setup the required libraries on the Jetson Nano.</p>
 <ol>
-<li>Power on and boot the Jetson Nano.</li>
-<li>Follow the on-screen prompts to complete setup of the Jetson Nano operating system. If you would like your setup to be consistent with our tutorials, we suggest using the following values: <br/>
+<li>
+<p>Power on and boot the Jetson Nano.</p>
+</li>
+<li>
+<p>Follow the on-screen prompts to complete setup of the Jetson Nano operating system. If you would like your setup to be consistent with our tutorials, we suggest using the following values: <br/>
 <strong>Username: robot</strong><br/>
 <strong>Name: robot</strong><br/>
-<strong>Computer Name: goose</strong><br/></li>
-<li>Download the install script:
+<strong>Computer Name: goose</strong><br/></p>
+</li>
+<li>
+<p>Download the install script:
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">    wget https://raw.githubusercontent.com/prl-mushr/mushr/master/mushr_utils/install_scripts/mushr_install.sh
-    </code></pre></div> <br/></li>
-<li>Make the install script executable:
+    </code></pre></div> <br/></p>
+</li>
+<li>
+<p>Make the install script executable:
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">    chmod +x mushr_install.sh
-    </code></pre></div> <br/></li>
-<li>Execute the script, following the prompts and entering the user password as needed:
+    </code></pre></div> <br/></p>
+</li>
+<li>
+<p>Execute the script, following the prompts and entering the user password as needed:
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">    ./mushr_install.sh
-    </code></pre></div> <br/></li>
-<li>All of the necessary libraries should now be installed. Now continue finishing software setup <a href="/hardware/build_instructions#software-setup">here</a>.</li>
+    </code></pre></div> <br/></p>
+</li>
+<li>
+<p>Open the realsense viewer:
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">    realsense-viewer
+    </code></pre></div> <br/>
+If the upper right hand corner of the GUI recommends a firmware update, download and install the updated firmware.</p>
+</li>
+<li>
+<p>All of the necessary libraries should now be installed. Now continue finishing software setup <a href="/hardware/build_instructions#software-setup">here</a>.</p>
+</li>
 </ol>
 
         </div>
