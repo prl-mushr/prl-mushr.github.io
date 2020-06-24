@@ -211,6 +211,37 @@
 If the upper right hand corner of the GUI recommends a firmware update, download and install the updated firmware.</p>
 </li>
 <li>
+<p>Open the file <strong>~/catkin_ws/src/mushr/mushr_hardware/launch/sensors.launch</strong>. Comment out the lines that launch <strong>rs_camera.launch</strong>, and add the following code as shown in Fig. 1.</p>
+<p><div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">    &lt;node <span class="nv">pkg</span><span class="o">=</span><span class="s2">&#34;timed_roslaunch&#34;</span> <span class="nv">type</span><span class="o">=</span><span class="s2">&#34;timed_roslaunch.sh&#34;</span>
+          <span class="nv">args</span><span class="o">=</span><span class="s2">&#34;</span><span class="s2">10 realsense2_camera rs_camera.launch camera:=/</span><span class="k">$(</span>arg car_name<span class="k">)</span><span class="s2">/camera tf_prefix:=/</span><span class="k">$(</span>arg car_name<span class="k">)</span><span class="s2">/camera</span><span class="s2">&#34;</span>
+          <span class="nv">name</span><span class="o">=</span><span class="s2">&#34;rs_camera_timed_roslaunch&#34;</span> <span class="nv">output</span><span class="o">=</span><span class="s2">&#34;screen&#34;</span> /&gt;
+    </code></pre></div> <br/>
+<figure>
+    <img src="/hardware/nano_install/rs_camera_delayed_launch.png"
+         alt="Fig. 1" width="800"/> <figcaption>
+            <p>Fig. 1</p>
+        </figcaption>
+</figure>
+</p>
+</li>
+<li>
+<p>Setup an access point on the robot. To do this, first click on the Wi-Fi symbol in the upper right of the Ubuntu GUI and choose <strong>Edit Connections</strong>. Click the plus sign to create a new connection. On the <strong>Choose a Connection Type</strong> dialog, choose <strong>Wi-Fi</strong> from the drop down menu, and then click <strong>Create&hellip;</strong>. Enter the name <strong>Robot AP</strong> into the <strong>Connection Name</strong> field. Under the <strong>Wi-Fi</strong> tab, also enter <strong>Robot AP</strong> into the <strong>SSID</strong> field. Under the <strong>Mode</strong> field, choose <strong>Hotspot</strong>. Under the <strong>BSSID</strong> field, choose the last option (there may only be one option). Under the <strong>Wi-Fi Security</strong> tab, choose the <strong>WPA and WPA2 Personal</strong> option in the <strong>Security</strong> field. Then enter a password into the <strong>Password</strong> field. Then click <strong>Save</strong>. This setup is shown below in Fig. 2 and 3.</p>
+<figure>
+    <img src="/hardware/nano_install/robot_ap_setup.png"
+         alt="Fig. 2" width="800"/> <figcaption>
+            <p>Fig. 2</p>
+        </figcaption>
+</figure>
+
+<figure>
+    <img src="/hardware/nano_install/robot_ap_pass.png"
+         alt="Fig. 3" width="800"/> <figcaption>
+            <p>Fig. 3</p>
+        </figcaption>
+</figure>
+
+</li>
+<li>
 <p>All of the necessary libraries should now be installed. Now continue finishing software setup <a href="/hardware/build_instructions#software-setup">here</a>.</p>
 </li>
 </ol>
