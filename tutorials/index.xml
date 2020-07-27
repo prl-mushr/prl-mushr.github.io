@@ -29,15 +29,6 @@
     </item>
     
     <item>
-      <title>Applying deep learning to the MuSHR project</title>
-      <link>https://mushr.io/tutorials/deep_learning/</link>
-      <pubDate>Wed, 28 Nov 2018 15:14:54 +1000</pubDate>
-      
-      <guid>https://mushr.io/tutorials/deep_learning/</guid>
-      <description>A basic tutorial on using Imitation learning and Reinforcement learning for driving the MuSHR car</description>
-    </item>
-    
-    <item>
       <title>Intro to ROS</title>
       <link>https://mushr.io/tutorials/intro-to-ros/</link>
       <pubDate>Wed, 28 Nov 2018 15:14:54 +1000</pubDate>
@@ -102,6 +93,15 @@ Ne verba patulosque numen vix libet Agitabitur signa lympha; non lacunae, mox cu
       <description>Lorem markdownum aequalis strigis. Saetigeri iubeas, vultu huic alvum nondum de obside ut laniavit arbor palmis, cum quin. Rupes vetat videndo, armigerae crimen habet Priamum nec.
 Ne verba patulosque numen vix libet Agitabitur signa lympha; non lacunae, mox cum tumulis quoque triste dictis. Ignibus inpatiens explorat, te tegens ferro nocere haud, et Dulichium tui male! Quo sed fuit flexit et hic die solido, gloria?
  Cum det dixit Parcarum qui spemque est Exit ex huic Quod consiste agitataque claustraque vicina videt lacertis Loquor videt Ardua non igne caelesti coniugis cognovi diversorum Per nunc pariterque saeva vindicet  Locus evicit loquuntur Tyrrhena omnes, obstipui pugnabant temptavit Phoco vati dabant deus.</description>
+    </item>
+    
+    <item>
+      <title>Applying deep learning to the MuSHR project</title>
+      <link>https://mushr.io/tutorials/deep_learning/</link>
+      <pubDate>Wed, 28 Nov 2018 15:14:54 +1000</pubDate>
+      
+      <guid>https://mushr.io/tutorials/deep_learning/</guid>
+      <description>A basic tutorial on using Imitation learning and Reinforcement learning for driving the MuSHR car</description>
     </item>
     
     <item>
