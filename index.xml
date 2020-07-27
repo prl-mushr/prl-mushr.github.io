@@ -49,6 +49,15 @@ Ne verba patulosque numen vix libet Agitabitur signa lympha; non lacunae, mox cu
     </item>
     
     <item>
+      <title>Applying deep learning to the MuSHR project</title>
+      <link>https://mushr.io/tutorials/deep_learning/</link>
+      <pubDate>Wed, 28 Nov 2018 15:14:54 +1000</pubDate>
+      
+      <guid>https://mushr.io/tutorials/deep_learning/</guid>
+      <description>A basic tutorial on using Imitation learning and Reinforcement learning for driving the MuSHR car</description>
+    </item>
+    
+    <item>
       <title>Build Instructions</title>
       <link>https://mushr.io/hardware/build_instructions/</link>
       <pubDate>Wed, 28 Nov 2018 15:14:54 +1000</pubDate>
