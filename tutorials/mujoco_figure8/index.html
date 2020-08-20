@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Navigating in the MuJoCo Simulator - MuSHR: The UW Open Racecar Project</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel="icon" href="https://mushr.io/favicon.png">
+
+  
+  
+  <link rel="stylesheet" href="/css/style.min.c2afc1cc4aaac1ae8d3c6236f926d4fa21d34d80395cf9445c90f953db695e44.css">
+  
+
+  
+
+</head>
+
+<body class='page page-tutorials-single'>
+  <div id="main-menu-mobile" class="main-menu-mobile">
+  <ul>
+    
+    
+    <li class="menu-item-quickstart">
+      <a href="/tutorials/quickstart/">
+        
+        <span>Quickstart</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-about">
+      <a href="/about/">
+        
+        <span>About</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-docs">
+      <a href="https://github.com/prl-mushr/mushr#component-documentation">
+        
+        <span>Docs</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-hardware">
+      <a href="/hardware/">
+        
+        <span>Hardware</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-tutorials">
+      <a href="/tutorials/">
+        
+        <span>Tutorials</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-press">
+      <a href="/press/">
+        
+        <span>Press</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-team">
+      <a href="https://personalrobotics.cs.washington.edu/people/">
+        
+        <span>Team</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-community forum">
+      <a href="https://spectrum.chat/mushr">
+        
+        <span>Community Forum</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-contact">
+      <a href="/contact/">
+        
+        <span>Contact</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+  <div class="wrapper">
+    <div class='header'>
+  <div class="container">
+    <div class="logo">
+      <a href="https://mushr.io/"><img alt="Figurit Homepage" src="https://mushr.io/imgs/mushr-logo.svg" /></a>
+    </div>
+    <div class="logo-mobile">
+      <a href="https://mushr.io/"><img alt="Figurit Homepage" src="https://mushr.io/imgs/mushr-logo.svg" /></a>
+    </div>
+    <div id="main-menu" class="main-menu">
+  <ul>
+    
+    
+    <li class="menu-item-quickstart">
+      <a href="/tutorials/quickstart/">
+        
+        <span>Quickstart</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-about">
+      <a href="/about/">
+        
+        <span>About</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-docs">
+      <a href="https://github.com/prl-mushr/mushr#component-documentation">
+        
+        <span>Docs</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-hardware">
+      <a href="/hardware/">
+        
+        <span>Hardware</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-tutorials">
+      <a href="/tutorials/">
+        
+        <span>Tutorials</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-press">
+      <a href="/press/">
+        
+        <span>Press</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-team">
+      <a href="https://personalrobotics.cs.washington.edu/people/">
+        
+        <span>Team</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-community forum">
+      <a href="https://spectrum.chat/mushr">
+        
+        <span>Community Forum</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-contact">
+      <a href="/contact/">
+        
+        <span>Contact</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+    <button id="toggle-main-menu-mobile" class="hamburger hamburger--slider" role="presentation" aria-label="mobile menu trigger">
+  <span class="hamburger-box">
+    <span class="hamburger-inner"></span>
+  </span>
+</button>
+  </div>
+</div>
+    
+<div class="container pb-6 pt-6 pt-md-10 pb-md-10">
+  <div class="row justify-content-start">
+    <div class="col-12 col-md-8">
+      <div class="tutorial tutorial-single">
+        <h1 class="title">Navigating in the MuJoCo Simulator</h1>
+        <div class="content"> 
+          
+          <p>Execute a plan/trajectory in the MuJoCo simulator.</p> 
+          
+          <h4 class="properties">Beginner Tutorial | Expected duration is 30 minutes</h4> 
+          
+          <h2> By: <a href=https://github.com/Alrick11>Alrick Dsouza</a></h2>
+<p><figure>
+    <img src="/tutorials/mujoco_figure8/side_shot.gif"
+         alt="MuSHR car making a figure 8" width="800"/> <figcaption>
+            <p>MuSHR car making a figure 8</p>
+        </figcaption>
+</figure>
+
+<br></p>
+<h3 id="introduction">Introduction</h3>
+<p>This tutorial will introduce you to controlling the mushr car in the MuJoCo environment. Why MuJoCo??? MuJoCo is a physics simulator which provides a unique combination of speed, accuracy and modeling power for the purpose of model based optimization, and in particular optimization through contacts. MuJoCo is your goto simulator for RL and Deep RL projects. A well-known example would be DeepMind's humanoid simulations. You can find some very interesting OpenAI+MuJoCo projects <a href="https://gym.openai.com/envs/#mujoco">here</a>.</p>
+<h3 id="goal">Goal</h3>
+<p>To command the MuSHR car to execute a figure 8 plan in the MuJoCo simulator.</p>
+<h3 id="requirements">Requirements</h3>
+<ul>
+<li>Complete the <a href="https://mushr.io/tutorials/quickstart/">Quickstart Tutorial</a></li>
+<li>Complete the <a href="https://mushr.io/tutorials/mujoco/">MuJoco Simulation Tutorial</a></li>
+</ul>
+<h2 id="setup">Setup</h2>
+<p>Let's first start by creating a new rospackage.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> ~/catkin_ws/src
+catkin_create_pkg mushr_mujoco_figure8 rospy geometry_msgs ackermann_msgs
+</code></pre></div><p>Now let's make the directories we will be needing.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> mushr_mujoco_figure8
+mkdir launch plans
+</code></pre></div><p>We will now create a text file containing a sequence of control commands designed to produce a trajectory of figure-8 shape when executed by the vehicle</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> plans
+$ nano figure8.txt
+</code></pre></div><p>Paste the following sequence of control commands into the figure8.txt file.</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">0,0,0.785
+2.0,0.09
+2.0,0.09
+2.0,0.09
+2.0,0.09
+2.0,0.09
+2.0,0.09
+2.0,0.09
+2.0,0.09
+2.0,0.09
+2.0,0.09
+2.0,0.09
+2.0,-0.09
+2.0,-0.09
+2.0,-0.09
+2.0,-0.09
+2.0,-0.09
+2.0,-0.09
+2.0,-0.09
+2.0,-0.09
+2.0,-0.09
+2.0,-0.09
+2.0,-0.09
+0.0,-0.09
+</code></pre></div><h2 id="rostopic-of-interest">Rostopic of interest</h2>
+<p>(Note: This section is only for better understanding, feel free to skip it.)</p>
+<p>Before jumping into the code lets find out which rostopics we need to publish to. In a new terminal window type,</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ roslaunch mushr_mujoco_ros one_car.launch
+</code></pre></div><p>Open a new terminal window, and type the following.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ rostopic list -v 
+</code></pre></div><p>You will see a list of Published and Subscribed topics like below.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">Published topics:
+ * /map_metadata <span class="o">[</span>nav_msgs/MapMetaData<span class="o">]</span> <span class="m">1</span> publisher
+ * /mushr_mujoco_ros/buddy/velocimeter <span class="o">[</span>geometry_msgs/Vector3Stamped<span class="o">]</span> <span class="m">1</span> publisher
+ * /mushr_mujoco_ros/buddy/car_imu <span class="o">[</span>sensor_msgs/Imu<span class="o">]</span> <span class="m">1</span> publisher
+ * /rosout <span class="o">[</span>rosgraph_msgs/Log<span class="o">]</span> <span class="m">3</span> publishers
+ * /rosout_agg <span class="o">[</span>rosgraph_msgs/Log<span class="o">]</span> <span class="m">1</span> publisher
+ * /mux/ackermann_cmd_mux/input/teleop <span class="o">[</span>ackermann_msgs/AckermannDriveStamped<span class="o">]</span> <span class="m">1</span> publisher
+ * /mushr_mujoco_ros/buddy/pose <span class="o">[</span>geometry_msgs/PoseStamped<span class="o">]</span> <span class="m">1</span> publisher
+ * /mushr_mujoco_ros/body_state <span class="o">[</span>mushr_mujoco_ros/BodyStateArray<span class="o">]</span> <span class="m">1</span> publisher
+ * /map <span class="o">[</span>nav_msgs/OccupancyGrid<span class="o">]</span> <span class="m">1</span> publisher
+
+Subscribed topics:
+ * /mushr_mujoco_ros/buddy/initialpose <span class="o">[</span>geometry_msgs/PoseWithCovarianceStamped<span class="o">]</span> <span class="m">1</span> subscriber
+ * /rosout <span class="o">[</span>rosgraph_msgs/Log<span class="o">]</span> <span class="m">1</span> subscriber
+ * /mushr_mujoco_ros/buddy/control <span class="o">[</span>ackermann_msgs/AckermannDriveStamped<span class="o">]</span> <span class="m">1</span> subscriber
+</code></pre></div><p><strong>/mushr_mujoco_ros/buddy/control</strong> in Subscribed topics is our rostopic of interest.</p>
+<h2 id="code">Code</h2>
+<p>The entire code is written below. Feel free to try to code it by yourself, as this code is very similar to the MuSHR Introductory navigation (link: <a href="https://mushr.io/tutorials/intro-to-ros/">MuSHR Intro to ROS</a>), and from the earlier section we now know our rostopic of interest. The code will be explained later on.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> ~/catkin_ws/src/mushr_mujoco_figure8/src
+$ nano path_publisher.py
+</code></pre></div><p>Paste the below code in path_publisher.py.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="ch">#!/usr/bin/env python</span>
+
+<span class="kn">import</span> <span class="nn">rospy</span>
+<span class="kn">from</span> <span class="nn">ackermann_msgs.msg</span> <span class="kn">import</span> <span class="n">AckermannDrive</span><span class="p">,</span> <span class="n">AckermannDriveStamped</span>
+<span class="kn">from</span> <span class="nn">geometry_msgs.msg</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">Point</span><span class="p">,</span>
+    <span class="n">Pose</span><span class="p">,</span>
+    <span class="n">PoseWithCovariance</span><span class="p">,</span>
+    <span class="n">PoseWithCovarianceStamped</span><span class="p">,</span>
+    <span class="n">Quaternion</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">tf.transformations</span> <span class="kn">import</span> <span class="n">quaternion_from_euler</span>
+
+<span class="k">def</span> <span class="nf">run_plan</span><span class="p">(</span><span class="n">pub_init_pose</span><span class="p">,</span> <span class="n">pub_controls</span><span class="p">,</span> <span class="n">plan</span><span class="p">)</span><span class="p">:</span>
+    <span class="n">init</span> <span class="o">=</span> <span class="n">plan</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">send_init_pose</span><span class="p">(</span><span class="n">pub_init_pose</span><span class="p">,</span> <span class="n">init</span><span class="p">)</span>
+    
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">plan</span><span class="p">:</span>
+        <span class="n">send_command</span><span class="p">(</span><span class="n">pub_controls</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+        
+<span class="k">def</span> <span class="nf">send_init_pose</span><span class="p">(</span><span class="n">pub_init_pose</span><span class="p">,</span> <span class="n">init_pose</span><span class="p">)</span><span class="p">:</span>
+    <span class="n">pose_data</span> <span class="o">=</span> <span class="n">init_pose</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">,</span><span class="s2">&#34;</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">pose_data</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span>
+    
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">theta</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">pose_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="p">)</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">pose_data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="p">)</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">pose_data</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="p">)</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="n">Quaternion</span><span class="p">(</span><span class="o">*</span><span class="n">quaternion_from_euler</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">theta</span><span class="p">)</span><span class="p">)</span>
+    <span class="n">point</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
+    <span class="n">pose</span> <span class="o">=</span> <span class="n">PoseWithCovariance</span><span class="p">(</span><span class="n">pose</span><span class="o">=</span><span class="n">Pose</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="n">point</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="n">q</span><span class="p">)</span><span class="p">)</span>
+    <span class="n">pub_init_pose</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">PoseWithCovarianceStamped</span><span class="p">(</span><span class="n">pose</span><span class="o">=</span><span class="n">pose</span><span class="p">)</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">send_command</span><span class="p">(</span><span class="n">pub_controls</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span><span class="p">:</span>
+    <span class="n">cmd</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">,</span><span class="s2">&#34;</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span>
+    <span class="n">v</span><span class="p">,</span> <span class="n">delta</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">cmd</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="p">)</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">cmd</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="p">)</span>
+    
+    <span class="n">dur</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Duration</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+    <span class="n">rate</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Rate</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Time</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="p">)</span>
+    <span class="n">drive</span> <span class="o">=</span> <span class="n">AckermannDrive</span><span class="p">(</span><span class="n">steering_angle</span><span class="o">=</span><span class="n">delta</span><span class="p">,</span> <span class="n">speed</span><span class="o">=</span><span class="n">v</span><span class="p">)</span>
+    
+    <span class="k">while</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Time</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="p">)</span> <span class="o">-</span> <span class="n">start</span> <span class="o">&lt;</span> <span class="n">dur</span><span class="p">:</span>
+        <span class="n">pub_controls</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">AckermannDriveStamped</span><span class="p">(</span><span class="n">drive</span><span class="o">=</span><span class="n">drive</span><span class="p">)</span><span class="p">)</span>
+        <span class="n">rate</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="sa"></span><span class="s2">&#34;</span><span class="s2">__main__</span><span class="s2">&#34;</span><span class="p">:</span>
+    <span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">path_publisher</span><span class="s2">&#34;</span><span class="p">)</span>
+    
+    <span class="n">control_topic</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_param</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">~control_topic</span><span class="s2">&#34;</span><span class="p">,</span> <span class="sa"></span><span class="s2">&#34;</span><span class="s2">/mushr_mujoco_ros/buddy/control</span><span class="s2">&#34;</span><span class="p">)</span>
+    <span class="n">pub_controls</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Publisher</span><span class="p">(</span><span class="n">control_topic</span><span class="p">,</span> <span class="n">AckermannDriveStamped</span><span class="p">,</span> <span class="n">queue_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">init_pose_topic</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_param</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">~init_pose_topic</span><span class="s2">&#34;</span><span class="p">,</span> \
+                                    <span class="sa"></span><span class="s2">&#34;</span><span class="s2">/mushr_mujoco_ros/buddy/initialpose</span><span class="s2">&#34;</span><span class="p">)</span>
+    
+    <span class="n">pub_init_pose</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Publisher</span><span class="p">(</span><span class="n">init_pose_topic</span><span class="p">,</span> <span class="n">PoseWithCovarianceStamped</span><span class="p">,</span> <span class="n">queue_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">plan_file</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_param</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">~plan_file</span><span class="s2">&#34;</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">plan_file</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">plan</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">(</span><span class="p">)</span>
+    
+    <span class="n">rospy</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+    <span class="n">run_plan</span><span class="p">(</span><span class="n">pub_init_pose</span><span class="p">,</span> <span class="n">pub_controls</span><span class="p">,</span> <span class="n">plan</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Make the python script executable.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">chmod +x path_publisher.py
+</code></pre></div><h2 id="the-code-explained">The code explained</h2>
+<p>The detailed explanations of the python functions (run_plan, send_init_pose, send_command) are given in the introductory navigation tutorial (link: <a href="https://mushr.io/tutorials/intro-to-ros/">MuSHR Intro to ROS</a>).</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="sa"></span><span class="s2">&#34;</span><span class="s2">__main__</span><span class="s2">&#34;</span><span class="p">:</span>
+    <span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">path_publisher</span><span class="s2">&#34;</span><span class="p">)</span>
+    
+    <span class="n">control_topic</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_param</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">~control_topic</span><span class="s2">&#34;</span><span class="p">,</span> <span class="sa"></span><span class="s2">&#34;</span><span class="s2">/mushr_mujoco_ros/buddy/control</span><span class="s2">&#34;</span><span class="p">)</span>
+    <span class="n">pub_controls</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Publisher</span><span class="p">(</span><span class="n">control_topic</span><span class="p">,</span> <span class="n">AckermannDriveStamped</span><span class="p">,</span> <span class="n">queue_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    
+    <span class="n">init_pose_topic</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_param</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">~init_pose_topic</span><span class="s2">&#34;</span><span class="p">,</span> \
+                                    <span class="sa"></span><span class="s2">&#34;</span><span class="s2">/mushr_mujoco_ros/buddy/initialpose</span><span class="s2">&#34;</span><span class="p">)</span>    
+    <span class="n">pub_init_pose</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Publisher</span><span class="p">(</span><span class="n">init_pose_topic</span><span class="p">,</span> <span class="n">PoseWithCovarianceStamped</span><span class="p">,</span> <span class="n">queue_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    
+    <span class="n">plan_file</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_param</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">~plan_file</span><span class="s2">&#34;</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">plan_file</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">plan</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">(</span><span class="p">)</span>
+    
+    <span class="n">rospy</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+    <span class="n">run_plan</span><span class="p">(</span><span class="n">pub_init_pose</span><span class="p">,</span> <span class="n">pub_controls</span><span class="p">,</span> <span class="n">plan</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Line 2 initializes the rosnode. Lines 4-5 initializes the publisher node to control the MuSHR car. <code>rospy.get_param(&quot;~control_topic&quot;, &quot;/mushr_mujoco_ros/buddy/control&quot;)</code> calls the rostopic we want to publish messages to (will be more clear while writing the launch file, notice this is the highlighted rostopic from before). Similarly lines 7-9 initializes the publisher node to set the initial position of the MuSHR bot. Lines 11-13 reads the figure8.txt file we just created.</p>
+<h2 id="writing-the-launch-file">Writing the launch file</h2>
+<p>We need to create a launch file to launch our path_publisher.py code. Again the entire code is pasted below, feel free to write your own launch file (Note: Make sure to implement relevant changes in path_publisher.py in case you decide to make changes).</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> ~/catkin_ws/src/mushr_mujoco_figure8/launch
+$ nano path_publisher.launch
+</code></pre></div><p>Paste the below code in path_publisher.launch.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="o">&lt;</span><span class="n">launch</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">arg</span> <span class="n">name</span><span class="o">=</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">control_topic</span><span class="s2">&#34;</span> <span class="n">default</span><span class="o">=</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">/mushr_mujoco_ros/buddy/control</span><span class="s2">&#34;</span> <span class="o">/</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">arg</span> <span class="n">name</span><span class="o">=</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">init_pose_topic</span><span class="s2">&#34;</span> <span class="n">default</span><span class="o">=</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">/mushr_mujoco_ros/buddy/initialpose</span><span class="s2">&#34;</span> <span class="o">/</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">arg</span> <span class="n">name</span><span class="o">=</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">plan_file</span><span class="s2">&#34;</span> <span class="n">default</span><span class="o">=</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">$(find mushr_mujoco_figure8)/plans/figure8.txt</span><span class="s2">&#34;</span> <span class="o">/</span><span class="o">&gt;</span>
+
+    <span class="o">&lt;</span><span class="n">node</span> <span class="n">pkg</span><span class="o">=</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">mushr_mujoco_figure8</span><span class="s2">&#34;</span> <span class="nb">type</span><span class="o">=</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">path_publisher.py</span><span class="s2">&#34;</span> <span class="n">name</span><span class="o">=</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">path_publisher</span><span class="s2">&#34;</span> <span class="n">output</span><span class="o">=</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">screen</span><span class="s2">&#34;</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">param</span> <span class="n">name</span><span class="o">=</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">control_topic</span><span class="s2">&#34;</span> <span class="n">value</span><span class="o">=</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">$(arg control_topic)</span><span class="s2">&#34;</span> <span class="o">/</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">param</span> <span class="n">name</span><span class="o">=</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">init_pose_topic</span><span class="s2">&#34;</span> <span class="n">value</span><span class="o">=</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">$(arg init_pose_topic)</span><span class="s2">&#34;</span> <span class="o">/</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">param</span> <span class="n">name</span><span class="o">=</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">plan_file</span><span class="s2">&#34;</span> <span class="n">value</span><span class="o">=</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">$(arg plan_file)</span><span class="s2">&#34;</span> <span class="o">/</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="o">/</span><span class="n">node</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="o">/</span><span class="n">launch</span><span class="o">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="the-launch-file-explained">The launch file explained</h2>
+<p>Lines 2-4 create arguments with default values (note: these values can be set externally while running the launch file). Lines 6-9, initialize a rosnode with parameters &ldquo;control_topic&rdquo;, &ldquo;init_pose_topic&rdquo; and &ldquo;plan_file&rdquo;, which if you recall are used in rospy.get_param() in path_publisher.py. We can set values to arguments (arg) while executing the launch file. If no value was assigned to the argument, the default is used. In case you decide to make modifications and add some more arguments, make sure you always assign default values to the arguments.</p>
+<h2 id="catkin-make">Catkin_make</h2>
+<p>You are all set. Lets catkin_make our files to start executing the figure 8.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> ~/catkin_ws/
+$ catkin_make
+</code></pre></div><h2 id="executing-the-figure-8">Executing the figure 8</h2>
+<p>Now it's time to execute our code. First let's launch the MuSHR car. In a new terminal, enter the below commands.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">source</span> ~/catkin_ws/devel/setup.bash
+$ roslaunch mushr_mujoco_ros one_car.launch
+</code></pre></div><p>After this step, a MuSHR car is spawned in the MuJoCo simulator as shown below.</p>
+<p><figure>
+    <img src="/tutorials/mujoco_figure8/mujoco.png"
+         alt="MuJoCo simulator a MuSHR car spawned" width="600"/> <figcaption>
+            <p>MuJoCo simulator a MuSHR car spawned</p>
+        </figcaption>
+</figure>
+
+<br>
+Next, in a new terminal enter the following roslaunch command.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ roslaunch mushr_mujoco_figure8 path_publisher.launch
+</code></pre></div><p>Since the default plan file is our plan file of interest, we don't need to add the path to figure8.txt manually. But, if you would like to call a different plan file you can write:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ roslaunch mushr_mujoco_figure8 path_publisher.launch plan_file:<span class="o">=</span><span class="s1">&#39;~/catkin_ws/src/mushr_mujoco_figure8/plans/{name of text file}&#39;</span>
+</code></pre></div><p>Awesome, if your MuSHR car makes an 8, you have successfully completed this tutorial! Feel free to play around and design your own plans and execute them.</p>
+<hr>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="strip strip-primary-gradient-top-bottom">
+  <div class="container pt-3 pb-3 pt-md-6 pb-md-3 px-2">
+    <div class="row justify-content-left citation-row">
+        <h1 id="citation">Citation</h1>
+        <p>If you plan to use any part of the the MuSHR platform, including tutorials, codebase, or hardware instructions for a project or paper, please cite 
+        <em><a href="https://arxiv.org/abs/1908.08031">MuSHR: A Low-Cost,
+        Open-Source Robotic Racecar for Education and Research
+        </a></em>:</p></font>
+        <div class="highlight"><pre class="chroma">@article{srinivasa2019mushr,
+ title={{M}u{SHR}: {A} Low-Cost, Open-Source Robotic Racecar for Education and Research},
+ author={Srinivasa, Siddhartha S. and Lancaster, Patrick and Michalove, Johan and Schmittle, Matt and Summers, Colin and Rockett, Matthew and Smith, Joshua R. and Chouhury, Sanjiban and Mavrogiannis, Christoforos and Sadeghi, Fereshteh},
+ journal={CoRR},
+ volume={abs/1908.08031},
+ year={2019}
+}
+</pre></div>
+        <p><br></p>
+    </div>
+  </div>
+</div>
+
+
+  </div>
+
+  <div class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="footer-inner">
+          <h3 class="footer-title">MuSHR: The UW Open Racecar Project</h3>
+          <ul>
+            
+            
+            <li class="menu-item-home">
+              <a href="/">
+                Home
+              </a>
+            </li>
+            
+            <li class="menu-item-community forum">
+              <a href="https://spectrum.chat/mushr">
+                Community Forum
+              </a>
+            </li>
+            
+            <li class="menu-item-contact">
+              <a href="/contact/">
+                Contact
+              </a>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <div class="sub-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="sub-footer-inner">
+          <ul>
+            <li><strong>Email: </strong><a href="mailto:">
+                </a></li>
+          </ul>
+          <ul>
+            <li class="prl"><a href="https://personalrobotics.cs.washington.edu/">Made with <font color="#FF1690">♥</font> at the Personal Robotics Lab</a></li>
+          </ul>
+          <ul>
+            <li class="prl">Website by <a href="http://johanam.com/"><font color="#36CDC4">Johan</font></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+  
+
+
+
+
+  <script type="text/javascript" src="/js/services.min.96db5a4d9a7ea2d1759fd6847940367b5207c4ef5686df932179e04aefccdf37.js"></script>
+  
+
+
+  
+  <script type="text/javascript" src="/js/scripts.min.bf1e1f7ae8e03db5f012356e825843facdff51c0a559cb0d27fe2bbe1db405c2.js"></script>
+  
+
+  
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-146151202-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+  gtag('config', 'UA-146151202-1');
+</script>
+
+
+
+
+</body>
+
+</html>

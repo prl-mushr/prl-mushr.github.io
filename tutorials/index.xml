@@ -112,6 +112,15 @@ Ne verba patulosque numen vix libet Agitabitur signa lympha; non lacunae, mox cu
     </item>
     
     <item>
+      <title>Navigating in the MuJoCo Simulator</title>
+      <link>https://mushr.io/tutorials/mujoco_figure8/</link>
+      <pubDate>Wed, 15 Jul 2020 15:14:54 +1000</pubDate>
+      
+      <guid>https://mushr.io/tutorials/mujoco_figure8/</guid>
+      <description>Execute a plan/trajectory in the MuJoCo simulator.</description>
+    </item>
+    
+    <item>
       <title>MuJoCo Simulation</title>
       <link>https://mushr.io/tutorials/mujoco/</link>
       <pubDate>Mon, 13 Jul 2020 15:14:54 +1000</pubDate>
