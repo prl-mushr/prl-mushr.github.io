@@ -219,6 +219,15 @@ Johan leads the design of MuSHR&#39;s tutorials and outreach efforts, contribute
     </item>
     
     <item>
+      <title>MuJoCo Simulation</title>
+      <link>https://mushr.io/tutorials/mujoco/</link>
+      <pubDate>Mon, 13 Jul 2020 15:14:54 +1000</pubDate>
+      
+      <guid>https://mushr.io/tutorials/mujoco/</guid>
+      <description>Run a MuSHR simulation with the MuJoCo physics engine.</description>
+    </item>
+    
+    <item>
       <title>Patrick Lancaster</title>
       <link>https://mushr.io/team/patrick-lancaster/</link>
       <pubDate>Mon, 19 Nov 2018 10:47:58 +1000</pubDate>

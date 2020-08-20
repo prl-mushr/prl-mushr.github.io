@@ -111,5 +111,14 @@ Ne verba patulosque numen vix libet Agitabitur signa lympha; non lacunae, mox cu
       <description>Fine tuning car specific control parameters.</description>
     </item>
     
+    <item>
+      <title>MuJoCo Simulation</title>
+      <link>https://mushr.io/tutorials/mujoco/</link>
+      <pubDate>Mon, 13 Jul 2020 15:14:54 +1000</pubDate>
+      
+      <guid>https://mushr.io/tutorials/mujoco/</guid>
+      <description>Run a MuSHR simulation with the MuJoCo physics engine.</description>
+    </item>
+    
   </channel>
 </rss>
