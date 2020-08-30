@@ -385,7 +385,7 @@ $ mkdir plans
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="sa"></span><span class="s2">&#34;</span><span class="s2">__main__</span><span class="s2">&#34;</span><span class="p">:</span>
     <span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">path_publisher</span><span class="s2">&#34;</span><span class="p">)</span>
 
-    <span class="n">control_topic</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_param</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">~control_topic</span><span class="s2">&#34;</span><span class="p">,</span> <span class="sa"></span><span class="s2">&#34;</span><span class="s2">/mux/ackermann_cmd_mux/input/navigation</span><span class="s2">&#34;</span><span class="p">)</span>
+    <span class="n">control_topic</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_param</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">~control_topic</span><span class="s2">&#34;</span><span class="p">,</span> <span class="sa"></span><span class="s2">&#34;</span><span class="s2">/car/mux/ackermann_cmd_mux/input/navigation</span><span class="s2">&#34;</span><span class="p">)</span>
     <span class="n">pub_controls</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Publisher</span><span class="p">(</span><span class="n">control_topic</span><span class="p">,</span> <span class="n">AckermannDriveStamped</span><span class="p">,</span> <span class="n">queue_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
     <span class="n">init_pose_topic</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_param</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">~init_pose_topic</span><span class="s2">&#34;</span><span class="p">,</span> <span class="sa"></span><span class="s2">&#34;</span><span class="s2">/initialpose</span><span class="s2">&#34;</span><span class="p">)</span>
@@ -464,7 +464,7 @@ $ mkdir plans
 <pre class="chroma"><code class="language-python" data-lang="python"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="sa"></span><span class="s2">&#34;</span><span class="s2">__main__</span><span class="s2">&#34;</span><span class="p">:</span>
     <span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">path_publisher</span><span class="s2">&#34;</span><span class="p">)</span>
 
-    <span class="n">control_topic</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_param</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">~control_topic</span><span class="s2">&#34;</span><span class="p">,</span> <span class="sa"></span><span class="s2">&#34;</span><span class="s2">/mux/ackermann_cmd_mux/input/navigation</span><span class="s2">&#34;</span><span class="p">)</span>
+    <span class="n">control_topic</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_param</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">~control_topic</span><span class="s2">&#34;</span><span class="p">,</span> <span class="sa"></span><span class="s2">&#34;</span><span class="s2">/car/mux/ackermann_cmd_mux/input/navigation</span><span class="s2">&#34;</span><span class="p">)</span>
     <span class="n">pub_controls</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Publisher</span><span class="p">(</span><span class="n">control_topic</span><span class="p">,</span> <span class="n">AckermannDriveStamped</span><span class="p">,</span> <span class="n">queue_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
     <span class="n">init_pose_topic</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_param</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">~init_pose_topic</span><span class="s2">&#34;</span><span class="p">,</span> <span class="sa"></span><span class="s2">&#34;</span><span class="s2">/initialpose</span><span class="s2">&#34;</span><span class="p">)</span>
@@ -589,7 +589,7 @@ $ mkdir launch
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;launch</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&#34;control_topic&#34;</span> <span class="na">default=</span><span class="s">&#34;/mux/ackermann_cmd_mux/input/navigation&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&#34;control_topic&#34;</span> <span class="na">default=</span><span class="s">&#34;/car/mux/ackermann_cmd_mux/input/navigation&#34;</span> <span class="nt">/&gt;</span>
     <span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&#34;init_pose_topic&#34;</span> <span class="na">default=</span><span class="s">&#34;/initialpose&#34;</span> <span class="nt">/&gt;</span>
     <span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&#34;plan_file&#34;</span> <span class="na">default=</span><span class="s">&#34;$(find mushr_ros_intro)/plans/straight_line.txt&#34;</span> <span class="nt">/&gt;</span>
 
@@ -626,7 +626,7 @@ $ mkdir launch
 <p>Once this is done, all that's left to do is launch the file and the simulator. In one terminal run the simulator:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ roslaunch mushr_sim teleop.launch
 </code></pre></div><p>In another, start <code>rviz</code> (a ROS tool that allows you to visualize simulated environments):</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ rosrun rviz rviz -d <span class="nv">$MUSHR</span>/mush_utils/rviz/mushr_ros_intro.rviz
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ rosrun rviz rviz -d <span class="nv">$HOME</span>/catkin_ws/src/mushr/mushr_utils/rviz/default.rviz
 </code></pre></div><p>This will launch rviz with a configuration that has all the right topics visualized.</p>
 <p>Now, finally, in another terminal, run the path publisher we created:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ roslaunch mushr_ros_intro path_publisher.launch
