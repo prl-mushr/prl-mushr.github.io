@@ -38,6 +38,15 @@
     </item>
     
     <item>
+      <title>Applying Deep Learning to Autonomous Driving</title>
+      <link>https://mushr.io/tutorials/deep_learning/</link>
+      <pubDate>Wed, 28 Nov 2018 15:14:54 +1000</pubDate>
+      
+      <guid>https://mushr.io/tutorials/deep_learning/</guid>
+      <description>A basic tutorial on using Imitation learning and Reinforcement learning for driving the MuSHR car</description>
+    </item>
+    
+    <item>
       <title>Intro to ROS</title>
       <link>https://mushr.io/tutorials/intro-to-ros/</link>
       <pubDate>Wed, 28 Nov 2018 15:14:54 +1000</pubDate>
@@ -91,15 +100,6 @@ Ne verba patulosque numen vix libet Agitabitur signa lympha; non lacunae, mox cu
       
       <guid>https://mushr.io/tutorials/workflow/</guid>
       <description>Techniques for devloping and troubleshooting with the cars.</description>
-    </item>
-    
-    <item>
-      <title>Applying Deep Learning to Autonomous Driving</title>
-      <link>https://mushr.io/tutorials/deep_learning/</link>
-      <pubDate>Wed, 28 Nov 2018 15:14:54 +1000</pubDate>
-      
-      <guid>https://mushr.io/tutorials/deep_learning/</guid>
-      <description>A basic tutorial on using Imitation learning and Reinforcement learning for driving the MuSHR car</description>
     </item>
     
     <item>

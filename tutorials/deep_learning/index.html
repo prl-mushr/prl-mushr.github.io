@@ -185,7 +185,7 @@
           
           <h4 class="properties">Intermediate Tutorial | Expected duration is 90 minutes</h4> 
           
-          <h2> By: <a href=https://www.sidharthtalia.com/>Sidharth Talia</a></h2>
+          <h2> By: <a href=https://www.sidharthtalia.com>Sidharth Talia</a></h2>
 <p><figure>
     <img src="/tutorials/MUSHR-DL/mushr_DL.gif" width="800"/> 
 </figure>
@@ -239,7 +239,7 @@ Open the terminal(Linux) or command-line interface (Windows) and navigate to the
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> PATH<span class="se">\\</span>TO<span class="se">\\</span>DonkeySim
 </code></pre></div><p>Execute these commands in the DonkeySim directory:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ git clone https://github.com/prl-mushr/gym-donkeycar.git
-$ pip3 install gym-donkeycar
+$ pip3 install -e gym-donkeycar
 $ git clone https://github.com/prl-mushr/MUSHR-DL.git
 </code></pre></div><p>Dependencies:
 The remaining dependencies can be installed by running</p>
@@ -272,7 +272,7 @@ $ sudo chmod +x donkey_sim.x86_64
 a) Start the simulator by double-clicking it.</p>
 <p>b) Execute the following commands in the terminal:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> DonkeySim
-$ python gym-donkeycar/examples/reinforcement_learning/ddqn.py
+$ python3 gym-donkeycar/examples/reinforcement_learning/ddqn.py
 </code></pre></div><p>It is possible to start the simulator by passing an argument as well but it's not the most user-friendly method, so it has been omitted for the sake of simplicity.</p>
 <p>You can expect the car to start moving erratically and resetting to its initial position every time it hits something or crosses the lane boundary like so:</p>
 <figure>
@@ -283,7 +283,7 @@ $ python gym-donkeycar/examples/reinforcement_learning/ddqn.py
 <p><strong>Testing:</strong>
 You can test your model with the following command:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> DonkeySim
-$ python gym-donkeycar/examples/reinforcement_learning/ddqn.py --test
+$ python3 gym-donkeycar/examples/reinforcement_learning/ddqn.py --test
 </code></pre></div><h3 id="imitation-learning">Imitation Learning:</h3>
 <p>Imitation learning: Imitation learning involves 4 steps; data collection, post-processing, training, and testing. For collecting training data as well as for running the models, the same file &ldquo;run_sim.py&rdquo; needs to be run.</p>
 <ol>
@@ -301,7 +301,7 @@ abort and change driving mode (auto or manual).</p>
 </li>
 </ol>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> DonkeySim
-$ python run_sim.py --dataset_name<span class="o">=</span>testing
+$ python3 run_sim.py --dataset_name<span class="o">=</span>testing
 </code></pre></div><p>You will notice a similar interface as before:</p>
 <figure>
     <img src="/tutorials/MUSHR-DL/driving_standalone.PNG" width="400"/> 
@@ -328,23 +328,23 @@ The next step is to run post-processing on the collected data: post-processing i
 </ol>
 <p>In this tutorial, we will create a dataset for training an image-to-steering network.</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> DonkeySim/MUSHR-DL
-$ python post_processing_mushr.py --dataset_name<span class="o">=</span><span class="nb">test</span> --model<span class="o">=</span>steering
+$ python3 post_processing_mushr.py --dataset_name<span class="o">=</span><span class="nb">test</span> --model<span class="o">=</span>steering
 </code></pre></div><ol start="3">
 <li><strong>Training</strong>:
 Execute the following command to begin training the steering predicting model (assuming the dataset for steering prediction has been generated in the previous step):</li>
 </ol>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> DonkeySim/MUSHR-DL
-$ python pytorch_img_to_steering_train.py --dataset_name<span class="o">=</span><span class="nb">test</span>
+$ python3 pytorch_img_to_steering_train.py --dataset_name<span class="o">=</span><span class="nb">test</span>
 </code></pre></div><p>the model will be saved with a preset name. The same model name is used in testing as well as the model running script, and so for the sake of the tutorial, the name should be left as is.</p>
 <p>Testing:
 The following command can be used to test the model. The printed numbers are the error (or difference) between the ground truth (human driver or supervisor's response to the input image) and the network output.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ python pytorch_img_to_steering_test.py --dataset_name<span class="o">=</span><span class="nb">test</span>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ python3 pytorch_img_to_steering_test.py --dataset_name<span class="o">=</span><span class="nb">test</span>
 </code></pre></div><ol start="4">
 <li><strong>Driving the car using the trained model</strong>:</li>
 </ol>
 <p>To use a model for driving the car (assuming that the model exists), start the simulator again by double-clicking the donkey_sim.exe/x86_64 and then run the following commands:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> DonkeySim/MUSHR-DL
-$ python run_sim.py --test<span class="o">=</span>True --model<span class="o">=</span>steering --env_name<span class="o">=</span>MUSHR_benchmark
+$ python3 run_sim.py --test<span class="o">=</span>True --model<span class="o">=</span>steering --env_name<span class="o">=</span>MUSHR_benchmark
 </code></pre></div><p>The environment &ldquo;MUSHR_benchmark&rdquo; is a simpler, fixed environment that you can use to compare the performance of different networks.
 the model type is set to steering as we trained a simple image to steering prediction network.</p>
 <p>When the environment loads, you'll notice that you can still control the car manually with the mouse. To enable the neural net steering, press &ldquo;A&rdquo;. You will notice that the steering will now operate on its own and will not be affected by your mouse inputs. The throttle will still be in your control and so you will have to use the mouse to apply throttle.</p>
