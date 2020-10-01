@@ -237,7 +237,11 @@ $ <span class="nb">cd</span> ~/catkin_ws <span class="o">&amp;&amp;</span> catki
 <h3 id="on-real-car">On Real Car</h3>
 <p>To enable the robot's sensors and hardware including the motor controller, you will need to activate this launch file for any project which requires using the car's sensors:
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ roslaunch mushr_base teleop.launch</code></pre></div></p>
-<p>Then, to go to the next tmux pane type <code>ctrl+b</code> then <code>[arrow key]</code>. Now, we will launch the localization node in the second tmux pane:
+<p>Then, to go to the next tmux pane type <code>ctrl+b</code> then <code>[arrow key]</code>. Now launch the <code>map_server</code>:
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Make sure mushr/mushr_base/mushr_base/mushr_base/maps has your map</span> 
+<span class="c1"># and mushr_base/launch/includes/map_server.launch is set to your map</span>
+$ roslaunch mushr_base map_server.launch</code></pre></div></p>
+<p>Now, we will launch the localization node:
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ roslaunch mushr_pf real.launch</code></pre></div></p>
 <p>Then activate the RHC node,</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ roslaunch mushr_rhc_ros real.launch</code></pre></div>
