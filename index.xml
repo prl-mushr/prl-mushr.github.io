@@ -20,15 +20,6 @@
     </item>
     
     <item>
-      <title>Siddhartha Srinivasa</title>
-      <link>https://mushr.io/team/sidd-srinivasa/</link>
-      <pubDate>Mon, 19 Nov 2018 10:47:58 +1000</pubDate>
-      
-      <guid>https://mushr.io/team/sidd-srinivasa/</guid>
-      <description>Siddhartha Srinivasa is the Boeing Endowed Professor at The Paul G. Allen School of Computer Science &amp;amp; Engineering at the University of Washington, and an IEEE Fellow. He is a full-stack roboticist, with the goal of enabling robots to perform complex manipulation tasks under uncertainty and clutter, with and around people. To this end, he founded the Personal Robotics Lab in 2005. He was a PI on the Quality of Life Technologies NSF ERC, DARPA ARM-S and the DARPA Robotics Challenge, has built several robots (HERB, ADA, CHIMP), and has written software frameworks (OpenRAVE, DART) and best-paper award winning algorithms (CBiRRT, CHOMP, BIT*, Legibility) used extensively by roboticists around the world.</description>
-    </item>
-    
-    <item>
       <title>Accounting</title>
       <link>https://mushr.io/services/accounting/</link>
       <pubDate>Sun, 18 Nov 2018 12:33:46 +1000</pubDate>
@@ -121,16 +112,6 @@ Ne verba patulosque numen vix libet Agitabitur signa lympha; non lacunae, mox cu
     </item>
     
     <item>
-      <title>Sanjiban Choudhury</title>
-      <link>https://mushr.io/team/sanjiban-choudhury/</link>
-      <pubDate>Mon, 19 Nov 2018 10:47:58 +1000</pubDate>
-      
-      <guid>https://mushr.io/team/sanjiban-choudhury/</guid>
-      <description>Sanjiban Choudhury is a postdoctoral research associate Fellow at the Allen School of Computer Science and Engineering at the University of Washington, where he works with Professor Siddhartha Srinivasa. He is interested in problems at the intersection of learning and planning.
-Sanjiban completed his Ph.D. in Robotics with Sebastian Scherer at Carnegie Mellon University. His thesis work is on the design of planning algorithms that can adapt to the environment, the perception capabilities and the dynamics constraints of a robot.</description>
-    </item>
-    
-    <item>
       <title>Tax Preperation</title>
       <link>https://mushr.io/services/tax-preperation/</link>
       <pubDate>Sun, 18 Nov 2018 12:33:46 +1000</pubDate>
@@ -195,75 +176,6 @@ Sanjiban completed his Ph.D. in Robotics with Sebastian Scherer at Carnegie Mell
       <description>Lorem markdownum aequalis strigis. Saetigeri iubeas, vultu huic alvum nondum de obside ut laniavit arbor palmis, cum quin. Rupes vetat videndo, armigerae crimen habet Priamum nec.
 Ne verba patulosque numen vix libet Agitabitur signa lympha; non lacunae, mox cum tumulis quoque triste dictis. Ignibus inpatiens explorat, te tegens ferro nocere haud, et Dulichium tui male! Quo sed fuit flexit et hic die solido, gloria?
  Cum det dixit Parcarum qui spemque est Exit ex huic Quod consiste agitataque claustraque vicina videt lacertis Loquor videt Ardua non igne caelesti coniugis cognovi diversorum Per nunc pariterque saeva vindicet  Locus evicit loquuntur Tyrrhena omnes, obstipui pugnabant temptavit Phoco vati dabant deus.</description>
-    </item>
-    
-    <item>
-      <title>Christoforos Mavrogiannis</title>
-      <link>https://mushr.io/team/christoforos-mavrogiannis/</link>
-      <pubDate>Mon, 19 Nov 2018 10:47:58 +1000</pubDate>
-      
-      <guid>https://mushr.io/team/christoforos-mavrogiannis/</guid>
-      <description>Christoforos (Chris) Mavrogiannis is a postdoctoral research associate in the Paul G. Allen School of Computer Science &amp;amp; Engineering at the University of Washington, working with Prof. Siddhartha Srinivasa and the Personal Robotics Lab. Chris received his Ph.D. from Cornell University, where he worked on the design of motion planning algorithms for social robot navigation in crowded human environments. His current research interests include consensus problems for multi-robot navigation, and human-robot collaboration applications.</description>
-    </item>
-    
-    <item>
-      <title>Fereshteh Sadeghi</title>
-      <link>https://mushr.io/team/fereshteh-sadeghi/</link>
-      <pubDate>Mon, 19 Nov 2018 10:47:58 +1000</pubDate>
-      
-      <guid>https://mushr.io/team/fereshteh-sadeghi/</guid>
-      <description>Fereshteh Sadeghi is a postdoctoral researcher at the University of Washington working with Prof. Siddhartha Srinivasa. She completed her PhD at University of Washington where she worked on domain invariant vision-based policy learning for robotics. Her research is focused on developing learning algorithms that combine perception and control for learning robot skills.
-Fereshteh is interested in how learning can be used to enable machines acquire behavioral skills that can generalize to unstructured real world settings.</description>
-    </item>
-    
-    <item>
-      <title>Matt Schmittle</title>
-      <link>https://mushr.io/team/matt-schmittle/</link>
-      <pubDate>Mon, 19 Nov 2018 10:47:58 +1000</pubDate>
-      
-      <guid>https://mushr.io/team/matt-schmittle/</guid>
-      <description>Matt &amp;ldquo;Schmittle&amp;rdquo; Schmittle is a second year P.h.D. student at the University of Washington Allen School of Computer Science. He is advised by Prof. Siddhartha Srinivasa and Prof. Dieter Fox. His general research interests are in multi-agent collaborative learning, perception, and navigation.
-Schmittle works on the core software components that run on each car and general management for the project. He was a TA for the undergraduate course “Mobile Robotics” in Spring 2019, helping design assignments, teach classes, and grading.</description>
-    </item>
-    
-    <item>
-      <title>Johan Michalove</title>
-      <link>https://mushr.io/team/johan-michalove/</link>
-      <pubDate>Mon, 19 Nov 2018 10:47:58 +1000</pubDate>
-      
-      <guid>https://mushr.io/team/johan-michalove/</guid>
-      <description>Johan Michalove is a BS/MS student at the Allen School of the University of Washington advised by Prof. Siddhartha Srinivasa. His research focuses on uncertainty in model-predictive control and the ethics of intelligent machines.
-Johan leads the design of MuSHR&#39;s tutorials and outreach efforts, contributes to course material for the MuSHR platform, and has designed and implemented core MuSHR packages and infrastructure. He helped support the use of the MuSHR cars in the Winter 2019 Graduate Robotics course and Spring 2019 Undergraduate Mobile Robotics course.</description>
-    </item>
-    
-    <item>
-      <title>Patrick Lancaster</title>
-      <link>https://mushr.io/team/patrick-lancaster/</link>
-      <pubDate>Mon, 19 Nov 2018 10:47:58 +1000</pubDate>
-      
-      <guid>https://mushr.io/team/patrick-lancaster/</guid>
-      <description>Patrick Lancaster is a PhD candidate at the Allen School of Computer Science and Engineering at the University of Washington advised by Prof. Joshua Smith and Prof. Siddhartha Srinivasa. His research focuses on sensing for robot manipulation.
-Patrick designs and builds hardware prototypes for the MuSHR platform, and develops the software drivers necessary for both simulation and real-world execution of the robot. In Autumn 2018, he was the primary instructor for a Masters level course focused on autonomous navigation using the MuSHR platform.</description>
-    </item>
-    
-    <item>
-      <title>Matthew Rockett</title>
-      <link>https://mushr.io/team/matthew-rockett/</link>
-      <pubDate>Mon, 19 Nov 2018 10:47:58 +1000</pubDate>
-      
-      <guid>https://mushr.io/team/matthew-rockett/</guid>
-      <description>Matthew is a BS/MS student at the Allen School of Computer Science and Engineering at the University of Washington advised by Prof. Siddhartha Srinivasa. He&#39;s interested in mobile robotics and multi-agent robotic systems.
-Matthew works to maintain the growing MuSHR fleet at UW. He was a TA for the undergraduate course &amp;ldquo;Mobile Robotics&amp;rdquo; in Spring 2019, helping design assignments and iterate on the development of software for the cars. In the past he has done research with the Systems lab at UW.</description>
-    </item>
-    
-    <item>
-      <title>Colin Summers</title>
-      <link>https://mushr.io/team/colin-summers/</link>
-      <pubDate>Mon, 19 Nov 2018 10:47:58 +1000</pubDate>
-      
-      <guid>https://mushr.io/team/colin-summers/</guid>
-      <description>Colin Summers is a BS/MS student in the Paul G. Allen School of Computer Science &amp;amp; Engineering and is advised by Prof. Siddhartha Srinivasa. He is primarily interested in algorithms that enable intelligent machines to acquire general notions of intelligence in order to robustly solve complex and temporally-extended tasks in real-world settings.
-Colin works to design and implement perception algorithms that enable realtime autonomous operation of MuSHR. He also helps wrangle the growing MuSHR software ecosystem.</description>
     </item>
     
     <item>
