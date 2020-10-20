@@ -63,6 +63,11 @@
   </url>
   
   <url>
+    <loc>https://mushr.io/tutorials/carpose/</loc>
+    <lastmod>2020-10-20T15:08:28-07:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://mushr.io/tutorials/mujoco_figure8/</loc>
     <lastmod>2020-09-10T13:00:31-07:00</lastmod>
   </url>
