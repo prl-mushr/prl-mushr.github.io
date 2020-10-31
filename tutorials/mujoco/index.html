@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>MuJoCo Simulation - MuSHR: The UW Open Racecar Project</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel="icon" href="https://mushr.io/favicon.png">
+
+  
+  
+  <link rel="stylesheet" href="/css/style.min.c2afc1cc4aaac1ae8d3c6236f926d4fa21d34d80395cf9445c90f953db695e44.css">
+  
+
+  
+
+</head>
+
+<body class='page page-tutorials-single'>
+  <div id="main-menu-mobile" class="main-menu-mobile">
+  <ul>
+    
+    
+    <li class="menu-item-quickstart">
+      <a href="/tutorials/quickstart/">
+        
+        <span>Quickstart</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-about">
+      <a href="/about/">
+        
+        <span>About</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-docs">
+      <a href="https://github.com/prl-mushr/mushr#component-documentation">
+        
+        <span>Docs</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-hardware">
+      <a href="/hardware/">
+        
+        <span>Hardware</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-tutorials">
+      <a href="/tutorials/">
+        
+        <span>Tutorials</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-press">
+      <a href="/press/">
+        
+        <span>Press</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-team">
+      <a href="https://personalrobotics.cs.washington.edu/people/">
+        
+        <span>Team</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-community forum">
+      <a href="https://spectrum.chat/mushr">
+        
+        <span>Community Forum</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-contact">
+      <a href="/contact/">
+        
+        <span>Contact</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+  <div class="wrapper">
+    <div class='header'>
+  <div class="container">
+    <div class="logo">
+      <a href="https://mushr.io/"><img alt="Figurit Homepage" src="https://mushr.io/imgs/mushr-logo.svg" /></a>
+    </div>
+    <div class="logo-mobile">
+      <a href="https://mushr.io/"><img alt="Figurit Homepage" src="https://mushr.io/imgs/mushr-logo.svg" /></a>
+    </div>
+    <div id="main-menu" class="main-menu">
+  <ul>
+    
+    
+    <li class="menu-item-quickstart">
+      <a href="/tutorials/quickstart/">
+        
+        <span>Quickstart</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-about">
+      <a href="/about/">
+        
+        <span>About</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-docs">
+      <a href="https://github.com/prl-mushr/mushr#component-documentation">
+        
+        <span>Docs</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-hardware">
+      <a href="/hardware/">
+        
+        <span>Hardware</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-tutorials">
+      <a href="/tutorials/">
+        
+        <span>Tutorials</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-press">
+      <a href="/press/">
+        
+        <span>Press</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-team">
+      <a href="https://personalrobotics.cs.washington.edu/people/">
+        
+        <span>Team</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-community forum">
+      <a href="https://spectrum.chat/mushr">
+        
+        <span>Community Forum</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-contact">
+      <a href="/contact/">
+        
+        <span>Contact</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+
+    <button id="toggle-main-menu-mobile" class="hamburger hamburger--slider" role="presentation" aria-label="mobile menu trigger">
+  <span class="hamburger-box">
+    <span class="hamburger-inner"></span>
+  </span>
+</button>
+  </div>
+</div>
+    
+<script>
+  document.getElementsByClassName("menu-item-quickstart")[1].classList.add('active')
+</script>
+<div class="container pb-6 pt-6 pt-md-10 pb-md-10">
+  <div class="row justify-content-start">
+    <div class="col-12 col-md-8">
+      <div class="tutorial tutorial-single">
+        <h1 class="title">MuJoCo Simulation</h1>
+        <div class="content"> 
+          
+          <p>Run a MuSHR simulation with the MuJoCo physics engine.</p> 
+          
+          <h4 class="properties">Beginner Tutorial | Expected duration is 30 minutes</h4> 
+          
+          <h2> By: <a href=https://github.com/21WANGC>Caelen Wang</a></h2>
+<p><figure>
+    <img src="/tutorials/mujoco/mushr_mujoco.png" width="800"/> 
+</figure>
+
+<br></p>
+<h2 id="introduction">Introduction</h2>
+<h3 id="goal">Goal</h3>
+<p>This tutorial will introduce you to the MuSHR MuJoCo simulation. MuJoCo is a
+physics engine that provides accurate simulations for real-world interactions.
+By the end of the tutorial, you would be able to run a basic MuSHR simulation in
+the MuJoCo environment.</p>
+<h3 id="requirements">Requirements</h3>
+<ul>
+<li>
+<p>The full MuSHR stack from the
+<a href="https://mushr.io/tutorials/quickstart/">Quickstart</a> tutorial</p>
+</li>
+<li>
+<p>ROS, follow the <a href="https://mushr.io/tutorials/intro-to-ros/">Intro to ROS</a>
+tutorial for a refresher</p>
+</li>
+<li>
+<p>A licensed copy of <a href="https://www.roboti.us/index.html">MuJoCo</a>. Place the
+extracted folder <code>mujoco200_linux</code> along with the license <code>mjkey.txt</code> in the directory <code>~/.mujoco/</code></p>
+</li>
+<li>
+<p><a href="https://cmake.org/download/">Cmake</a> miminum version 3.13.2</p>
+</li>
+</ul>
+<h3 id="setup">Setup</h3>
+<p>Clone the MuSHR MuJoCo repository into your catkin workspace:
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Go to your catkin workspace</span>
+$ <span class="nb">cd</span> ~/catkin_ws/src
+<span class="c1"># Clone the MuSHR MuJoCo repository</span>
+$ git clone git@github.com:prl-mushr/mushr_mujoco_ros.git</code></pre></div></p>
+<p>Note that in <code>CMakeLists.txt</code>, you can specify the MuJoCo directory with
+the <code>MUJOCO_LOCATION</code> environment variable. The default path is <code>~/.mujoco/</code>. Optionally, if you want to use OpenGL for enhanced graphics,
+set the <code>USE_GL</code> environment variable to 1, which is the default value. To
+compile with GL install GLFW:
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo apt-get install libglfw3-dev</code></pre></div></p>
+<p>Compile your workspace:
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> .. <span class="o">&amp;&amp;</span> catkin_make</code></pre></div></p>
+<h3 id="running-the-simulator">Running the Simulator</h3>
+<p>To demonstrate the MuSHR MuJoCo environment, we will run a simple simulation
+of a car and a block that can be pushed. Each simulation requires a ROS launch
+file, a MuJoCo model XML file, and a configuration YAML file with the same name.
+Take a look at <code>launch/block.launch</code>, <code>models/block.xml</code>, and
+<code>config/block.yaml</code>.</p>
+<p>In the launch file, we can use a specific map file. The environment variable
+should match the name of the three files mentioned above:
+<div class="highlight"><pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&#34;map_server&#34;</span> <span class="na">default=</span><span class="s">&#34;1&#34;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&#34;map_file&#34;</span> <span class="na">default=</span><span class="s">&#34;$(find mushr_mujoco_ros)/maps/empty.yaml&#34;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&#34;environment&#34;</span> <span class="na">default=</span><span class="s">&#34;block&#34;</span> <span class="nt">/&gt;</span></code></pre></div></p>
+<p>The node parameters specify the MuJoCo key, XML file, and YAML file paths, as
+well as visualization. The default paths follow that in the previous step:
+<div class="highlight"><pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;node</span> <span class="na">pkg=</span><span class="s">&#34;mushr_mujoco_ros&#34;</span> <span class="na">name=</span><span class="s">&#34;mushr_mujoco_ros&#34;</span> <span class="na">type=</span><span class="s">&#34;mushr_mujoco_ros_node&#34;</span> <span class="na">output=</span><span class="s">&#34;screen&#34;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&#34;mj_key&#34;</span> <span class="na">value=</span><span class="s">&#34;~/.mujoco/mjkey.txt&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&#34;model_file_path&#34;</span> <span class="na">value=</span><span class="s">&#34;$(find mushr_mujoco_ros)/models/$(arg environment).xml&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&#34;config_file_path&#34;</span> <span class="na">value=</span><span class="s">&#34;$(find mushr_mujoco_ros)/config/$(arg environment).yaml&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&#34;viz&#34;</span> <span class="na">value=</span><span class="s">&#34;true&#34;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/node&gt;</span></code></pre></div></p>
+<p>The model XML file contains MuJoCo constants that define the bodies and actuator parameters for the simulate car. To add a car to the simulation, use an
+&ldquo;include&rdquo; tag with the path from the <code>models</code> directory:
+<div class="highlight"><pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;include</span> <span class="na">file=</span><span class="s">&#34;cars/pusher_car/buddy.xml&#34;</span><span class="nt">/&gt;</span></code></pre></div></p>
+<p>The configuration YAML file is a list of bodies and cars whose position will be published to different topics. The MuSHR vehicles are listed under &ldquo;cars&rdquo; while
+other objects are listed under &ldquo;bodies&rdquo;. In this simulation, the car <code>buddy</code>
+receives the control, pose, and initpose messages on the <code>controls</code>, <code>pose</code>, and <code>initialpose</code> ROS topics:
+<div class="highlight"><pre class="chroma"><code class="language-xml" data-lang="xml">cars:
+- name: buddy
+  control_topic : control
+  pose_topic: pose
+  initpose_topic: initialpose</code></pre></div></p>
+<p>With a grasp of the basic structure, we can start the simulation:
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ roslaunch mushr_mujoco_ros block.launch</code></pre></div></p>
+<p>To control the car with WASD keyboard input, open another terminal. Enter the
+line below, replacing the name of the car as needed:
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ rosrun topic_tools relay /mux/ackermann_cmd_mux/input/teleop /mushr_mujoco_ros/buddy/control</code></pre></div></p>
+<h3 id="experimenting-with-mujoco">Experimenting with MuJoCo</h3>
+<p>Try to drive the car around and push the block. You might notice that it's
+somewhat difficult to push the block with precision. Let's change the MuJoCo
+model parameters to facilitate our task. Open <code>models/block.xml</code> and find
+the <code>body</code> tag that describes the block. Double the mass to &ldquo;2.4&rdquo;, and increase
+the size to &ldquo;0.1 0.1 0.1&rdquo;, which should provide a larger block to push. Increase
+the friction on the block by setting friction to be &ldquo;0.8 0.05 0.001&rdquo;. The 3 values
+control tangential, torsional, and rolling friction, respectively. Feel free to
+mess around with the values for a desired result.</p>
+<div class="highlight"><pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;body</span> <span class="na">pos=</span><span class="s">&#34;1.000000 0.000000 0.049&#34;</span> <span class="na">name=</span><span class="s">&#34;block&#34;</span> <span class="na">euler=</span><span class="s">&#34;0 0 0.000000&#34;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;joint</span> <span class="na">type=</span><span class="s">&#34;free&#34;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;geom</span> <span class="na">type=</span><span class="s">&#34;box&#34;</span> <span class="na">mass=</span><span class="s">&#34;2.4&#34;</span> <span class="na">contype=</span><span class="s">&#34;1&#34;</span> <span class="na">friction=</span><span class="s">&#34;0.8 0.05 0.001&#34;</span> 
+  <span class="na">conaffinity=</span><span class="s">&#34;1&#34;</span> <span class="na">size=</span><span class="s">&#34;0.1 0.1 0.1&#34;</span> <span class="na">rgba=</span><span class="s">&#34;0.247 0.772 0.760 1&#34;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/body&gt;</span></code></pre></div>
+<p>After changing model parameters, remember to recompile the workspace with
+<code>catkin_make</code> for the changes to take effect. Have fun with MuJoCo!
+To autonomously drive figure-8s in MuJoCo, checkout the
+<a href="https://mushr.io/tutorials/mujoco_figure8/">MuJoCo Figure 8</a> tutorial.</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="strip strip-primary-gradient-top-bottom">
+  <div class="container pt-3 pb-3 pt-md-6 pb-md-3 px-2">
+    <div class="row justify-content-left citation-row">
+        <h1 id="citation">Citation</h1>
+        <p>If you plan to use any part of the the MuSHR platform, including tutorials, codebase, or hardware instructions for a project or paper, please cite 
+        <em><a href="https://arxiv.org/abs/1908.08031">MuSHR: A Low-Cost,
+        Open-Source Robotic Racecar for Education and Research
+        </a></em>:</p></font>
+        <div class="highlight"><pre class="chroma">@article{srinivasa2019mushr,
+ title={{M}u{SHR}: {A} Low-Cost, Open-Source Robotic Racecar for Education and Research},
+ author={Srinivasa, Siddhartha S. and Lancaster, Patrick and Michalove, Johan and Schmittle, Matt and Summers, Colin and Rockett, Matthew and Smith, Joshua R. and Chouhury, Sanjiban and Mavrogiannis, Christoforos and Sadeghi, Fereshteh},
+ journal={CoRR},
+ volume={abs/1908.08031},
+ year={2019}
+}
+</pre></div>
+        <p><br></p>
+    </div>
+  </div>
+</div>
+
+
+  </div>
+
+  <div class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="footer-inner">
+          <h3 class="footer-title">MuSHR: The UW Open Racecar Project</h3>
+          <ul>
+            
+            
+            <li class="menu-item-home">
+              <a href="/">
+                Home
+              </a>
+            </li>
+            
+            <li class="menu-item-community forum">
+              <a href="https://spectrum.chat/mushr">
+                Community Forum
+              </a>
+            </li>
+            
+            <li class="menu-item-contact">
+              <a href="/contact/">
+                Contact
+              </a>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <div class="sub-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="sub-footer-inner">
+          <ul>
+            <li><strong>Email: </strong><a href="mailto:">
+                </a></li>
+          </ul>
+          <ul>
+            <li class="prl"><a href="https://personalrobotics.cs.washington.edu/">Made with <font color="#FF1690">♥</font> at the Personal Robotics Lab</a></li>
+          </ul>
+          <ul>
+            <li class="prl">Website by <a href="http://johanam.com/"><font color="#36CDC4">Johan</font></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+  
+
+
+
+
+  <script type="text/javascript" src="/js/services.min.96db5a4d9a7ea2d1759fd6847940367b5207c4ef5686df932179e04aefccdf37.js"></script>
+  
+
+
+  
+  <script type="text/javascript" src="/js/scripts.min.bf1e1f7ae8e03db5f012356e825843facdff51c0a559cb0d27fe2bbe1db405c2.js"></script>
+  
+
+  
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-146151202-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+  gtag('config', 'UA-146151202-1');
+</script>
+
+
+
+
+</body>
+
+</html>

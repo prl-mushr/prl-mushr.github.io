@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Intro to ROS - MuSHR: The UW Open Racecar Project</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel="icon" href="https://mushr.io/favicon.png">
+
+  
+  
+  <link rel="stylesheet" href="/css/style.min.c2afc1cc4aaac1ae8d3c6236f926d4fa21d34d80395cf9445c90f953db695e44.css">
+  
+
+  
+
+</head>
+
+<body class='page page-tutorials-single'>
+  <div id="main-menu-mobile" class="main-menu-mobile">
+  <ul>
+    
+    
+    <li class="menu-item-quickstart">
+      <a href="/tutorials/quickstart/">
+        
+        <span>Quickstart</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-about">
+      <a href="/about/">
+        
+        <span>About</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-docs">
+      <a href="https://github.com/prl-mushr/mushr#component-documentation">
+        
+        <span>Docs</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-hardware">
+      <a href="/hardware/">
+        
+        <span>Hardware</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-tutorials">
+      <a href="/tutorials/">
+        
+        <span>Tutorials</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-press">
+      <a href="/press/">
+        
+        <span>Press</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-team">
+      <a href="https://personalrobotics.cs.washington.edu/people/">
+        
+        <span>Team</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-community forum">
+      <a href="https://spectrum.chat/mushr">
+        
+        <span>Community Forum</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-contact">
+      <a href="/contact/">
+        
+        <span>Contact</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+  <div class="wrapper">
+    <div class='header'>
+  <div class="container">
+    <div class="logo">
+      <a href="https://mushr.io/"><img alt="Figurit Homepage" src="https://mushr.io/imgs/mushr-logo.svg" /></a>
+    </div>
+    <div class="logo-mobile">
+      <a href="https://mushr.io/"><img alt="Figurit Homepage" src="https://mushr.io/imgs/mushr-logo.svg" /></a>
+    </div>
+    <div id="main-menu" class="main-menu">
+  <ul>
+    
+    
+    <li class="menu-item-quickstart">
+      <a href="/tutorials/quickstart/">
+        
+        <span>Quickstart</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-about">
+      <a href="/about/">
+        
+        <span>About</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-docs">
+      <a href="https://github.com/prl-mushr/mushr#component-documentation">
+        
+        <span>Docs</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-hardware">
+      <a href="/hardware/">
+        
+        <span>Hardware</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-tutorials">
+      <a href="/tutorials/">
+        
+        <span>Tutorials</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-press">
+      <a href="/press/">
+        
+        <span>Press</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-team">
+      <a href="https://personalrobotics.cs.washington.edu/people/">
+        
+        <span>Team</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-community forum">
+      <a href="https://spectrum.chat/mushr">
+        
+        <span>Community Forum</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-contact">
+      <a href="/contact/">
+        
+        <span>Contact</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+
+    <button id="toggle-main-menu-mobile" class="hamburger hamburger--slider" role="presentation" aria-label="mobile menu trigger">
+  <span class="hamburger-box">
+    <span class="hamburger-inner"></span>
+  </span>
+</button>
+  </div>
+</div>
+    
+<script>
+  document.getElementsByClassName("menu-item-quickstart")[1].classList.add('active')
+</script>
+<div class="container pb-6 pt-6 pt-md-10 pb-md-10">
+  <div class="row justify-content-start">
+    <div class="col-12 col-md-8">
+      <div class="tutorial tutorial-single">
+        <h1 class="title">Intro to ROS</h1>
+        <div class="content"> 
+          
+          <p>Fundamental Robot Operating System (ROS) concepts using MuSHR.</p> 
+          
+          <h4 class="properties">Beginner Tutorial | Expected duration is 60 minutes</h4> 
+          
+          <h2> By: <a href=https://github.com/Rockett8855>Matthew Rockett</a></h2>                              
+<br>
+<figure>
+    <img src="/tutorials/intro-to-ros/ros_logo.png" width="1000"/> 
+</figure>
+
+<br>
+<h3 id="introduction">Introduction</h3>
+<p>The <a href="https://en.wikipedia.org/wiki/Robot_Operating_System">Robot Operating System (ROS)</a> is a robotics middleware framework (not actually an operating system) that is commonly used across robotics platforms. MuSHR uses ROS for several utilities, the most significant of which is communication between &ldquo;nodes&rdquo; which each contain seperate logical roles. To learn more about these nodes, see the <a href="/tutorials/overview">MuSHR System Overview</a>. Gaining a grasp of fundamental ROS concepts will help you make the most of the MuSHR system, and the <a href="https://robots.ros.org/">many other robots</a> which use ROS.</p>
+<h3 id="goal">Goal</h3>
+<p>This tutorial will help you get familiar with ROS concepts in reference to the MuSHR software stack. Upon completion, you will be familiar with ROS <a href="http://wiki.ros.org/rospy/Overview/Publishers%20and%20Subscribers">Publishers and Subscribers</a>.</p>
+<h3 id="prerequisites">Prerequisites</h3>
+<p>In order to successfully complete this tutorial you will need:</p>
+<ol>
+<li>to have completed the <a href="/tutorials/quickstart">quickstart</a> tutorial.</li>
+</ol>
+<ul>
+<li><em>(should)</em> have familiarity with <code>bash</code> and <code>python</code>.</li>
+</ul>
+<h3 id="notes">Notes</h3>
+<p>This tutorial assumes your catkin workspaces is located at <code>~/catkin_ws</code>. If you followed the <a href="/tutorials/quickstart">quickstart</a> tutorial, this will be the case. If your workspace is in a different directory, adjust the provided command accordingly.</p>
+<h2 id="creating-a-package">Creating a package</h2>
+<p>First start by creating a catkin package for our code:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> ~/catkin_ws/src
+$ catkin_create_pkg mushr_ros_intro std_msgs rospy ackermann_msgs
+</code></pre></div><p>Our package depends on <code>std_msgs</code>, <code>rospy</code>, and <code>ackermann_msgs</code>. All new ROS packages should depend on <code>std_msgs</code> and <code>rospy</code> (if you plan to use C++, then your package should also depend on <code>roscpp</code>). We include <code>ackermann_msgs</code> because it is the way we send velocities and steering angles to the car (more on this later in the tutorial).</p>
+<p>Now we will build our empty package:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> ~/catkin_ws
+$ catkin_make
+$ <span class="nb">source</span> devel/setup.bash
+$ roscd mushr_ros_intro
+</code></pre></div><p>Sourcing<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> <code>devel/setup.bash</code> sets up the ROS environment and some useful auto-complete rules, easing the traversal of multiple ROS packages. We can see this power with the <code>roscd</code> command. After you use the <code>roscd</code> with <code>mushr_ros_intro</code> once, you can tab complete<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> the name. <em>Sometimes, when you encounter packages not being found, all you need is to rerun the source command.</em></p>
+<h2 id="a-simple-plan-specification">A simple plan specification</h2>
+<p>Now that we have a package we want to create a source code file to run our ROS node<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>. We will be creating a simple ROS node to read commands (in this case, velocity and steering angle) from a file line by line, and send them to the simulator to be applied to the simulated car. Each line will denote a command to be applied for one second. The first line is a message to send as the &ldquo;starting pose&rdquo; of the car.</p>
+<p>The input files will be of the form:</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">0,0,0.0
+2.0,0.09
+3.0,-0.15
+</code></pre></div><p>The first line is the initial position, of the form <code>x, y, theta</code>, where <code>x</code> and <code>y</code> are the starting coordinates in the map, and <code>theta</code> is the initial angle of the car. The following two lines describe commands that tell the car how fast to go, and at what steering angle. The first says to run at <code>2.0 meters per second</code>, with a steering angle of <code>0.09 radians</code>. The second, to run at <code>3.0 meters per second</code>, with a steering angle of <code>-0.15 radians</code>. We will be applying each command for 1 second. Note that a positive steering angle corresponds to a left turn and a negative steering angle corresponds to a right turn.</p>
+<p>Create the directory <code>plans</code> in the package:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ roscd mushr_ros_intro <span class="c1"># if you aren&#39;t in the intro package directory</span>
+$ mkdir plans
+</code></pre></div><p>Here are two plans you can use (add these two files to the directory we just created):</p>
+<p><code>plans/straight_line.txt</code></p>
+<div class="highlight"><pre class="chroma"><code class="language-txt" data-lang="txt">0,0,0
+2,0.0
+3,0.0
+4,0.0
+5,0.0
+6,0.0
+6,0.0
+6,0.0
+5,0.0
+4,0.0
+3,0.0
+2,0.0
+</code></pre></div><p><code>plans/figure_8.txt</code></p>
+<div class="highlight"><pre class="chroma"><code class="language-txt" data-lang="txt">0,0,0.785
+2.0,0.09
+2.0,0.09
+2.0,0.09
+2.0,0.09
+2.0,0.09
+2.0,0.09
+2.0,0.09
+2.0,0.09
+2.0,0.09
+2.0,0.09
+2.0,0.09
+2.0,-0.09
+2.0,-0.09
+2.0,-0.09
+2.0,-0.09
+2.0,-0.09
+2.0,-0.09
+2.0,-0.09
+2.0,-0.09
+2.0,-0.09
+2.0,-0.09
+2.0,-0.09
+</code></pre></div><p>Try and figure out what these plans will do (hint: look at the file names :)). We encourage the extra adventurous can create their own &ldquo;plan&rdquo; files.</p>
+<h2 id="the-code">The code</h2>
+<p><strong>Spoiler alert!</strong> Below the entire code is listed. Each section will be explained in greater detail below the listing. Save this file in <code>src/path_publisher.py</code>. We suggest reading through the code first to gain an understanding of how it works before moving on to the explanations.</p>
+<p>If you're curious to attempt solving the task on your own, give it a try (the section &ldquo;<a href="#writing-the-launch-file">Writing the launch file</a>&rdquo; will help you launch your code) and return to this section afterwards.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="ch">#!/usr/bin/env python</span>
+
+<span class="kn">import</span> <span class="nn">rospy</span>
+<span class="kn">from</span> <span class="nn">ackermann_msgs.msg</span> <span class="kn">import</span> <span class="n">AckermannDrive</span><span class="p">,</span> <span class="n">AckermannDriveStamped</span>
+<span class="kn">from</span> <span class="nn">geometry_msgs.msg</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">Point</span><span class="p">,</span>
+    <span class="n">Pose</span><span class="p">,</span>
+    <span class="n">PoseWithCovariance</span><span class="p">,</span>
+    <span class="n">PoseWithCovarianceStamped</span><span class="p">,</span>
+    <span class="n">Quaternion</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">tf.transformations</span> <span class="kn">import</span> <span class="n">quaternion_from_euler</span>
+
+
+<span class="k">def</span> <span class="nf">run_plan</span><span class="p">(</span><span class="n">pub_init_pose</span><span class="p">,</span> <span class="n">pub_controls</span><span class="p">,</span> <span class="n">plan</span><span class="p">)</span><span class="p">:</span>
+    <span class="n">init</span> <span class="o">=</span> <span class="n">plan</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">send_init_pose</span><span class="p">(</span><span class="n">pub_init_pose</span><span class="p">,</span> <span class="n">init</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">plan</span><span class="p">:</span>
+        <span class="n">send_command</span><span class="p">(</span><span class="n">pub_controls</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">send_init_pose</span><span class="p">(</span><span class="n">pub_init_pose</span><span class="p">,</span> <span class="n">init_pose</span><span class="p">)</span><span class="p">:</span>
+    <span class="n">pose_data</span> <span class="o">=</span> <span class="n">init_pose</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">,</span><span class="s2">&#34;</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">pose_data</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span>
+
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">theta</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">pose_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="p">)</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">pose_data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="p">)</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">pose_data</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="p">)</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="n">Quaternion</span><span class="p">(</span><span class="o">*</span><span class="n">quaternion_from_euler</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">theta</span><span class="p">)</span><span class="p">)</span>
+    <span class="n">point</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
+    <span class="n">pose</span> <span class="o">=</span> <span class="n">PoseWithCovariance</span><span class="p">(</span><span class="n">pose</span><span class="o">=</span><span class="n">Pose</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="n">point</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="n">q</span><span class="p">)</span><span class="p">)</span>
+    <span class="n">pub_init_pose</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">PoseWithCovarianceStamped</span><span class="p">(</span><span class="n">pose</span><span class="o">=</span><span class="n">pose</span><span class="p">)</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">send_command</span><span class="p">(</span><span class="n">pub_controls</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span><span class="p">:</span>
+    <span class="n">cmd</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">,</span><span class="s2">&#34;</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span>
+    <span class="n">v</span><span class="p">,</span> <span class="n">delta</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">cmd</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="p">)</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">cmd</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="p">)</span>
+
+    <span class="n">dur</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Duration</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+    <span class="n">rate</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Rate</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Time</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="p">)</span>
+
+    <span class="n">drive</span> <span class="o">=</span> <span class="n">AckermannDrive</span><span class="p">(</span><span class="n">steering_angle</span><span class="o">=</span><span class="n">delta</span><span class="p">,</span> <span class="n">speed</span><span class="o">=</span><span class="n">v</span><span class="p">)</span>
+
+    <span class="k">while</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Time</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="p">)</span> <span class="o">-</span> <span class="n">start</span> <span class="o">&lt;</span> <span class="n">dur</span><span class="p">:</span>
+        <span class="n">pub_controls</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">AckermannDriveStamped</span><span class="p">(</span><span class="n">drive</span><span class="o">=</span><span class="n">drive</span><span class="p">)</span><span class="p">)</span>
+        <span class="n">rate</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="sa"></span><span class="s2">&#34;</span><span class="s2">__main__</span><span class="s2">&#34;</span><span class="p">:</span>
+    <span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">path_publisher</span><span class="s2">&#34;</span><span class="p">)</span>
+
+    <span class="n">control_topic</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_param</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">~control_topic</span><span class="s2">&#34;</span><span class="p">,</span> <span class="sa"></span><span class="s2">&#34;</span><span class="s2">/car/mux/ackermann_cmd_mux/input/navigation</span><span class="s2">&#34;</span><span class="p">)</span>
+    <span class="n">pub_controls</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Publisher</span><span class="p">(</span><span class="n">control_topic</span><span class="p">,</span> <span class="n">AckermannDriveStamped</span><span class="p">,</span> <span class="n">queue_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">init_pose_topic</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_param</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">~init_pose_topic</span><span class="s2">&#34;</span><span class="p">,</span> <span class="sa"></span><span class="s2">&#34;</span><span class="s2">/initialpose</span><span class="s2">&#34;</span><span class="p">)</span>
+    <span class="n">pub_init_pose</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Publisher</span><span class="p">(</span><span class="n">init_pose_topic</span><span class="p">,</span> <span class="n">PoseWithCovarianceStamped</span><span class="p">,</span> <span class="n">queue_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">plan_file</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_param</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">~plan_file</span><span class="s2">&#34;</span><span class="p">)</span>
+
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">plan_file</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">plan</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">(</span><span class="p">)</span>
+
+    <span class="c1"># Publishers sometimes need a warm-up time, you can also wait until there</span>
+    <span class="c1"># are subscribers to start publishing see publisher documentation.</span>
+    <span class="n">rospy</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+    <span class="n">run_plan</span><span class="p">(</span><span class="n">pub_init_pose</span><span class="p">,</span> <span class="n">pub_controls</span><span class="p">,</span> <span class="n">plan</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="the-code-explained">The code, explained</h2>
+<p>Below we will break down the code. The code blocks are explained out of order in the large code block to explain the concepts in a more logical way.</p>
+<h3 id="includes">Includes</h3>
+<p>We import functions and modules we need first:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="ch">#!/usr/bin/env python</span>
+
+<span class="kn">import</span> <span class="nn">rospy</span>
+<span class="kn">from</span> <span class="nn">ackermann_msgs.msg</span> <span class="kn">import</span> <span class="n">AckermannDrive</span><span class="p">,</span> <span class="n">AckermannDriveStamped</span>
+<span class="kn">from</span> <span class="nn">geometry_msgs.msg</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">Point</span><span class="p">,</span>
+    <span class="n">Pose</span><span class="p">,</span>
+    <span class="n">PoseWithCovariance</span><span class="p">,</span>
+    <span class="n">PoseWithCovarianceStamped</span><span class="p">,</span>
+    <span class="n">Quaternion</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">tf.transformations</span> <span class="kn">import</span> <span class="n">quaternion_from_euler</span></code></pre></td></tr></table>
+</div>
+</div>
+<p><code>rospy</code> is the main python interface to the ROS API. <a href="https://en.wikipedia.org/wiki/Ackermann_steering_geometry">Ackermann steering</a> is the geometry of our car chassis. For this reason, the MuSHR system uses <a href="http://wiki.ros.org/ackermann_msgs"><code>ackermann_msgs</code></a> to define a common interface for sending drive commands. The imports from <a href="http://wiki.ros.org/geometry_msgs"><code>geometry_msgs</code></a> are for sending the initial pose of the car to the simulator.</p>
+<h3 id="entrypoint">Entrypoint</h3>
+<p>In python, the if-statement <code>if __name__ == &quot;__main__&quot;</code> is a guard agains running this code if the file is included. This is where the thread of execution starts.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="sa"></span><span class="s2">&#34;</span><span class="s2">__main__</span><span class="s2">&#34;</span><span class="p">:</span>
+    <span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">path_publisher</span><span class="s2">&#34;</span><span class="p">)</span>
+
+    <span class="n">control_topic</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_param</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">~control_topic</span><span class="s2">&#34;</span><span class="p">,</span> <span class="sa"></span><span class="s2">&#34;</span><span class="s2">/car/mux/ackermann_cmd_mux/input/navigation</span><span class="s2">&#34;</span><span class="p">)</span>
+    <span class="n">pub_controls</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Publisher</span><span class="p">(</span><span class="n">control_topic</span><span class="p">,</span> <span class="n">AckermannDriveStamped</span><span class="p">,</span> <span class="n">queue_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">init_pose_topic</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_param</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">~init_pose_topic</span><span class="s2">&#34;</span><span class="p">,</span> <span class="sa"></span><span class="s2">&#34;</span><span class="s2">/initialpose</span><span class="s2">&#34;</span><span class="p">)</span>
+    <span class="n">pub_init_pose</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Publisher</span><span class="p">(</span><span class="n">init_pose_topic</span><span class="p">,</span> <span class="n">PoseWithCovarianceStamped</span><span class="p">,</span> <span class="n">queue_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">plan_file</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_param</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">~plan_file</span><span class="s2">&#34;</span><span class="p">)</span>
+
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">plan_file</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">plan</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">(</span><span class="p">)</span>
+
+    <span class="c1"># Publishers sometimes need a warm-up time, you can also wait until there</span>
+    <span class="c1"># are subscribers to start publishing see publisher documentation.</span>
+    <span class="n">rospy</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+    <span class="n">run_plan</span><span class="p">(</span><span class="n">pub_init_pose</span><span class="p">,</span> <span class="n">pub_controls</span><span class="p">,</span> <span class="n">plan</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Line 51 contains the code for initializing your node. Every node must do this to register itself into the ROS environment. You must pass a name for the node (a good practice is to use the same name as the script, but it's up to you). The next lines (L53-59) set up communication streams for this node to talk to others. <code>rospy.get_param(...)</code> talks to the <a href="http://wiki.ros.org/rospy/Overview/Parameter%20Server">parameter server</a> to get parameters we define at runtime (more below in &lsquo;Writing the launch file&rsquo;). The first argument is the name of a parameter. The second is a default value. If no default is provided, the node won't start unless the parameter is defined. You should opt to provide sensible defaults when possible.</p>
+<p>The first argument has a peculiar form <code>~parameter_name</code>. There are a few ways ROS resolves names. For now, this is out of scope for this tutorial. If you name your parameters like this and define the parameters the same in the launch file, you should be ok (more on launch files in the next section). If you need more information on ROS names, see <a href="http://wiki.ros.org/Names">ROS Names</a></p>
+<p><a href="http://wiki.ros.org/rospy/Overview/Publishers%20and%20Subscribers">Publishers</a> are part of the ROS message passing paradigm. <code>rospy.Publisher(...)</code> takes three arguments. The first is the topic name. The second is the message type. There are a wide range of predefined messages you can use, and you also have the ability to <a href="http://wiki.ros.org/ROS/Tutorials/DefiningCustomMessages">define custom ROS messages</a> if needed (although that is not needed in this tutorial). The third is the queue size. This defines how many messages to buffer when waiting to send (or recieve) messages. In general, a large queue size will be useful when many messages will be sent. In our case, we are infrequently sending messages, so a queue size of one is okay. <sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup></p>
+<h3 id="functions">Functions</h3>
+<p>Below each function is briefly explained.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">run_plan</span><span class="p">(</span><span class="n">pub_init_pose</span><span class="p">,</span> <span class="n">pub_controls</span><span class="p">,</span> <span class="n">plan</span><span class="p">)</span><span class="p">:</span>
+    <span class="n">init</span> <span class="o">=</span> <span class="n">plan</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">send_init_pose</span><span class="p">(</span><span class="n">pub_init_pose</span><span class="p">,</span> <span class="n">init</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">plan</span><span class="p">:</span>
+        <span class="n">send_command</span><span class="p">(</span><span class="n">pub_controls</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<p><code>run_plan</code> is the main loop of the node. Once the initialization code is complete, the main function calls this. Given a list of strings (the commands), it calls relevant functions to run the car.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">send_init_pose</span><span class="p">(</span><span class="n">pub_init_pose</span><span class="p">,</span> <span class="n">init_pose</span><span class="p">)</span><span class="p">:</span>
+    <span class="n">pose_data</span> <span class="o">=</span> <span class="n">init_pose</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">,</span><span class="s2">&#34;</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">pose_data</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span>
+
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">theta</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">pose_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="p">)</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">pose_data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="p">)</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">pose_data</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="p">)</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="n">Quaternion</span><span class="p">(</span><span class="o">*</span><span class="n">quaternion_from_euler</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">theta</span><span class="p">)</span><span class="p">)</span>
+    <span class="n">point</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
+    <span class="n">pose</span> <span class="o">=</span> <span class="n">PoseWithCovariance</span><span class="p">(</span><span class="n">pose</span><span class="o">=</span><span class="n">Pose</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="n">point</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="n">q</span><span class="p">)</span><span class="p">)</span>
+    <span class="n">pub_init_pose</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">PoseWithCovarianceStamped</span><span class="p">(</span><span class="n">pose</span><span class="o">=</span><span class="n">pose</span><span class="p">)</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<p><code>send_init_pose</code> takes the string representation of the intial pose and converts it into an <code>x</code>, <code>y</code>, <code>theta</code> float representation. Instead of using Euler angles to describe orientations, many ROS packages use the more expressive <a href="https://en.wikipedia.org/wiki/Quaternion">Quaternions</a>. The <code>quaternion_from_euler</code> package provided by the <code>tf.transformations</code> package supplies us with a utility function to go from Euler angles to quaternions.</p>
+<p><code>/initialpose</code> takes a <code>PoseWithCovarianceStamped</code> message. In ROS, <code>Stamped</code> messages are used when the ordering of data by time is important. Due to randomness in the network, messages can be passed out of order, and in time-critical systems, it's important for the most recently <em>sent</em> message to be used. For our setting, this is not as important. <code>rospy</code> will populate the timestamp for you, so no need to do it in your code. Typically, the <code>PoseWithCovariance</code> message requires a <code>Pose</code> and <code>Covariance</code> matrix. However our simulator doesn't use the covariance matrix, so we don't need to provide it. The <code>Pose</code> is composed of an <code>x</code>, <code>y</code> point and an orientation (which must be in quaternion form).</p>
+<p>After constructing the message, we publish it to the <code>pub_init_pose</code>, signalling to the simulator where to place the car.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">send_command</span><span class="p">(</span><span class="n">pub_controls</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span><span class="p">:</span>
+    <span class="n">cmd</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">,</span><span class="s2">&#34;</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span>
+    <span class="n">v</span><span class="p">,</span> <span class="n">delta</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">cmd</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="p">)</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">cmd</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="p">)</span>
+
+    <span class="n">dur</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Duration</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+    <span class="n">rate</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Rate</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Time</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="p">)</span>
+
+    <span class="n">drive</span> <span class="o">=</span> <span class="n">AckermannDrive</span><span class="p">(</span><span class="n">steering_angle</span><span class="o">=</span><span class="n">delta</span><span class="p">,</span> <span class="n">speed</span><span class="o">=</span><span class="n">v</span><span class="p">)</span>
+
+    <span class="k">while</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Time</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="p">)</span> <span class="o">-</span> <span class="n">start</span> <span class="o">&lt;</span> <span class="n">dur</span><span class="p">:</span>
+        <span class="n">pub_controls</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">AckermannDriveStamped</span><span class="p">(</span><span class="n">drive</span><span class="o">=</span><span class="n">drive</span><span class="p">)</span><span class="p">)</span>
+        <span class="n">rate</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<p><code>send_command</code> is very similar to <code>send_init_pose</code>, with a few differences. First, we define a one second duration (Line 39). ROS durations are a convient way to make durations that can be compared and combined using math operators (L45). Subtrating the current time and the <code>start</code> time yields a comparable duration. Once a second as elapsed, the loop will terminate.</p>
+<p>The next new feature introduced is a rate (Line 40). This limits how often loops run, conserving cycles when they are not needed. The rate we defined runs a frequency of 10 Hertz; our loop can run at max 10 times a second. This is plenty fast for our application. This is neccessary as if we only send one command per second the car will &ldquo;lurch&rdquo; and then wait a second for the next command.</p>
+<h2 id="writing-the-launch-file">Writing the launch file</h2>
+<p>In order to run out code in a convenient and extendable way, ROS has the notion of <a href="http://wiki.ros.org/roslaunch">launch files</a>. These are XML files that describe how different software components should be started. These file allow us to start a large number of ROS nodes with few commands. We will write a launch file for our node to conform to this standard. First we make a launch directory:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ roscd mushr_ros_intro <span class="c1"># if you aren&#39;t in the directory</span>
+$ mkdir launch
+</code></pre></div><p>Create the file <code>launch/path_publisher.launch</code>, containing:
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;launch</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&#34;control_topic&#34;</span> <span class="na">default=</span><span class="s">&#34;/car/mux/ackermann_cmd_mux/input/navigation&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&#34;init_pose_topic&#34;</span> <span class="na">default=</span><span class="s">&#34;/initialpose&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&#34;plan_file&#34;</span> <span class="na">default=</span><span class="s">&#34;$(find mushr_ros_intro)/plans/straight_line.txt&#34;</span> <span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;node</span> <span class="na">pkg=</span><span class="s">&#34;mushr_ros_intro&#34;</span> <span class="na">type=</span><span class="s">&#34;path_publisher.py&#34;</span> <span class="na">name=</span><span class="s">&#34;path_publisher&#34;</span> <span class="na">output=</span><span class="s">&#34;screen&#34;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&#34;control_topic&#34;</span> <span class="na">value=</span><span class="s">&#34;$(arg control_topic)&#34;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&#34;init_pose_topic&#34;</span> <span class="na">value=</span><span class="s">&#34;$(arg init_pose_topic)&#34;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&#34;plan_file&#34;</span> <span class="na">value=</span><span class="s">&#34;$(arg plan_file)&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/node&gt;</span>
+<span class="nt">&lt;/launch&gt;</span></code></pre></td></tr></table>
+</div>
+</div></p>
+<p>The launch tags:</p>
+<div class="highlight"><pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;launch</span><span class="nt">&gt;</span> ... <span class="nt">&lt;/launch&gt;</span>
+</code></pre></div><p>are required preable to wrap any content in your launch files.</p>
+<p>The <code>&lt;arg ...&gt;</code> tags allow you to pass arguments in from the command line (or from other launch files). The <code>default</code> attribute specifies a default if no argument is passed in. To change an argument at runtime from the command line use the follwing syntax:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ roslaunch &lt;package&gt; &lt;launch file&gt; plan_file:<span class="o">=</span><span class="s1">&#39;/path/to/plan.txt&#39;</span>
+</code></pre></div><p>It is good practice to use argument for state that can be set at runtime so users can choose values that make sense for their applications. It is also good practice to provide sensible defaults. If there is no sensible default, you should omit the default attribute. This will require the user to specify an argument at runtime.</p>
+<p>In the third argument (line 4), the default uses a <code>roslaunch</code> command to locate a ROS package programatically. In order to keep your code portable, whenever you want to use files located in ROS packages, you can use the <code>$(find ...)</code> command to get the location of a ROS package. Then, no matter where the catkin workspace is located, <code>roslaunch</code> will populate the argument with the correct path.</p>
+<p>The <code>&lt;node ...&gt;</code> tags denotes a single ROS node to be launched. ROS nodes are individual processes that run on a host. There are three attributes:</p>
+<ol>
+<li><code>pkg=&quot;mushr_ros_intro&quot;</code>: The package to find the executable for the node.</li>
+</ol>
+<ul>
+<li><code>type=&quot;path_publisher.py&quot;</code>: The entry file for the node. For python, you have to provide the name of the file in the <code>src</code> directory.</li>
+<li><code>name=&quot;path_publisher&quot;</code>: The name of the node. This will be used for other nodes to reference your node. For now we will just use the same name as the executable, as this is a uniquely identifying name.</li>
+</ul>
+<p>Line 7-9 define parameters for the node. Parameters are accessed programatically by the node (think <code>rospy.get_param(...)</code>). This is different than an argument, which is only used by <code>roslaunch</code> to pass values into the launch file. It is often convenient to use the same names for arguments and parameters, although this is entirely up to you. To define the parameters using arguments passed into the launch file, we use another <code>roslaunch</code> macro <code>$(arg &lt;arg name&gt;)</code>.</p>
+<h2 id="putting-it-all-together">Putting it all together</h2>
+<p>With python files, we have to change the execution permissions so <code>roslaunch</code> can file the correct files to run.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ chmod a+x src/path_publisher.py
+</code></pre></div><p>&ldquo;<code>chmod</code>&rdquo; stands for &ldquo;change mode&rdquo;, &ldquo;<code>a+x</code>&rdquo; says, &ldquo;let all users execute this program&rdquo;. <strong>If you don't do this</strong>, you will likely see the following message:</p>
+<div class="highlight"><pre class="chroma"><code class="language-txt" data-lang="txt">ERROR: cannot launch node of type [mushr_ros_intro/path_publisher.py]: can&#39;t locate node [path_publisher.py] in package [mushr_ros_intro]
+</code></pre></div><p>So make sure to make your files executable!</p>
+<p>Once this is done, all that's left to do is launch the file and the simulator. In one terminal run the simulator:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ roslaunch mushr_sim teleop.launch
+</code></pre></div><p>In another, start <code>rviz</code> (a ROS tool that allows you to visualize simulated environments):</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ rosrun rviz rviz -d <span class="nv">$HOME</span>/catkin_ws/src/mushr/mushr_utils/rviz/default.rviz
+</code></pre></div><p>This will launch rviz with a configuration that has all the right topics visualized.</p>
+<p>Now, finally, in another terminal, run the path publisher we created:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ roslaunch mushr_ros_intro path_publisher.launch
+</code></pre></div><p>This will start the path publisher immediately, so make sure you are watching the <code>rviz</code> screen.</p>
+<p>Once your node is running, try passing a different plan file in using the <code>plan_file</code> commandline argument.</p>
+<h2 id="wrap-up">Wrap-up</h2>
+<p>This concludes the introductory tutorial. This tutorial was meant to get you hands on experience with both ROS and the MuSHR environment. This means many of the topics were glossed over in order to make the tutorial managable. If you are interested in diving deeper, have a look at the <a href="http://wiki.ros.org/ROS/Tutorials">ROS tutorials</a>, and then try the challenge problems below.</p>
+<h2 id="challenges">Challenges</h2>
+<p>Below are a few challenges to get you more familiar with the tutorial, MuSHR, and ROS in general:</p>
+<ol>
+<li>Create new paths! You can can add new paths to <code>$(find mushr_ros_intro)/paths/</code>, and pass the path into the launch file as an argument. The console window you opened <code>rviz</code> in will show &ldquo;clicked points&rdquo;, which you can use to find <code>x</code>, <code>y</code>, and <code>theta</code> values for the inital pose.</li>
+</ol>
+<ul>
+<li>Adapt <code>path_publisher.py</code> to take a &ldquo;duration&rdquo; parameter as the third comma separated value. This will allow a much richer set of path specifications.</li>
+<li>We launched the simulator with the &ldquo;sandbox&rdquo; square map. Use another map in the map directory, or a map you create (more on this in a different tutorial).</li>
+<li>Update the argument to take a file name instead of a path, this way we won't have to specifiy the entire path (as long as the file exists in <code>$(find mushr_ros_intro)/paths</code>.</li>
+<li>When the node finishes executing the plan, restart from the the begining until the node is killed.</li>
+<li>Try and get this code to run on the actual car. How does hard-coding in predefined velocities and steering angles work in the real world?</li>
+</ul>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>That is, calling <a href="https://en.wikipedia.org/wiki/Source_(command)"><code>source</code></a> on a file. <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p>In other words, you can press the <code>tab</code> key to auto-complete the package name. <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3" role="doc-endnote">
+<p>A node is an executable that uses ROS to communicate with other nodes. See <a href="http://wiki.ros.org/Nodes">this article</a> for more details. <a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4" role="doc-endnote">
+<p><a href="http://wiki.ros.org/rospy/Overview/Publishers%20and%20Subscribers#Choosing_a_good_queue_size">Choosing a good queue size.</a> <a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="strip strip-primary-gradient-top-bottom">
+  <div class="container pt-3 pb-3 pt-md-6 pb-md-3 px-2">
+    <div class="row justify-content-left citation-row">
+        <h1 id="citation">Citation</h1>
+        <p>If you plan to use any part of the the MuSHR platform, including tutorials, codebase, or hardware instructions for a project or paper, please cite 
+        <em><a href="https://arxiv.org/abs/1908.08031">MuSHR: A Low-Cost,
+        Open-Source Robotic Racecar for Education and Research
+        </a></em>:</p></font>
+        <div class="highlight"><pre class="chroma">@article{srinivasa2019mushr,
+ title={{M}u{SHR}: {A} Low-Cost, Open-Source Robotic Racecar for Education and Research},
+ author={Srinivasa, Siddhartha S. and Lancaster, Patrick and Michalove, Johan and Schmittle, Matt and Summers, Colin and Rockett, Matthew and Smith, Joshua R. and Chouhury, Sanjiban and Mavrogiannis, Christoforos and Sadeghi, Fereshteh},
+ journal={CoRR},
+ volume={abs/1908.08031},
+ year={2019}
+}
+</pre></div>
+        <p><br></p>
+    </div>
+  </div>
+</div>
+
+
+  </div>
+
+  <div class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="footer-inner">
+          <h3 class="footer-title">MuSHR: The UW Open Racecar Project</h3>
+          <ul>
+            
+            
+            <li class="menu-item-home">
+              <a href="/">
+                Home
+              </a>
+            </li>
+            
+            <li class="menu-item-community forum">
+              <a href="https://spectrum.chat/mushr">
+                Community Forum
+              </a>
+            </li>
+            
+            <li class="menu-item-contact">
+              <a href="/contact/">
+                Contact
+              </a>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <div class="sub-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="sub-footer-inner">
+          <ul>
+            <li><strong>Email: </strong><a href="mailto:">
+                </a></li>
+          </ul>
+          <ul>
+            <li class="prl"><a href="https://personalrobotics.cs.washington.edu/">Made with <font color="#FF1690">♥</font> at the Personal Robotics Lab</a></li>
+          </ul>
+          <ul>
+            <li class="prl">Website by <a href="http://johanam.com/"><font color="#36CDC4">Johan</font></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+  
+
+
+
+
+  <script type="text/javascript" src="/js/services.min.96db5a4d9a7ea2d1759fd6847940367b5207c4ef5686df932179e04aefccdf37.js"></script>
+  
+
+
+  
+  <script type="text/javascript" src="/js/scripts.min.bf1e1f7ae8e03db5f012356e825843facdff51c0a559cb0d27fe2bbe1db405c2.js"></script>
+  
+
+  
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-146151202-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+  gtag('config', 'UA-146151202-1');
+</script>
+
+
+
+
+</body>
+
+</html>

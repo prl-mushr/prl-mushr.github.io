@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Global Planner - MuSHR: The UW Open Racecar Project</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel="icon" href="https://mushr.io/favicon.png">
+
+  
+  
+  <link rel="stylesheet" href="/css/style.min.c2afc1cc4aaac1ae8d3c6236f926d4fa21d34d80395cf9445c90f953db695e44.css">
+  
+
+  
+
+</head>
+
+<body class='page page-tutorials-single'>
+  <div id="main-menu-mobile" class="main-menu-mobile">
+  <ul>
+    
+    
+    <li class="menu-item-quickstart">
+      <a href="/tutorials/quickstart/">
+        
+        <span>Quickstart</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-about">
+      <a href="/about/">
+        
+        <span>About</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-docs">
+      <a href="https://github.com/prl-mushr/mushr#component-documentation">
+        
+        <span>Docs</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-hardware">
+      <a href="/hardware/">
+        
+        <span>Hardware</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-tutorials">
+      <a href="/tutorials/">
+        
+        <span>Tutorials</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-press">
+      <a href="/press/">
+        
+        <span>Press</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-team">
+      <a href="https://personalrobotics.cs.washington.edu/people/">
+        
+        <span>Team</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-community forum">
+      <a href="https://spectrum.chat/mushr">
+        
+        <span>Community Forum</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-contact">
+      <a href="/contact/">
+        
+        <span>Contact</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+  <div class="wrapper">
+    <div class='header'>
+  <div class="container">
+    <div class="logo">
+      <a href="https://mushr.io/"><img alt="Figurit Homepage" src="https://mushr.io/imgs/mushr-logo.svg" /></a>
+    </div>
+    <div class="logo-mobile">
+      <a href="https://mushr.io/"><img alt="Figurit Homepage" src="https://mushr.io/imgs/mushr-logo.svg" /></a>
+    </div>
+    <div id="main-menu" class="main-menu">
+  <ul>
+    
+    
+    <li class="menu-item-quickstart">
+      <a href="/tutorials/quickstart/">
+        
+        <span>Quickstart</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-about">
+      <a href="/about/">
+        
+        <span>About</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-docs">
+      <a href="https://github.com/prl-mushr/mushr#component-documentation">
+        
+        <span>Docs</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-hardware">
+      <a href="/hardware/">
+        
+        <span>Hardware</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-tutorials">
+      <a href="/tutorials/">
+        
+        <span>Tutorials</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-press">
+      <a href="/press/">
+        
+        <span>Press</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-team">
+      <a href="https://personalrobotics.cs.washington.edu/people/">
+        
+        <span>Team</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-community forum">
+      <a href="https://spectrum.chat/mushr">
+        
+        <span>Community Forum</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-contact">
+      <a href="/contact/">
+        
+        <span>Contact</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+
+    <button id="toggle-main-menu-mobile" class="hamburger hamburger--slider" role="presentation" aria-label="mobile menu trigger">
+  <span class="hamburger-box">
+    <span class="hamburger-inner"></span>
+  </span>
+</button>
+  </div>
+</div>
+    
+<script>
+  document.getElementsByClassName("menu-item-quickstart")[1].classList.add('active')
+</script>
+<div class="container pb-6 pt-6 pt-md-10 pb-md-10">
+  <div class="row justify-content-start">
+    <div class="col-12 col-md-8">
+      <div class="tutorial tutorial-single">
+        <h1 class="title">Global Planner</h1>
+        <div class="content"> 
+          
+          <p>Plan paths from start to goal in known map</p> 
+          
+          <h4 class="properties">Advanced Tutorial | Expected duration is 60 minutes</h4> 
+          
+          <h2> By: <a href=https://www.mattschmittle.com/>Matt Schmittle</a></h2>                              
+<br>
+<figure>
+    <img src="/tutorials/global_planner/header.png" width="1000"/> 
+</figure>
+
+<br>
+<h3 id="introduction">Introduction</h3>
+<p>The <a href="http://ompl.kavrakilab.org/index.html">Open Montion Planner Library(OMPL)</a> contains modules for computing motion plans using sampling-based algorithms. OMPL is designed to be easily integrated into other systems and provide necessary components such as ROS, and Moveit. In this tutorial, we will be using the mushr_global_planner that provides <a href="http://wiki.ros.org/rospy/Overview/Services">ROS services</a> as an API for planning a path from a start position to a goal position.</p>
+<h3 id="goal">Goal</h3>
+<p>Plan paths from start to goal in known map</p>
+<h3 id="requirements">Requirements</h3>
+<ul>
+<li>Complete the <a href="/tutorials/quickstart">quickstart</a> tutorial</li>
+<li>Complete the <a href="/tutorials/intro-to-ros">Intro to Ros</a> tutorial</li>
+</ul>
+<h2 id="setup">Setup</h2>
+<ul>
+<li>
+<p>Install ompl from source <a href="https://ompl.kavrakilab.org/installation.html">here</a> with python bindings or downloading the script <a href="https://ompl.kavrakilab.org/install-ompl-ubuntu.sh">here</a></p>
+<p>Change python version setting in the script from <code>$PYTHONV=3</code> to <code>$PYTHONV=2.7</code>
+and make the script executable.</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">$ chmod u+x install-ompl-ubuntu.sh
+</code></pre></div><p>Make sure you have the <a href="https://ompl.kavrakilab.org/installPyPlusPlus.html">following</a> installed. Then run the script.</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">$ ./install-ompl-ubuntu.sh --python
+</code></pre></div><p>If you have a segfault with CastXML on Ubuntu 16.04, install the binaries from <a href="https://data.kitware.com/#collection/57b5c9e58d777f126827f5a1/folder/57b5de948d777f10f2696370">here</a>. You will need to put the contents of <code>.../castxml/bin</code> into <code>/usr/local/bin/</code> and <code>.../castxml/share</code> into <code>/usr/local/share</code> and uninstall your current version of cast xml.</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">$ sudo apt remove castxml
+</code></pre></div></li>
+<li>
+<p>Clone the necessary repo to your</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback"># Go to your catkin workspace
+$ cd ~/catkin_ws/src
+# Clone the global planner node
+$ git clone https://github.com/prl-mushr/mushr_global_planner
+</code></pre></div></li>
+<li>
+<p>Make and source your workspace. (Assuming source commands in .bashrc)</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">$ cd ~/catkin_ws
+$ catkin_make
+$ source ~/.bashrc
+</code></pre></div></li>
+</ul>
+<h2 id="running-demo">Running Demo</h2>
+<p>We have a pre-built demo script that include start and goal position. To use this just run</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">$ roslaunch mushr_global_planner demo.launch
+</code></pre></div><p>Then open rviz</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">$ rviz
+</code></pre></div><p>Then subscribe to the <code>/mushr_global_planner_result</code> topic, you should see a red path of <code>PoseArray</code></p>
+<h2 id="using-mushr-global-planner">Using Mushr Global Planner</h2>
+<h4 id="the-code">The code</h4>
+<p>The code below (<code>global_planner.py</code>) demonstrate how to use the ROS service.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python">    <span class="c1">#!/usr/bin/env python</span>
+    <span class="kn">import</span> <span class="nn">rospy</span>
+    <span class="kn">from</span> <span class="nn">gpnode</span> <span class="kn">import</span> <span class="n">MushrGlobalPlanner</span>
+    <span class="kn">from</span> <span class="nn">geometry_msgs.msg</span> <span class="kn">import</span> <span class="p">(</span>
+        <span class="n">Pose</span><span class="p">,</span> 
+        <span class="n">PoseArray</span><span class="p">,</span>
+        <span class="n">Point</span><span class="p">,</span>
+        <span class="n">Quaternion</span>
+    <span class="p">)</span>
+
+    <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="sa"></span><span class="s2">&#34;</span><span class="s2">__main__</span><span class="s2">&#34;</span><span class="p">:</span>
+        <span class="n">rospy</span><span class="o">.</span><span class="n">wait_for_service</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;</span><span class="s1">mushr_global_planner</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">mushrt_global_planner</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">ServiceProxy</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;</span><span class="s1">mushr_global_planner</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">MushrGlobalPlanner</span><span class="p">)</span>
+        <span class="n">start_pose</span> <span class="o">=</span> <span class="n">Pose</span><span class="p">(</span><span class="n">Point</span><span class="p">(</span><span class="o">-</span><span class="mf">1.887</span><span class="p">,</span> <span class="mf">26.930</span><span class="p">,</span><span class="mf">0.0</span><span class="p">)</span><span class="p">,</span> <span class="n">Quaternion</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="p">)</span> 
+        <span class="n">goal_pose</span> <span class="o">=</span> <span class="n">Pose</span><span class="p">(</span><span class="n">Point</span><span class="p">(</span><span class="mf">41.804</span><span class="p">,</span> <span class="mf">0.761</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span><span class="p">,</span> <span class="n">Quaternion</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">mushr_global_planner</span><span class="p">(</span><span class="n">header</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">start_pose</span><span class="p">,</span> <span class="n">goal</span><span class="o">=</span><span class="n">goal_pose</span><span class="p">,</span> <span class="n">turning_radius</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span> <span class="n">planning_time</span><span class="o">=</span><span class="mf">30.0</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Let's unpack this. First, we have to make sure that service that we want to use, <code>mushr_global_planner</code> in this case, is running and ready. <code>rospy.wait_for_service</code> will wait until a service with given name becomes avaiable.</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">rospy.wait_for_service(&#39;mushr_global_planner&#39;)
+</code></pre></div><p>Then, we could create a callable instance giving the service name and class. The instance could be use just like a regular python method.</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">rospy.ServiceProxy(&#39;mushr_global_planner&#39;, MushrGlobalPlanner)
+</code></pre></div><p><code>global_planner</code> takes parameter as listed below:
+Lastly, we call the server with parameters to plan a path from the start position to the goal position.</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">start_pose = Pose(Point(-1.887, 26.930,0.0), Quaternion(0,0,0,1)) 
+goal_pose = Pose(Point(41.804, 0.761, 0.0), Quaternion(0,0,0,1))
+response = mushr_global_planner(header=None, start=start_pose, goal=goal_pose, turning_radius=5.0, planning_time=30.0)
+</code></pre></div><h3 id="running-globel-planner">Running Globel Planner</h3>
+<p>With python files, we have to change the permissions to be able to execute and run.</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">$ chmod +x mushr_ros_intro/src/global_planner.py
+</code></pre></div><p>Set parameter necessary for the global planner node by using the command <a href="http://wiki.ros.org/rosparam">rosparam</a>, which will be explained further below.</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">$ rosparam set reuse_plans True
+$ rosparam set kernal_size 31
+$ rosparam set interpolation_density 1000
+$ rosparam set validity_resolution 0.0005
+</code></pre></div><p>Then initiate the <code>mushr_global_planner</code> server to be ready for client to invoke and plan the path.</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">$ roslaunch mushr_global_planner planner.launch
+</code></pre></div><p>Since the launch file of the mushr global planner does not include the map server by default, we have to manually launch it.</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">$ roslaunch mushr_global_planner map_server.launch
+</code></pre></div><p>Next, we run the <code>global_planner.py</code> to create the path.</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">$ rosrun global_planner.py
+</code></pre></div><p>Finally, open the rviz</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">$ rviz
+</code></pre></div><p>Then subscribe to the <code>/mushr_global_planner_result</code> topic, you should see the same red path as the one generated by the demo.</p>
+<h3 id="parameters-for-the-service">Parameters for the service</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>start</code></td>
+<td><a href="http://docs.ros.org/api/geometry_msgs/html/msg/Pose.html">geometry_msgs/Pose</a></td>
+<td>Start position of the path in the world frame</td>
+</tr>
+<tr>
+<td><code>goal</code></td>
+<td><a href="http://docs.ros.org/api/geometry_msgs/html/msg/Pose.html">geometry_msgs/Pose</a></td>
+<td>Goal position of the path in the world frame</td>
+</tr>
+<tr>
+<td><code>turning_radius</code></td>
+<td><a href="https://docs.python.org/2/tutorial/floatingpoint.html">Float</a></td>
+<td>Turning radius of the car in meters. You can calculate your turning radius although we recommend you tune your car to match your expected turning radius. You should match the variables to the vesc settings preset <a href="https://github.com/prl-mushr/vesc/blob/master/vesc_main/config/racecar-uw-nano/vesc.yaml">car length</a> and <a href="https://github.com/prl-mushr/mushr_base/blob/master/mushr_base/config/joy_teleop.yaml">delta</a> (steering angle). !<a href="https://drive.google.com/uc?export=view&amp;id=12Fe6HDtbWj7XZcV6HvmQ-qeWHpfCcDX0">equation image</a></td>
+</tr>
+<tr>
+<td><code>planning_time</code></td>
+<td><a href="https://docs.python.org/2/tutorial/floatingpoint.html">Float</a></td>
+<td>Planning time cutoff in seconds E.g. give me your best solution after 30 seconds</td>
+</tr>
+</tbody>
+</table>
+<h3 id="how-the-planner-works">How the planner works</h3>
+<p>The planner is essentially a wrapper around OMPL doing Dubin’s path planning using BIT*. The input map is used to get the bounds of the state space and for determining if a sampled state is invalid (either by being out of bounds or within an obstacle). The planner uses the optimization objective of minimizing the path length of the solution. It then converts the solution path to a non-ompl format (list of tuples) and returns it to the user. The path is filled in with interpolated points via solutionPath.interpolate to create a dense path, but this can be tuned to vary the density of the output path.</p>
+<h4 id="publishers">Publishers</h4>
+<table>
+<thead>
+<tr>
+<th>Topic</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/mushr_global_planner_start</code></td>
+<td><a href="http://docs.ros.org/api/geometry_msgs/html/msg/Pose.html">geometry_msgs/Pose</a></td>
+<td>Start position</td>
+</tr>
+<tr>
+<td><code>/mushr_global_planner_goal</code></td>
+<td><a href="http://docs.ros.org/api/geometry_msgs/html/msg/Pose.html">geometry_msgs/Pose</a></td>
+<td>Goal position</td>
+</tr>
+<tr>
+<td><code>/mushr_global_planner_result</code></td>
+<td><a href="http://docs.ros.org/api/geometry_msgs/html/msg/PoseArray.html">geometry_msgs/PoseArray</a></td>
+<td>Planned path of poses in world coordinates from start to goal</td>
+</tr>
+</tbody>
+</table>
+<h4 id="services">Services</h4>
+<table>
+<thead>
+<tr>
+<th>Topic</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/mushr_global_planner</code></td>
+<td><a href="srv/MushrGlobalPlanner.srv">mushr_global_planner/MushrGlobalPlanner</a></td>
+<td>Calls for a path to be created with a given start, goal, turning radius, and planning time</td>
+</tr>
+</tbody>
+</table>
+<h4 id="parameters-for-the-planner">Parameters for the planner</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>reuse_plans</code></td>
+<td><a href="https://docs.python.org/2/c-api/bool.html">Boolean</a></td>
+<td>Option to use the same previously generated path if the parameter is set to True, otherwise create a new path from the global planner service. This is used when the planner node is called multiple times with the same settings.</td>
+</tr>
+<tr>
+<td><code>kernal_size</code></td>
+<td><a href="https://docs.python.org/2/c-api/int.html">Integer</a></td>
+<td>The kernal that convolves over the map. A higher kernal size results in a planner that has a larger buffer from walls but may not find a path through tight spaces. Smaller sizes result in less of a buffer from walls.</td>
+</tr>
+<tr>
+<td><code>interpolation_density</code></td>
+<td><a href="https://docs.python.org/2/c-api/int.html">Integer</a></td>
+<td>A number of states in a path so that the path is made up of exactly <code>interpolation_density</code> states.</td>
+</tr>
+<tr>
+<td><code>validity_resolution</code></td>
+<td><a href="https://docs.python.org/2/tutorial/floatingpoint.html">Float</a></td>
+<td>The resolution at which state validity needs to be verified in order for a motion between two states to be considered valid (collision free). This value is specified as a fraction of the space's extent.</td>
+</tr>
+</tbody>
+</table>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="strip strip-primary-gradient-top-bottom">
+  <div class="container pt-3 pb-3 pt-md-6 pb-md-3 px-2">
+    <div class="row justify-content-left citation-row">
+        <h1 id="citation">Citation</h1>
+        <p>If you plan to use any part of the the MuSHR platform, including tutorials, codebase, or hardware instructions for a project or paper, please cite 
+        <em><a href="https://arxiv.org/abs/1908.08031">MuSHR: A Low-Cost,
+        Open-Source Robotic Racecar for Education and Research
+        </a></em>:</p></font>
+        <div class="highlight"><pre class="chroma">@article{srinivasa2019mushr,
+ title={{M}u{SHR}: {A} Low-Cost, Open-Source Robotic Racecar for Education and Research},
+ author={Srinivasa, Siddhartha S. and Lancaster, Patrick and Michalove, Johan and Schmittle, Matt and Summers, Colin and Rockett, Matthew and Smith, Joshua R. and Chouhury, Sanjiban and Mavrogiannis, Christoforos and Sadeghi, Fereshteh},
+ journal={CoRR},
+ volume={abs/1908.08031},
+ year={2019}
+}
+</pre></div>
+        <p><br></p>
+    </div>
+  </div>
+</div>
+
+
+  </div>
+
+  <div class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="footer-inner">
+          <h3 class="footer-title">MuSHR: The UW Open Racecar Project</h3>
+          <ul>
+            
+            
+            <li class="menu-item-home">
+              <a href="/">
+                Home
+              </a>
+            </li>
+            
+            <li class="menu-item-community forum">
+              <a href="https://spectrum.chat/mushr">
+                Community Forum
+              </a>
+            </li>
+            
+            <li class="menu-item-contact">
+              <a href="/contact/">
+                Contact
+              </a>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <div class="sub-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="sub-footer-inner">
+          <ul>
+            <li><strong>Email: </strong><a href="mailto:">
+                </a></li>
+          </ul>
+          <ul>
+            <li class="prl"><a href="https://personalrobotics.cs.washington.edu/">Made with <font color="#FF1690">♥</font> at the Personal Robotics Lab</a></li>
+          </ul>
+          <ul>
+            <li class="prl">Website by <a href="http://johanam.com/"><font color="#36CDC4">Johan</font></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+  
+
+
+
+
+  <script type="text/javascript" src="/js/services.min.96db5a4d9a7ea2d1759fd6847940367b5207c4ef5686df932179e04aefccdf37.js"></script>
+  
+
+
+  
+  <script type="text/javascript" src="/js/scripts.min.bf1e1f7ae8e03db5f012356e825843facdff51c0a559cb0d27fe2bbe1db405c2.js"></script>
+  
+
+  
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-146151202-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+  gtag('config', 'UA-146151202-1');
+</script>
+
+
+
+
+</body>
+
+</html>

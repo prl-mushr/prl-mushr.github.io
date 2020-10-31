@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hardware on MuSHR: The UW Open Racecar Project</title>
+    <link>https://mushr.io/hardware/</link>
+    <description>Recent content in Hardware on MuSHR: The UW Open Racecar Project</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 28 Nov 2018 15:14:54 +1000</lastBuildDate>
+    
+	<atom:link href="https://mushr.io/hardware/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Build Instructions</title>
+      <link>https://mushr.io/hardware/build_instructions/</link>
+      <pubDate>Wed, 28 Nov 2018 15:14:54 +1000</pubDate>
+      
+      <guid>https://mushr.io/hardware/build_instructions/</guid>
+      <description>Build your own MuSHR Racecar!</description>
+    </item>
+    
+    <item>
+      <title>Jetson Nano Driver Installation</title>
+      <link>https://mushr.io/hardware/nano_install/</link>
+      <pubDate>Wed, 28 Nov 2018 15:14:54 +1000</pubDate>
+      
+      <guid>https://mushr.io/hardware/nano_install/</guid>
+      <description>Use a script to setup your SD card</description>
+    </item>
+    
+    <item>
+      <title>Logo Modification</title>
+      <link>https://mushr.io/hardware/logo_modification/</link>
+      <pubDate>Wed, 28 Nov 2018 15:14:54 +1000</pubDate>
+      
+      <guid>https://mushr.io/hardware/logo_modification/</guid>
+      <description>Change the MuSHR logo!</description>
+    </item>
+    
+  </channel>
+</rss>
