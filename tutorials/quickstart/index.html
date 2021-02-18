@@ -127,12 +127,22 @@
 <h3 id="goal">Goal</h3>
 <p>To get the simulator running on your machine so that you can begin hacking immediately!</p>
 <h3 id="requirements">Requirements</h3>
-<p>A Ubuntu 16.04 or 18.04 Linux machine (20.04 not supported yet!). If you don't run linux natively then get a Ubuntu VM: <a href="https://www.instructables.com/id/How-to-Create-an-Ubuntu-Virtual-Machine-with-Virtu/">OSX</a>, <a href="https://itsfoss.com/install-linux-in-virtualbox/">Windows</a>.</p>
-<p>We also provide a virtual machine image that already has the MuSHR stack setup, it can be downloaded <a href="https://drive.google.com/a/cs.washington.edu/file/d/1mOzSzVx9BF_e2U1OeK58NS42UIPcnIZq/view?usp=sharing">here</a>. The username is <strong>robot</strong> and the password is <strong>prl_robot</strong>. If you use this image, you can start the VM and then skip to the <a href="#running-the-simulator"><strong>Running the Simulator</strong></a> section.</p>
-<p>Window Subsystem for Linux (WSL): There has also been success getting the quickstart to run using WSL. When running <code>rivz</code> you'll need to disable native <code>opengl</code>. There will be a note (<a href="#wsl-users-note"><strong>Note for WSL</strong></a>) in the section running <code>rviz</code>.</p>
-<p>Python2.7: If you have Python3 as your default version, download <a href="https://docs.conda.io/en/latest/">Conda</a> to easily create/manage Python2.7 virtual environments.</p>
 <ul>
-<li>To learn how to use conda environments please see the following <a href="https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html">tutorial</a></li>
+<li><strong>A Ubuntu 16.04 or 18.04 Linux machine</strong> (20.04 not supported yet!). If you don't run linux natively you can use an <a href="https://www.freecodecamp.org/news/how-to-install-ubuntu-with-oracle-virtualbox/">Ubuntu VM</a>.</li>
+</ul>
+<p>We also provide a virtual machine image that already has the MuSHR stack setup, it can be downloaded <a href="https://drive.google.com/a/cs.washington.edu/file/d/1mOzSzVx9BF_e2U1OeK58NS42UIPcnIZq/view?usp=sharing">here</a>. The username is <strong>robot</strong> and the password is <strong>prl_robot</strong>. If you use this image, you can start the VM and then skip to the <a href="#running-the-simulator"><strong>Running the Simulator</strong></a> section. If you're using VirtualBox, here is a tutorial for <a href="https://docs.oracle.com/cd/E26217_01/E26796/html/qs-import-vm.html">setting up the virtual machine image</a>.</p>
+<p>For good performance, it's a good idea to set the RAM used by your VM to at least 2048 MB. If using VirtualBox, navigate to Settings -&gt; System and you should see a slider
+which allows you to modify RAM.</p>
+<ul>
+<li>
+<p><strong>Window Subsystem for Linux (WSL):</strong> There has also been success getting the quickstart to run using WSL. When running <code>rivz</code> you'll need to disable native <code>opengl</code>. There will be a note (<a href="#wsl-users-note"><strong>Note for WSL</strong></a>) in the section running <code>rviz</code>.</p>
+</li>
+<li>
+<p><strong>Python2.7:</strong> If you have Python3 as your default version, download <a href="https://docs.conda.io/en/latest/">Conda</a> to easily create/manage Python2.7 virtual environments.</p>
+</li>
+<li>
+<p>To learn how to use conda environments please see the following <a href="https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html">tutorial</a></p>
+</li>
 </ul>
 <h2 id="setup">Setup</h2>
 <p>First we need to make sure you have a few dependencies installed. All commands are to be executed in a terminal (CTRL + ALT + T). Here is what you need:</p>
@@ -231,6 +241,18 @@ $ nano ~/catkin_ws/src/mushr_sim/launch/map_server.launch
 <p>You can make your own maps using SLAM based techniques like <a href="http://wiki.ros.org/gmapping">gmapping</a> or <a href="https://google-cartographer-ros.readthedocs.io/en/latest/">cartographer</a>. But if you just want something quick and simple, you can make your own <code>.yaml</code> and <code>.png</code> files for the map. Use the current map files as a template. We use <a href="https://www.gimp.org/">Gimp</a> to edit the map <code>.png</code> file but you can use any image editor you like.</p>
 <h2 id="going-further">Going Further</h2>
 <p>To learn about programming the car, continue to the <a href="/tutorials/intro-to-ros">Intro to ROS Tutorial</a>.</p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<p>Commonly encountered problems during this tutorial.</p>
+<h3 id="virtual-machines">Virtual Machines</h3>
+<h4 id="failed-to-open-ovf-descriptor-when-importing-the-virtual-machine-image">Failed to open ovf descriptor when importing the virtual machine image</h4>
+<p>This is a known issue with .ova file extensions downloading as .ovf from Google Suite. To fix, rename the file extension to .ova.</p>
+<h4 id="cant-copy-and-paste-into-virtualbox">Can't copy and paste into VirtualBox</h4>
+<p>Power down the virtual machine. Select Settings -&gt; General -&gt; Advanced -&gt; SharedClipboard and select bidirectional. Restart the virtual machine.</p>
+<h4 id="ubuntu-runs-slowlyfreezes-on-virtualbox">Ubuntu runs slowly/freezes on VirtualBox</h4>
+<p>This likely occured because the default settings for new virtual machines
+are low. For better performance, it's a good idea to double the default memory
+(from 1024 to 2048 MB). Select Settings -&gt; System and you should see a slider
+which allows you to increase RAM.</p>
 
         </div>
       </div>
