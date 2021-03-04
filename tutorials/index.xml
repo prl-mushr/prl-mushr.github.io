@@ -128,5 +128,14 @@
       <description>Initialize and operate MuSHRs out-of-the-box autonomous navigation stack!</description>
     </item>
     
+    <item>
+      <title>Teleoperating over Radio</title>
+      <link>https://mushr.io/tutorials/radio_fpv/</link>
+      <pubDate>Wed, 28 Nov 2018 15:14:54 +1000</pubDate>
+      
+      <guid>https://mushr.io/tutorials/radio_fpv/</guid>
+      <description>Use the Bitcraze CrazyRadio dongle to teleoperate the car over radio.</description>
+    </item>
+    
   </channel>
 </rss>
