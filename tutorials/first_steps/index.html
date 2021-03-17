@@ -11,7 +11,7 @@
 
   
   
-  <link rel="stylesheet" href="/css/style.min.da237b6d7e43e2dc401881d53af19b4029ceec77d9b245a60ed543c476fe9e80.css">
+  <link rel="stylesheet" href="/css/style.min.1fc922f3ee2ddc9e0a821fb52320a349bc079658d0f25db90d402e585db0d025.css">
   
 
   
@@ -144,16 +144,16 @@
 <p><strong>Password:</strong> prl_robot</p>
 <p>If you experience any errors, make sure you are connected to <code>ROBOT AP</code> and you typed the above properly.</p>
 <h2 id="configure-user--hostname">Configure User &amp; Hostname</h2>
-<p>Your connected! So let's change the password and hostname. This section is all done on the robot side. First let's change the password.</p>
+<p>Your connected! So let&rsquo;s change the password and hostname. This section is all done on the robot side. First let&rsquo;s change the password.</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ passwd </code></pre></div>
-<p>Enter prl_robot as the current password and then type your new password with the prompts. Now let's configure the hostname, it is currently set to goose. Open the hostname file.</p>
+<p>Enter prl_robot as the current password and then type your new password with the prompts. Now let&rsquo;s configure the hostname, it is currently set to goose. Open the hostname file.</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo gedit /etc/hostname </code></pre></div>
 <p>You will be prompted to enter the password. Change goose to whatever you want to use and save &amp; exit. Similarly open the <code>/etc/hosts</code> file.</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo gedit /etc/hosts</code></pre></div>
 <p>And replace any goose with your new hostname. Save &amp; exit. Reboot the car, to see the effect. Note: you will have to ssh in again.</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo reboot</code></pre></div>
 <h2 id="update-repos">Update Repos</h2>
-<p>Because mushr is always updating, you may have outdated code on your image. To fix this just enter <code>~/catkin_ws/src/mushr</code> and pull via vcstool. For this to work, you need to give your car access to the internet. The easiest way to do this is by plugging an ethernet cable from an ethernet port on your home router to the car. If you don't have an ethernet cable, you can plug in a monitor, mouse, and keyboard into the Jetson Nano and connect the car to a wifi network.</p>
+<p>Because mushr is always updating, you may have outdated code on your image. To fix this just enter <code>~/catkin_ws/src/mushr</code> and pull via vcstool. For this to work, you need to give your car access to the internet. The easiest way to do this is by plugging an ethernet cable from an ethernet port on your home router to the car. If you don&rsquo;t have an ethernet cable, you can plug in a monitor, mouse, and keyboard into the Jetson Nano and connect the car to a wifi network.</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> ~/catkin_ws/src/mushr <span class="o">&amp;&amp;</span> vcs pull -n</code></pre></div>
 <p>Note: If you edited mushr source code, this will be overwritten. You can instead pull repos individually</p>
 <h2 id="configure-visualization">Configure Visualization</h2>
@@ -194,7 +194,7 @@ This should output a bunch of topics. If not, check your <code>ROS_MASTER_URI</c
 </figure>
 
 <h2 id="setup-wi-fi-optional">Setup Wi-Fi (Optional)</h2>
-<p>If you want to install additional software on the car, or be able to use the internet on your laptop while connected to the car then you will want to set the car up with a static IP instead of it's own network. To do this, you will need to plug a monitor, keyboard, and mouse into the car. The keyboard/mouse can go in any of the USB ports, Wi-Fi setup does not require the sensors to be connected.</p>
+<p>If you want to install additional software on the car, or be able to use the internet on your laptop while connected to the car then you will want to set the car up with a static IP instead of it&rsquo;s own network. To do this, you will need to plug a monitor, keyboard, and mouse into the car. The keyboard/mouse can go in any of the USB ports, Wi-Fi setup does not require the sensors to be connected.</p>
 <p>Once hooked up, you should see the login screen or the desktop. Login using your new password. Then use the mouse to click on the Wi-Fi icon in the top right. Disconnect from <code>ROBOT_AP</code>. Then open the connection manager.</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo nm-connection-editor</code></pre></div>
 <p>Click on <strong>Robot AP</strong> then the <strong>General</strong> Tab. Uncheck <strong>Automatically connect to this network when it is available</strong>. Exit.</p>
@@ -229,7 +229,7 @@ This should output a bunch of topics. If not, check your <code>ROS_MASTER_URI</c
 <li>The Static IP: for example <code>172.16.77.Z</code>.</li>
 <li>Netmask: for example <code>255.255.255.0</code>.</li>
 <li>Gateway: for example <code>172.16.77.100</code>.<br>
-<code>Z</code> is usually the robot number on the car, but it's up to you!</li>
+<code>Z</code> is usually the robot number on the car, but it&rsquo;s up to you!</li>
 </ul>
 </li>
 <li><strong>DNS servers:</strong> field, enter <code>8.8.8.8</code>.</li>
@@ -336,7 +336,7 @@ This should output a bunch of topics. If not, check your <code>ROS_MASTER_URI</c
   
 
   
-  <script type="text/javascript" src="/js/scripts.min.bf1e1f7ae8e03db5f012356e825843facdff51c0a559cb0d27fe2bbe1db405c2.js"></script>
+  <script type="text/javascript" src="/js/scripts.min.98ee06cc35517b5800b382aecb0fc59893e95b9c11dd21842d0d57e4f68043e3.js"></script>
   
 
   

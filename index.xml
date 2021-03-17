@@ -6,11 +6,7 @@
     <description>Recent content in Home on MuSHR: The UW Open Racecar Project</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 10 Sep 2020 15:14:54 +1000</lastBuildDate>
-    
-	<atom:link href="https://mushr.io/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 10 Sep 2020 15:14:54 +1000</lastBuildDate><atom:link href="https://mushr.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Quickstart</title>
       <link>https://mushr.io/tutorials/quickstart/</link>
@@ -171,7 +167,7 @@
       
       <guid>https://mushr.io/contact/</guid>
       <description>We want to hear from you! Feel free to post to our forum with questions or comments about:
- Using MuSHR for education. (See the course website for &amp;ldquo;Mobile Robotics&amp;rdquo; for an example.) A project you&#39;ve done with the car. The platform (hardware and software issues). Also see the Troubleshooting Tutorial.  The MuSHR Donation Program The MuSHR team is providing a small number of pre-built MuSHR cars to interested parties who would otherwise not have the means of building the cars themselves, with priority given to schools, groups, and labs whose members are underrepresented in robotics and do not have the financial means to purchase a car themselves.</description>
+ Using MuSHR for education. (See the course website for &amp;ldquo;Mobile Robotics&amp;rdquo; for an example.) A project you&amp;rsquo;ve done with the car. The platform (hardware and software issues). Also see the Troubleshooting Tutorial.  The MuSHR Donation Program The MuSHR team is providing a small number of pre-built MuSHR cars to interested parties who would otherwise not have the means of building the cars themselves, with priority given to schools, groups, and labs whose members are underrepresented in robotics and do not have the financial means to purchase a car themselves.</description>
     </item>
     
     <item>

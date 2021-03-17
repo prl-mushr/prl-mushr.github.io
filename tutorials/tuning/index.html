@@ -11,7 +11,7 @@
 
   
   
-  <link rel="stylesheet" href="/css/style.min.da237b6d7e43e2dc401881d53af19b4029ceec77d9b245a60ed543c476fe9e80.css">
+  <link rel="stylesheet" href="/css/style.min.1fc922f3ee2ddc9e0a821fb52320a349bc079658d0f25db90d402e585db0d025.css">
   
 
   
@@ -137,7 +137,7 @@
 </figure>
 <h3 id="introduction">Introduction</h3>
 <p>The VESC maps input velocities (m/s) and steering angles (radians) to Electrical RPMs and servo positions. Due to small physical differences in the car, the parameters of the conversion need to be tuned to the specific car. This guide will provide you with the steps needed to tune the parameters of the VESC.</p>
-<p>If incorrectly tuned, the commands applied by your autonomous controller may not correspond to what's being executed on the physical hardware, making it difficult to debug issues with the controller. You as a controller turn out to be pretty good at self correcting, but your autonomous controllers may not fair as well.</p>
+<p>If incorrectly tuned, the commands applied by your autonomous controller may not correspond to what&rsquo;s being executed on the physical hardware, making it difficult to debug issues with the controller. You as a controller turn out to be pretty good at self correcting, but your autonomous controllers may not fair as well.</p>
 <p><strong>Note:</strong> The conversion from velocity to ERPM and steering angle to servo position is a linear function of the input command:</p>
 <div style="text-align: center;" />
 <code>output = f(command) = gain * command + bias</code>,
@@ -153,44 +153,44 @@
 <li>A tape measure.</li>
 </ul>
 <h2 id="setup">Setup</h2>
-<p>Find a relatively open space to run your car. We'll be driving it straight for ~9ft (3m) and turning in a semi-circle of diameter ~6ft (2m).</p>
-<p>Plug the batteries into the car, connect to the car's network and <code>ssh</code> into the car.</p>
+<p>Find a relatively open space to run your car. We&rsquo;ll be driving it straight for ~9ft (3m) and turning in a semi-circle of diameter ~6ft (2m).</p>
+<p>Plug the batteries into the car, connect to the car&rsquo;s network and <code>ssh</code> into the car.</p>
 <p>The file will be located at:</p>
 <div style="text-align: center;" />
 <code>~/catkin_ws/src/mushr_base/vesc/vesc_main/config/racecar-uw-nano/vesc.yaml</code>.
 <br />
 <br />
 </div>
-<p>If you have a different version of the car, you'll choose that one instead. If you don't know which car you have, you likely have the <code>racecar-uw-nano</code> version.</p>
+<p>If you have a different version of the car, you&rsquo;ll choose that one instead. If you don&rsquo;t know which car you have, you likely have the <code>racecar-uw-nano</code> version.</p>
 <p>The file will look like this:</p>
 <div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="c"># erpm (electrical rpm) = speed_to_erpm_gain * speed (meters / second) + speed_to_erpm_offset</span><span class="w">
 </span><span class="w"></span><span class="c">#-4614</span><span class="w">
-</span><span class="w"></span>speed_to_erpm_gain<span class="p">:</span><span class="w"> </span>-<span class="m">2000</span><span class="w">
-</span><span class="w"></span>speed_to_erpm_offset<span class="p">:</span><span class="w"> </span><span class="m">0.0</span><span class="w">
+</span><span class="w"></span><span class="nt">speed_to_erpm_gain</span><span class="p">:</span><span class="w"> </span>-<span class="m">2000</span><span class="w">
+</span><span class="w"></span><span class="nt">speed_to_erpm_offset</span><span class="p">:</span><span class="w"> </span><span class="m">0.0</span><span class="w">
 </span><span class="w">
-</span><span class="w"></span><span class="p">[</span>...omited<span class="w"> </span>for<span class="w"> </span>brevity<span class="p">]</span><span class="w">
+</span><span class="w"></span><span class="p">[</span><span class="l">...omited for brevity]</span><span class="w">
 </span><span class="w">
 </span><span class="w"></span><span class="c"># servo value (0 to 1) =  steering_angle_to_servo_gain * steering angle (radians) + steering_angle_to_servo_offset</span><span class="w">
-</span><span class="w"></span>steering_angle_to_servo_gain<span class="p">:</span><span class="w"> </span><span class="m">1.2135</span><span class="w">
-</span><span class="w"></span>steering_angle_to_servo_offset<span class="p">:</span><span class="w"> </span><span class="m">0.55</span><span class="w">
+</span><span class="w"></span><span class="nt">steering_angle_to_servo_gain</span><span class="p">:</span><span class="w"> </span><span class="m">1.2135</span><span class="w">
+</span><span class="w"></span><span class="nt">steering_angle_to_servo_offset</span><span class="p">:</span><span class="w"> </span><span class="m">0.55</span><span class="w">
 </span><span class="w">
-</span><span class="w"></span><span class="p">[</span>...omited<span class="w"> </span>for<span class="w"> </span>brevity<span class="p">]</span><span class="w">
+</span><span class="w"></span><span class="p">[</span><span class="l">...omited for brevity]</span><span class="w">
 </span><span class="w">
-</span><span class="w"></span>vesc_driver<span class="p">:</span><span class="w">
-</span><span class="w">  </span>port<span class="p">:</span><span class="w"> </span>/dev/vesc<span class="w">
-</span><span class="w">  </span><span class="p">[</span>...omited<span class="w"> </span>for<span class="w"> </span>brevity<span class="p">]</span><span class="w">
+</span><span class="w"></span><span class="nt">vesc_driver</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l">/dev/vesc</span><span class="w">
+</span><span class="w">  </span><span class="p">[</span><span class="l">...omited for brevity]</span><span class="w">
 </span></code></pre></div><h2 id="steering-angle-offset">Steering Angle Offset</h2>
 <p>This offset sets the default servo position when the car is driving straight.</p>
 <h3 id="how-to-tune">How to Tune</h3>
 <p>You will be changing the variable: <code>steering_angle_to_servo_offset</code>.</p>
 <h4 id="tuning-loop">Tuning loop:</h4>
-<p>While the car doesn't drive straight, do the following procedure:</p>
+<p>While the car doesn&rsquo;t drive straight, do the following procedure:</p>
 <ol>
 <li>Start teleop:</li>
 </ol>
 <div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">roslaunch mushr_base teleop.launch
 </code></pre></div><ul>
-<li>Drive car in a straight line a few times. It's never going to be perfectly straight, so as long as it goes straight most of the time, it'll be fine. You can always come back to retune if it's not sufficiently precise.</li>
+<li>Drive car in a straight line a few times. It&rsquo;s never going to be perfectly straight, so as long as it goes straight most of the time, it&rsquo;ll be fine. You can always come back to retune if it&rsquo;s not sufficiently precise.</li>
 <li>Adjust <code>steering_angle_offset</code> in <code>vesc.yaml</code>. Increase the offset if the car veers too much left, decrease if it veers too much right.</li>
 <li>Stop teleop (<code>Ctrl-C</code> in the window you started <code>teleop.launch</code> in) and go back to Step 1.</li>
 </ul>
@@ -227,7 +227,7 @@
 <p>You will be changing the variable: <code>speed_to_erpm_gain</code>.</p>
 <h4 id="before-tuning">Before tuning:</h4>
 <ol>
-<li>Extend your tape measure to around 9-10 ft on the floor. It's okay if it's slightly less than this.
+<li>Extend your tape measure to around 9-10 ft on the floor. It&rsquo;s okay if it&rsquo;s slightly less than this.
 <figure>
     <img src="/tutorials/tuning/erpm_gain/start.jpg" width="300px"/> 
 </figure>
@@ -247,15 +247,15 @@
 <li>Open another terminal on the car and run the command:</li>
 </ul>
 <div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">rostopic echo /vesc/odom/pose/pose/position/x
-</code></pre></div><p>This will echo all the odometry information &ndash; how far the car has driven (in meters) in the <code>x</code> direction since teleop started. The value should be <code>0.0</code> at the start, as the car hasn't moved yet.</p>
+</code></pre></div><p>This will echo all the odometry information &ndash; how far the car has driven (in meters) in the <code>x</code> direction since teleop started. The value should be <code>0.0</code> at the start, as the car hasn&rsquo;t moved yet.</p>
 <ul>
-<li>Drive the car forward about 7-8 ft. The car will drive slightly further as it decelerates and stops. Make sure you only drive forward, not altering the servo position, otherwise you'll have both <code>x</code> and <code>y</code> directional changes (which makes it only slightly harder to check distance traveled).</li>
+<li>Drive the car forward about 7-8 ft. The car will drive slightly further as it decelerates and stops. Make sure you only drive forward, not altering the servo position, otherwise you&rsquo;ll have both <code>x</code> and <code>y</code> directional changes (which makes it only slightly harder to check distance traveled).</li>
 <li>Record the distance traveled. If your tape measure is in inches, convert to meters.
 <figure>
     <img src="/tutorials/tuning/erpm_gain/end_with_line.jpg" width="400px"/> 
 </figure>
 </li>
-<li>Compare to output of the <code>rostopic echo</code> command's <code>x</code> value. If the reported distance traveled is larger than the actual, decrease the gain. If the reported distance is smaller, increase the gain. At the begining increasing or decreasing by 500 should allow you to quickly hone in on the value.</li>
+<li>Compare to output of the <code>rostopic echo</code> command&rsquo;s <code>x</code> value. If the reported distance traveled is larger than the actual, decrease the gain. If the reported distance is smaller, increase the gain. At the begining increasing or decreasing by 500 should allow you to quickly hone in on the value.</li>
 <li>Stop teleop. Go back to step 1 if the values are not sufficiently close (within 2-3 cm).</li>
 </ul>
 <p><strong>Note: This value can vary, but it should be on the order of thousands (2000-5000)</strong></p>
@@ -272,7 +272,7 @@
 <li>Extend your tape measure to around 7-8 ft on the floor, similar to the tuning procedure above.</li>
 </ol>
 <h4 id="tuning-loop-2">Tuning loop:</h4>
-<p>While the car doesn't drive :</p>
+<p>While the car doesn&rsquo;t drive :</p>
 <ol>
 <li>Place car at the base of the tape measure with the back wheelbase (indicated with a white line) lined up with 0.
 <figure>
@@ -375,7 +375,7 @@
   
 
   
-  <script type="text/javascript" src="/js/scripts.min.bf1e1f7ae8e03db5f012356e825843facdff51c0a559cb0d27fe2bbe1db405c2.js"></script>
+  <script type="text/javascript" src="/js/scripts.min.98ee06cc35517b5800b382aecb0fc59893e95b9c11dd21842d0d57e4f68043e3.js"></script>
   
 
   

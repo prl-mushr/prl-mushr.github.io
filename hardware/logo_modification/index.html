@@ -11,7 +11,7 @@
 
   
   
-  <link rel="stylesheet" href="/css/style.min.da237b6d7e43e2dc401881d53af19b4029ceec77d9b245a60ed543c476fe9e80.css">
+  <link rel="stylesheet" href="/css/style.min.1fc922f3ee2ddc9e0a821fb52320a349bc079658d0f25db90d402e585db0d025.css">
   
 
   
@@ -113,7 +113,7 @@
           <p>This page provides instructions for modifying the logo displayed on the back of the MuSHR Racecar.</p>
 <hr>
 <h2 id="prerequisites">Prerequisites</h2>
-<p>Before altering the MuSHR Racecar's logo, the following steps should be taken:</p>
+<p>Before altering the MuSHR Racecar&rsquo;s logo, the following steps should be taken:</p>
 <ol>
 <li>Download/clone the <a href="https://github.com/prl-mushr/mushr_cad">mushr_cad</a> repo</li>
 <li>Download and install <a href="https://www.openscad.org/downloads.html">OpenSCAD</a></li>
@@ -171,10 +171,10 @@
 </li>
 </ol>
 <h2 id="generate-back-cover-stl-files">Generate Back Cover STL Files</h2>
-<p>In this section, we will use our desired logo to generate new .stl files for the sides of the racecar's back cover.</p>
+<p>In this section, we will use our desired logo to generate new .stl files for the sides of the racecar&rsquo;s back cover.</p>
 <ol>
 <li>
-<p>Open <strong>mushr_cad/misc/racecar_cover_image.scad</strong>. Change the <strong>rci_dst</strong> variable to be the file path of your logo's .dxf file. You should only need to change the file name, the parent directories should not need to be changed.</p>
+<p>Open <strong>mushr_cad/misc/racecar_cover_image.scad</strong>. Change the <strong>rci_dst</strong> variable to be the file path of your logo&rsquo;s .dxf file. You should only need to change the file name, the parent directories should not need to be changed.</p>
 </li>
 <li>
 <p>Save the OpenSCAD file. Then render the model (i.e. press F6). Our rendered is model is shown below in Fig. 2.1.</p>
@@ -187,7 +187,7 @@
 
 </li>
 <li>
-<p>Examine the code in the Editor window. The block that uses <strong>difference()</strong> and <strong>minkowski</strong> (lines 13-26 in Fig. 2.1) generates a version of the logo that has its edges trimmed. This is so that we can create an inset of the logo that can be printed in a different color from the racecar's back cover and then be super-glued into the inset hole. In order to print this inset (you will want to print a pair), click the <strong>STL</strong> button and save it to <strong>mushr_cad/v3/stl</strong> (you can overwrite the existing racecar_cover_image.stl), which is the directory that contains all of the other parts that you will want to print.</p>
+<p>Examine the code in the Editor window. The block that uses <strong>difference()</strong> and <strong>minkowski</strong> (lines 13-26 in Fig. 2.1) generates a version of the logo that has its edges trimmed. This is so that we can create an inset of the logo that can be printed in a different color from the racecar&rsquo;s back cover and then be super-glued into the inset hole. In order to print this inset (you will want to print a pair), click the <strong>STL</strong> button and save it to <strong>mushr_cad/v3/stl</strong> (you can overwrite the existing racecar_cover_image.stl), which is the directory that contains all of the other parts that you will want to print.</p>
 </li>
 <li>
 <p>While keeping <strong>racecar_cover_image.scad</strong> open, open <strong>mushr_cad/v3/scad/racecar_back_cover_left_side.scad</strong>. Render the model by pressing F6.</p>
@@ -203,7 +203,7 @@
 
 </li>
 <li>
-<p>If you would like to change the size or position of the logo, go back to <strong>racecar_cover_image.scad</strong>. Modify the <strong>rci_x_scale</strong> and <strong>rci_y_scale</strong> parameters to change the logo's size, and the <strong>rci_x_offset</strong> and <strong>rci_y_offset</strong> parameters to change the logo's position. <strong>NOTE: In order for these changes to take effect, you must save the racecar_cover_image.scad file before re-rendering racecar_back_cover_left_side.scad</strong>. After altering the parameters, return to <strong>racecar_back_cover_left_side.scad</strong> and re-render by pressing F6. If your logo does not show up after rendering <strong>racecar_back_cover_left_side.scad</strong>, try making <strong>rci_x_scale</strong> and <strong>rci_y_scale</strong> increasingly large. Continue to alter the parameters until the logo is sized/position as desired.</p>
+<p>If you would like to change the size or position of the logo, go back to <strong>racecar_cover_image.scad</strong>. Modify the <strong>rci_x_scale</strong> and <strong>rci_y_scale</strong> parameters to change the logo&rsquo;s size, and the <strong>rci_x_offset</strong> and <strong>rci_y_offset</strong> parameters to change the logo&rsquo;s position. <strong>NOTE: In order for these changes to take effect, you must save the racecar_cover_image.scad file before re-rendering racecar_back_cover_left_side.scad</strong>. After altering the parameters, return to <strong>racecar_back_cover_left_side.scad</strong> and re-render by pressing F6. If your logo does not show up after rendering <strong>racecar_back_cover_left_side.scad</strong>, try making <strong>rci_x_scale</strong> and <strong>rci_y_scale</strong> increasingly large. Continue to alter the parameters until the logo is sized/position as desired.</p>
 </li>
 <li>
 <p>In <strong>racecar_back_cover_left_side.scad</strong>, click the <strong>STL</strong> button to save the model in <strong>mushr_cad/v3/stl</strong> (you can overwrite the existing racecar_back_cover_left_side.stl).</p>
@@ -297,7 +297,7 @@
   
 
   
-  <script type="text/javascript" src="/js/scripts.min.bf1e1f7ae8e03db5f012356e825843facdff51c0a559cb0d27fe2bbe1db405c2.js"></script>
+  <script type="text/javascript" src="/js/scripts.min.98ee06cc35517b5800b382aecb0fc59893e95b9c11dd21842d0d57e4f68043e3.js"></script>
   
 
   

@@ -11,7 +11,7 @@
 
   
   
-  <link rel="stylesheet" href="/css/style.min.da237b6d7e43e2dc401881d53af19b4029ceec77d9b245a60ed543c476fe9e80.css">
+  <link rel="stylesheet" href="/css/style.min.1fc922f3ee2ddc9e0a821fb52320a349bc079658d0f25db90d402e585db0d025.css">
   
 
   
@@ -194,7 +194,7 @@ $ mkdir plans
 </code></pre></div><p>Try and figure out what these plans will do (hint: look at the file names :)). We encourage the extra adventurous can create their own &ldquo;plan&rdquo; files.</p>
 <h2 id="the-code">The code</h2>
 <p><strong>Spoiler alert!</strong> Below the entire code is listed. Each section will be explained in greater detail below the listing. Save this file in <code>src/path_publisher.py</code>. We suggest reading through the code first to gain an understanding of how it works before moving on to the explanations.</p>
-<p>If you're curious to attempt solving the task on your own, give it a try (the section &ldquo;<a href="#writing-the-launch-file">Writing the launch file</a>&rdquo; will help you launch your code) and return to this section afterwards.</p>
+<p>If you&rsquo;re curious to attempt solving the task on your own, give it a try (the section &ldquo;<a href="#writing-the-launch-file">Writing the launch file</a>&rdquo; will help you launch your code) and return to this section afterwards.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -280,7 +280,7 @@ $ mkdir plans
 <span class="kn">from</span> <span class="nn">tf.transformations</span> <span class="kn">import</span> <span class="n">quaternion_from_euler</span>
 
 
-<span class="k">def</span> <span class="nf">run_plan</span><span class="p">(</span><span class="n">pub_init_pose</span><span class="p">,</span> <span class="n">pub_controls</span><span class="p">,</span> <span class="n">plan</span><span class="p">)</span><span class="p">:</span>
+<span class="k">def</span> <span class="nf">run_plan</span><span class="p">(</span><span class="n">pub_init_pose</span><span class="p">,</span> <span class="n">pub_controls</span><span class="p">,</span> <span class="n">plan</span><span class="p">):</span>
     <span class="n">init</span> <span class="o">=</span> <span class="n">plan</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
     <span class="n">send_init_pose</span><span class="p">(</span><span class="n">pub_init_pose</span><span class="p">,</span> <span class="n">init</span><span class="p">)</span>
 
@@ -288,46 +288,46 @@ $ mkdir plans
         <span class="n">send_command</span><span class="p">(</span><span class="n">pub_controls</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">send_init_pose</span><span class="p">(</span><span class="n">pub_init_pose</span><span class="p">,</span> <span class="n">init_pose</span><span class="p">)</span><span class="p">:</span>
-    <span class="n">pose_data</span> <span class="o">=</span> <span class="n">init_pose</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">,</span><span class="s2">&#34;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">send_init_pose</span><span class="p">(</span><span class="n">pub_init_pose</span><span class="p">,</span> <span class="n">init_pose</span><span class="p">):</span>
+    <span class="n">pose_data</span> <span class="o">=</span> <span class="n">init_pose</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&#34;,&#34;</span><span class="p">)</span>
     <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">pose_data</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span>
 
-    <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">theta</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">pose_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="p">)</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">pose_data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="p">)</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">pose_data</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="p">)</span>
-    <span class="n">q</span> <span class="o">=</span> <span class="n">Quaternion</span><span class="p">(</span><span class="o">*</span><span class="n">quaternion_from_euler</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">theta</span><span class="p">)</span><span class="p">)</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">theta</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">pose_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">float</span><span class="p">(</span><span class="n">pose_data</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="nb">float</span><span class="p">(</span><span class="n">pose_data</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="n">Quaternion</span><span class="p">(</span><span class="o">*</span><span class="n">quaternion_from_euler</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">theta</span><span class="p">))</span>
     <span class="n">point</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
-    <span class="n">pose</span> <span class="o">=</span> <span class="n">PoseWithCovariance</span><span class="p">(</span><span class="n">pose</span><span class="o">=</span><span class="n">Pose</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="n">point</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="n">q</span><span class="p">)</span><span class="p">)</span>
-    <span class="n">pub_init_pose</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">PoseWithCovarianceStamped</span><span class="p">(</span><span class="n">pose</span><span class="o">=</span><span class="n">pose</span><span class="p">)</span><span class="p">)</span>
+    <span class="n">pose</span> <span class="o">=</span> <span class="n">PoseWithCovariance</span><span class="p">(</span><span class="n">pose</span><span class="o">=</span><span class="n">Pose</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="n">point</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="n">q</span><span class="p">))</span>
+    <span class="n">pub_init_pose</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">PoseWithCovarianceStamped</span><span class="p">(</span><span class="n">pose</span><span class="o">=</span><span class="n">pose</span><span class="p">))</span>
 
 
-<span class="k">def</span> <span class="nf">send_command</span><span class="p">(</span><span class="n">pub_controls</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span><span class="p">:</span>
-    <span class="n">cmd</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">,</span><span class="s2">&#34;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">send_command</span><span class="p">(</span><span class="n">pub_controls</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+    <span class="n">cmd</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&#34;,&#34;</span><span class="p">)</span>
     <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span>
-    <span class="n">v</span><span class="p">,</span> <span class="n">delta</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">cmd</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="p">)</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">cmd</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="p">)</span>
+    <span class="n">v</span><span class="p">,</span> <span class="n">delta</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">cmd</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">float</span><span class="p">(</span><span class="n">cmd</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 
     <span class="n">dur</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Duration</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
     <span class="n">rate</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Rate</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-    <span class="n">start</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Time</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="p">)</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Time</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
 
     <span class="n">drive</span> <span class="o">=</span> <span class="n">AckermannDrive</span><span class="p">(</span><span class="n">steering_angle</span><span class="o">=</span><span class="n">delta</span><span class="p">,</span> <span class="n">speed</span><span class="o">=</span><span class="n">v</span><span class="p">)</span>
 
-    <span class="k">while</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Time</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="p">)</span> <span class="o">-</span> <span class="n">start</span> <span class="o">&lt;</span> <span class="n">dur</span><span class="p">:</span>
-        <span class="n">pub_controls</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">AckermannDriveStamped</span><span class="p">(</span><span class="n">drive</span><span class="o">=</span><span class="n">drive</span><span class="p">)</span><span class="p">)</span>
-        <span class="n">rate</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="p">)</span>
+    <span class="k">while</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Time</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span> <span class="o">&lt;</span> <span class="n">dur</span><span class="p">:</span>
+        <span class="n">pub_controls</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">AckermannDriveStamped</span><span class="p">(</span><span class="n">drive</span><span class="o">=</span><span class="n">drive</span><span class="p">))</span>
+        <span class="n">rate</span><span class="o">.</span><span class="n">sleep</span><span class="p">()</span>
 
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="sa"></span><span class="s2">&#34;</span><span class="s2">__main__</span><span class="s2">&#34;</span><span class="p">:</span>
-    <span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">path_publisher</span><span class="s2">&#34;</span><span class="p">)</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
+    <span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="s2">&#34;path_publisher&#34;</span><span class="p">)</span>
 
-    <span class="n">control_topic</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_param</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">~control_topic</span><span class="s2">&#34;</span><span class="p">,</span> <span class="sa"></span><span class="s2">&#34;</span><span class="s2">/car/mux/ackermann_cmd_mux/input/navigation</span><span class="s2">&#34;</span><span class="p">)</span>
+    <span class="n">control_topic</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_param</span><span class="p">(</span><span class="s2">&#34;~control_topic&#34;</span><span class="p">,</span> <span class="s2">&#34;/car/mux/ackermann_cmd_mux/input/navigation&#34;</span><span class="p">)</span>
     <span class="n">pub_controls</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Publisher</span><span class="p">(</span><span class="n">control_topic</span><span class="p">,</span> <span class="n">AckermannDriveStamped</span><span class="p">,</span> <span class="n">queue_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
-    <span class="n">init_pose_topic</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_param</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">~init_pose_topic</span><span class="s2">&#34;</span><span class="p">,</span> <span class="sa"></span><span class="s2">&#34;</span><span class="s2">/initialpose</span><span class="s2">&#34;</span><span class="p">)</span>
+    <span class="n">init_pose_topic</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_param</span><span class="p">(</span><span class="s2">&#34;~init_pose_topic&#34;</span><span class="p">,</span> <span class="s2">&#34;/initialpose&#34;</span><span class="p">)</span>
     <span class="n">pub_init_pose</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Publisher</span><span class="p">(</span><span class="n">init_pose_topic</span><span class="p">,</span> <span class="n">PoseWithCovarianceStamped</span><span class="p">,</span> <span class="n">queue_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
-    <span class="n">plan_file</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_param</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">~plan_file</span><span class="s2">&#34;</span><span class="p">)</span>
+    <span class="n">plan_file</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_param</span><span class="p">(</span><span class="s2">&#34;~plan_file&#34;</span><span class="p">)</span>
 
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">plan_file</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-        <span class="n">plan</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">(</span><span class="p">)</span>
+        <span class="n">plan</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
 
     <span class="c1"># Publishers sometimes need a warm-up time, you can also wait until there</span>
     <span class="c1"># are subscribers to start publishing see publisher documentation.</span>
@@ -394,19 +394,19 @@ $ mkdir plans
 </span><span class="lnt">67
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="sa"></span><span class="s2">&#34;</span><span class="s2">__main__</span><span class="s2">&#34;</span><span class="p">:</span>
-    <span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">path_publisher</span><span class="s2">&#34;</span><span class="p">)</span>
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
+    <span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="s2">&#34;path_publisher&#34;</span><span class="p">)</span>
 
-    <span class="n">control_topic</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_param</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">~control_topic</span><span class="s2">&#34;</span><span class="p">,</span> <span class="sa"></span><span class="s2">&#34;</span><span class="s2">/car/mux/ackermann_cmd_mux/input/navigation</span><span class="s2">&#34;</span><span class="p">)</span>
+    <span class="n">control_topic</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_param</span><span class="p">(</span><span class="s2">&#34;~control_topic&#34;</span><span class="p">,</span> <span class="s2">&#34;/car/mux/ackermann_cmd_mux/input/navigation&#34;</span><span class="p">)</span>
     <span class="n">pub_controls</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Publisher</span><span class="p">(</span><span class="n">control_topic</span><span class="p">,</span> <span class="n">AckermannDriveStamped</span><span class="p">,</span> <span class="n">queue_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
-    <span class="n">init_pose_topic</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_param</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">~init_pose_topic</span><span class="s2">&#34;</span><span class="p">,</span> <span class="sa"></span><span class="s2">&#34;</span><span class="s2">/initialpose</span><span class="s2">&#34;</span><span class="p">)</span>
+    <span class="n">init_pose_topic</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_param</span><span class="p">(</span><span class="s2">&#34;~init_pose_topic&#34;</span><span class="p">,</span> <span class="s2">&#34;/initialpose&#34;</span><span class="p">)</span>
     <span class="n">pub_init_pose</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Publisher</span><span class="p">(</span><span class="n">init_pose_topic</span><span class="p">,</span> <span class="n">PoseWithCovarianceStamped</span><span class="p">,</span> <span class="n">queue_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
-    <span class="n">plan_file</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_param</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">~plan_file</span><span class="s2">&#34;</span><span class="p">)</span>
+    <span class="n">plan_file</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_param</span><span class="p">(</span><span class="s2">&#34;~plan_file&#34;</span><span class="p">)</span>
 
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">plan_file</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-        <span class="n">plan</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">(</span><span class="p">)</span>
+        <span class="n">plan</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
 
     <span class="c1"># Publishers sometimes need a warm-up time, you can also wait until there</span>
     <span class="c1"># are subscribers to start publishing see publisher documentation.</span>
@@ -414,7 +414,7 @@ $ mkdir plans
     <span class="n">run_plan</span><span class="p">(</span><span class="n">pub_init_pose</span><span class="p">,</span> <span class="n">pub_controls</span><span class="p">,</span> <span class="n">plan</span><span class="p">)</span></code></pre></td></tr></table>
 </div>
 </div>
-<p>Line 51 contains the code for initializing your node. Every node must do this to register itself into the ROS environment. You must pass a name for the node (a good practice is to use the same name as the script, but it's up to you). The next lines (L53-59) set up communication streams for this node to talk to others. <code>rospy.get_param(...)</code> talks to the <a href="http://wiki.ros.org/rospy/Overview/Parameter%20Server">parameter server</a> to get parameters we define at runtime (more below in &lsquo;Writing the launch file&rsquo;). The first argument is the name of a parameter. The second is a default value. If no default is provided, the node won't start unless the parameter is defined. You should opt to provide sensible defaults when possible.</p>
+<p>Line 51 contains the code for initializing your node. Every node must do this to register itself into the ROS environment. You must pass a name for the node (a good practice is to use the same name as the script, but it&rsquo;s up to you). The next lines (L53-59) set up communication streams for this node to talk to others. <code>rospy.get_param(...)</code> talks to the <a href="http://wiki.ros.org/rospy/Overview/Parameter%20Server">parameter server</a> to get parameters we define at runtime (more below in &lsquo;Writing the launch file&rsquo;). The first argument is the name of a parameter. The second is a default value. If no default is provided, the node won&rsquo;t start unless the parameter is defined. You should opt to provide sensible defaults when possible.</p>
 <p>The first argument has a peculiar form <code>~parameter_name</code>. There are a few ways ROS resolves names. For now, this is out of scope for this tutorial. If you name your parameters like this and define the parameters the same in the launch file, you should be ok (more on launch files in the next section). If you need more information on ROS names, see <a href="http://wiki.ros.org/Names">ROS Names</a></p>
 <p><a href="http://wiki.ros.org/rospy/Overview/Publishers%20and%20Subscribers">Publishers</a> are part of the ROS message passing paradigm. <code>rospy.Publisher(...)</code> takes three arguments. The first is the topic name. The second is the message type. There are a wide range of predefined messages you can use, and you also have the ability to <a href="http://wiki.ros.org/ROS/Tutorials/DefiningCustomMessages">define custom ROS messages</a> if needed (although that is not needed in this tutorial). The third is the queue size. This defines how many messages to buffer when waiting to send (or recieve) messages. In general, a large queue size will be useful when many messages will be sent. In our case, we are infrequently sending messages, so a queue size of one is okay. <sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup></p>
 <h3 id="functions">Functions</h3>
@@ -429,7 +429,7 @@ $ mkdir plans
 </span><span class="lnt">20
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">run_plan</span><span class="p">(</span><span class="n">pub_init_pose</span><span class="p">,</span> <span class="n">pub_controls</span><span class="p">,</span> <span class="n">plan</span><span class="p">)</span><span class="p">:</span>
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">run_plan</span><span class="p">(</span><span class="n">pub_init_pose</span><span class="p">,</span> <span class="n">pub_controls</span><span class="p">,</span> <span class="n">plan</span><span class="p">):</span>
     <span class="n">init</span> <span class="o">=</span> <span class="n">plan</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
     <span class="n">send_init_pose</span><span class="p">(</span><span class="n">pub_init_pose</span><span class="p">,</span> <span class="n">init</span><span class="p">)</span>
 
@@ -451,19 +451,19 @@ $ mkdir plans
 </span><span class="lnt">31
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">send_init_pose</span><span class="p">(</span><span class="n">pub_init_pose</span><span class="p">,</span> <span class="n">init_pose</span><span class="p">)</span><span class="p">:</span>
-    <span class="n">pose_data</span> <span class="o">=</span> <span class="n">init_pose</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">,</span><span class="s2">&#34;</span><span class="p">)</span>
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">send_init_pose</span><span class="p">(</span><span class="n">pub_init_pose</span><span class="p">,</span> <span class="n">init_pose</span><span class="p">):</span>
+    <span class="n">pose_data</span> <span class="o">=</span> <span class="n">init_pose</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&#34;,&#34;</span><span class="p">)</span>
     <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">pose_data</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span>
 
-    <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">theta</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">pose_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="p">)</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">pose_data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="p">)</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">pose_data</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="p">)</span>
-    <span class="n">q</span> <span class="o">=</span> <span class="n">Quaternion</span><span class="p">(</span><span class="o">*</span><span class="n">quaternion_from_euler</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">theta</span><span class="p">)</span><span class="p">)</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">theta</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">pose_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">float</span><span class="p">(</span><span class="n">pose_data</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="nb">float</span><span class="p">(</span><span class="n">pose_data</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="n">Quaternion</span><span class="p">(</span><span class="o">*</span><span class="n">quaternion_from_euler</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">theta</span><span class="p">))</span>
     <span class="n">point</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
-    <span class="n">pose</span> <span class="o">=</span> <span class="n">PoseWithCovariance</span><span class="p">(</span><span class="n">pose</span><span class="o">=</span><span class="n">Pose</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="n">point</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="n">q</span><span class="p">)</span><span class="p">)</span>
-    <span class="n">pub_init_pose</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">PoseWithCovarianceStamped</span><span class="p">(</span><span class="n">pose</span><span class="o">=</span><span class="n">pose</span><span class="p">)</span><span class="p">)</span></code></pre></td></tr></table>
+    <span class="n">pose</span> <span class="o">=</span> <span class="n">PoseWithCovariance</span><span class="p">(</span><span class="n">pose</span><span class="o">=</span><span class="n">Pose</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="n">point</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="n">q</span><span class="p">))</span>
+    <span class="n">pub_init_pose</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">PoseWithCovarianceStamped</span><span class="p">(</span><span class="n">pose</span><span class="o">=</span><span class="n">pose</span><span class="p">))</span></code></pre></td></tr></table>
 </div>
 </div>
 <p><code>send_init_pose</code> takes the string representation of the intial pose and converts it into an <code>x</code>, <code>y</code>, <code>theta</code> float representation. Instead of using Euler angles to describe orientations, many ROS packages use the more expressive <a href="https://en.wikipedia.org/wiki/Quaternion">Quaternions</a>. The <code>quaternion_from_euler</code> package provided by the <code>tf.transformations</code> package supplies us with a utility function to go from Euler angles to quaternions.</p>
-<p><code>/initialpose</code> takes a <code>PoseWithCovarianceStamped</code> message. In ROS, <code>Stamped</code> messages are used when the ordering of data by time is important. Due to randomness in the network, messages can be passed out of order, and in time-critical systems, it's important for the most recently <em>sent</em> message to be used. For our setting, this is not as important. <code>rospy</code> will populate the timestamp for you, so no need to do it in your code. Typically, the <code>PoseWithCovariance</code> message requires a <code>Pose</code> and <code>Covariance</code> matrix. However our simulator doesn't use the covariance matrix, so we don't need to provide it. The <code>Pose</code> is composed of an <code>x</code>, <code>y</code> point and an orientation (which must be in quaternion form).</p>
+<p><code>/initialpose</code> takes a <code>PoseWithCovarianceStamped</code> message. In ROS, <code>Stamped</code> messages are used when the ordering of data by time is important. Due to randomness in the network, messages can be passed out of order, and in time-critical systems, it&rsquo;s important for the most recently <em>sent</em> message to be used. For our setting, this is not as important. <code>rospy</code> will populate the timestamp for you, so no need to do it in your code. Typically, the <code>PoseWithCovariance</code> message requires a <code>Pose</code> and <code>Covariance</code> matrix. However our simulator doesn&rsquo;t use the covariance matrix, so we don&rsquo;t need to provide it. The <code>Pose</code> is composed of an <code>x</code>, <code>y</code> point and an orientation (which must be in quaternion form).</p>
 <p>After constructing the message, we publish it to the <code>pub_init_pose</code>, signalling to the simulator where to place the car.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -483,20 +483,20 @@ $ mkdir plans
 </span><span class="lnt">47
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">send_command</span><span class="p">(</span><span class="n">pub_controls</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span><span class="p">:</span>
-    <span class="n">cmd</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">,</span><span class="s2">&#34;</span><span class="p">)</span>
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">send_command</span><span class="p">(</span><span class="n">pub_controls</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+    <span class="n">cmd</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&#34;,&#34;</span><span class="p">)</span>
     <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span>
-    <span class="n">v</span><span class="p">,</span> <span class="n">delta</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">cmd</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="p">)</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">cmd</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="p">)</span>
+    <span class="n">v</span><span class="p">,</span> <span class="n">delta</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">cmd</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">float</span><span class="p">(</span><span class="n">cmd</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 
     <span class="n">dur</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Duration</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
     <span class="n">rate</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Rate</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-    <span class="n">start</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Time</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="p">)</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Time</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
 
     <span class="n">drive</span> <span class="o">=</span> <span class="n">AckermannDrive</span><span class="p">(</span><span class="n">steering_angle</span><span class="o">=</span><span class="n">delta</span><span class="p">,</span> <span class="n">speed</span><span class="o">=</span><span class="n">v</span><span class="p">)</span>
 
-    <span class="k">while</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Time</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="p">)</span> <span class="o">-</span> <span class="n">start</span> <span class="o">&lt;</span> <span class="n">dur</span><span class="p">:</span>
-        <span class="n">pub_controls</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">AckermannDriveStamped</span><span class="p">(</span><span class="n">drive</span><span class="o">=</span><span class="n">drive</span><span class="p">)</span><span class="p">)</span>
-        <span class="n">rate</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="p">)</span></code></pre></td></tr></table>
+    <span class="k">while</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Time</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span> <span class="o">&lt;</span> <span class="n">dur</span><span class="p">:</span>
+        <span class="n">pub_controls</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">AckermannDriveStamped</span><span class="p">(</span><span class="n">drive</span><span class="o">=</span><span class="n">drive</span><span class="p">))</span>
+        <span class="n">rate</span><span class="o">.</span><span class="n">sleep</span><span class="p">()</span></code></pre></td></tr></table>
 </div>
 </div>
 <p><code>send_command</code> is very similar to <code>send_init_pose</code>, with a few differences. First, we define a one second duration (Line 39). ROS durations are a convient way to make durations that can be compared and combined using math operators (L45). Subtrating the current time and the <code>start</code> time yields a comparable duration. Once a second as elapsed, the loop will terminate.</p>
@@ -521,7 +521,7 @@ $ mkdir launch
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;launch</span><span class="nt">&gt;</span>
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;launch&gt;</span>
     <span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&#34;control_topic&#34;</span> <span class="na">default=</span><span class="s">&#34;/car/mux/ackermann_cmd_mux/input/navigation&#34;</span> <span class="nt">/&gt;</span>
     <span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&#34;init_pose_topic&#34;</span> <span class="na">default=</span><span class="s">&#34;/initialpose&#34;</span> <span class="nt">/&gt;</span>
     <span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&#34;plan_file&#34;</span> <span class="na">default=</span><span class="s">&#34;$(find mushr_ros_intro)/plans/straight_line.txt&#34;</span> <span class="nt">/&gt;</span>
@@ -535,7 +535,7 @@ $ mkdir launch
 </div>
 </div></p>
 <p>The launch tags:</p>
-<div class="highlight"><pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;launch</span><span class="nt">&gt;</span> ... <span class="nt">&lt;/launch&gt;</span>
+<div class="highlight"><pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;launch&gt;</span> ... <span class="nt">&lt;/launch&gt;</span>
 </code></pre></div><p>are required preable to wrap any content in your launch files.</p>
 <p>The <code>&lt;arg ...&gt;</code> tags allow you to pass arguments in from the command line (or from other launch files). The <code>default</code> attribute specifies a default if no argument is passed in. To change an argument at runtime from the command line use the follwing syntax:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ roslaunch &lt;package&gt; &lt;launch file&gt; plan_file:<span class="o">=</span><span class="s1">&#39;/path/to/plan.txt&#39;</span>
@@ -553,10 +553,10 @@ $ mkdir launch
 <h2 id="putting-it-all-together">Putting it all together</h2>
 <p>With python files, we have to change the execution permissions so <code>roslaunch</code> can file the correct files to run.</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ chmod a+x src/path_publisher.py
-</code></pre></div><p>&ldquo;<code>chmod</code>&rdquo; stands for &ldquo;change mode&rdquo;, &ldquo;<code>a+x</code>&rdquo; says, &ldquo;let all users execute this program&rdquo;. <strong>If you don't do this</strong>, you will likely see the following message:</p>
+</code></pre></div><p>&ldquo;<code>chmod</code>&rdquo; stands for &ldquo;change mode&rdquo;, &ldquo;<code>a+x</code>&rdquo; says, &ldquo;let all users execute this program&rdquo;. <strong>If you don&rsquo;t do this</strong>, you will likely see the following message:</p>
 <div class="highlight"><pre class="chroma"><code class="language-txt" data-lang="txt">ERROR: cannot launch node of type [mushr_ros_intro/path_publisher.py]: can&#39;t locate node [path_publisher.py] in package [mushr_ros_intro]
 </code></pre></div><p>So make sure to make your files executable!</p>
-<p>Once this is done, all that's left to do is launch the file and the simulator. In one terminal run the simulator:</p>
+<p>Once this is done, all that&rsquo;s left to do is launch the file and the simulator. In one terminal run the simulator:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ roslaunch mushr_sim teleop.launch
 </code></pre></div><p>In another, start <code>rviz</code> (a ROS tool that allows you to visualize simulated environments):</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ rosrun rviz rviz -d <span class="nv">$HOME</span>/catkin_ws/src/mushr/mushr_utils/rviz/default.rviz
@@ -575,7 +575,7 @@ $ mkdir launch
 <ul>
 <li>Adapt <code>path_publisher.py</code> to take a &ldquo;duration&rdquo; parameter as the third comma separated value. This will allow a much richer set of path specifications.</li>
 <li>We launched the simulator with the &ldquo;sandbox&rdquo; square map. Use another map in the map directory, or a map you create (more on this in a different tutorial).</li>
-<li>Update the argument to take a file name instead of a path, this way we won't have to specifiy the entire path (as long as the file exists in <code>$(find mushr_ros_intro)/paths</code>.</li>
+<li>Update the argument to take a file name instead of a path, this way we won&rsquo;t have to specifiy the entire path (as long as the file exists in <code>$(find mushr_ros_intro)/paths</code>.</li>
 <li>When the node finishes executing the plan, restart from the the begining until the node is killed.</li>
 <li>Try and get this code to run on the actual car. How does hard-coding in predefined velocities and steering angles work in the real world?</li>
 </ul>
@@ -678,7 +678,7 @@ $ mkdir launch
   
 
   
-  <script type="text/javascript" src="/js/scripts.min.bf1e1f7ae8e03db5f012356e825843facdff51c0a559cb0d27fe2bbe1db405c2.js"></script>
+  <script type="text/javascript" src="/js/scripts.min.98ee06cc35517b5800b382aecb0fc59893e95b9c11dd21842d0d57e4f68043e3.js"></script>
   
 
   
