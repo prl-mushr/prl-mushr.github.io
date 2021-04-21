@@ -232,12 +232,27 @@ $ . ~/.bashrc</code></pre></div>
 <p>The main pane will show a map of an empty square space. The ligher areas are the space where the simulated car can drive around. The darker areas are walls.</p>
 <p>Clicking and dragging will change the perspective of <code>rviz</code>, while <code>Shift + Click</code> and draging will move the map around.</p>
 <h3 id="changing-the-map">Changing the map</h3>
-<p>The current map is fine for driving around, but to do more interesting things you may want more interesting maps. To change the map follow these steps:</p>
+<p>The current map is fine for driving around, but to do more interesting things you may want more interesting maps. To change the map follow these steps.</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># To list what maps are available</span>
-$ ls ~/catkin_ws/src/mushr_sim/maps/
+$ ls ~/catkin_ws/src/mushr_base/mushr_base/mushr_base/maps/
 <span class="c1"># Open map_server.launch</span>
-$ nano ~/catkin_ws/src/mushr_sim/launch/map_server.launch
-<span class="c1"># Change the the map server name</span></code></pre></div>
+$ nano ~/catkin_ws/src/mushr/mushr_base/mushr_base/mushr_base/launch/includes/map_server.launch</code></pre></div>
+<p>Edit <code>map_server.launch</code> to set the map to the name of the .yaml file. It should look like this, replacing map_name with the name
+of the map you want to use.
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="o">&lt;</span><span class="n">launch</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">arg</span> <span class="n">name</span><span class="o">=</span><span class="s2">&#34;map&#34;</span> <span class="n">default</span><span class="o">=</span><span class="s2">&#34;$(find mushr_base)/maps/map_name.yaml&#34;</span> <span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="n">node</span> <span class="n">pkg</span><span class="o">=</span><span class="s2">&#34;map_server&#34;</span> <span class="n">name</span><span class="o">=</span><span class="s2">&#34;map_server&#34;</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&#34;map_server&#34;</span> <span class="n">args</span><span class="o">=</span><span class="s2">&#34;$(arg map)&#34;</span> <span class="o">/&gt;</span>
+<span class="o">&lt;/</span><span class="n">launch</span><span class="o">&gt;</span></code></pre></td></tr></table>
+</div>
+</div></p>
 <p>You can make your own maps using SLAM based techniques like <a href="http://wiki.ros.org/gmapping">gmapping</a> or <a href="https://google-cartographer-ros.readthedocs.io/en/latest/">cartographer</a>. But if you just want something quick and simple, you can make your own <code>.yaml</code> and <code>.png</code> files for the map. Use the current map files as a template. We use <a href="https://www.gimp.org/">Gimp</a> to edit the map <code>.png</code> file but you can use any image editor you like.</p>
 <h2 id="going-further">Going Further</h2>
 <p>To learn about programming the car, continue to the <a href="/tutorials/intro-to-ros">Intro to ROS Tutorial</a>.</p>
