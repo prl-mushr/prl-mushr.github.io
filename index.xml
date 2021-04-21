@@ -6,7 +6,7 @@
     <description>Recent content in Home on MuSHR: The UW Open Racecar Project</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 10 Sep 2020 15:14:54 +1000</lastBuildDate><atom:link href="https://mushr.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 20 Mar 2021 17:15:01 -0700</lastBuildDate><atom:link href="https://mushr.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Quickstart</title>
       <link>https://mushr.io/tutorials/quickstart/</link>
@@ -158,6 +158,15 @@
       
       <guid>https://mushr.io/tutorials/radio_fpv/</guid>
       <description>Use the Bitcraze CrazyRadio dongle to teleoperate the car over radio.</description>
+    </item>
+    
+    <item>
+      <title>Using SLAM for Map Building</title>
+      <link>https://mushr.io/tutorials/mapping/</link>
+      <pubDate>Sat, 20 Mar 2021 17:15:01 -0700</pubDate>
+      
+      <guid>https://mushr.io/tutorials/mapping/</guid>
+      <description>Create custom maps with your car</description>
     </item>
     
     <item>
