@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Multi-agent Navigation System - MuSHR: The UW Open Racecar Project</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel="icon" href="https://mushr.io/favicon.png">
+
+  
+  
+  <link rel="stylesheet" href="/css/style.min.1fc922f3ee2ddc9e0a821fb52320a349bc079658d0f25db90d402e585db0d025.css">
+  
+
+  
+
+</head>
+
+<body class='page page-tutorials-single'>
+  
+<div id="main-menu-mobile" class="main-menu-mobile">
+  <ul>
+    <li class="menu-item-quickstart">
+      <a href="/tutorials/quickstart/"><span>Quickstart</span></a>
+    </li>
+    <li class="menu-item-about">
+      <a href="/about/"><span>About</span></a>
+    </li>
+    <li class="menu-item-docs">
+      <a href="https://github.com/prl-mushr/mushr#component-documentation"><span>Docs</span></a>
+    </li>
+    <li class="menu-item-hardware">
+      <a href="/hardware/"><span>Hardware</span></a>
+    </li>
+    <li class="menu-item-tutorials active">
+      <a href="/tutorials/"><span>Tutorials</span></a>
+    </li>
+    <li class="menu-item-press">
+      <a href="/press/"><span>Press</span></a>
+    </li>
+    <li class="menu-item-team">
+      <a href="https://personalrobotics.cs.washington.edu/people/"><span>Team</span></a>
+    </li>
+    <li class="menu-item-forum">
+      <a href="https://github.com/prl-mushr/mushr/discussions"><span>Community Forum</span></a>
+    </li>
+    <li class="menu-item-contact">
+      <a href="/contact/"><span>Contact</span></a>
+    </li>
+  </ul>
+</div>
+
+  <div class="wrapper">
+    <div class='header'>
+  <div class="container">
+    <div class="logo">
+      <a href="https://mushr.io/"><img alt="Figurit Homepage" src="https://mushr.io/imgs/mushr-logo.svg" /></a>
+    </div>
+    <div class="logo-mobile">
+      <a href="https://mushr.io/"><img alt="Figurit Homepage" src="https://mushr.io/imgs/mushr-logo.svg" /></a>
+    </div>
+    <div id="main-menu" class="main-menu">
+  <ul>
+    <li class="menu-item-quickstart">
+      <a href="/tutorials/quickstart/"><span>Quickstart</span></a>
+    </li>
+    <li class="menu-item-about">
+      <a href="/about/"><span>About</span></a>
+    </li>
+    <li class="menu-item-docs">
+      <a href="https://github.com/prl-mushr/mushr#component-documentation"><span>Docs</span></a>
+    </li>
+    <li class="menu-item-hardware">
+      <a href="/hardware/"><span>Hardware</span></a>
+    </li>
+    <li class="menu-item-tutorials active">
+      <a href="/tutorials/"><span>Tutorials</span></a>
+    </li>
+    <li class="menu-item-press">
+      <a href="/press/"><span>Press</span></a>
+    </li>
+    <li class="menu-item-team">
+      <a href="https://personalrobotics.cs.washington.edu/people/"><span>Team</span></a>
+    </li>
+    <li class="menu-item-forum">
+      <a href="https://github.com/prl-mushr/mushr/discussions"><span>Community Forum</span></a>
+    </li>
+    <li class="menu-item-contact">
+      <a href="/contact/"><span>Contact</span></a>
+    </li>
+  </ul>
+</div>
+
+    <button id="toggle-main-menu-mobile" class="hamburger hamburger--slider" role="presentation" aria-label="mobile menu trigger">
+  <span class="hamburger-box">
+    <span class="hamburger-inner"></span>
+  </span>
+</button>
+  </div>
+</div>
+    
+<div class="container pb-6 pt-6 pt-md-10 pb-md-10">
+  <div class="row justify-content-start">
+    <div class="col-12 col-md-8">
+      <div class="tutorial tutorial-single">
+        <h1 class="title">Multi-agent Navigation System</h1>
+        <div class="content"> 
+          
+          <p>This tutorial covers running the MuSHR multi-agent navigation stack in simulation</p> 
+          
+          <h4 class="properties">Advanced Tutorial | Expected duration is 30 minutes</h4> 
+          <h2> By: <a href=https://www.sidharthtalia.com/>Sidharth Talia</a></h2>
+<!-- Header figure required! -->
+<br>
+<figure>
+    <img src="/tutorials/MuSHR_multiagent_navigation/thumbnail.png" width="600"/> 
+</figure>
+ <br>                           
+<br>
+<h3 id="introduction">Introduction</h3>
+<p>A navigation system enables a robot to move quickly between different poses while avoiding collisions with the environment or other agents. The navigation system in this project uses a slightly modified version of the <a href="https://github.com/davisbo/NHTTC">NH-TTC system</a>. It is a decentralized, multi-agent navigation system that considers the Non-holonomic constraints of the car and the time to collision when finding the optimal control actions. To learn more about how it works, check out the paper <a href="http://motion.cs.umn.edu/r/NH-TTC/arxiv-NHTTC.pdf">here</a>!</p>
+<h3 id="goal">Goal</h3>
+<p>The goal of this tutorial is to get the multi-agent navigation system up and running on your computer.</p>
+<h3 id="requirements">Requirements</h3>
+<p>Completed the <a href="https://mushr.io/tutorials/quickstart/">quickstart</a> tutorial (familiarity with ROS and python is assumed).
+Make sure you’re using the sandbox map. The quickstart tutorial explains how to change the map.</p>
+<h2 id="environment-setup">Environment setup</h2>
+<p>Clone the <a href="https://github.com/prl-mushr/nhttc_ros/tree/devel">nhttc_ros</a> repository into your catkin workspace:
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> catkin_ws/src
+$ git clone --branch devel https://github.com/prl-mushr/nhttc_ros/tree/devel
+$ <span class="nb">cd</span> nhttc_ros
+$ git submodule init
+$ git submodule update --recursive</code></pre></div></p>
+<p>Install python requirements:
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> ~/catkin_ws/src/nhttc_ros
+$ pip install -r requirements.txt</code></pre></div></p>
+<p>Compile using catkin_make:
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> ~/catkin_ws
+$ catkin_make</code></pre></div></p>
+<h2 id="running-the-example">Running the example:</h2>
+<p>After everything compiles, you should be ready to try out the simulation example. Launch the nhttc_demo.launch with the following command:
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ roslaunch nhttc_ros nhttc_demo.launch</code></pre></div></p>
+<p>Wait till you see the following text on the terminal (you may see a few extra lines):</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span> INFO<span class="o">]</span> <span class="o">[</span>1621678112.116392844<span class="o">]</span>: node started
+<span class="o">[</span> INFO<span class="o">]</span> <span class="o">[</span>1621678112.116614789<span class="o">]</span>: carrot_goal_ratio: 1.000000
+<span class="o">[</span> INFO<span class="o">]</span> <span class="o">[</span>1621678112.116632550<span class="o">]</span>: max_ttc: 6.000000
+<span class="o">[</span> INFO<span class="o">]</span> <span class="o">[</span>1621678112.116642780<span class="o">]</span>: solver_time: <span class="m">20</span>
+<span class="o">[</span> INFO<span class="o">]</span> <span class="o">[</span>1621678112.116653036<span class="o">]</span>: obey_time:1
+</code></pre></div><p>In a new tab of the terminal (use Ctrl + Shift + T), open rviz:
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ rviz -d ~/catkin_ws/src/nhttc_ros/rviz/nhttc.rviz</code></pre></div></p>
+<p>In another new tab, run the route publisher script:
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ rosrun nhttc_ros route_publisher</code></pre></div></p>
+<p>You should see something like this on rviz:
+<br>
+<figure>
+    <img src="/tutorials/MuSHR_multiagent_navigation/demo_default.gif" width="800"/> 
+</figure>
+</p>
+<p>This should be considered the default case henceforth. In this demo, the blue car is trying to follow the blue arrows and the green car is trying to follow the green arrows. The green car is supposed to stop a small distance after crossing the intersection of the two paths whereas the blue car is supposed to move towards the top after the intersection of the two paths. The two paths coincide to force the navigation system to display its capabilities. <strong>Note that you may observe slightly different behaviour when you launch this on your system, the provided gif is only for reference.</strong></p>
+<p><strong>Note:</strong> In order to rerun this example you must close all the processes we started here and follow the steps from the beginning of this section.</p>
+<h2 id="using-the-wrapper-for-your-own-intents-and-purposes">Using the wrapper for your own intents and purposes:</h2>
+<p>The system takes a set of waypoints rather than a single goal point. The message to publish for this is:<code>/car_name/waypoints</code> of type: <a href="http://docs.ros.org/en/melodic/api/geometry_msgs/html/msg/PoseArray.html">geometry_msgs/PoseArray</a>. Note that &ldquo;car_name&rdquo; refers to the name of the car, such as car1, car2, and so on. The waypoint can also contain just one waypoint, so it is possible to test the system with single waypoints if you prefer that. The reason why taking an array is preferred is so that the waypoint management code doesn&rsquo;t have to be written by you (user). You simply pass the set of the waypoints in and the navigation sytem takes care of managing them on it&rsquo;s own.</p>
+<p>The z axis coordinate represents the time difference between 2 waypoints. Note that a z axis value of 0.001 equals a time difference of 1 unit. This is done so that the waypoints don&rsquo;t look like they&rsquo;re floating off the ground when visualized in rviz. The unit of time is equal to the time it takes for the car to cover the distance between two waypoints in a straight line at the rated speed. The reason for this is to allow the system&rsquo;s speed to be scaled up or down without changing the global plan&rsquo;s timing itself.</p>
+<p>To adjust the number of cars used, their colors and so on, you can modify the launch file (or create your own launch file using the ones provided as a template). For instance, if you wish to add another car, simply add these lines to the launch file:
+<div class="highlight"><pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;group</span> <span class="na">ns=</span><span class="s">&#34;car_name&#34;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;include</span> <span class="na">file=</span><span class="s">&#34;$(find mushr_sim)/launch/single_car.launch&#34;</span> <span class="nt">&gt;</span> <span class="c">&lt;!-- this launches the car itself --&gt;</span>
+        <span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&#34;car_name&#34;</span> <span class="na">value=</span><span class="s">&#34;car_name&#34;</span><span class="nt">/&gt;</span>  <span class="c">&lt;!-- this sets the prefix for the topis used by this car --&gt;</span>
+        <span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&#34;racecar_version&#34;</span> <span class="na">value=</span><span class="s">&#34;racecar-uw-nano&#34;</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- this sets the type of car (wheelbase, vesc parameters and rendering) --&gt;</span>
+        <span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&#34;racecar_color&#34;</span> <span class="na">value=</span><span class="s">&#34;-red-white&#34;</span> <span class="nt">/&gt;</span>  <span class="c">&lt;!-- this sets the color of the car --&gt;</span>
+    <span class="nt">&lt;/include&gt;</span>
+    <span class="nt">&lt;node</span> <span class="na">pkg=</span><span class="s">&#34;nhttc_ros&#34;</span> <span class="na">type=</span><span class="s">&#34;nhttc_ros_node&#34;</span> <span class="na">name=</span><span class="s">&#34;controller3&#34;</span><span class="nt">&gt;</span> <span class="c">&lt;!-- this launches the nhttc node for this car --&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&#34;car_name&#34;</span> <span class="na">value=</span><span class="s">&#34;car_name&#34;</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- this tells the node the name of the car it will control --&gt;</span>
+    <span class="nt">&lt;/node&gt;</span>
+<span class="nt">&lt;/group&gt;</span></code></pre></div></p>
+<p>By default, the nhttc_pose_init script is used for initializing the poses of the cars. It places the cars in a particular pattern (right now, the cars sit on the circumference of an ellipse). If there are 2 cars, they will be kept 180 degrees apart as in the default case. If there are 3 cars, they will be kept 120 degrees apart. This script is only used to make adding agents as simple as copy pasting some lines in the launch files.</p>
+<p>If you want to set the initial pose to be something else, all you have to do is publish to the initial pose to the topic:<code>/car_name/initial_pose</code> of type: <a href="http://docs.ros.org/en/melodic/api/geometry_msgs/html/msg/PoseWithCovarianceStamped.html">geometry_msgs/PoseWithCovarianceStamped</a> where <code>car_name</code> corresponds to the name of the car. Note that this is the &ldquo;2D pose estimate&rdquo; in rviz and can also be set through rviz through the conventional approach.</p>
+<p>Furthermore, the route_publisher.py file used for the demo only publishes paths for two cars (<code>car1</code> and <code>car2</code>). This script is hardcoded to publish paths only for two agents. If you wish to add another car, you will have to create your own route-publisher to publish a route for the third car. You can use the route_publisher.py file as a reference or edit it to your liking.</p>
+<h2 id="tuning-the-parameters">Tuning the parameters</h2>
+<p>The multi-agent navigation system <em>can</em> work out of the box for most applications, however, it is possible to tune it. The parameters can be changed inside the yaml config file, in this case, the nhttc_demo.yaml. The navigation system uses a solver which has some level of stochasticity to it, which can lead to slightly different behavior. The demonstrations shown here are to explain the effect of changing the parameters and do not indicate the exact performance. Also note that there may be additional parameters besides the ones specified here. Those are experimental and should be set to false or left as is by the user.</p>
+<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">carrot_goal_ratio</span><span class="p">:</span><span class="w"> </span><span class="m">1.0</span><span class="w">
+</span><span class="w"></span><span class="nt">max_ttc</span><span class="p">:</span><span class="w"> </span><span class="m">6.0</span><span class="w">
+</span><span class="w"></span><span class="nt">solver_time</span><span class="p">:</span><span class="w"> </span><span class="m">20</span><span class="w">
+</span><span class="w"></span><span class="nt">obey_time</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span></code></pre></div>
+<p><strong>1) carrot_goal_ratio:</strong> The ROS wrapper implements a carrot-goal navigation system where waypoints are selected from a prescribed path. The waypoints are selected such that they are some “lookahead” distance away from the car. Keeping the car aimed at a waypoint farther away prevents it from getting stuck in a local minimum. Keeping this lookahead closer to the car makes sure the car does not deviate too far away from the prescribed path while getting to the point farther down the line. The ratio of this lookahead distance or carrot-goal distance to the turning radius has been defined as the carrot-goal ratio. The reason for that name is that the way the system works is akin to a donkey(MuSHR car) trying to eat a carrot(waypoint) hung from a stick that you(navigation system) are holding while sitting on top of it. The donkey moves where the carrot goes but can never actually reach it:</p>
+<br>
+<figure>
+    <img src="/tutorials/MuSHR_multiagent_navigation/carrot_goal_meme.jpg" width="800"/> 
+</figure>
+ <br>                           
+<br>
+<p>A value of 1.0 means the carrot goal distance is the same as the turning radius. A value of 2 indicates that the carrot goal distance is twice the turning radius. larger numbers result in smoother navigation, however, they come with the drawback of greater path-deviation as the system will tend to &ldquo;round off&rdquo; corners a lot sooner. The first figure shows the performance with carrot-goal-ratio of 1.0, and the second figure shows performance with a ratio of 1.5:
+<br>
+<figure>
+    <img src="/tutorials/MuSHR_multiagent_navigation/demo_default.gif" width="600" height="400"/> 
+</figure>
+
+<figure>
+    <img src="/tutorials/MuSHR_multiagent_navigation/demo_lookahead.gif" width="600" height="400"/> 
+</figure>
+</p>
+<p>If the car tends to get stuck around turns, increase the carrot-goal ratio in increments of 0.1. If the car appears to be rounding off the turns too soon or significantly deviating from the path near turns, causing issues with other agents, reduce the carrot-goal-ratio in decrements of 0.1.</p>
+<p><strong>2) max_ttc:</strong> Stands for maximum time to collision. This parameter decides which agents to consider and which to not consider when optimizing for the next control action. The time to collision is calculated using the current state (pose as well as twist) of all agents. A larger max_ttc results in a larger time horizon for considering potential collisions. A larger max_ttc will make the car respond earlier to other agents but can result in the car deviating from its path too early. A smaller max_ttc will make the car less sensitive to agents far away but may result in the car responding too late and ending up in deadlocks more often. The first figure shows the performance with a max_ttc of 3.0 and the second shows the performance with max_ttc of 6.0 seconds. Notice how the cars start avoiding each other earlier in the second example.
+<br>
+<figure>
+    <img src="/tutorials/MuSHR_multiagent_navigation/demo_default.gif" width="600" height="400"/> 
+</figure>
+
+<figure>
+    <img src="/tutorials/MuSHR_multiagent_navigation/demo_maxttc.gif" width="600" height="400"/> 
+</figure>
+</p>
+<p>In this particular example, it may appear to be helping the agents. However, had there been another agent above/below these agents, it may have affected the performance adversely.</p>
+<p><strong>3) solver_time:</strong> The amount of time in milliseconds to be used for calculating the solution. It is not to be confused with the time to a collision. Increasing the solution time may lead to a better solution, however, as the system has to operate in real-time, this will reduce the control-loop frequency. A slower control-loop frequency results in a delayed response. A multi-agent navigation system responds to the actions of the agents around it. If the control loop is slower, the other agents may appear out of sync at times as they aren&rsquo;t running the control loop fast enough to respond to each other&rsquo;s actions. In multi-agent situations when the intent of the other agent isn&rsquo;t clear, all the agents are essentially guessing what they should do. If the first guess is wrong, it may lead to sub-optimal behavior. In the following figures, the solution time is 20 milliseconds for the first case and 30 milliseconds for the second. Notice how the blue car takes the wrong course of action initially in the second case.
+<br>
+<figure>
+    <img src="/tutorials/MuSHR_multiagent_navigation/demo_default.gif" width="600" height="400"/> 
+</figure>
+
+<figure>
+    <img src="/tutorials/MuSHR_multiagent_navigation/demo_SolT.gif" width="600" height="400"/> 
+</figure>
+</p>
+<p>At the same time, reducing the solution time may lead to the solution not converging at all, again, leading to sub-optimal solutions. Keeping the solution time between 15-30 milliseconds will yield feasible solutions, with larger times resulting in the above behavior appearing more often.</p>
+<p><strong>4) obey_time:</strong> The navigation system generally takes a waypoint array from a global planner. In multi-agent systems, the global planner will specify both space and time coordinates, as in, where the agent is supposed to be and when it is supposed to be there. If this parameter is set to false (as in the default demo), the car will disregard the timing. The first figure shows the behaviour for when this parameter is set to &ldquo;false&rdquo; and the second shows what happens when it is set to &ldquo;true&rdquo;:
+<br>
+<figure>
+    <img src="/tutorials/MuSHR_multiagent_navigation/demo_default.gif" width="600" height="400"/> 
+</figure>
+
+<figure>
+    <img src="/tutorials/MuSHR_multiagent_navigation/demo_time.gif" width="600" height="400"/> 
+</figure>
+</p>
+<p>As you can see, the blue car stops at the turn for a while before continuing. This happens because the blue car rounded the turn and arrived a little too early at the next waypoint. It therefore slowed down before continuing in order to maintain the timing.</p>
+<p>Additional parameters like &ldquo;allow_reverse&rdquo;, &ldquo;adaptive_lookahead&rdquo; and &ldquo;safety_radius&rdquo; can be considered as &ldquo;extra&rdquo; or &ldquo;experimental&rdquo;. Allow_reverse sets whether the cars are allowed to go in reverse or not. It is set to true by default. Setting it to false may or may not cause issues with navigation. Adaptive_lookahead skips waypoints if they&rsquo;re not reachable, this can help the system deal with global planners that provide unreasonable trajectories. The downside is that sometimes it may skip waypoints you do want to pass through. Last but not the least, the safety_radius is like an air-cushion around the car. A safety radius of 0 is not recommended, as localization errors in the real world may cause you to bump into other agents. For the MuSHR car, keep the safety radius as 0.1 + whatever the uncertainty of your localization system is.</p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<ul>
+<li><strong>the multi_teleop.launch or nhttc_demo.launch node crashes when rviz is started:</strong> Wait for all the cars to initialize first before starting rviz. This usually takes about 5-10 seconds and a little longer if launching for the first time after boot.</li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="strip strip-primary-gradient-top-bottom">
+  <div class="container pt-3 pb-3 pt-md-6 pb-md-3 px-2">
+    <div class="row justify-content-left citation-row">
+      <h1 id="citation">Citation</h1>
+      <p>
+  If you plan to use any part of the the MuSHR platform (including tutorials, codebase, or hardware instructions) for a project or paper, please cite
+  <em><a href="https://arxiv.org/abs/1908.08031">MuSHR: A Low-Cost, Open-Source Robotic Racecar for Education and Research</a></em>.
+</p>
+
+<div class="highlight"><pre class="chroma">@article{srinivasa2019mushr,
+ title={{MuSHR}: A Low-Cost, Open-Source Robotic Racecar for Education and Research},
+ author={Srinivasa, Siddhartha S. and Lancaster, Patrick and Michalove, Johan and Schmittle, Matt and Summers, Colin and Rockett, Matthew and Smith, Joshua R. and Chouhury, Sanjiban and Mavrogiannis, Christoforos and Sadeghi, Fereshteh},
+ journal={CoRR},
+ volume={abs/1908.08031},
+ year={2019}
+}
+</pre></div>
+
+<br/>
+
+    </div>
+  </div>
+</div>
+
+
+  </div>
+
+  <div class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="footer-inner">
+          <h3 class="footer-title">MuSHR: The UW Open Racecar Project</h3>
+          <ul>
+            
+            
+            <li class="menu-item-forum"><a href="https://github.com/prl-mushr/mushr/discussions">Community Forum</a></li>
+            
+            <li class="menu-item-contact"><a href="/contact/">Contact</a></li>
+            
+            <li class="menu-item-home"><a href="/">Home</a></li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="sub-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="sub-footer-inner">
+          <ul>
+            
+          </ul>
+          <ul>
+            <li class="prl">Made with <font color="#FF1690">♥</font> at the <a href="https://personalrobotics.cs.washington.edu/">Personal Robotics Lab</a></li>
+          </ul>
+          <ul>
+            <li class="prl">Website by <a href="https://micha.love/"><font color="#36CDC4">Johan</font></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/scripts.min.98ee06cc35517b5800b382aecb0fc59893e95b9c11dd21842d0d57e4f68043e3.js"></script>
+  
+
+  
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-146151202-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+  gtag('config', 'UA-146151202-1');
+</script>
+
+
+
+
+</body>
+
+</html>
