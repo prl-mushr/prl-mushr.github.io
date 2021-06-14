@@ -107,6 +107,15 @@
     </item>
     
     <item>
+      <title>Using SLAM for Map Building</title>
+      <link>https://mushr.io/tutorials/mapping/</link>
+      <pubDate>Sat, 20 Mar 2021 17:15:01 -0700</pubDate>
+      
+      <guid>https://mushr.io/tutorials/mapping/</guid>
+      <description>Create custom maps with your car</description>
+    </item>
+    
+    <item>
       <title>Car Pose Detection and Yolo Learning</title>
       <link>https://mushr.io/tutorials/carpose/</link>
       <pubDate>Thu, 10 Sep 2020 15:14:54 +1000</pubDate>
@@ -167,15 +176,6 @@
       
       <guid>https://mushr.io/tutorials/radio_fpv/</guid>
       <description>Use the Bitcraze CrazyRadio dongle to teleoperate the car over radio.</description>
-    </item>
-    
-    <item>
-      <title>Using SLAM for Map Building</title>
-      <link>https://mushr.io/tutorials/mapping/</link>
-      <pubDate>Sat, 20 Mar 2021 17:15:01 -0700</pubDate>
-      
-      <guid>https://mushr.io/tutorials/mapping/</guid>
-      <description>Create custom maps with your car</description>
     </item>
     
     <item>
