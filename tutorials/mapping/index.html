@@ -140,15 +140,15 @@ survey the area to be mapped.</p>
 </code></pre></div><p>If you installed ros-melodic in the quickstart tutorial:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo apt install ros-melodic-gmapping
 </code></pre></div><h3 id="start-teleop-and-gmapping">Start teleop and gmapping</h3>
-<p>Once you have sshed into the car, start teleop to start the laser scanner and control the car.</p>
+<p>Once you have sshed into the car, start teleop (on the car) to start the laser scanner and control the car.</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ roslaunch mushr_base teleop.launch
 </code></pre></div><p>Verify that the controller is working and you can move the car. If not, try reconnecting the controller and/or restarting teleop.</p>
-<p>In a separate terminal sshed into the robot, using the above process, set <code>ROS_IP</code> to the IP of your robot, then start slam. Slam will take the data gathered from the laser scanner started by teleop and transform that into a 2D map.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">export</span> <span class="nv">ROS_IP</span><span class="o">=</span>YOUR-IP
+<p>In a separate terminal sshed into the robot, using the above process, set <code>ROS_IP</code> to the IP of your robot, then start slam (also on the robot). Slam will take the data gathered from the laser scanner started by teleop and transform that into a 2D map.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">export</span> <span class="nv">ROS_IP</span><span class="o">=</span>CAR-IP
 $ roslaunch mushr_base slam.launch
 </code></pre></div><h3 id="start-rviz-to-visualize-the-map-building">Start rviz to visualize the map building</h3>
-<p>In a terminal on your computer (not ssh-ed into the robot), set <code>ROS_IP</code> to your IP and <code>ROS_MASTER_URI</code> to the IP of the car, and then start rviz.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">export</span> <span class="nv">ROS_IP</span><span class="o">=</span>YOUR-IP
+<p>In a terminal on your computer (not ssh-ed into the robot), set <code>ROS_IP</code> to your computer&rsquo;s IP and <code>ROS_MASTER_URI</code> to the IP of the car, and then start rviz.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">export</span> <span class="nv">ROS_IP</span><span class="o">=</span>COMPUTER-IP
 $ <span class="nb">export</span> <span class="nv">ROS_MASTER_URI</span><span class="o">=</span>http://ROBOT_IP:11311
 $ rviz
 </code></pre></div><p>Most likely, you will not see the map your car is creating. In order to see it, make sure the <code>/car/map</code> topic is added to the left sidebar (different from the /map/ topic!). If it is not, you will need to add it manually. Next, set the Fixed Frame value in the Displays &gt; Global Options menu in rviz to /car/map/ instead of /map/. Now, the car should be postioned in the map (see screenshot below). The map will dynamically update and refine as the laser scanner gathers new data.</p>
@@ -158,11 +158,11 @@ $ rviz
 
 </br></p>
 <h3 id="survey-the-surroundings">Survey the surroundings</h3>
-<p>Now that we have started mapping, we need to survey the area! Use the controller to drive the car very slowly around the area you want to survey, pausing periodically to allow the laser scanner to gather data. You should be able to see the map in rviz updating as you drive.</p>
+<p>Now that we have started mapping, we need to survey the area! Use the controller to drive the car very slowly around the area you want to survey, pausing periodically to allow the laser scanner to gather data. You should be able to see the map in rviz updating as you drive. Since the map frame does not exist in rviz, your car will not appear to move in its environment.</p>
 <h3 id="save-the-map">Save the map</h3>
 <p>When you&rsquo;re satisfied with the map in rviz, you can save it to your computer using the following steps.</p>
-<p>In a local terminal, ensure <code>ROS_IP</code> is set to your IP and <code>ROS_MASTER_URI</code> is set to the IP of the car. Then, in that terminal, run map_saver using the following command, replacing <code>map_name</code> with the desired name of the map.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">export</span> <span class="nv">ROS_IP</span><span class="o">=</span>YOUR-IP
+<p>In a local terminal, ensure <code>ROS_IP</code> is set to your computer&rsquo;s IP and <code>ROS_MASTER_URI</code> is set to the IP of the car. Then, in that terminal, run map_saver using the following command, replacing <code>map_name</code> with the desired name of the map.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">export</span> <span class="nv">ROS_IP</span><span class="o">=</span>COMPUTER-IP
 $ <span class="nb">export</span> <span class="nv">ROS_MASTER_URI</span><span class="o">=</span>http://ROBOT_IP:11311
 $ rosrun map_server map_saver -f map_name map:<span class="o">=</span>/car/map
 </code></pre></div><p>This should create a .pgm file with the map and a .yaml file with the map metadata.</p>
@@ -217,7 +217,7 @@ $ scp map_name.yaml robot@ROBOT_IP:~/catkin_ws/src/mushr/mushr_base/mushr_base/m
 <p>Now, start teleop on the robot:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ roslaunch mushr_base teleop.launch
 </code></pre></div><p>And on your computer, set the IPs and start rviz to see the map!</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">export</span> <span class="nv">ROS_IP</span><span class="o">=</span>YOUR-IP
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">export</span> <span class="nv">ROS_IP</span><span class="o">=</span>COMPUTER-IP
 $ <span class="nb">export</span> <span class="nv">ROS_MASTER_URI</span><span class="o">=</span>http://ROBOT_IP:11311
 $ rviz
 </code></pre></div><p>The map should appear, and you can move your robot into the map using <code>Set 2D Pos Estimate</code>.</p>
