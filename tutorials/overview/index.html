@@ -11,7 +11,7 @@
 
   
   
-  <link rel="stylesheet" href="/css/style.min.1fc922f3ee2ddc9e0a821fb52320a349bc079658d0f25db90d402e585db0d025.css">
+  <link rel="stylesheet" href="/css/style.min.d6c2c7df4a2b74e47c295ee499fec19eb99dfe63f90766a829090f557e381bdc.css">
   
 
   
@@ -120,9 +120,8 @@
 <p>A car that you can connect to if you wish to follow along.</p>
 <h2 id="hardware-overview">Hardware Overview</h2>
 <p>This section will cover an overview of the physical racecar Below is a diagram of the physical racecar components.</p>
-<figure>
-    <img src="/tutorials/overview/hardware_overview.png"
-         alt="This diagram shows all the components and their data &amp;amp; power connections." width="600"/> <figcaption>
+<figure><img src="/tutorials/overview/hardware_overview.png"
+         alt="This diagram shows all the components and their data &amp;amp; power connections." width="600"/><figcaption>
             <p>This diagram shows all the components and their data &amp; power connections.</p>
         </figcaption>
 </figure>
@@ -144,12 +143,12 @@
 <h2 id="software-components">Software Components</h2>
 <p>Now that we have a better understanding of the hardware components let&rsquo;s checkout the software components and see how it all ties together.
 On the car go to your catkin workspace<br>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"> <span class="nb">cd</span> ~/catkin_ws/</code></pre></div></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"> <span class="nb">cd</span> ~/catkin_ws/</code></pre></div></p>
 <p>and list the directories</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ls
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ ls
 build  devel  src</code></pre></div>
 <p>So what we have is 3 directories. <code>build</code> is where code is compiled to. <code>devel</code> has setup files for your environment. The most important thing about <code>devel</code> is that it contains <code>setup.**</code> which sets up environment variables and paths amongst other things.
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">robot@digger:~/catkin_ws/devel$ ls
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">robot@digger:~/catkin_ws/devel$ ls
 bin  env.sh  include  lib  setup.bash  setup.sh  _setup_util.py  setup.zsh  share
  </code></pre></div></p>
 <p>So <code>setup.**</code> (&quot;<code>**</code>&quot; because you can run .bashrc, .sh, or .zsh and get the same effect) sets up ROS environment variables and paths. So if you ever see an error that says that it can&rsquo;t find a package, or that roscore isn&rsquo;t a command, it is because you have not sourced your <code>setup.**</code> like so
@@ -157,9 +156,8 @@ bin  env.sh  include  lib  setup.bash  setup.sh  _setup_util.py  setup.zsh  shar
 We usually prevent this by putting the above in your <code>~/.bashrc</code> a file that is run everytime you log in.
 So now if you change directories to <code>~/catkin_ws/src/</code> you will see all the ros packages. When you want to make new ROS software you make a package and you put it here. Why? Because when you run <code>catkin_make</code> it looks in this directory for the packages it needs to build. <code>catkin_make</code> needs to be run in the <code>~/catkin_ws/</code> directory and should be run after every update in code. Although, since python is an interpreted language, we do not have to run <code>catkin_make</code> everytime we edit code, but in C++ we would.</p>
 <p>Alright, now that we have a high level view of our workspace let&rsquo;s checkout the system components. Each package (located in <code>src</code>) creates ROS nodes. This tutorial will not dive into the details of how ROS works but this <a href="https://robohub.org/ros-101-intro-to-the-robot-operating-system/">post</a> gives a good overview with diagrams. Below is a simplified diagram of the system at a high level:</p>
-<figure>
-    <img src="/tutorials/overview/software_overview.png"
-         alt="The full MuSHR stack with each ROS node as a box and each line as a ROS topic." width="980"/> <figcaption>
+<figure><img src="/tutorials/overview/software_overview.png"
+         alt="The full MuSHR stack with each ROS node as a box and each line as a ROS topic." width="980"/><figcaption>
             <p>The full MuSHR stack with each ROS node as a box and each line as a ROS topic.</p>
         </figcaption>
 </figure>

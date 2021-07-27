@@ -11,7 +11,7 @@
 
   
   
-  <link rel="stylesheet" href="/css/style.min.1fc922f3ee2ddc9e0a821fb52320a349bc079658d0f25db90d402e585db0d025.css">
+  <link rel="stylesheet" href="/css/style.min.d6c2c7df4a2b74e47c295ee499fec19eb99dfe63f90766a829090f557e381bdc.css">
   
 
   
@@ -163,7 +163,7 @@
 </div>
 <p>If you have a different version of the car, you&rsquo;ll choose that one instead. If you don&rsquo;t know which car you have, you likely have the <code>racecar-uw-nano</code> version.</p>
 <p>The file will look like this:</p>
-<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="c"># erpm (electrical rpm) = speed_to_erpm_gain * speed (meters / second) + speed_to_erpm_offset</span><span class="w">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="c"># erpm (electrical rpm) = speed_to_erpm_gain * speed (meters / second) + speed_to_erpm_offset</span><span class="w">
 </span><span class="w"></span><span class="c">#-4614</span><span class="w">
 </span><span class="w"></span><span class="nt">speed_to_erpm_gain</span><span class="p">:</span><span class="w"> </span>-<span class="m">2000</span><span class="w">
 </span><span class="w"></span><span class="nt">speed_to_erpm_offset</span><span class="p">:</span><span class="w"> </span><span class="m">0.0</span><span class="w">
@@ -188,7 +188,7 @@
 <ol>
 <li>Start teleop:</li>
 </ol>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">roslaunch mushr_base teleop.launch
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">roslaunch mushr_base teleop.launch
 </code></pre></div><ul>
 <li>Drive car in a straight line a few times. It&rsquo;s never going to be perfectly straight, so as long as it goes straight most of the time, it&rsquo;ll be fine. You can always come back to retune if it&rsquo;s not sufficiently precise.</li>
 <li>Adjust <code>steering_angle_offset</code> in <code>vesc.yaml</code>. Increase the offset if the car veers too much left, decrease if it veers too much right.</li>
@@ -228,8 +228,7 @@
 <h4 id="before-tuning">Before tuning:</h4>
 <ol>
 <li>Extend your tape measure to around 9-10 ft on the floor. It&rsquo;s okay if it&rsquo;s slightly less than this.
-<figure>
-    <img src="/tutorials/tuning/erpm_gain/start.jpg" width="300px"/> 
+<figure><img src="/tutorials/tuning/erpm_gain/start.jpg" width="300px"/>
 </figure>
 </li>
 </ol>
@@ -237,8 +236,7 @@
 <p>Now, while the car does not drive the reported distance (by <code>rostopic echo</code> command):</p>
 <ol>
 <li>Place car at the base of the tape measure with the back wheelbase (indicated with a white line) lined up with 0.
-<figure>
-    <img src="/tutorials/tuning/erpm_gain/base_with_line.jpg" width="300px"/> 
+<figure><img src="/tutorials/tuning/erpm_gain/base_with_line.jpg" width="300px"/>
 </figure>
 </li>
 </ol>
@@ -246,13 +244,12 @@
 <li>Start teleop.</li>
 <li>Open another terminal on the car and run the command:</li>
 </ul>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">rostopic echo /vesc/odom/pose/pose/position/x
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">rostopic echo /vesc/odom/pose/pose/position/x
 </code></pre></div><p>This will echo all the odometry information &ndash; how far the car has driven (in meters) in the <code>x</code> direction since teleop started. The value should be <code>0.0</code> at the start, as the car hasn&rsquo;t moved yet.</p>
 <ul>
 <li>Drive the car forward about 7-8 ft. The car will drive slightly further as it decelerates and stops. Make sure you only drive forward, not altering the servo position, otherwise you&rsquo;ll have both <code>x</code> and <code>y</code> directional changes (which makes it only slightly harder to check distance traveled).</li>
 <li>Record the distance traveled. If your tape measure is in inches, convert to meters.
-<figure>
-    <img src="/tutorials/tuning/erpm_gain/end_with_line.jpg" width="400px"/> 
+<figure><img src="/tutorials/tuning/erpm_gain/end_with_line.jpg" width="400px"/>
 </figure>
 </li>
 <li>Compare to output of the <code>rostopic echo</code> command&rsquo;s <code>x</code> value. If the reported distance traveled is larger than the actual, decrease the gain. If the reported distance is smaller, increase the gain. At the begining increasing or decreasing by 500 should allow you to quickly hone in on the value.</li>
@@ -275,8 +272,7 @@
 <p>While the car doesn&rsquo;t drive :</p>
 <ol>
 <li>Place car at the base of the tape measure with the back wheelbase (indicated with a white line) lined up with 0.
-<figure>
-    <img src="/tutorials/tuning/steering_angle_gain/start.jpg" width="300px"/> 
+<figure><img src="/tutorials/tuning/steering_angle_gain/start.jpg" width="300px"/>
 </figure>
 </li>
 </ol>
@@ -284,8 +280,7 @@
 <li>Start teleop.</li>
 <li>Command the steering wheel max in whichever direction the measurement tape is. (For the image, it would be left)</li>
 <li>Run the car such that the car has run over the tape and the back wheel is on the tape (see image). This will take some practice, but you can go slow.
-<figure>
-    <img src="/tutorials/tuning/steering_angle_gain/end.jpg" width="300px"/> 
+<figure><img src="/tutorials/tuning/steering_angle_gain/end.jpg" width="300px"/>
 </figure>
 </li>
 <li>Record the distance. The goal distance is <strong>1.722 meters (67.79 inches)</strong>. If it overshot, increase the gain, if it undershot, decrease the gain.</li>

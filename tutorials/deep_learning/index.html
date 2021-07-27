@@ -11,7 +11,7 @@
 
   
   
-  <link rel="stylesheet" href="/css/style.min.1fc922f3ee2ddc9e0a821fb52320a349bc079658d0f25db90d402e585db0d025.css">
+  <link rel="stylesheet" href="/css/style.min.d6c2c7df4a2b74e47c295ee499fec19eb99dfe63f90766a829090f557e381bdc.css">
   
 
   
@@ -133,8 +133,7 @@
 <li>Python version &gt;= 3.6 (the dependency <a href="https://pypi.org/project/screeninfo/">screeninfo</a> doesn&rsquo;t work well with python&lt;3.6), pip version &gt;= 20, setuptools &gt;=44</li>
 <li>Pytorch. For installing PyTorch, follow the instructions on this <a href="https://pytorch.org/get-started/locally/">link</a>. You&rsquo;ll have to select the options that match the configuration of your computer. For example, if you have a Windows computer with CUDA NOT enabled, you&rsquo;d pick :</li>
 </ol>
-<figure>
-    <img src="/tutorials/MUSHR-DL/pytorch_install.PNG" width="800"/> 
+<figure><img src="/tutorials/MUSHR-DL/pytorch_install.PNG" width="800"/>
 </figure>
 
 <p>If you have CUDA enabled, you&rsquo;d pick the option for the CUDA version you have installed on your computer. Copy the highlighted command and paste it in the terminal/cmd and hit enter. (use pip3 instead of pip if you have python 2.x and 3.x on the same system)</p>
@@ -153,8 +152,7 @@ Download the precompiled binary for the simulator from these links:
 <a href="https://drive.google.com/file/d/1NNWISqEf5k_ZUFfq8sRoGAUXKw8tOFPo/view?usp=sharing">Mac OS</a>.
 Extract it into the home directory (or wherever you prefer to extract it, just remember where you extract it) and rename it to &ldquo;DonkeySim&rdquo;. Within the extracted folder, you should see the following contents(for Linux. In windows, you&rsquo;ll see a donkey_sim.exe instead and find .dll instead of .so, but the overall contents will be the same)</li>
 </ol>
-<figure>
-    <img src="/tutorials/MUSHR-DL/direct_struct.PNG"/> 
+<figure><img src="/tutorials/MUSHR-DL/direct_struct.PNG"/>
 </figure>
 
 <p>In the case of macOS, the files will have a slightly different arrangement but they&rsquo;ll all be there when you download the binaries.</p>
@@ -162,38 +160,35 @@ Extract it into the home directory (or wherever you prefer to extract it, just r
 <li>Downloading other files related to MUSHR-DL:
 Open the terminal(Linux) or command-line interface (Windows) and navigate to the folder where the simulator files are kept.</li>
 </ol>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> PATH<span class="se">\\</span>TO<span class="se">\\</span>DonkeySim
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> PATH<span class="se">\\</span>TO<span class="se">\\</span>DonkeySim
 </code></pre></div><h5 id="note-1">Note:</h5>
 <p>Note that from here onwards,</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> DonkeySim
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> DonkeySim
 </code></pre></div><p>Refers to:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> PATH<span class="se">\\</span>TO<span class="se">\\</span>DonkeySim
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> PATH<span class="se">\\</span>TO<span class="se">\\</span>DonkeySim
 </code></pre></div><p>Execute these commands in the DonkeySim directory:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ git clone https://github.com/prl-mushr/gym-donkeycar.git
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ git clone https://github.com/prl-mushr/gym-donkeycar.git
 $ pip3 install -e gym-donkeycar
 $ git clone https://github.com/prl-mushr/MUSHR-DL.git
 </code></pre></div><p>Dependencies:
 The remaining dependencies can be installed by running</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> MUSHR-DL
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> MUSHR-DL
 $ pip3 install -r requirements.txt
 </code></pre></div><h3 id="running-the-examples">Running the examples:</h3>
 <h4 id="running-the-simulator">Running the simulator:</h4>
 <p>Find the donkey_sim.exe or donkey_sim.x86_64 file (it will essentially be an application) within the DonkeySim directory. On Linux, you&rsquo;ll have to give permission for the execution to this application. You can do this by entering the following command in the terminal:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> DonkeySim
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> DonkeySim
 $ sudo chmod +x donkey_sim.x86_64
 </code></pre></div><p>Now double click on it to start the simulator. Right now, the simulator is running in stand-alone mode. Your screen should look something like this:</p>
-<figure>
-    <img src="/tutorials/MUSHR-DL/main_menu.PNG" width="400"/> 
+<figure><img src="/tutorials/MUSHR-DL/main_menu.PNG" width="400"/>
 </figure>
 
 <p>Click on the box with &ldquo;Generated road&rdquo; caption. You should see something like this:</p>
-<figure>
-    <img src="/tutorials/MUSHR-DL/standalone.PNG" width="400"/> 
+<figure><img src="/tutorials/MUSHR-DL/standalone.PNG" width="400"/>
 </figure>
 
 <p>Note that each time you start the generated track, you will get a different track layout. This is useful for producing a rich dataset for training. The donkey sim by default allows you to record steering and image data. However, we won&rsquo;t be using this feature.</p>
-<figure>
-    <img src="/tutorials/MUSHR-DL/driving_standalone.PNG" width="400"/> 
+<figure><img src="/tutorials/MUSHR-DL/driving_standalone.PNG" width="400"/>
 </figure>
 
 <p>Driving the car with the keyboard should give you a feel for the dynamics of the car. Drive till you&rsquo;re content, then click on &ldquo;STOP&rdquo; on the top right corner. You can try out other environments or quit the simulator at this point.</p>
@@ -202,7 +197,7 @@ $ sudo chmod +x donkey_sim.x86_64
 <p><strong>Training:</strong>
 a) Start the simulator by double-clicking it.</p>
 <p>b) Execute the following commands in the terminal:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> DonkeySim
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> DonkeySim
 $ python3 gym-donkeycar/examples/reinforcement_learning/ddqn.py
 </code></pre></div><p>It is possible to start the simulator by passing an argument as well but it&rsquo;s not the most user-friendly method, so it has been omitted for the sake of simplicity.</p>
 <p>You can expect the car to start moving erratically and resetting to its initial position every time it hits something or crosses the lane boundary like so:</p>
@@ -218,7 +213,7 @@ $ python3 gym-donkeycar/examples/reinforcement_learning/ddqn.py
 <p>The trained model is saved as &ldquo;rl_driver.h5&rdquo; in the \MUSHR-DL\gym-donkeycar\examples\reinforcement_learning directory. The training can be aborted at any time by pressing &ldquo;Ctrl+C&rdquo;. The model is saved after each episode (an episode lasts until the car hits something or crosses the lane).</p>
 <p><strong>Testing:</strong>
 You can test your model with the following command:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> DonkeySim
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> DonkeySim
 $ python3 gym-donkeycar/examples/reinforcement_learning/ddqn.py --test
 </code></pre></div><h3 id="imitation-learning">Imitation Learning:</h3>
 <p>Imitation learning: Imitation learning involves 4 steps; data collection, post-processing, training, and testing. For collecting training data as well as for running the models, the same file &ldquo;run_sim.py&rdquo; needs to be run.</p>
@@ -236,11 +231,10 @@ abort and change driving mode (auto or manual).</p>
 <p>Enter the following command in the terminal/cmd after starting the simulator (don&rsquo;t select the environment manually, just double click the exe file and that’s it, the python script takes care of the rest):</p>
 </li>
 </ol>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> DonkeySim
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> DonkeySim
 $ python3 run_sim.py --dataset_name<span class="o">=</span>testing
 </code></pre></div><p>You will notice a similar interface as before:</p>
-<figure>
-    <img src="/tutorials/MUSHR-DL/driving_standalone.PNG" width="400"/> 
+<figure><img src="/tutorials/MUSHR-DL/driving_standalone.PNG" width="400"/>
 </figure>
 
 <p>However, you&rsquo;ll also notice that right as the environment is loaded, your mouse gets centered on the screen. Moving the mouse up and down will increase the throttle or apply brakes (or reverse the car if it has come to a halt already). Moving the mouse left will turn the steering left and vice-versa. Small mouse movements should be sufficient to completely control both the throttle and the steering.</p>
@@ -263,23 +257,23 @@ The next step is to run post-processing on the collected data: post-processing i
 </li>
 </ol>
 <p>In this tutorial, we will create a dataset for training an image-to-steering network.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> DonkeySim/MUSHR-DL
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> DonkeySim/MUSHR-DL
 $ python3 post_processing_mushr.py --dataset_name<span class="o">=</span><span class="nb">test</span> --model<span class="o">=</span>steering
 </code></pre></div><ol start="3">
 <li><strong>Training</strong>:
 Execute the following command to begin training the steering predicting model (assuming the dataset for steering prediction has been generated in the previous step):</li>
 </ol>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> DonkeySim/MUSHR-DL
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> DonkeySim/MUSHR-DL
 $ python3 pytorch_img_to_steering_train.py --dataset_name<span class="o">=</span><span class="nb">test</span>
 </code></pre></div><p>the model will be saved with a preset name. The same model name is used in testing as well as the model running script, and so for the sake of the tutorial, the name should be left as is.</p>
 <p>Testing:
 The following command can be used to test the model. The printed numbers are the error (or difference) between the ground truth (human driver or supervisor&rsquo;s response to the input image) and the network output.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ python3 pytorch_img_to_steering_test.py --dataset_name<span class="o">=</span><span class="nb">test</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ python3 pytorch_img_to_steering_test.py --dataset_name<span class="o">=</span><span class="nb">test</span>
 </code></pre></div><ol start="4">
 <li><strong>Driving the car using the trained model</strong>:</li>
 </ol>
 <p>To use a model for driving the car (assuming that the model exists), start the simulator again by double-clicking the donkey_sim.exe/x86_64 and then run the following commands:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> DonkeySim/MUSHR-DL
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> DonkeySim/MUSHR-DL
 $ python3 run_sim.py --test<span class="o">=</span>True --model<span class="o">=</span>steering --env_name<span class="o">=</span>MUSHR_benchmark
 </code></pre></div><p>The environment &ldquo;MUSHR_benchmark&rdquo; is a simpler, fixed environment that you can use to compare the performance of different networks.
 the model type is set to steering as we trained a simple image to steering prediction network.</p>
@@ -316,8 +310,7 @@ the model type is set to steering as we trained a simple image to steering predi
 <p>The main script (run_sim.py) defines a class <a href="https://github.com/prl-mushr/MUSHR-DL/blob/master/run_sim.py#L17">SimpleClient</a>, which derives from the SDClient class. As far as we are concerned, the object of this class performs the job of getting and sending data using the functions <a href="https://github.com/prl-mushr/MUSHR-DL/blob/master/run_sim.py#L25">on_msg_recv</a> and <a href="https://github.com/prl-mushr/MUSHR-DL/blob/master/run_sim.py#L57">send_controls</a> respectively. We don&rsquo;t have to call these functions to pass or get the values. They are called automatically and asynchronously, therefore we merely need to create class members that can be used within these functions to set or get the required data.</p>
 <h3 id="the-car-specific-script">The car-specific script:</h3>
 <p>In order to avoid chaos, we create a separate module called <a href="https://github.com/prl-mushr/MUSHR-DL/blob/master/CAR.py">CAR.py</a> which defines a class called <a href="https://github.com/prl-mushr/MUSHR-DL/blob/master/CAR.py#L11">driver</a>, which contains all the variables related to the car itself; the state (position, speed, steering, throttle, image) as well as other information which may be useful such as the wheelbase of the car and status flags for whether the data is being recorded or not.
-<figure>
-    <img src="/tutorials/MUSHR-DL/class_driver.PNG" width="500"/> 
+<figure><img src="/tutorials/MUSHR-DL/class_driver.PNG" width="500"/>
 </figure>
 </p>
 <p>In the SimpleClient class inside run_sim.py, we create an <a href="https://github.com/prl-mushr/MUSHR-DL/blob/master/run_sim.py#L23">object</a> of the &ldquo;driver&rdquo; class and call the <a href="https://github.com/prl-mushr/MUSHR-DL/blob/master/CAR.py#L83">update_state</a> function in the <a href="https://github.com/prl-mushr/MUSHR-DL/blob/master/run_sim.py#L50">on_msg_recv</a> function. This function is the core of the driver class, as it updates the state of the car and records the data. Note that it records the state of the car along with all the 3 camera images (grayscale). The data is appended to a list, which is then saved as NumPy array by the main script (run_sim.py)</p>
@@ -328,8 +321,7 @@ the model type is set to steering as we trained a simple image to steering predi
 <h4 id="autonomous-control">Autonomous control</h4>
 <p>The imitation learning model (or any autonomous approach based model) is run using the object of class <a href="https://github.com/prl-mushr/MUSHR-DL/blob/master/model_runner.py">model_runner</a>. The <a href="https://github.com/prl-mushr/MUSHR-DL/blob/master/model_runner.py#L54">update_model_input</a> is used for getting the data, while the <a href="https://github.com/prl-mushr/MUSHR-DL/blob/master/model_runner.py#L67">run_model</a> is used for processing the input asynchronously.</p>
 <p>The overall structure of all these modules looks like this:
-<figure>
-    <img src="/tutorials/MUSHR-DL/flowchart.png" width="300"/> 
+<figure><img src="/tutorials/MUSHR-DL/flowchart.png" width="300"/>
 </figure>
 </p>
 <p>Going through these files should tell you how you could add your own methods (ideally, you should add your autonomous control code in the model_runner file).</p>

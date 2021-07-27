@@ -11,7 +11,7 @@
 
   
   
-  <link rel="stylesheet" href="/css/style.min.1fc922f3ee2ddc9e0a821fb52320a349bc079658d0f25db90d402e585db0d025.css">
+  <link rel="stylesheet" href="/css/style.min.d6c2c7df4a2b74e47c295ee499fec19eb99dfe63f90766a829090f557e381bdc.css">
   
 
   
@@ -112,8 +112,7 @@
           
           <h4 class="properties">Beginner Tutorial | Expected duration is 30 minutes</h4> 
           <h2> By: <a href=https://www.mattschmittle.com/>Matt Schmittle</a></h2> 
-<figure>
-    <img src="/tutorials/workflow/work.jpg"/> 
+<figure><img src="/tutorials/workflow/work.jpg"/>
 </figure>
   <br>
 <h2 id="introduction">Introduction</h2>
@@ -136,78 +135,75 @@
 <p>To work in sim you need to have either have the docker image working or an Ubuntu machine with ROS melodic that has <code>mushr_sim</code>, <code>mushr</code>, <code>mushr_base</code>, <code>vesc</code> and <code>rviz</code> installed. The Docker container is straight-forward to set up, but if you don&rsquo;t like working in a container we recommend the latter. Each has a slightly different workflow covered below.</p>
 <h5 id="docker-container">Docker Container</h5>
 <p>If you have set up the docker container through the <a href="/tutorials/quickstart/">quickstart</a> tutorial then to get the sim running simply enter <code>mushr_sim/docker</code> and run:
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker compose up -d</code></pre></div></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ docker compose up -d</code></pre></div></p>
 <p>The default <code>.rviz</code> file has the basic topics, but you can save a more custom one if you like. If you exit rviz/sim the container will stop. You can always restart it with</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker start CONTAINER-ID</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ docker start CONTAINER-ID</code></pre></div>
 <p>And you can get your CONTAINER-ID <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> by running:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker ps</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ docker ps</code></pre></div>
 <p>We recommend storing your code on a git repository so it is easier to move it from container to container. To enter the container to edit or run your code execute:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker <span class="nb">exec</span> -it CONTAINER-ID bash</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ docker <span class="nb">exec</span> -it CONTAINER-ID bash</code></pre></div>
 <p>This will get you a non-root user shell to edit and run code. If you wish to install additional software, enter the container as root:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker <span class="nb">exec</span> -it -u <span class="m">0</span> CONTAINER-ID bash</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ docker <span class="nb">exec</span> -it -u <span class="m">0</span> CONTAINER-ID bash</code></pre></div>
 <p>The reason we have two different users is that <code>developer</code> is tied to the host computer user so that gui apps like rviz, and the sim gray box can come through.</p>
 <p>You can save your container to an image with</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker commit CONTAINER-ID IMAGE-NAME </code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ docker commit CONTAINER-ID IMAGE-NAME </code></pre></div>
 <p>You may want the container to not run the sim and rviz when you start it. To change it to just turn on change line 16 <code>docker-compose.yml</code> to</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">entrypoint: bash </code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">entrypoint: bash </code></pre></div>
 <p>Docker has a bunch of resources for going further with containers and images. Checkout their <a href="https://docs.docker.com/">docs</a> for further resources!</p>
 <h5 id="regular-install">Regular Install</h5>
 <p>Use these instructions to operate the simulator on an Ubuntu system where ROS melodic and <code>mushr_sim</code>, <code>mushr</code>, <code>mushr_base</code>, <code>vesc</code> and <code>rviz</code> are installed.
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ roscore</code></pre></div></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ roscore</code></pre></div></p>
 <p>The above command starts the <a href="http://wiki.ros.org/Master">ROS master</a> that the other programs will latch to. If you don&rsquo;t run this then rviz can act up. Why? Because rviz needs a rosmaster to talk to and if the rosmaster is teleop, or some other node then when you restart, rviz will lose its connection with ROS master. Now start rviz:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ rviz</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ rviz</code></pre></div>
 <p>Ideally you want to open your previously saved <code>.rviz</code> file (file → save as) that has your most commonly used topics all set up. But if not then wait until everything is running, subscribe, then save a file. Also, because you are working with a 2D map, make sure the camera is set to TopDownOrtho.</p>
 <p>Launch the sim and the map server:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ roslaunch mushr_sim teleop.launch </code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ roslaunch mushr_sim teleop.launch </code></pre></div>
 <p>Launch your code:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ roslaunch your_package your_launchfile.launch</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ roslaunch your_package your_launchfile.launch</code></pre></div>
 <p>Subscribe to all the necessary topics (and save a .rviz file!). All topics can be found by clicking <strong>Add → By topic</strong>. To get the robot model: <strong>Add → By display type → RobotModel</strong>. Use the gray box and the W, A, S, D keys to drive</p>
 <p>If you need to restart or edit your code then make sure to reset the rviz topics so you get the most up to date data. This can be done by pressing the <code>reset</code> button in the bottom left corner. When finished with your session, press <code>q</code> in the gray box.</p>
 <h3 id="real-world-workflow">Real World Workflow</h3>
 <p>Operating the robot in the real world has a similar process to that of simulation, but with added hardware setup and connecting remotely. The key to a solid workflow is to make sure to separate hardware and software failures clearly which is something that we will discuss more in the next section.</p>
 <p>The first step is to make sure both batteries have sufficient charge (not dead at least). When the batteries are charged the VESC will blink 3 times when connected and powered. The below image show batteries in a charged state. When charging there should be a solid red light (hold start/stop to toggle). The solid green light indicates full.</p>
-<figure>
-    <img src="/tutorials/workflow/battery.jpg"
-         alt="Batteries in a charged state. A solid red light indicates charging; solid green light indicates full." width="600"/> <figcaption>
+<figure><img src="/tutorials/workflow/battery.jpg"
+         alt="Batteries in a charged state. A solid red light indicates charging; solid green light indicates full." width="600"/><figcaption>
             <p>Batteries in a charged state. A solid red light indicates charging; solid green light indicates full.</p>
         </figcaption>
 </figure>
 
 <p>Once you have comfirmed that your batteries are charged, you have eliminated many of the most common issues. The next thing to do is to plug in the batteries starting with the VESC. If you want to start right into teleoperation then hold the front button until you see the lidar spin (approximately 1 minute). Once you have plugged both batteries in, you should see the vesc and the Jetson Nano light up. If the Nano does not light up (and the battery is charged) check to make sure the barrel connector is plugged in.</p>
-<figure>
-    <img src="/tutorials/workflow/nano_light.jpg"
-         alt="Green light on nano indicates the computer is powered and on." width="600"/> <figcaption>
+<figure><img src="/tutorials/workflow/nano_light.jpg"
+         alt="Green light on nano indicates the computer is powered and on." width="600"/><figcaption>
             <p>Green light on nano indicates the computer is powered and on.</p>
         </figcaption>
 </figure>
 
-<figure>
-    <img src="/tutorials/workflow/vesc_light.jpg"
-         alt="Blue light on vesc indicates vesc is on. The wheels will also straighten." width="600"/> <figcaption>
+<figure><img src="/tutorials/workflow/vesc_light.jpg"
+         alt="Blue light on vesc indicates vesc is on. The wheels will also straighten." width="600"/><figcaption>
             <p>Blue light on vesc indicates vesc is on. The wheels will also straighten.</p>
         </figcaption>
 </figure>
 
 <p>Now it is time to connect to the computer! If you have the default network setting where the robot makes its own network then connect to &ldquo;Robot AP&rdquo; and ssh into the car.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ssh robot@10.42.0.171</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ ssh robot@10.42.0.171</code></pre></div>
 <p>If you have the robot setup connect to a local network (see <a href="/tutorials/robot_setup">Robot Setup Tutorial</a>), then connect to the local network yourself and ssh but replace the IP with the robot&rsquo;s static IP that you set.</p>
 <p>If you are having trouble connecting see <a href="#troubleshooting">Troubleshooting</a>. We need to set up the ROS_IP and the ROS_MASTER_URI environment variables on both devices. ROS_IP tells your ROS node what IP to communicate under. Localhost will not work because it will prevent remote components from communicating with it. So use <code>ifconfig</code> in the terminal to find your IP (car and desktop) and set that number to your ROS_IP. Each device should use its own IP.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">export</span> <span class="nv">ROS_IP</span><span class="o">=</span>ROBOT/DESKTOP-IP</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">export</span> <span class="nv">ROS_IP</span><span class="o">=</span>ROBOT/DESKTOP-IP</code></pre></div>
 <p>If your IP is static (the car ought to have a static IP) then you can put this command at the bottom of your <code>~/.bashrc</code> and it will run everytime you log in. You can check if an environment variable is set using <code>echo</code></p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">echo</span> <span class="nv">$ROS_IP</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">echo</span> <span class="nv">$ROS_IP</span></code></pre></div>
 <p>Now that you have set your <code>ROS_IP</code> for both the car and computer, we need to set the <code>ROS_MASTER_URI</code> environment variable. The <code>ROS_MASTER_URI</code> tells your ROS nodes where to look for <code>rosmaster</code>. The default is <code>localhost:11311</code>. Since your program is running on the car we will set the <code>ROS_MASTER_URI</code> to the car. Luckly because the car is already set to itself, we only have to set the desktop or laptop (whichever is your remote workstation). On the base computer run:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">export</span> <span class="nv">ROS_MASTER_URI</span><span class="o">=</span>http://ROBOT-IP:11311</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">export</span> <span class="nv">ROS_MASTER_URI</span><span class="o">=</span>http://ROBOT-IP:11311</code></pre></div>
 <p>&ldquo;11311&rdquo; is the port ROS connects to, and ROBOT-IP is the robot&rsquo;s IP address you ssh with to connect to the car. If this isn&rsquo;t set your base computer will start a separate <code>rosmaster</code> and if it is set incorrectly it will throw a error that it cannot find rosmaster. Now we are ready to run stuff!</p>
 <p>Ssh into the car, and run:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ roscore</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ roscore</code></pre></div>
 <p>On the base:
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ rviz</code></pre></div></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ rviz</code></pre></div></p>
 <p>rviz should be setup to listen to the same topics as the simulator</p>
 <p>On the car:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ roslaunch mushr_base teleop.launch</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ roslaunch mushr_base teleop.launch</code></pre></div>
 <p>The <code>teleop.launch</code> launch file activates the car&rsquo;s hardware, sensors and remote control. Make sure you can drive the car and steer. On the base, visualize topics in rviz.</p>
 <p>On the car:
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ roslaunch your_package your_launch.launch</code></pre></div></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ roslaunch your_package your_launch.launch</code></pre></div></p>
 <p>It is good practice to make a ros package for your code that is separate from the mushr_base package. That way if you need to update mushr code, your code remains unaffected. This can be done by making a <a href="http://wiki.ros.org/ROS/Tutorials/CreatingPackage">separate catkin package</a>.</p>
 <h2 id="troubleshooting">Troubleshooting</h2>
 <p>Troubleshooting is what 80% of a roboticist&rsquo;s time is spent on. If we know it is inevitable, we need to design systems and use tools to narrow down a diagnosis for the problem as fast as possible. Diagnosis can usually be the hardest part because it could be hardware or software or both. In addition, a robotic system is highly interconnected so a weird behavior in one component may only manifest itself in another component down the road. This section will cover the main debugging tools you should use on the car and some common problems and fixes.</p>
@@ -215,20 +211,20 @@
 <p>You should try answering the following questions in order to work towards a diagnosis.</p>
 <h4 id="is-the-issue-hardware-or-software">Is the issue hardware or software?</h4>
 <p>Very important question, as your fix will change drastically. There are usually clues into this problem. Let&rsquo;s look at an example:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>FATAL<span class="o">]</span> <span class="o">[</span>1455208235.408745600<span class="o">]</span>: Failed to connect to the VESC, SerialException Failed to open the serial port to the VESC. IO Exception <span class="o">(</span>2<span class="o">)</span>: No such file or directory, file /tmp/binarydeb/ros-kinetic-serial-1.2.1/src/impl/unix.cc, line 151. failed..</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>FATAL<span class="o">]</span> <span class="o">[</span>1455208235.408745600<span class="o">]</span>: Failed to connect to the VESC, SerialException Failed to open the serial port to the VESC. IO Exception <span class="o">(</span>2<span class="o">)</span>: No such file or directory, file /tmp/binarydeb/ros-kinetic-serial-1.2.1/src/impl/unix.cc, line 151. failed..</code></pre></div>
 <p>Now this issue is hardware. There is a key clue here, the word &ldquo;IO Exception.&rdquo; We know the VESC is not connected because we can&rsquo;t start a <a href="https://en.wikipedia.org/wiki/Serial_communication">serial connection</a> with the VESC. Here is another example:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ERROR: unable to contact ROS master at <span class="o">[</span>http://172.16.77.06:11311<span class="o">]</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">ERROR: unable to contact ROS master at <span class="o">[</span>http://172.16.77.06:11311<span class="o">]</span>
 The traceback <span class="k">for</span> the exception was written to the log file</code></pre></div>
 <p>Now this is also a connection issue, but this time it is software. We know because the ROS node is trying to connect to <code>rosmaster</code> at the set IP. So in software we are setting this IP from the environment variable <code>ROS_MASTER_URI</code> and the computer is trying to connect to this IP over WiFi. Either we set the IP wrong, or the WiFi isn&rsquo;t working. But we know the WiFi is functional because we can ssh into the car, so it must be an incorrect IP!</p>
 <h4 id="what-component-is-causing-the-issue">What component is causing the issue?</h4>
 <p>So now that you have determined that the issue is in hardware vs. software, we need to narrow down the problem. Sometimes, in the above examples, it explicitly tells you, but we aren&rsquo;t always that lucky. Take the following example:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>teleop.launch<span class="o">]</span> is neither a launch file in package <span class="o">[</span>labx<span class="o">]</span> nor is <span class="o">[</span>labx<span class="o">]</span> a launch file name
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>teleop.launch<span class="o">]</span> is neither a launch file in package <span class="o">[</span>labx<span class="o">]</span> nor is <span class="o">[</span>labx<span class="o">]</span> a launch file name
 The traceback <span class="k">for</span> the exception was written to the log file</code></pre></div>
 <p>So this points to labx being the component (package in this case) that is not working. Turns out that is slightly a red herring. So this error means ROS cannot find the launchfile or the package. So it could be one of two things or both. <code>teleop.launch</code> is not in labx in which case labx was the culprit. And/or you haven&rsquo;t sourced your workspace since making this package so ROS does not have it in its package list. We can narrow this down by doing the following:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ rospack find labx
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ rospack find labx
 /home/nvidia/catkin_ws/src/labx</code></pre></div>
 <p>It found the package! Which means you don&rsquo;t have a <code>teleop.launch</code> file in your labx package. To fix this, you would need to go to the labx package.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ roscd labx/launch</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ roscd labx/launch</code></pre></div>
 <p>And see if you have mispelled <code>teleop.launch</code>. If there is no file matching <code>teleop.launch</code> then you would have to make one.</p>
 <h4 id="is-the-error-ros-related-or-pure-code-related">Is the error ROS related or pure code related?</h4>
 <p>A helpful thing to determine is if the problem has anything to do with ROS. If the error looks like a standard python/C++ error then great, you can rule out all ROS stuff. If not, then it could be either your ROS interface (publishers/subscribers) in your code, or your launchfiles, or your ROS environment. This question is relatively easy to answer if you answer the previous questions. But the one difficulty is that ROS will add a bunch of node failure gibberish even if your code logic is the problem. So just make sure to scroll the error to the very beginning to find the core issue.</p>
@@ -390,22 +386,22 @@ Give this a try as you're getting acquainted with your system! <br>
 </table>
 <h4 id="ssh">ssh</h4>
 <p>While this is not really a debugging tool, it is a tool commonly used and should be touched on. ssh stands for Secure Shell. It is an encrypted network protocol that amongst other things gives you a shell session on a remote machine. It is super useful for remote work and connecting to robots because then you do not need an additional monitor and keyboard. So when you connect, you supply the username (robot) and the IP address of the car and it will connect you to that user specifically. There are some other potentially useful things you can do with ssh in addition to a standard shell.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ssh robot@10.42.0.171 -X</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ ssh robot@10.42.0.171 -X</code></pre></div>
 <p>This connects an X session so you can run graphical applications remotely, but it will be very slow because everything needs to be encrypted.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sftp nvidia@10.42.0.171</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ sftp nvidia@10.42.0.171</code></pre></div>
 <p>Secure file transfer protocol is the best way to get files from another machine. It allows you to <code>cd</code> and <code>ls</code> like a shell but also <code>get</code> files and <code>put</code> files from your local machine on the remote machine.</p>
 <h4 id="tmux">tmux</h4>
 <p>The terminal multiplexer is a famous and commonly used tool for working with multiple shell sessions from one window. For us, this is particularly useful when you ssh into the car. You don&rsquo;t have to keep sshing in for each new window, but instead ssh in once then use tmux to have multiple sessions. This <a href="https://hackernoon.com/a-gentle-introduction-to-tmux-8d784c404340">tutorial</a> goes into more detail.</p>
 <h2 id="common-issues--how-to-fix">Common Issues &amp; How to Fix</h2>
 <p>Alright, now that we know how to narrow down issues, let&rsquo;s look at the most common issues on the cars and how to fix them.</p>
 <h4 id="vesc-failure">Vesc Failure</h4>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>FATAL<span class="o">]</span> <span class="o">[</span>1455208235.408745600<span class="o">]</span>: Failed to connect to the VESC, SerialException Failed to open the serial port to the VESC. IO Exception <span class="o">(</span>2<span class="o">)</span>: No such file or directory, file /tmp/binarydeb/ros-kinetic-serial-1.2.1/src/impl/unix.cc, line 151. failed..</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>FATAL<span class="o">]</span> <span class="o">[</span>1455208235.408745600<span class="o">]</span>: Failed to connect to the VESC, SerialException Failed to open the serial port to the VESC. IO Exception <span class="o">(</span>2<span class="o">)</span>: No such file or directory, file /tmp/binarydeb/ros-kinetic-serial-1.2.1/src/impl/unix.cc, line 151. failed..</code></pre></div>
 <p><strong>Hardware/Software:</strong> Hardware<br>
 <strong>Component:</strong> Vesc<br>
 <strong>ROS Related:</strong> No, but it manifests itself through ROS<br>
 <strong>Fix:</strong> Make sure the Vesc battery is charged and plugged in. The Vesc should have a blue light. If you have to change the battery, make sure to re-source your workspace so the computer can detect the vesc. If continues, check connections to the computer.</p>
 <h4 id="ros-workspace-not-setup-bash-not-recognizing-ros-commands">ROS Workspace Not Setup (bash not recognizing ROS commands):</h4>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">-bash: roscore: command not found
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">-bash: roscore: command not found
 </code></pre></div><p><strong>Hardware/Software:</strong> Software<br>
 <strong>Component:</strong> ROS<br>
 <strong>ROS Related:</strong> Yes<br>
@@ -432,17 +428,17 @@ Give this a try as you're getting acquainted with your system! <br>
 <strong>ROS Related:</strong> No<br>
 <strong>Fix:</strong> If ssh is not working first do a dumby check to make sure your IP and username are correct. Then try to <code>ping</code> the car IP. If it does not respond, then make sure the car is powered. If powered and still not pinging, then it likely is struggling to pickup wifi. Plug a HDMI cable into the jetson and use <code>ifconfig</code> to confirm wifi. If nothing still, then use the graphical interface to try to connect to wifi. Also, make sure your base computer is on the same network as the car.</p>
 <h4 id="roscore-already-running">Roscore Already Running</h4>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">roscore cannot run as another roscore/master is already running.</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">roscore cannot run as another roscore/master is already running.</code></pre></div>
 <p><strong>Hardware/Software:</strong> Software<br>
 <strong>Component:</strong> ROS<br>
 <strong>ROS Related:</strong> Yes<br>
 <strong>Fix:</strong> You left a ROS process running and tried to start a new roscore/node. Simply stop that process.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ pkill ros</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ pkill ros</code></pre></div>
 <section class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
 <li id="fn:1" role="doc-endnote">
-<p><code>CONTAINER-ID</code> is just a stand in for the value provided by the command <code>docker ps</code>. <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p><code>CONTAINER-ID</code> is just a stand in for the value provided by the command <code>docker ps</code>.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </section>

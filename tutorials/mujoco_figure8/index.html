@@ -11,7 +11,7 @@
 
   
   
-  <link rel="stylesheet" href="/css/style.min.1fc922f3ee2ddc9e0a821fb52320a349bc079658d0f25db90d402e585db0d025.css">
+  <link rel="stylesheet" href="/css/style.min.d6c2c7df4a2b74e47c295ee499fec19eb99dfe63f90766a829090f557e381bdc.css">
   
 
   
@@ -136,16 +136,16 @@
 </ul>
 <h2 id="setup">Setup</h2>
 <p>Let&rsquo;s first start by creating a new rospackage.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> ~/catkin_ws/src
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> ~/catkin_ws/src
 catkin_create_pkg mushr_mujoco_figure8 rospy geometry_msgs ackermann_msgs
 </code></pre></div><p>Now let&rsquo;s make the directories we will be needing.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> mushr_mujoco_figure8
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> mushr_mujoco_figure8
 mkdir launch plans
 </code></pre></div><p>We will now create a text file containing a sequence of control commands designed to produce a trajectory of figure-8 shape when executed by the vehicle</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> plans
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> plans
 $ nano figure8.txt
 </code></pre></div><p>Paste the following sequence of control commands into the figure8.txt file.</p>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">0,0,0.785
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">0,0,0.785
 2.0,0.09
 2.0,0.09
 2.0,0.09
@@ -172,11 +172,11 @@ $ nano figure8.txt
 </code></pre></div><h2 id="rostopic-of-interest">Rostopic of interest</h2>
 <p>(Note: This section is only for better understanding, feel free to skip it.)</p>
 <p>Before jumping into the code lets find out which rostopics we need to publish to. In a new terminal window type,</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ roslaunch mushr_mujoco_ros one_car.launch
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ roslaunch mushr_mujoco_ros one_car.launch
 </code></pre></div><p>Open a new terminal window, and type the following.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ rostopic list -v 
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ rostopic list -v 
 </code></pre></div><p>You will see a list of Published and Subscribed topics like below.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">Published topics:
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">Published topics:
  * /map_metadata <span class="o">[</span>nav_msgs/MapMetaData<span class="o">]</span> <span class="m">1</span> publisher
  * /mushr_mujoco_ros/buddy/velocimeter <span class="o">[</span>geometry_msgs/Vector3Stamped<span class="o">]</span> <span class="m">1</span> publisher
  * /mushr_mujoco_ros/buddy/car_imu <span class="o">[</span>sensor_msgs/Imu<span class="o">]</span> <span class="m">1</span> publisher
@@ -194,12 +194,12 @@ Subscribed topics:
 </code></pre></div><p><strong>/mushr_mujoco_ros/buddy/control</strong> in Subscribed topics is our rostopic of interest.</p>
 <h2 id="code">Code</h2>
 <p>The entire code is written below. Feel free to try to code it by yourself, as this code is very similar to the MuSHR Introductory navigation (link: <a href="https://mushr.io/tutorials/intro-to-ros/">MuSHR Intro to ROS</a>), and from the earlier section we now know our rostopic of interest. The code will be explained later on.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> ~/catkin_ws/src/mushr_mujoco_figure8/src
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> ~/catkin_ws/src/mushr_mujoco_figure8/src
 $ nano path_publisher.py
 </code></pre></div><p>Paste the below code in path_publisher.py.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -262,7 +262,7 @@ $ nano path_publisher.py
 </span><span class="lnt">61
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="ch">#!/usr/bin/env python</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="ch">#!/usr/bin/env python</span>
 
 <span class="kn">import</span> <span class="nn">rospy</span>
 <span class="kn">from</span> <span class="nn">ackermann_msgs.msg</span> <span class="kn">import</span> <span class="n">AckermannDrive</span><span class="p">,</span> <span class="n">AckermannDriveStamped</span>
@@ -326,12 +326,12 @@ $ nano path_publisher.py
 </div>
 </div>
 <p>Make the python script executable.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">chmod +x path_publisher.py
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">chmod +x path_publisher.py
 </code></pre></div><h2 id="the-code-explained">The code explained</h2>
 <p>The detailed explanations of the python functions (run_plan, send_init_pose, send_command) are given in the introductory navigation tutorial (link: <a href="https://mushr.io/tutorials/intro-to-ros/">MuSHR Intro to ROS</a>).</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -349,7 +349,7 @@ $ nano path_publisher.py
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
     <span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="s2">&#34;path_publisher&#34;</span><span class="p">)</span>
     
     <span class="n">control_topic</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_param</span><span class="p">(</span><span class="s2">&#34;~control_topic&#34;</span><span class="p">,</span> <span class="s2">&#34;/mushr_mujoco_ros/buddy/control&#34;</span><span class="p">)</span>
@@ -370,12 +370,12 @@ $ nano path_publisher.py
 <p>Line 2 initializes the rosnode. Lines 4-5 initializes the publisher node to control the MuSHR car. <code>rospy.get_param(&quot;~control_topic&quot;, &quot;/mushr_mujoco_ros/buddy/control&quot;)</code> calls the rostopic we want to publish messages to (will be more clear while writing the launch file, notice this is the highlighted rostopic from before). Similarly lines 7-9 initializes the publisher node to set the initial position of the MuSHR bot. Lines 11-13 reads the figure8.txt file we just created.</p>
 <h2 id="writing-the-launch-file">Writing the launch file</h2>
 <p>We need to create a launch file to launch our path_publisher.py code. Again the entire code is pasted below, feel free to write your own launch file (Note: Make sure to implement relevant changes in path_publisher.py in case you decide to make changes).</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> ~/catkin_ws/src/mushr_mujoco_figure8/launch
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> ~/catkin_ws/src/mushr_mujoco_figure8/launch
 $ nano path_publisher.launch
 </code></pre></div><p>Paste the below code in path_publisher.launch.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -388,7 +388,7 @@ $ nano path_publisher.launch
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="o">&lt;</span><span class="n">launch</span><span class="o">&gt;</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="o">&lt;</span><span class="n">launch</span><span class="o">&gt;</span>
     <span class="o">&lt;</span><span class="n">arg</span> <span class="n">name</span><span class="o">=</span><span class="s2">&#34;control_topic&#34;</span> <span class="n">default</span><span class="o">=</span><span class="s2">&#34;/mushr_mujoco_ros/buddy/control&#34;</span> <span class="o">/&gt;</span>
     <span class="o">&lt;</span><span class="n">arg</span> <span class="n">name</span><span class="o">=</span><span class="s2">&#34;init_pose_topic&#34;</span> <span class="n">default</span><span class="o">=</span><span class="s2">&#34;/mushr_mujoco_ros/buddy/initialpose&#34;</span> <span class="o">/&gt;</span>
     <span class="o">&lt;</span><span class="n">arg</span> <span class="n">name</span><span class="o">=</span><span class="s2">&#34;plan_file&#34;</span> <span class="n">default</span><span class="o">=</span><span class="s2">&#34;$(find mushr_mujoco_figure8)/plans/figure8.txt&#34;</span> <span class="o">/&gt;</span>
@@ -405,25 +405,24 @@ $ nano path_publisher.launch
 <p>Lines 2-4 create arguments with default values (note: these values can be set externally while running the launch file). Lines 6-9, initialize a rosnode with parameters &ldquo;control_topic&rdquo;, &ldquo;init_pose_topic&rdquo; and &ldquo;plan_file&rdquo;, which if you recall are used in rospy.get_param() in path_publisher.py. We can set values to arguments (arg) while executing the launch file. If no value was assigned to the argument, the default is used. In case you decide to make modifications and add some more arguments, make sure you always assign default values to the arguments.</p>
 <h2 id="catkin_make">Catkin_make</h2>
 <p>You are all set. Lets catkin_make our files to start executing the figure 8.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> ~/catkin_ws/
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> ~/catkin_ws/
 $ catkin_make
 </code></pre></div><h2 id="executing-the-figure-8">Executing the figure 8</h2>
 <p>Now it&rsquo;s time to execute our code. First let&rsquo;s launch the MuSHR car. In a new terminal, enter the below commands.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">source</span> ~/catkin_ws/devel/setup.bash
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">source</span> ~/catkin_ws/devel/setup.bash
 $ roslaunch mushr_mujoco_ros one_car.launch
 </code></pre></div><p>After this step, a MuSHR car is spawned in the MuJoCo simulator as shown below.</p>
-<p><figure>
-    <img src="/tutorials/mujoco_figure8/mujoco.png"
-         alt="MuJoCo simulator a MuSHR car spawned" width="600"/> <figcaption>
+<p><figure><img src="/tutorials/mujoco_figure8/mujoco.png"
+         alt="MuJoCo simulator a MuSHR car spawned" width="600"/><figcaption>
             <p>MuJoCo simulator a MuSHR car spawned</p>
         </figcaption>
 </figure>
 
 <br>
 Next, in a new terminal enter the following roslaunch command.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ roslaunch mushr_mujoco_figure8 path_publisher.launch
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ roslaunch mushr_mujoco_figure8 path_publisher.launch
 </code></pre></div><p>Since the default plan file is our plan file of interest, we don&rsquo;t need to add the path to figure8.txt manually. But, if you would like to call a different plan file you can write:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ roslaunch mushr_mujoco_figure8 path_publisher.launch plan_file:<span class="o">=</span><span class="s1">&#39;~/catkin_ws/src/mushr_mujoco_figure8/plans/{name of text file}&#39;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ roslaunch mushr_mujoco_figure8 path_publisher.launch plan_file:<span class="o">=</span><span class="s1">&#39;~/catkin_ws/src/mushr_mujoco_figure8/plans/{name of text file}&#39;</span>
 </code></pre></div><p>Awesome, if your MuSHR car makes an 8, you have successfully completed this tutorial! Feel free to play around and design your own plans and execute them.</p>
 <hr>
 

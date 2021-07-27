@@ -11,7 +11,7 @@
 
   
   
-  <link rel="stylesheet" href="/css/style.min.1fc922f3ee2ddc9e0a821fb52320a349bc079658d0f25db90d402e585db0d025.css">
+  <link rel="stylesheet" href="/css/style.min.d6c2c7df4a2b74e47c295ee499fec19eb99dfe63f90766a829090f557e381bdc.css">
   
 
   
@@ -113,8 +113,7 @@
           <h4 class="properties">Beginner Tutorial | Expected duration is 45 minutes</h4> 
           <h2> By: Akkshaj Singh</h2>
 <br>
-<figure>
-    <img src="/tutorials/radio_fpv/crazyradio.jpg"/> 
+<figure><img src="/tutorials/radio_fpv/crazyradio.jpg"/>
 </figure>
 
 <br>
@@ -135,17 +134,16 @@
 <h2 id="setting-up-crazyradio">Setting up CrazyRadio</h2>
 <p>Plug one CrazyRadio USB transceiver into the jetson on the racecar, and one into your computer. Download the code from <a href="https://github.com/prl-mushr/mushr-radio-controller">this GitHub repository</a> onto both the jetson and the computer. Connect the dualshock controller to your teleoperating laptop over Bluetooth or USB.</p>
 <p>First, run <code>tx.py</code> on the transmitting computer.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"> $ sudo python tx.py </code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"> $ sudo python tx.py </code></pre></div>
 <p>Then, run <code>rx.py</code> on the Jetson. Verify that joystick input appears on your screen and is being sent to the car with the acknowledgements.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"> $ sudo python rx.py </code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"> $ sudo python rx.py </code></pre></div>
 <h2 id="teleoperation">Teleoperation</h2>
 <p>Launch teleop as per normal on the jetson by SSH-ing into the car. (ensure the python scripts from the previous step are still running on both the PC &amp; the racecar).</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ssh &lt;user&gt;@&lt;car ip&gt; </code></pre></div>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ roslaunch racecar teleop.launch </code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ ssh &lt;user&gt;@&lt;car ip&gt; </code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ roslaunch racecar teleop.launch </code></pre></div>
 <p>The controller should now be able to drive the car. This system should have a much higher range when compared to the traditional Bluetooth teleoperation system, and will continue to work outside WiFi or Bluetooth range, provided that line-of-sight is maintained. This may be particularly advantageous in dynamic outdoors environments.</p>
 <h2 id="pairing-this-system-with-an-fpv-camera">Pairing this system with an FPV camera</h2>
-<figure>
-    <img src="/tutorials/radio_fpv/fpv_camera.jpg"/> 
+<figure><img src="/tutorials/radio_fpv/fpv_camera.jpg"/>
 </figure>
 
 <p>Additionally, we recommend integrating a <a href="https://www.getfpv.com/fpv/cameras.html">Radio FPV camera</a>, like those used for drone racing. These cameras have high quality, range and low latency to allow you to monitor and tele-operate MuSHR at range. Depending on the specific camera model you choose, you will likely need a transmitter and antenna to attach with it. You can power it over USB from the Jetson, and connect a <a href="https://www.amazon.com/s?k=fpv+receiver">5.8 GHz radio FPV receiver</a> to your computer to view the feed similar to an external webcam. This system is highly customizable with a wide range of compatible hardware, and you can pick what meets your needs and budget accordingly.</p>

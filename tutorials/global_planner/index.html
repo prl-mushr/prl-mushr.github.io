@@ -11,7 +11,7 @@
 
   
   
-  <link rel="stylesheet" href="/css/style.min.1fc922f3ee2ddc9e0a821fb52320a349bc079658d0f25db90d402e585db0d025.css">
+  <link rel="stylesheet" href="/css/style.min.d6c2c7df4a2b74e47c295ee499fec19eb99dfe63f90766a829090f557e381bdc.css">
   
 
   
@@ -113,8 +113,7 @@
           <h4 class="properties">Advanced Tutorial | Expected duration is 60 minutes</h4> 
           <h2> By: <a href=https://www.mattschmittle.com/>Matt Schmittle</a></h2>                              
 <br>
-<figure>
-    <img src="/tutorials/global_planner/header.png" width="1000"/> 
+<figure><img src="/tutorials/global_planner/header.png" width="1000"/>
 </figure>
 
 <br>
@@ -133,38 +132,38 @@
 <p>Install ompl from source <a href="https://ompl.kavrakilab.org/installation.html">here</a> with python bindings or downloading the script <a href="https://ompl.kavrakilab.org/install-ompl-ubuntu.sh">here</a></p>
 <p>Change python version setting in the script from <code>$PYTHONV=3</code> to <code>$PYTHONV=2.7</code>
 and make the script executable.</p>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">$ chmod u+x install-ompl-ubuntu.sh
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">$ chmod u+x install-ompl-ubuntu.sh
 </code></pre></div><p>Make sure you have the <a href="https://ompl.kavrakilab.org/installPyPlusPlus.html">following</a> installed. Then run the script.</p>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">$ ./install-ompl-ubuntu.sh --python
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">$ ./install-ompl-ubuntu.sh --python
 </code></pre></div><p>If you have a segfault with CastXML on Ubuntu 16.04, install the binaries from <a href="https://data.kitware.com/#collection/57b5c9e58d777f126827f5a1/folder/57b5de948d777f10f2696370">here</a>. You will need to put the contents of <code>.../castxml/bin</code> into <code>/usr/local/bin/</code> and <code>.../castxml/share</code> into <code>/usr/local/share</code> and uninstall your current version of cast xml.</p>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">$ sudo apt remove castxml
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">$ sudo apt remove castxml
 </code></pre></div></li>
 <li>
 <p>Clone the necessary repo to your</p>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback"># Go to your catkin workspace
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"># Go to your catkin workspace
 $ cd ~/catkin_ws/src
 # Clone the global planner node
 $ git clone https://github.com/prl-mushr/mushr_global_planner
 </code></pre></div></li>
 <li>
 <p>Make and source your workspace. (Assuming source commands in .bashrc)</p>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">$ cd ~/catkin_ws
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">$ cd ~/catkin_ws
 $ catkin_make
 $ source ~/.bashrc
 </code></pre></div></li>
 </ul>
 <h2 id="running-demo">Running Demo</h2>
 <p>We have a pre-built demo script that include start and goal position. To use this just run</p>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">$ roslaunch mushr_global_planner demo.launch
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">$ roslaunch mushr_global_planner demo.launch
 </code></pre></div><p>Then open rviz</p>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">$ rviz
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">$ rviz
 </code></pre></div><p>Then subscribe to the <code>/mushr_global_planner_result</code> topic, you should see a red path of <code>PoseArray</code></p>
 <h2 id="using-mushr-global-planner">Using Mushr Global Planner</h2>
 <h4 id="the-code">The code</h4>
 <p>The code below (<code>global_planner.py</code>) demonstrate how to use the ROS service.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -182,7 +181,7 @@ $ source ~/.bashrc
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python">    <span class="c1">#!/usr/bin/env python</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python">    <span class="c1">#!/usr/bin/env python</span>
     <span class="kn">import</span> <span class="nn">rospy</span>
     <span class="kn">from</span> <span class="nn">gpnode</span> <span class="kn">import</span> <span class="n">MushrGlobalPlanner</span>
     <span class="kn">from</span> <span class="nn">geometry_msgs.msg</span> <span class="kn">import</span> <span class="p">(</span>
@@ -197,34 +196,34 @@ $ source ~/.bashrc
         <span class="n">mushrt_global_planner</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">ServiceProxy</span><span class="p">(</span><span class="s1">&#39;mushr_global_planner&#39;</span><span class="p">,</span> <span class="n">MushrGlobalPlanner</span><span class="p">)</span>
         <span class="n">start_pose</span> <span class="o">=</span> <span class="n">Pose</span><span class="p">(</span><span class="n">Point</span><span class="p">(</span><span class="o">-</span><span class="mf">1.887</span><span class="p">,</span> <span class="mf">26.930</span><span class="p">,</span><span class="mf">0.0</span><span class="p">),</span> <span class="n">Quaternion</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span> 
         <span class="n">goal_pose</span> <span class="o">=</span> <span class="n">Pose</span><span class="p">(</span><span class="n">Point</span><span class="p">(</span><span class="mf">41.804</span><span class="p">,</span> <span class="mf">0.761</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span> <span class="n">Quaternion</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
-        <span class="n">response</span> <span class="o">=</span> <span class="n">mushr_global_planner</span><span class="p">(</span><span class="n">header</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">start_pose</span><span class="p">,</span> <span class="n">goal</span><span class="o">=</span><span class="n">goal_pose</span><span class="p">,</span> <span class="n">turning_radius</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span> <span class="n">planning_time</span><span class="o">=</span><span class="mf">30.0</span><span class="p">)</span></code></pre></td></tr></table>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">mushr_global_planner</span><span class="p">(</span><span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">start_pose</span><span class="p">,</span> <span class="n">goal</span><span class="o">=</span><span class="n">goal_pose</span><span class="p">,</span> <span class="n">turning_radius</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span> <span class="n">planning_time</span><span class="o">=</span><span class="mf">30.0</span><span class="p">)</span></code></pre></td></tr></table>
 </div>
 </div>
 <p>Let&rsquo;s unpack this. First, we have to make sure that service that we want to use, <code>mushr_global_planner</code> in this case, is running and ready. <code>rospy.wait_for_service</code> will wait until a service with given name becomes avaiable.</p>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">rospy.wait_for_service(&#39;mushr_global_planner&#39;)
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">rospy.wait_for_service(&#39;mushr_global_planner&#39;)
 </code></pre></div><p>Then, we could create a callable instance giving the service name and class. The instance could be use just like a regular python method.</p>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">rospy.ServiceProxy(&#39;mushr_global_planner&#39;, MushrGlobalPlanner)
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">rospy.ServiceProxy(&#39;mushr_global_planner&#39;, MushrGlobalPlanner)
 </code></pre></div><p><code>global_planner</code> takes parameter as listed below:
 Lastly, we call the server with parameters to plan a path from the start position to the goal position.</p>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">start_pose = Pose(Point(-1.887, 26.930,0.0), Quaternion(0,0,0,1)) 
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">start_pose = Pose(Point(-1.887, 26.930,0.0), Quaternion(0,0,0,1)) 
 goal_pose = Pose(Point(41.804, 0.761, 0.0), Quaternion(0,0,0,1))
 response = mushr_global_planner(header=None, start=start_pose, goal=goal_pose, turning_radius=5.0, planning_time=30.0)
 </code></pre></div><h3 id="running-globel-planner">Running Globel Planner</h3>
 <p>With python files, we have to change the permissions to be able to execute and run.</p>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">$ chmod +x mushr_ros_intro/src/global_planner.py
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">$ chmod +x mushr_ros_intro/src/global_planner.py
 </code></pre></div><p>Set parameter necessary for the global planner node by using the command <a href="http://wiki.ros.org/rosparam">rosparam</a>, which will be explained further below.</p>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">$ rosparam set reuse_plans True
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">$ rosparam set reuse_plans True
 $ rosparam set kernal_size 31
 $ rosparam set interpolation_density 1000
 $ rosparam set validity_resolution 0.0005
 </code></pre></div><p>Then initiate the <code>mushr_global_planner</code> server to be ready for client to invoke and plan the path.</p>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">$ roslaunch mushr_global_planner planner.launch
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">$ roslaunch mushr_global_planner planner.launch
 </code></pre></div><p>Since the launch file of the mushr global planner does not include the map server by default, we have to manually launch it.</p>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">$ roslaunch mushr_global_planner map_server.launch
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">$ roslaunch mushr_global_planner map_server.launch
 </code></pre></div><p>Next, we run the <code>global_planner.py</code> to create the path.</p>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">$ rosrun global_planner.py
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">$ rosrun global_planner.py
 </code></pre></div><p>Finally, open the rviz</p>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">$ rviz
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">$ rviz
 </code></pre></div><p>Then subscribe to the <code>/mushr_global_planner_result</code> topic, you should see the same red path as the one generated by the demo.</p>
 <h3 id="parameters-for-the-service">Parameters for the service</h3>
 <table>

@@ -11,7 +11,7 @@
 
   
   
-  <link rel="stylesheet" href="/css/style.min.1fc922f3ee2ddc9e0a821fb52320a349bc079658d0f25db90d402e585db0d025.css">
+  <link rel="stylesheet" href="/css/style.min.d6c2c7df4a2b74e47c295ee499fec19eb99dfe63f90766a829090f557e381bdc.css">
   
 
   
@@ -112,8 +112,7 @@
           
           <h4 class="properties">Intermediate Tutorial | Expected duration is 60 minutes</h4> 
           <h2> By: Tudor Fanaru</a> & <a href=https://github.com/seanlovesworld>Sean Chen</a></h2> 
-<figure>
-    <img src="/tutorials/carpose/carpose.jpg" width="800"/> 
+<figure><img src="/tutorials/carpose/carpose.jpg" width="800"/>
 </figure>
  <br>  
 <h2 id="introduction">Introduction</h2>
@@ -158,7 +157,7 @@ base_T_cam, marker_T_base, center_T_base are all constants depending on how you 
 <li>each value is in terms of the dimension of the image between 0 and 1</li>
 </ul>
 <p>Create a dataset directory, and create two subdirectories: images &amp; labels. Run the gen_darknet_label.py script to populate the directories with images and labels. When finished, your dataset directory should look like this:
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">	dataset/
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">	dataset/
 
 		images/
 			img_000000.jpg
@@ -178,7 +177,7 @@ base_T_cam, marker_T_base, center_T_base are all constants depending on how you 
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -267,8 +266,8 @@ base_T_cam, marker_T_base, center_T_base are all constants depending on how you 
 </span><span class="lnt">87
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python">	<span class="kn">import</span> <span class="nn">rosbag</span>
-	<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python">	<span class="kn">import</span> <span class="nn">rosbag</span>
+	<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 	<span class="kn">import</span> <span class="nn">tf</span>
 	<span class="kn">import</span> <span class="nn">rospy</span>
 	<span class="kn">import</span> <span class="nn">cv2</span>
@@ -340,7 +339,7 @@ base_T_cam, marker_T_base, center_T_base are all constants depending on how you 
 	<span class="n">ps_35</span> <span class="o">=</span> <span class="p">[]</span>
 	<span class="n">ps_37</span> <span class="o">=</span> <span class="p">[]</span>
 	<span class="n">ps_38</span> <span class="o">=</span> <span class="p">[]</span>
-	<span class="n">camInfo</span> <span class="o">=</span> <span class="bp">None</span>
+	<span class="n">camInfo</span> <span class="o">=</span> <span class="kc">None</span>
 	<span class="n">cam_37</span> <span class="o">=</span> <span class="p">[]</span>
 
 	<span class="k">for</span> <span class="n">topic</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">bag</span><span class="o">.</span><span class="n">read_messages</span><span class="p">(</span><span class="n">topics</span><span class="o">=</span><span class="n">topics</span><span class="p">):</span>
@@ -359,7 +358,7 @@ base_T_cam, marker_T_base, center_T_base are all constants depending on how you 
 <p>Next, it will step over each video frame. Since the motion capture data is published at a much higher rate, we must find the mocap data to each video frame. Each message of a rostopic has a timestamp, so we pick the mocap message with the closest timestamp to the video frame’s timestamp.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 88
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 88
 </span><span class="lnt"> 89
 </span><span class="lnt"> 90
 </span><span class="lnt"> 91
@@ -387,7 +386,7 @@ base_T_cam, marker_T_base, center_T_base are all constants depending on how you 
 </span><span class="lnt">113
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python">	<span class="n">idx35</span> <span class="o">=</span> <span class="mi">0</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python">	<span class="n">idx35</span> <span class="o">=</span> <span class="mi">0</span>
 	<span class="n">idx37</span> <span class="o">=</span> <span class="mi">0</span>
 	<span class="n">idx38</span> <span class="o">=</span> <span class="mi">0</span>
 
@@ -418,7 +417,7 @@ base_T_cam, marker_T_base, center_T_base are all constants depending on how you 
 <p>Next, we create and use transforms to identify where the other cars’ corners are on the frame. We load in the frame as an OpenCV image. Should you need to debug, you can draw the points of interest on the frame.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">113
+<pre tabindex="0" class="chroma"><code><span class="lnt">113
 </span><span class="lnt">114
 </span><span class="lnt">115
 </span><span class="lnt">116
@@ -442,7 +441,7 @@ base_T_cam, marker_T_base, center_T_base are all constants depending on how you 
 </span><span class="lnt">134
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python">    <span class="c1"># create Transforms for TrackedPts w.r.t. World</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python">    <span class="c1"># create Transforms for TrackedPts w.r.t. World</span>
     <span class="n">pt35_T_w</span> <span class="o">=</span> <span class="n">transformerROS</span><span class="o">.</span><span class="n">fromTranslationRotation</span><span class="p">((</span><span class="n">pos35</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">pos35</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">pos35</span><span class="o">.</span><span class="n">z</span><span class="p">),</span> <span class="p">(</span><span class="n">ori35</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">ori35</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">ori35</span><span class="o">.</span><span class="n">z</span><span class="p">,</span> <span class="n">ori35</span><span class="o">.</span><span class="n">w</span><span class="p">))</span>
     <span class="n">pt37_T_w</span> <span class="o">=</span> <span class="n">transformerROS</span><span class="o">.</span><span class="n">fromTranslationRotation</span><span class="p">((</span><span class="n">pos37</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">pos37</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">pos37</span><span class="o">.</span><span class="n">z</span><span class="p">),</span> <span class="p">(</span><span class="n">ori37</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">ori37</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">ori37</span><span class="o">.</span><span class="n">z</span><span class="p">,</span> <span class="n">ori37</span><span class="o">.</span><span class="n">w</span><span class="p">))</span>
     <span class="n">pt38_T_w</span> <span class="o">=</span> <span class="n">transformerROS</span><span class="o">.</span><span class="n">fromTranslationRotation</span><span class="p">((</span><span class="n">pos38</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">pos38</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">pos38</span><span class="o">.</span><span class="n">z</span><span class="p">),</span> <span class="p">(</span><span class="n">ori38</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">ori38</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">ori38</span><span class="o">.</span><span class="n">z</span><span class="p">,</span> <span class="n">ori38</span><span class="o">.</span><span class="n">w</span><span class="p">))</span>
@@ -470,7 +469,7 @@ base_T_cam, marker_T_base, center_T_base are all constants depending on how you 
 Finally we save the image and its label in their corresponding locations.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">135
+<pre tabindex="0" class="chroma"><code><span class="lnt">135
 </span><span class="lnt">136
 </span><span class="lnt">137
 </span><span class="lnt">138
@@ -573,7 +572,7 @@ Finally we save the image and its label in their corresponding locations.</p>
 </span><span class="lnt">235
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python">    <span class="c1"># convert to OpenCV image</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python">    <span class="c1"># convert to OpenCV image</span>
     <span class="n">car37_image</span> <span class="o">=</span> <span class="n">bridge</span><span class="o">.</span><span class="n">imgmsg_to_cv2</span><span class="p">(</span><span class="n">cam_37</span><span class="p">[</span><span class="n">idxImg</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&#34;bgr8&#34;</span><span class="p">)</span>
 
     <span class="c1"># find pixel coordinates of centroids</span>
@@ -588,7 +587,7 @@ Finally we save the image and its label in their corresponding locations.</p>
 
 
     <span class="c1"># only draw on frame if the observed robot is behind the camera</span>
-    <span class="n">car35_rect</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="n">car35_rect</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="k">if</span> <span class="n">center35_3d</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
         <span class="c1"># draw centroid</span>
         <span class="n">cv2</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">car37_image</span><span class="p">,</span> <span class="n">center35_round</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
@@ -616,7 +615,7 @@ Finally we save the image and its label in their corresponding locations.</p>
 
         <span class="c1"># save rectangle</span>
         <span class="n">car35_rect</span> <span class="o">=</span> <span class="p">((</span><span class="n">xmin</span><span class="p">,</span> <span class="n">ymin</span><span class="p">),</span> <span class="p">(</span><span class="n">xmax</span><span class="p">,</span> <span class="n">ymax</span><span class="p">))</span>
-    <span class="n">car38_rect</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="n">car38_rect</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="k">if</span> <span class="n">center38_3d</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
         <span class="c1"># draw centroid</span>
         <span class="n">cv2</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">car37_image</span><span class="p">,</span> <span class="n">center38_round</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
@@ -646,23 +645,23 @@ Finally we save the image and its label in their corresponding locations.</p>
 
     <span class="c1"># draw rectangles &amp; check for overlap</span>
     <span class="n">overlap_tolerance</span> <span class="o">=</span> <span class="mi">10</span>
-    <span class="k">if</span> <span class="n">car35_rect</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">car38_rect</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">car35_rect</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">car38_rect</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">car35_rect</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">car38_rect</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">overlap_tolerance</span> <span class="ow">and</span> <span class="n">car35_rect</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">car38_rect</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">overlap_tolerance</span> <span class="ow">and</span> \
                 <span class="n">car35_rect</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">car38_rect</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">overlap_tolerance</span> <span class="ow">and</span> <span class="n">car35_rect</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">car38_rect</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">overlap_tolerance</span><span class="p">:</span>
                     <span class="c1"># reject draw</span>
-                    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;car38 overlaps car35&#39;</span><span class="p">)</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;car38 overlaps car35&#39;</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">cv2</span><span class="o">.</span><span class="n">rectangle</span><span class="p">(</span><span class="n">car37_image</span><span class="p">,</span> <span class="n">car35_rect</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">car35_rect</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">cv2</span><span class="o">.</span><span class="n">rectangle</span><span class="p">(</span><span class="n">car37_image</span><span class="p">,</span> <span class="n">car35_rect</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">car35_rect</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
     
-    <span class="k">if</span> <span class="n">car38_rect</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">car35_rect</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">car38_rect</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">car35_rect</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">car38_rect</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">car35_rect</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">overlap_tolerance</span> <span class="ow">and</span> <span class="n">car38_rect</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">car35_rect</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">overlap_tolerance</span> <span class="ow">and</span> \
                 <span class="n">car38_rect</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">car35_rect</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">overlap_tolerance</span> <span class="ow">and</span> <span class="n">car38_rect</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">car35_rect</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">overlap_tolerance</span><span class="p">:</span>
                     <span class="c1"># reject draw</span>
-                    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;car35 overlaps car38&#39;</span><span class="p">)</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;car35 overlaps car38&#39;</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">cv2</span><span class="o">.</span><span class="n">rectangle</span><span class="p">(</span><span class="n">car37_image</span><span class="p">,</span> <span class="n">car38_rect</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">car38_rect</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
@@ -689,7 +688,7 @@ Now create your train/valid/test files. Each file will contain the location of t
 </ul>
 <p>Next create carpose.yaml, which will describe the dataset. Fill in the paths to your train/valid/test files. We only have 1 class: Car.</p>
 <p>Here is our carpose.yaml file:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># train and val datasets (image directory or *.txt file with image paths)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># train and val datasets (image directory or *.txt file with image paths)</span>
 train: /home/ugrads/WRK/carpose/src/yolov5/data/train.txt
 val: /home/ugrads/WRK/carpose/src/yolov5/data/valid.txt
 test: /home/ugrads/WRK/carpose/src/yolov5/data/test.txt
