@@ -6,7 +6,7 @@
     <description>Recent content in Home on MuSHR: The UW Open Racecar Project</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 18 Apr 2021 22:17:25 +0530</lastBuildDate><atom:link href="https://mushr.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 25 Apr 2021 15:14:54 +1000</lastBuildDate><atom:link href="https://mushr.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Quickstart</title>
       <link>https://mushr.io/tutorials/quickstart/</link>
@@ -95,6 +95,15 @@
       
       <guid>https://mushr.io/tutorials/first_steps/</guid>
       <description>Get your car started and teleop running</description>
+    </item>
+    
+    <item>
+      <title>Multi-Agent Coordination Planner for Multi-Goal Tasks</title>
+      <link>https://mushr.io/tutorials/coordination/</link>
+      <pubDate>Sun, 25 Apr 2021 15:14:54 +1000</pubDate>
+      
+      <guid>https://mushr.io/tutorials/coordination/</guid>
+      <description>Plan and control multiple MuSHR cars to different goals without collisions</description>
     </item>
     
     <item>
