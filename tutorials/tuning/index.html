@@ -244,7 +244,7 @@
 <li>Start teleop.</li>
 <li>Open another terminal on the car and run the command:</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">rostopic echo /vesc/odom/pose/pose/position/x
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">rostopic echo /car/vesc/odom/pose/pose/position/x
 </code></pre></div><p>This will echo all the odometry information &ndash; how far the car has driven (in meters) in the <code>x</code> direction since teleop started. The value should be <code>0.0</code> at the start, as the car hasn&rsquo;t moved yet.</p>
 <ul>
 <li>Drive the car forward about 7-8 ft. The car will drive slightly further as it decelerates and stops. Make sure you only drive forward, not altering the servo position, otherwise you&rsquo;ll have both <code>x</code> and <code>y</code> directional changes (which makes it only slightly harder to check distance traveled).</li>
