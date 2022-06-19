@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Quickstart with Foxglove - MuSHR: The UW Open Racecar Project</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel="icon" href="https://mushr.io/favicon.png">
+
+  
+  
+  <link rel="stylesheet" href="/css/style.min.d6c2c7df4a2b74e47c295ee499fec19eb99dfe63f90766a829090f557e381bdc.css">
+  
+
+  
+
+</head>
+
+<body class='page page-tutorials-single'>
+  
+<div id="main-menu-mobile" class="main-menu-mobile">
+  <ul>
+    <li class="menu-item-quickstart">
+      <a href="/tutorials/quickstart/"><span>Quickstart</span></a>
+    </li>
+    <li class="menu-item-about">
+      <a href="/about/"><span>About</span></a>
+    </li>
+    <li class="menu-item-docs">
+      <a href="https://github.com/prl-mushr/mushr#component-documentation"><span>Docs</span></a>
+    </li>
+    <li class="menu-item-hardware">
+      <a href="/hardware/"><span>Hardware</span></a>
+    </li>
+    <li class="menu-item-tutorials active">
+      <a href="/tutorials/"><span>Tutorials</span></a>
+    </li>
+    <li class="menu-item-press">
+      <a href="/press/"><span>Press</span></a>
+    </li>
+    <li class="menu-item-team">
+      <a href="https://personalrobotics.cs.washington.edu/people/"><span>Team</span></a>
+    </li>
+    <li class="menu-item-forum">
+      <a href="https://github.com/prl-mushr/mushr/discussions"><span>Community Forum</span></a>
+    </li>
+    <li class="menu-item-contact">
+      <a href="/contact/"><span>Contact</span></a>
+    </li>
+  </ul>
+</div>
+
+  <div class="wrapper">
+    <div class='header'>
+  <div class="container">
+    <div class="logo">
+      <a href="https://mushr.io/"><img alt="Figurit Homepage" src="https://mushr.io/imgs/mushr-logo.svg" /></a>
+    </div>
+    <div class="logo-mobile">
+      <a href="https://mushr.io/"><img alt="Figurit Homepage" src="https://mushr.io/imgs/mushr-logo.svg" /></a>
+    </div>
+    <div id="main-menu" class="main-menu">
+  <ul>
+    <li class="menu-item-quickstart">
+      <a href="/tutorials/quickstart/"><span>Quickstart</span></a>
+    </li>
+    <li class="menu-item-about">
+      <a href="/about/"><span>About</span></a>
+    </li>
+    <li class="menu-item-docs">
+      <a href="https://github.com/prl-mushr/mushr#component-documentation"><span>Docs</span></a>
+    </li>
+    <li class="menu-item-hardware">
+      <a href="/hardware/"><span>Hardware</span></a>
+    </li>
+    <li class="menu-item-tutorials active">
+      <a href="/tutorials/"><span>Tutorials</span></a>
+    </li>
+    <li class="menu-item-press">
+      <a href="/press/"><span>Press</span></a>
+    </li>
+    <li class="menu-item-team">
+      <a href="https://personalrobotics.cs.washington.edu/people/"><span>Team</span></a>
+    </li>
+    <li class="menu-item-forum">
+      <a href="https://github.com/prl-mushr/mushr/discussions"><span>Community Forum</span></a>
+    </li>
+    <li class="menu-item-contact">
+      <a href="/contact/"><span>Contact</span></a>
+    </li>
+  </ul>
+</div>
+
+    <button id="toggle-main-menu-mobile" class="hamburger hamburger--slider" role="presentation" aria-label="mobile menu trigger">
+  <span class="hamburger-box">
+    <span class="hamburger-inner"></span>
+  </span>
+</button>
+  </div>
+</div>
+    
+<div class="container pb-6 pt-6 pt-md-10 pb-md-10">
+  <div class="row justify-content-start">
+    <div class="col-12 col-md-8">
+      <div class="tutorial tutorial-single">
+        <h1 class="title">Quickstart with Foxglove</h1>
+        <div class="content"> 
+          
+          <p>Get the MuSHR Sim working on your computer!</p> 
+          
+          <h4 class="properties">Beginner Tutorial | Expected duration is 30 minutes</h4> 
+          <h2> By: <a href=https://mushr.io/>Madison Doerr</a></h2>
+<!-- Header figure required! -->
+<br>
+<figure><img src="/tutorials/first_steps/firststep.jpg" width="800"/>
+</figure>
+
+</br>
+<h3 id="introduction">Introduction</h3>
+<p>Learn how to simulate the MuSHR Car with Foxglove visualizations.</p>
+<h3 id="requirements">Requirements</h3>
+<ul>
+<li><strong>A MacOS or Linux machine</strong></li>
+</ul>
+<h2 id="installing-docker">Installing Docker</h2>
+<p>First, install <a href="https://docs.docker.com/get-docker/">Docker</a> and <a href="https://docs.docker.com/compose/install/">Docker Compose</a> for your machine. The Docker version should be 20+, and Docker Compose version should be 1.29+. Ensure that Docker is running.</p>
+<p>If on Linux, follow the <a href="https://docs.docker.com/engine/install/linux-postinstall/">post install</a> steps to make sure you can run Docker without root privileges.</p>
+<h2 id="installing-mushr-docker-container">Installing MuSHR Docker Container</h2>
+<p>Make <code>catkin_ws</code> where all the code will be.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ mkdir -p catkin_ws/src
+$ <span class="nb">cd</span> catkin_ws/src
+</code></pre></div><p>Clone the MuSHR repository (TODO: <code>noetic</code> will be main soon)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ git clone --branch noetic https://github.com/prl-mushr/mushr.git
+</code></pre></div><p>Run the installation script. It will prompt you with two questions. For running the MuSHR simulator, the answers should be no, no. This will install a series of necessary packages, and create a script <code>mushr_noetic</code> in <code>/usr/local/bin</code> which initializes a docker container with all of the mushr configs installed. Note it attaches the <code>catkin_ws</code> volume so you can edit code outside or inside the docker container. Other files made inside the docker container will not persist unless you commit (see FAQ).</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ ./mushr/mushr_utils/install/mushr_install.bash
+</code></pre></div><p>Close the terminal and open a new one. Then run</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ mushr_noetic
+</code></pre></div><p>This should start up the Docker container. (The first time running this command will take some time to download the Docker image.) If the prefix switches to <code>root</code>, the installation was successful. If not, please check the &ldquo;Troubleshooting&rdquo; section at the end of the tutorial.</p>
+<p>In the same terminal (within the Docker container), build the MuSHR software stack.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">source</span> .bashrc <span class="o">&amp;&amp;</span> <span class="nb">cd</span> catkin_ws <span class="o">&amp;&amp;</span> catkin build
+</code></pre></div><h2 id="downloading-foxglove-studio">Downloading Foxglove Studio</h2>
+<p>Since we can run the MuSHR stack now, we can use Foxglove Studio to visualize our robot and map.</p>
+<p>First, download <a href="https://foxglove.dev/download">Foxglove Studio</a>. Foxglove is
+still in development and has many features that are added frequently, so make sure to download the most
+recent version, or update it if you already have it downloaded.
+We recommend at least version TODO.</p>
+<p>Open Foxglove Studio, and click the &ldquo;Layouts&rdquo; button on the left panel (second from top) and then click
+<code>Import layout</code> button pictured below.
+<figure><img src="/tutorials/noetic_quickstart/foxglove_layout.png" width="400"/>
+</figure>
+</p>
+<p>Import the preset layout from:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">mushr/mushr_utils/foxglove/foxglove_layout.json
+</code></pre></div><p>Now, download the custom panel extension for MuSHR for Foxglove. Navigate to the Extensions tab (bottom icon on the left panel) and install the <code>MushrTeleop</code> extension from the Marketplace.
+<figure><img src="/tutorials/noetic_quickstart/mushr_extension.png" width="400"/>
+</figure>
+</p>
+<p>Now, four panels should appear after selecting this layout, as pictured below. The left panel is for the data source, the central panel is for the map, the top right panel is for teleop driving, and the bottom right panel is for selecting types of robot poses to publish (for use in autonomous naviagation).</p>
+<figure><img src="/tutorials/noetic_quickstart/custom_layout.png" width="700"/>
+</figure>
+
+<p>The layout can be edited with the <code>Add panel</code> button on the left sidebar if desired.</p>
+<h2 id="connecting-to-data-with-foxglove-studio">Connecting to Data With Foxglove Studio</h2>
+<p>Now that Foxglove is set up, we can connect the visualization to our Docker container ROS setup. Start the Docker container:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ mushr_noetic
+</code></pre></div><p>Once the <code>root</code> prompt appears, source <code>~/.bashrc</code>. Note that this does not occur automatically the first time in the Docker container.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">source</span> ~/.bashrc
+</code></pre></div><p>In the same terminal, start up the simulator with the command:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ roslaunch mushr_sim teleop.launch
+</code></pre></div><p>After starting up, the simulator should print out a line similar to</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">Rosbridge WebSocket server started at ws://0.0.0.0:9090
+</code></pre></div><p>In Foxglove, click the top button in the sidebar, labeled <code>Data Source</code>. Then select the Plus button in the left panel. This should open up an interface to connect to data.</p>
+<figure><img src="/tutorials/noetic_quickstart/data_panel.png" width="400"/>
+</figure>
+
+<p>Click the <code>Open Connection</code> button. Select <code>Rosbridge (ROS 1 &amp; ROS 2)</code> as shown below.</p>
+<figure><img src="/tutorials/noetic_quickstart/rosbridge.png" width="700"/>
+</figure>
+
+<p>Fill out the WebSocket URL with the url and port that the simulator output before, as shown in the image. The URL may differ from pictured. Then, click <code>Open</code> in the bottom right corner. The left sidebar should show that a connection has been made. The map should update and the car pose arrow should appear in the map panel in the center. The car can be driven using the right teleop panel.</p>
+<figure><img src="/tutorials/noetic_quickstart/working_example.png" width="900"/>
+</figure>
+
+<h3 id="changing-the-map">Changing the map</h3>
+<p>The map can be changed by editing the following file:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">src/mushr_sim/launch/teleop.launch
+</code></pre></div><p>In this file, edit the line:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&#34;map&#34;</span> <span class="na">default=</span><span class="s">&#34;$(find mushr_sim)/maps/sandbox.yaml&#34;</span><span class="nt">/&gt;</span>
+</code></pre></div><p>to specify a different map. MuSHR provides some basic maps, but if you want to map your own space, try the <a href="/tutorials/mapping">SLAM Tutorial for MuSHR</a>.</p>
+<p>(TODO: provide instructions for overriding map from the command-line.)</p>
+<h3 id="setting-the-car-pose">Setting the car pose</h3>
+<p>The car pose can be changed by selecting the <code>Set Pose</code> button in the bottom right, and then <strong>long pressing (1-2 seconds)</strong> on the <code>click to publish</code> button in the right toolbar to select the <code>Publish Pose</code> option. Then, click on the map where you would like to publish and click again to set the orientation from the original click.</p>
+<div style="width:800px; height:450px"  class="video-container">
+    <iframe style="width: 100%; height: 100%; border: none" width="750" src="/tutorials/noetic_quickstart/mushr_reposition.mp4" allowfullscreen></iframe>
+</div>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="docker-error-while-fetching-server-api-version">Docker: Error while fetching server API version</h3>
+<p>Ensure that Docker is running. In your terminal, <code>docker ps -a</code> should not cause an error.</p>
+<h3 id="tcp-registry-lookup-error">TCP Registry Lookup Error</h3>
+<p>Sometimes the following error is recieved:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">ERROR: Get https://registry-1.docker.io/v2/: dial tcp: lookup registry-1.docker.io on <span class="o">[</span>::1<span class="o">]</span>:53: <span class="nb">read</span> udp <span class="o">[</span>::1<span class="o">]</span>:42546-&gt;<span class="o">[</span>::1<span class="o">]</span>:53: read: connection refused
+</code></pre></div><p>This error seems to stem from a <a href="https://github.com/docker/cli/issues/2618">nameserver issue</a>. Add the following to <code>/etc/resolv.conf</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">nameserver 8.8.8.8
+nameserver 8.8.4.4
+</code></pre></div><h2 id="faq">FAQ</h2>
+<h3 id="i-installed-some-packages-in-my-docker-container-how-can-i-save-them-for-next-time-i-run-mushr_noetic">I installed some packages in my docker container, how can I &ldquo;save&rdquo; them for next time I run <code>mushr_noetic</code></h3>
+<p>You can save this using the <code>docker commit</code> command. First find your container ID</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ docker ps
+</code></pre></div><p>It should be the only one or the one with <code>mushr/mushr:XXX</code> under the image name (XXX different on different systems). Now commit the CONTAINER ID to the IMAGE name. For example:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ docker commit de878d464895 mushr/mushr:x86_64
+</code></pre></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="strip strip-primary-gradient-top-bottom">
+  <div class="container pt-3 pb-3 pt-md-6 pb-md-3 px-2">
+    <div class="row justify-content-left citation-row">
+      <h1 id="citation">Citation</h1>
+      <p>
+  If you plan to use any part of the the MuSHR platform (including tutorials, codebase, or hardware instructions) for a project or paper, please cite
+  <em><a href="https://arxiv.org/abs/1908.08031">MuSHR: A Low-Cost, Open-Source Robotic Racecar for Education and Research</a></em>.
+</p>
+
+<div class="highlight"><pre class="chroma">@article{srinivasa2019mushr,
+ title={{MuSHR}: A Low-Cost, Open-Source Robotic Racecar for Education and Research},
+ author={Srinivasa, Siddhartha S. and Lancaster, Patrick and Michalove, Johan and Schmittle, Matt and Summers, Colin and Rockett, Matthew and Smith, Joshua R. and Chouhury, Sanjiban and Mavrogiannis, Christoforos and Sadeghi, Fereshteh},
+ journal={CoRR},
+ volume={abs/1908.08031},
+ year={2019}
+}
+</pre></div>
+
+<br/>
+
+    </div>
+  </div>
+</div>
+
+
+  </div>
+
+  <div class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="footer-inner">
+          <h3 class="footer-title">MuSHR: The UW Open Racecar Project</h3>
+          <ul>
+            
+            
+            <li class="menu-item-forum"><a href="https://github.com/prl-mushr/mushr/discussions">Community Forum</a></li>
+            
+            <li class="menu-item-contact"><a href="/contact/">Contact</a></li>
+            
+            <li class="menu-item-home"><a href="/">Home</a></li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="sub-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="sub-footer-inner">
+          <ul>
+            
+          </ul>
+          <ul>
+            <li class="prl">Made with <font color="#FF1690">♥</font> at the <a href="https://personalrobotics.cs.washington.edu/">Personal Robotics Lab</a></li>
+          </ul>
+          <ul>
+            <li class="prl">Website by <a href="https://micha.love/"><font color="#36CDC4">Johan</font></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/scripts.min.98ee06cc35517b5800b382aecb0fc59893e95b9c11dd21842d0d57e4f68043e3.js"></script>
+  
+
+  
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-146151202-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+  gtag('config', 'UA-146151202-1');
+</script>
+
+
+
+
+</body>
+
+</html>

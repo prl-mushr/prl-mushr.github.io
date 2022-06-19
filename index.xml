@@ -6,7 +6,7 @@
     <description>Recent content in Home on MuSHR: The UW Open Racecar Project</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 25 Apr 2021 15:14:54 +1000</lastBuildDate><atom:link href="https://mushr.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 13 Apr 2022 13:18:04 -0700</lastBuildDate><atom:link href="https://mushr.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Quickstart</title>
       <link>https://mushr.io/tutorials/quickstart/</link>
@@ -14,6 +14,15 @@
       
       <guid>https://mushr.io/tutorials/quickstart/</guid>
       <description>Run the MuSHR platform on your machine!</description>
+    </item>
+    
+    <item>
+      <title>Quickstart with Foxglove</title>
+      <link>https://mushr.io/tutorials/noetic_quickstart/</link>
+      <pubDate>Wed, 13 Apr 2022 13:18:04 -0700</pubDate>
+      
+      <guid>https://mushr.io/tutorials/noetic_quickstart/</guid>
+      <description>Get the MuSHR Sim working on your computer!</description>
     </item>
     
     <item>
