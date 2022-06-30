@@ -133,7 +133,7 @@
 $ <span class="nb">cd</span> catkin_ws/src
 </code></pre></div><p>Clone the MuSHR repository (TODO: <code>noetic</code> will be main soon)</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ git clone --branch noetic https://github.com/prl-mushr/mushr.git
-</code></pre></div><p>Run the installation script. It will prompt you with two questions. For running the MuSHR simulator, the answers should be no, no. This will install a series of necessary packages, and create a script <code>mushr_noetic</code> in <code>/usr/local/bin</code> which initializes a docker container with all of the mushr configs installed. Note it attaches the <code>catkin_ws</code> volume so you can edit code outside or inside the docker container. Other files made inside the docker container will not persist unless you commit (see FAQ).</p>
+</code></pre></div><p>Run the installation script. It will prompt you with two questions. For running the MuSHR simulator, the answers should be no, no. This will install a series of necessary packages, and create a script <code>mushr_noetic</code> in <code>/usr/local/bin</code> (uses root priviledges) which initializes a docker container with all of the mushr configs installed. Note it attaches the <code>catkin_ws</code> volume so you can edit code outside or inside the docker container. Other files made inside the docker container will not persist unless you commit (see FAQ).</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ ./mushr/mushr_utils/install/mushr_install.bash
 </code></pre></div><p>Close the terminal and open a new one. Then run</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ mushr_noetic
@@ -210,7 +210,23 @@ nameserver 8.8.4.4
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ docker ps
 </code></pre></div><p>It should be the only one or the one with <code>mushr/mushr:XXX</code> under the image name (XXX different on different systems). Now commit the CONTAINER ID to the IMAGE name. For example:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ docker commit de878d464895 mushr/mushr:x86_64
-</code></pre></div>
+</code></pre></div><h3 id="how-can-i-pull-the-latest-docker-image">How can I pull the latest docker image?</h3>
+<p>Use the <code>docker pull</code> command.</p>
+<p>For Linux/Robot</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ docker pull mushr/mushr:<span class="k">$(</span>uname -i<span class="k">)</span>
+</code></pre></div><p>For Mac</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ docker pull mushr/mushr:Darwin
+</code></pre></div><h3 id="how-can-i-build-the-docker-image-from-scratch">How can I build the docker image from scratch?</h3>
+<p>Warning this is mainly for developers and we recommend the images available online. Further, the code is not designed to work with Windows PowerShell.</p>
+<p>First, remove any docker images you currently have.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ docker images
+</code></pre></div><p>Should list available docker images. Find the ones with tag <code>mushr/mushr:XXX</code> replacing XXX with your system architecture (x86_64, Darwin, aarch64). Find the image you want to delete and copy the image id.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ docker rmi IMAGE_ID
+</code></pre></div><p>Replacing <code>IMAGE_ID</code> with the id you copied. Double check that the image is properly deleted with <code>docker images</code> again.</p>
+<p>Next we need to build the new image.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ ./mushr/mushr_utils/install/mushr_install.bash
+</code></pre></div><p>Answering &ldquo;y&rdquo; to the second question about building from scratch. This should start a build process and terminate with entering the container. You have now built a new image!</p>
+
         </div>
       </div>
     </div>
