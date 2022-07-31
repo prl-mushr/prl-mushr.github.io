@@ -133,7 +133,24 @@
 $ <span class="nb">cd</span> catkin_ws/src
 </code></pre></div><p>Clone the MuSHR repository (TODO: <code>noetic</code> will be main soon)</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ git clone --branch noetic https://github.com/prl-mushr/mushr.git
-</code></pre></div><p>Run the installation script. It will prompt you with two questions. For running the MuSHR simulator, the answers should be no, no. This will install a series of necessary packages, and create a script <code>mushr_noetic</code> in <code>/usr/local/bin</code> (uses root priviledges) which initializes a docker container with all of the mushr configs installed. Note it attaches the <code>catkin_ws</code> volume so you can edit code outside or inside the docker container. Other files made inside the docker container will not persist unless you commit (see FAQ).</p>
+</code></pre></div><h1 id="run-the-installation-script-it-will-prompt-you-with-two-questions-for-running-the-mushr-simulator-the-answers-should-be-no-no-this-will-install-a-series-of-necessary-packages-and-create-a-script-mushr_noetic-in-usrlocalbin-uses-root-priviledges-which-initializes-a-docker-container-with-all-of-the-mushr-configs-installed-note-it-attaches-the-catkin_ws-volume-so-you-can-edit-code-outside-or-inside-the-docker-container-other-files-made-inside-the-docker-container-will-not-persist-unless-you-commit-see-faq">&laquo;&laquo;&laquo;&lt; HEAD
+Run the installation script. It will prompt you with two questions. For running the MuSHR simulator, the answers should be no, no. This will install a series of necessary packages, and create a script <code>mushr_noetic</code> in <code>/usr/local/bin</code> (uses root priviledges) which initializes a docker container with all of the mushr configs installed. Note it attaches the <code>catkin_ws</code> volume so you can edit code outside or inside the docker container. Other files made inside the docker container will not persist unless you commit (see FAQ).</h1>
+<p>Run the installation script. It will prompt you with two questions. For running the MuSHR simulator, the answers should be no, no. This will install a series of necessary packages, and create a script <code>mushr_noetic</code> in <code>/usr/local/bin</code> which initializes a docker container with all of the mushr configs installed. Note it attaches the <code>catkin_ws</code> volume so you can edit code outsideor inside the docker container. Other files made inside the docker container will not persist unless you commit (see FAQ).</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>new-autonomous-navigation</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ ./mushr/mushr_utils/install/mushr_install.bash
 </code></pre></div><p>Close the terminal and open a new one. Then run</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ mushr_noetic
@@ -153,25 +170,79 @@ We recommend at least version TODO.</p>
 </p>
 <p>Import the preset layout from:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">mushr/mushr_utils/foxglove/foxglove_layout.json
-</code></pre></div><p>Now, download the custom panel extension for MuSHR for Foxglove. Navigate to the Extensions tab (bottom icon on the left panel) and install the <code>MushrTeleop</code> extension from the Marketplace.
+</code></pre></div><p>&laquo;&laquo;&laquo;&lt; HEAD
+Now, download the custom panel extension for MuSHR for Foxglove. Navigate to the Extensions tab (bottom icon on the left panel) and install the <code>MushrTeleop</code> extension from the Marketplace.
 <figure><img src="/tutorials/noetic_quickstart/mushr_extension.png" width="400"/>
 </figure>
 </p>
 <p>Now, four panels should appear after selecting this layout, as pictured below. The left panel is for the data source, the central panel is for the map, the top right panel is for teleop driving, and the bottom right panel is for selecting types of robot poses to publish (for use in autonomous naviagation).</p>
-<figure><img src="/tutorials/noetic_quickstart/custom_layout.png" width="700"/>
+<h1 id="hahahugoshortcode-s3-hbhb"><figure><img src="/tutorials/noetic_quickstart/custom_layout.png" width="700"/>
+</figure>
+</h1>
+<p>Three panels should appear after selecting this layout, as pictured below. The left panel is for the data source, the central panel is for the map, and the right panel is for teleop driving.</p>
+<figure><img src="/tutorials/noetic_quickstart/layout_example.png" width="700"/>
 </figure>
 
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>new-autonomous-navigation</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
 <p>The layout can be edited with the <code>Add panel</code> button on the left sidebar if desired.</p>
 <h2 id="connecting-to-data-with-foxglove-studio">Connecting to Data With Foxglove Studio</h2>
 <p>Now that Foxglove is set up, we can connect the visualization to our Docker container ROS setup. Start the Docker container:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ mushr_noetic
-</code></pre></div><p>Once the <code>root</code> prompt appears, source <code>~/.bashrc</code>. Note that this does not occur automatically the first time in the Docker container.</p>
+</code></pre></div><h1 id="once-the-root-prompt-appears-source-bashrc-note-that-this-does-not-occur-automatically-the-first-time-in-the-docker-container">&laquo;&laquo;&laquo;&lt; HEAD
+Once the <code>root</code> prompt appears, source <code>~/.bashrc</code>. Note that this does not occur automatically the first time in the Docker container.</h1>
+<p>Once the <code>root</code> prompt appears, source <code>~/.bashrc</code>. Note that this does not occur automatically in the Docker container.</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>new-autonomous-navigation</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">source</span> ~/.bashrc
 </code></pre></div><p>In the same terminal, start up the simulator with the command:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ roslaunch mushr_sim teleop.launch
 </code></pre></div><p>After starting up, the simulator should print out a line similar to</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">Rosbridge WebSocket server started at ws://0.0.0.0:9090
-</code></pre></div><p>In Foxglove, click the top button in the sidebar, labeled <code>Data Source</code>. Then select the Plus button in the left panel. This should open up an interface to connect to data.</p>
+</code></pre></div><h1 id="in-foxglove-click-the-top-button-in-the-sidebar-labeled-data-source-then-select-the-plus-button-in-the-left-panel-this-should-open-up-an-interface-to-connect-to-data">&laquo;&laquo;&laquo;&lt; HEAD
+In Foxglove, click the top button in the sidebar, labeled <code>Data Source</code>. Then select the Plus button in the left panel. This should open up an interface to connect to data.</h1>
+<p>In Foxglove, click the top button in the sidebar, labeled <code>Data source</code>. Then select the Plus button in the left panel. This should open up an interface to connect to data.</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>new-autonomous-navigation</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
 <figure><img src="/tutorials/noetic_quickstart/data_panel.png" width="400"/>
 </figure>
 
@@ -180,28 +251,92 @@ We recommend at least version TODO.</p>
 </figure>
 
 <p>Fill out the WebSocket URL with the url and port that the simulator output before, as shown in the image. The URL may differ from pictured. Then, click <code>Open</code> in the bottom right corner. The left sidebar should show that a connection has been made. The map should update and the car pose arrow should appear in the map panel in the center. The car can be driven using the right teleop panel.</p>
+<h1 id="hahahugoshortcode-s7-hbhb">&laquo;&laquo;&laquo;&lt; HEAD
 <figure><img src="/tutorials/noetic_quickstart/working_example.png" width="900"/>
 </figure>
+</h1>
+<figure><img src="/tutorials/noetic_quickstart/example.png" width="900"/>
+</figure>
 
+<p>TODO: Get robot model to appear &amp; update image</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>new-autonomous-navigation</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
 <h3 id="changing-the-map">Changing the map</h3>
 <p>The map can be changed by editing the following file:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">src/mushr_sim/launch/teleop.launch
 </code></pre></div><p>In this file, edit the line:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&#34;map&#34;</span> <span class="na">default=</span><span class="s">&#34;$(find mushr_sim)/maps/sandbox.yaml&#34;</span><span class="nt">/&gt;</span>
-</code></pre></div><p>to specify a different map. MuSHR provides some basic maps, but if you want to map your own space, try the <a href="/tutorials/mapping">SLAM Tutorial for MuSHR</a>.</p>
+</code></pre></div><p>to specify a different map. MuSHR provides some basic maps, but if you want to map your own space, try the <a href="/tutorials/mapping">SLAM Tutorial for MuSHR</a>.
+&laquo;&laquo;&laquo;&lt; HEAD</p>
 <p>(TODO: provide instructions for overriding map from the command-line.)</p>
 <h3 id="setting-the-car-pose">Setting the car pose</h3>
 <p>The car pose can be changed by selecting the <code>Set Pose</code> button in the bottom right, and then <strong>long pressing (1-2 seconds)</strong> on the <code>click to publish</code> button in the right toolbar to select the <code>Publish Pose</code> option. Then, click on the map where you would like to publish and click again to set the orientation from the original click.</p>
 <div style="width:800px; height:450px"  class="video-container">
     <iframe style="width: 100%; height: 100%; border: none" width="750" src="/tutorials/noetic_quickstart/mushr_reposition.mp4" allowfullscreen></iframe>
 </div>
+<p>=======
+(TODO: provide instructions for overriding map from the command-line.)</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>new-autonomous-navigation</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
 <h2 id="troubleshooting">Troubleshooting</h2>
 <h3 id="docker-error-while-fetching-server-api-version">Docker: Error while fetching server API version</h3>
 <p>Ensure that Docker is running. In your terminal, <code>docker ps -a</code> should not cause an error.</p>
+<p>&laquo;&laquo;&laquo;&lt; HEAD</p>
 <h3 id="tcp-registry-lookup-error">TCP Registry Lookup Error</h3>
 <p>Sometimes the following error is recieved:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">ERROR: Get https://registry-1.docker.io/v2/: dial tcp: lookup registry-1.docker.io on <span class="o">[</span>::1<span class="o">]</span>:53: <span class="nb">read</span> udp <span class="o">[</span>::1<span class="o">]</span>:42546-&gt;<span class="o">[</span>::1<span class="o">]</span>:53: read: connection refused
-</code></pre></div><p>This error seems to stem from a <a href="https://github.com/docker/cli/issues/2618">nameserver issue</a>. Add the following to <code>/etc/resolv.conf</code></p>
+</code></pre></div><p>=======</p>
+<h3 id="docker-network-mode-is-incompatible-with-port-bindings">Docker: network mode is incompatible with port bindings</h3>
+<p>Navigate to the install directory <code>mushr/mushr_utils/install</code>. Edit the <code>docker-compose-cpu.yml</code> file in this folder to remove the line: <code>network_mode: &quot;host&quot;</code>.</p>
+<h3 id="wlan0-device-not-found">wlan0: Device not found</h3>
+<p>Edit the <code>.bashrc</code> file in the Docker container and manually set the <code>ROS_IP</code> to the IP of your Docker container.
+One way to find this is to run the following command:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ ifconfig
+</code></pre></div><p>After manually setting this value, make to source the <code>.bashrc</code> in the Docker container.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">source</span> ~/.bashrc
+</code></pre></div><h3 id="error-get-httpsregistry-1dockeriov2-dial-tcp-lookup-registry-1dockerio-on-153-read-udp-142546-153-read-connection-refused"><code>ERROR: Get https://registry-1.docker.io/v2/: dial tcp: lookup registry-1.docker.io on [::1]:53: read udp [::1]:42546-&gt;[::1]:53: read: connection refused</code></h3>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>new-autonomous-navigation
+This error seems to stem from a <a href="https://github.com/docker/cli/issues/2618">nameserver issue</a>. Add the following to <code>/etc/resolv.conf</code></p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">nameserver 8.8.8.8
 nameserver 8.8.4.4
 </code></pre></div><h2 id="faq">FAQ</h2>
@@ -210,7 +345,8 @@ nameserver 8.8.4.4
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ docker ps
 </code></pre></div><p>It should be the only one or the one with <code>mushr/mushr:XXX</code> under the image name (XXX different on different systems). Now commit the CONTAINER ID to the IMAGE name. For example:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ docker commit de878d464895 mushr/mushr:x86_64
-</code></pre></div><h3 id="how-can-i-pull-the-latest-docker-image">How can I pull the latest docker image?</h3>
+</code></pre></div><p>&laquo;&laquo;&laquo;&lt; HEAD</p>
+<h3 id="how-can-i-pull-the-latest-docker-image">How can I pull the latest docker image?</h3>
 <p>Use the <code>docker pull</code> command.</p>
 <p>For Linux/Robot</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ docker pull mushr/mushr:<span class="k">$(</span>uname -i<span class="k">)</span>
@@ -225,7 +361,22 @@ nameserver 8.8.4.4
 </code></pre></div><p>Replacing <code>IMAGE_ID</code> with the id you copied. Double check that the image is properly deleted with <code>docker images</code> again.</p>
 <p>Next we need to build the new image.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ ./mushr/mushr_utils/install/mushr_install.bash
-</code></pre></div><p>Answering &ldquo;y&rdquo; to the second question about building from scratch. This should start a build process and terminate with entering the container. You have now built a new image!</p>
+</code></pre></div><h1 id="answering-y-to-the-second-question-about-building-from-scratch-this-should-start-a-build-process-and-terminate-with-entering-the-container-you-have-now-built-a-new-image">Answering &ldquo;y&rdquo; to the second question about building from scratch. This should start a build process and terminate with entering the container. You have now built a new image!</h1>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>new-autonomous-navigation</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
 
         </div>
       </div>

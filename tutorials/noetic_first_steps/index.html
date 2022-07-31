@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Noetic Robot Software Setup - MuSHR: The UW Open Racecar Project</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel="icon" href="https://mushr.io/favicon.png">
+
+  
+  
+  <link rel="stylesheet" href="/css/style.min.d6c2c7df4a2b74e47c295ee499fec19eb99dfe63f90766a829090f557e381bdc.css">
+  
+
+  
+
+</head>
+
+<body class='page page-tutorials-single'>
+  
+<div id="main-menu-mobile" class="main-menu-mobile">
+  <ul>
+    <li class="menu-item-quickstart">
+      <a href="/tutorials/quickstart/"><span>Quickstart</span></a>
+    </li>
+    <li class="menu-item-about">
+      <a href="/about/"><span>About</span></a>
+    </li>
+    <li class="menu-item-docs">
+      <a href="https://github.com/prl-mushr/mushr#component-documentation"><span>Docs</span></a>
+    </li>
+    <li class="menu-item-hardware">
+      <a href="/hardware/"><span>Hardware</span></a>
+    </li>
+    <li class="menu-item-tutorials active">
+      <a href="/tutorials/"><span>Tutorials</span></a>
+    </li>
+    <li class="menu-item-press">
+      <a href="/press/"><span>Press</span></a>
+    </li>
+    <li class="menu-item-team">
+      <a href="https://personalrobotics.cs.washington.edu/people/"><span>Team</span></a>
+    </li>
+    <li class="menu-item-forum">
+      <a href="https://github.com/prl-mushr/mushr/discussions"><span>Community Forum</span></a>
+    </li>
+    <li class="menu-item-contact">
+      <a href="/contact/"><span>Contact</span></a>
+    </li>
+  </ul>
+</div>
+
+  <div class="wrapper">
+    <div class='header'>
+  <div class="container">
+    <div class="logo">
+      <a href="https://mushr.io/"><img alt="Figurit Homepage" src="https://mushr.io/imgs/mushr-logo.svg" /></a>
+    </div>
+    <div class="logo-mobile">
+      <a href="https://mushr.io/"><img alt="Figurit Homepage" src="https://mushr.io/imgs/mushr-logo.svg" /></a>
+    </div>
+    <div id="main-menu" class="main-menu">
+  <ul>
+    <li class="menu-item-quickstart">
+      <a href="/tutorials/quickstart/"><span>Quickstart</span></a>
+    </li>
+    <li class="menu-item-about">
+      <a href="/about/"><span>About</span></a>
+    </li>
+    <li class="menu-item-docs">
+      <a href="https://github.com/prl-mushr/mushr#component-documentation"><span>Docs</span></a>
+    </li>
+    <li class="menu-item-hardware">
+      <a href="/hardware/"><span>Hardware</span></a>
+    </li>
+    <li class="menu-item-tutorials active">
+      <a href="/tutorials/"><span>Tutorials</span></a>
+    </li>
+    <li class="menu-item-press">
+      <a href="/press/"><span>Press</span></a>
+    </li>
+    <li class="menu-item-team">
+      <a href="https://personalrobotics.cs.washington.edu/people/"><span>Team</span></a>
+    </li>
+    <li class="menu-item-forum">
+      <a href="https://github.com/prl-mushr/mushr/discussions"><span>Community Forum</span></a>
+    </li>
+    <li class="menu-item-contact">
+      <a href="/contact/"><span>Contact</span></a>
+    </li>
+  </ul>
+</div>
+
+    <button id="toggle-main-menu-mobile" class="hamburger hamburger--slider" role="presentation" aria-label="mobile menu trigger">
+  <span class="hamburger-box">
+    <span class="hamburger-inner"></span>
+  </span>
+</button>
+  </div>
+</div>
+    
+<div class="container pb-6 pt-6 pt-md-10 pb-md-10">
+  <div class="row justify-content-start">
+    <div class="col-12 col-md-8">
+      <div class="tutorial tutorial-single">
+        <h1 class="title">Noetic Robot Software Setup</h1>
+        <div class="content"> 
+          
+          <p>Get software installed and the car running</p> 
+          
+          <h4 class="properties">Beginner Tutorial | Expected duration is 30 - 60 minutes</h4> 
+          <h2> By: <a href=https://www.mattschmittle.com/>Matt Schmittle</a></h2>  
+<figure><img src="/tutorials/first_steps/firststep.jpg" width="800"/>
+</figure>
+ <br>                           
+<h3 id="introduction">Introduction</h3>
+<p>This tutorial will get your car up and running teleoperation.</p>
+<h3 id="goal">Goal</h3>
+<p>To get you driving your car around in teleop.</p>
+<h3 id="requirements">Requirements</h3>
+<p>The following are required before continuing with installing the necessary libraries.</p>
+<ul>
+<li>SD card flashed with the latest <a href="https://developer.nvidia.com/embedded/jetpack">NVIDIA Jetpack image</a>. Under &ldquo;Installing JetPack&rdquo; click the drop-down menu for your hardware and follow the &ldquo;Getting started &hellip;&rdquo; tutorial</li>
+<li>A way to connect the computer to internet (either WiFi or ethernet)</li>
+<li>Monitor, HDMI cable, mouse, keyboard</li>
+</ul>
+<h2 id="booting-up">Booting Up</h2>
+<p>Power on and boot the Jetson. Make sure your sd card is plugged into your Jetson Nano and flush, this should be done from the hardware tutorial. If you have an AC to 5V power adapter you can plug that into the barrel connector on the USB port side of the Jetson Nano. If not, place a battery in the right side of the car and plug the connector into the matching connector going into the top half of the car. Plug in the right angled barrel connector into the Jetson Nano. The green light on the right side should turn on. The correct configuration is shown below. For initial setup you will need to plug a monitor, keyboard, and mouse into the car. The keyboard/mouse can go in any of the USB ports, intial setup does not require the sensors to be connected.</p>
+<p><figure><img src="/tutorials/first_steps/plugged_in.jpg"
+         alt="Everything plugged in correctly. Notice the barrel connector in the top right, the battery in the right slot, and the green light in the top left." width="600"/><figcaption>
+            <p>Everything plugged in correctly. Notice the barrel connector in the top right, the battery in the right slot, and the green light in the top left.</p>
+        </figcaption>
+</figure>
+
+2. Follow the on-screen prompts to complete setup of the Jetson Nano operating system. If you would like your setup to be consistent with our tutorials, we suggest using the following values: <br/>
+<strong>Username: robot</strong><br/>
+<strong>Name: robot</strong><br/>
+<strong>Computer Name: goose</strong><br/></p>
+<h2 id="setup-wi-fi">Setup Wi-Fi</h2>
+<p>If you want to install additional software on the car, or be able to use the internet on your laptop while connected to the car then you will want to set the car up with a static IP. A static IP is a IP address (think postal address but for talking between computers) that does not change each time you connect to wifi. Most computers do not have a static IP, but for regularly connecting to the robot we do not want the robot&rsquo;s IP to change.</p>
+<p>Once logged in, use the mouse to click on the Wi-Fi icon in the top right and click &ldquo;Edit Connections&rdquo; to open the network manager.
+Connect to the network that the robot should have a static IP on.</p>
+<p>Highlight the connection that corresponds to the network the robot should be connected to and click <strong>Edit...</strong> or the gear icon.</p>
+<p>Click on the <strong>General</strong> tab and check that <strong>Automatically connect to this network when it is available</strong> and <strong>All users may connect to thisnetwork</strong> are enabled.</p>
+<figure><img src="/tutorials/first_steps/general.png"
+         alt="General tab with auto connect set" width="600"/><figcaption>
+            <p>General tab with auto connect set</p>
+        </figcaption>
+</figure>
+
+<p>Click on the <strong>Wi-Fi</strong> tab. Make sure that the <strong>SSID:</strong> field is set to be the name of the network that the robot will have a static IP on. In the example image, it is <em>University of Washington</em>. Make sure that the <strong>Mode:</strong> dropdown is set to <strong>Client</strong>. In the <strong>Device:</strong> dropdown, choose the last option.</p>
+<figure><img src="/tutorials/first_steps/wifi.png"
+         alt="Wi-Fi tab with BSSID and SSID set" width="600"/><figcaption>
+            <p>Wi-Fi tab with BSSID and SSID set</p>
+        </figcaption>
+</figure>
+
+<p>Click on the <strong>IPv4 Settings</strong> tab. Set the following fields:</p>
+<ul>
+<li><strong>Method:</strong> dropdown to be <strong>Manual</strong>.</li>
+<li>Click <strong>Add</strong>. Under <strong>Address</strong>, enter:
+<ul>
+<li>The Static IP: for example <code>172.16.77.Z</code>.<br>
+<code>Z</code> is usually the robot number on the car, but it&rsquo;s up to you!</li>
+<li>Netmask: <code>255.255.255.0</code>.</li>
+<li>Gateway: <code>172.16.77.100</code>.</li>
+</ul>
+</li>
+<li><strong>DNS servers:</strong> field, enter <code>8.8.8.8</code>.</li>
+</ul>
+<figure><img src="/tutorials/first_steps/ipv4.png"
+         alt="IPv4 tab with an example IP setup" width="600"/><figcaption>
+            <p>IPv4 tab with an example IP setup</p>
+        </figcaption>
+</figure>
+
+<p>Click the <strong>Save</strong> button and close the connection editor.</p>
+<p>Reboot the Nano.</p>
+<p>After the Jetson reboots, verify that the robot has obtained the expected static ip.</p>
+<p><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ ifconfig</code></pre></div>
+Check wlan0 is the IP you set.</p>
+<h2 id="ssh-from-another-computer">SSH from another Computer</h2>
+<p>Once the Nano has fully booted, it will connect to the existing network at the specified static ip. You should then be able to ssh into it (with a separate computer on the same network) with the static IP you set earlier.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ ssh robot@172.16.77.Z</code></pre></div>
+<h2 id="connect-the-bluetooth-controller">Connect the bluetooth controller</h2>
+<p>Note the column of icons on the left-side of the Ubuntu GUI. Click on the uppermost one, and type <strong>Bluetooth</strong>. Use the search result to open the <strong>Bluetooth</strong> dialog. Turn on the PS4 controller by pressing on the <strong>Playstation</strong> button. <strong>Note that the controller must first be charged using a USB-mini cable.</strong> The LED on the front of the controller should flash. Put the controller into pairing mode by simultaneously holding down the <strong>Playstation</strong> button and the <strong>Share</strong> button. The LED on the front of the controller should continuously emit quick flashes.</p>
+<p>Next, in the <strong>Devices</strong> sidebar, click on the plus icon in the lower left corner. In the dialog that pops up, choose <strong>Input devices(mice,keyboards,etc.)</strong> in the <strong>Device type</strong> drop down. There should now be a single entry labelled <strong>Wireless Controller</strong>. Click it, and then click <strong>Next</strong> in the lower right corner. After the dialog reports <strong>Successfully set up new device &lsquo;Wireless Controller&rsquo;</strong>, close the <strong>Bluetooth</strong> dialog.</p>
+<figure><img src="/hardware/build_instructions/15_07_pair_controller.png" width="800"/>
+</figure>
+
+<h2 id="setup-docker--install-mushr-stack">Setup Docker &amp; Install MuSHR stack</h2>
+<p>Now we are going to install MuSHR. Fortunately, robot setup is similar to the simulation setup. Follow the following from the <a href="/tutorials/noetic_quickstart">noetic quickstart tutorial</a>.</p>
+<ul>
+<li><strong>Installing Docker</strong>
+<ul>
+<li>IMPORTANT NOTE: Only install <strong>docker-compose</strong> as the nvidia-docker/docker is pre-installed for the specific hardware</li>
+</ul>
+</li>
+<li><strong>Installing MuSHR Docker Container</strong>
+<ul>
+<li>NOTE: when ask &ldquo;Are you installing on robot and need all the sensor drivers? (y/n)&rdquo; respond &ldquo;y&rdquo; so that the sensor drivers are installed.</li>
+</ul>
+</li>
+</ul>
+<p>Unlike simulation, visualization usually is run on a separate computer (though you can install Foxglove on the robot). From the <a href="/tutorials/noetic_quickstart">noetic quickstart tutorial</a> complete the following steps on your separate visualization computer.</p>
+<ul>
+<li><strong>Downloading Foxglove Studio</strong></li>
+</ul>
+<h2 id="working-with-the-stack-and-launching-teleoperation-manual-driving">Working with the stack and Launching Teleoperation (manual driving)</h2>
+<p>Because we are working with docker, there are a few things to note about how to work with the stack.</p>
+<p>First, all ROS commands must be run inside a docker container. Docker containers are created via the <code>mushr_noetic</code> command. If you need to create multiple terminal sessions we recommend entering one docker container then using tmux (pre-installed). That way you only need to remember to run <code>mushr_noetic</code> once.</p>
+<p>Second, the code itself resides in <code>~/catkin_ws</code> and is attached to the docker container. This allows you to use your favorite editor and tweak code outside the container. Code edited outside the container will automatically be updated inside the container so there is no need to restart a container.</p>
+<h3 id="teleoperation-manual-driving">Teleoperation (manual driving)</h3>
+<p>Turn on the car and vesc by plugging their batteries in. Enter the docker container.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ mushr_noetic</code></pre></div>
+<p>Then run teleop
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ roslaunch mushr_base teleop.launch</code></pre></div></p>
+<p>You should see the lidar spinning and be able to steer with the controller. While holding down the left bumper, use the left joystick to throttle, and the right joystick to turn. See diagram below.</p>
+<figure><img src="/tutorials/first_steps/teleop_controls.png" width="350"/>
+</figure>
+
+<h2 id="visualization">Visualization</h2>
+<p>After starting up, the robot terminal should print out a line similar to</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">Rosbridge WebSocket server started at ws://0.0.0.0:9090
+</code></pre></div><p>In Foxglove, click the top button in the sidebar, labeled <code>Data Source</code>. Then select the Plus button in the left panel. This should open up an interface to connect to data.</p>
+<figure><img src="/tutorials/noetic_quickstart/data_panel.png" width="400"/>
+</figure>
+
+<p>Click the <code>Open Connection</code> button. Select <code>Rosbridge (ROS 1 &amp; ROS 2)</code> as shown below.</p>
+<figure><img src="/tutorials/noetic_quickstart/rosbridge.png" width="700"/>
+</figure>
+
+<p>Fill out the WebSocket URL with the robot&rsquo;s IP and port that the simulator output before. For example if you set your robot&rsquo;s IP to 172.77.16.27 then it should be <code>ws://172.77.16.27:9090</code>. The IP will differ from the one pictured. Then, click <code>Open</code> in the bottom right corner. The left sidebar should show that a connection has been made.</p>
+<p>On the right of the middle panel it will say <code>map</code>. Click on that and switch it to <code>car/base_link</code>. A red laser scan should appear.</p>
+<p>TODO real image, Consider a separate real panel</p>
+<h2 id="next-steps">Next Steps</h2>
+<p>To learn about programming the car continue to the <a href="/tutorials/intro-to-ros">Intro to ROS Tutorial</a></p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="strip strip-primary-gradient-top-bottom">
+  <div class="container pt-3 pb-3 pt-md-6 pb-md-3 px-2">
+    <div class="row justify-content-left citation-row">
+      <h1 id="citation">Citation</h1>
+      <p>
+  If you plan to use any part of the the MuSHR platform (including tutorials, codebase, or hardware instructions) for a project or paper, please cite
+  <em><a href="https://arxiv.org/abs/1908.08031">MuSHR: A Low-Cost, Open-Source Robotic Racecar for Education and Research</a></em>.
+</p>
+
+<div class="highlight"><pre class="chroma">@article{srinivasa2019mushr,
+ title={{MuSHR}: A Low-Cost, Open-Source Robotic Racecar for Education and Research},
+ author={Srinivasa, Siddhartha S. and Lancaster, Patrick and Michalove, Johan and Schmittle, Matt and Summers, Colin and Rockett, Matthew and Smith, Joshua R. and Chouhury, Sanjiban and Mavrogiannis, Christoforos and Sadeghi, Fereshteh},
+ journal={CoRR},
+ volume={abs/1908.08031},
+ year={2019}
+}
+</pre></div>
+
+<br/>
+
+    </div>
+  </div>
+</div>
+
+
+  </div>
+
+  <div class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="footer-inner">
+          <h3 class="footer-title">MuSHR: The UW Open Racecar Project</h3>
+          <ul>
+            
+            
+            <li class="menu-item-forum"><a href="https://github.com/prl-mushr/mushr/discussions">Community Forum</a></li>
+            
+            <li class="menu-item-contact"><a href="/contact/">Contact</a></li>
+            
+            <li class="menu-item-home"><a href="/">Home</a></li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="sub-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="sub-footer-inner">
+          <ul>
+            
+          </ul>
+          <ul>
+            <li class="prl">Made with <font color="#FF1690">♥</font> at the <a href="https://personalrobotics.cs.washington.edu/">Personal Robotics Lab</a></li>
+          </ul>
+          <ul>
+            <li class="prl">Website by <a href="https://micha.love/"><font color="#36CDC4">Johan</font></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/scripts.min.98ee06cc35517b5800b382aecb0fc59893e95b9c11dd21842d0d57e4f68043e3.js"></script>
+  
+
+  
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-146151202-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+  gtag('config', 'UA-146151202-1');
+</script>
+
+
+
+
+</body>
+
+</html>

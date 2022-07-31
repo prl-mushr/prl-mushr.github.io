@@ -6,7 +6,7 @@
     <description>Recent content in Home on MuSHR: The UW Open Racecar Project</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 13 Apr 2022 13:18:04 -0700</lastBuildDate><atom:link href="https://mushr.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 08 Jun 2022 13:31:34 -0700</lastBuildDate><atom:link href="https://mushr.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Quickstart</title>
       <link>https://mushr.io/tutorials/quickstart/</link>
@@ -71,6 +71,15 @@
     </item>
     
     <item>
+      <title>Noetic Robot Software Setup</title>
+      <link>https://mushr.io/tutorials/noetic_first_steps/</link>
+      <pubDate>Wed, 28 Nov 2018 15:14:54 +1000</pubDate>
+      
+      <guid>https://mushr.io/tutorials/noetic_first_steps/</guid>
+      <description>Get software installed and the car running</description>
+    </item>
+    
+    <item>
       <title>Tuning Guide</title>
       <link>https://mushr.io/tutorials/tuning/</link>
       <pubDate>Wed, 28 Nov 2018 15:14:54 +1000</pubDate>
@@ -104,6 +113,15 @@
       
       <guid>https://mushr.io/tutorials/first_steps/</guid>
       <description>Get your car started and teleop running</description>
+    </item>
+    
+    <item>
+      <title>Autonomous Navigation</title>
+      <link>https://mushr.io/tutorials/noetic-navigation/</link>
+      <pubDate>Wed, 08 Jun 2022 13:31:34 -0700</pubDate>
+      
+      <guid>https://mushr.io/tutorials/noetic-navigation/</guid>
+      <description>Initialize and operate MuSHRs out-of-the-box autonomous navigation stack!</description>
     </item>
     
     <item>
