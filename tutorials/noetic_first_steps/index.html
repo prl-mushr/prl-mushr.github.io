@@ -122,7 +122,7 @@
 <h3 id="requirements">Requirements</h3>
 <p>The following are required before continuing with installing the necessary libraries.</p>
 <ul>
-<li>SD card flashed with the latest <a href="https://developer.nvidia.com/embedded/jetpack">NVIDIA Jetpack image</a>. Under &ldquo;Installing JetPack&rdquo; click the drop-down menu for your hardware and follow the &ldquo;Getting started &hellip;&rdquo; tutorial</li>
+<li>SD card flashed with the <a href="https://drive.google.com/file/d/1OGee1Xvg16FvoRg8cdCh1M5xQ_zvexZ-/view?usp=sharing">NVIDIA Jetpack image</a>. We recommend using <a href="https://www.balena.io/etcher/">Balena Etcher</a> to flash your SD card with the linked Jetpack image.</li>
 <li>A way to connect the computer to internet (either WiFi or ethernet)</li>
 <li>Monitor, HDMI cable, mouse, keyboard</li>
 </ul>
@@ -143,7 +143,7 @@
 <p>Once logged in, use the mouse to click on the Wi-Fi icon in the top right and click &ldquo;Edit Connections&rdquo; to open the network manager.
 Connect to the network that the robot should have a static IP on.</p>
 <p>Highlight the connection that corresponds to the network the robot should be connected to and click <strong>Edit...</strong> or the gear icon.</p>
-<p>Click on the <strong>General</strong> tab and check that <strong>Automatically connect to this network when it is available</strong> and <strong>All users may connect to thisnetwork</strong> are enabled.</p>
+<p>Click on the <strong>General</strong> tab and check that <strong>Automatically connect to this network when it is available</strong> and <strong>All users may connect to this network</strong> are enabled.</p>
 <figure><img src="/tutorials/first_steps/general.png"
          alt="General tab with auto connect set" width="600"/><figcaption>
             <p>General tab with auto connect set</p>
@@ -180,24 +180,32 @@ Connect to the network that the robot should have a static IP on.</p>
 <p>Reboot the Nano.</p>
 <p>After the Jetson reboots, verify that the robot has obtained the expected static ip.</p>
 <p><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ ifconfig</code></pre></div>
-Check wlan0 is the IP you set.</p>
+Check wlan0 is the IP you set. Note that it may be set to an equivalent IP address depending on your network. A good way to troubleshoot is to try the next step of the tutorial (SSH). If you can SSH, then everything worked correctly.</p>
 <h2 id="ssh-from-another-computer">SSH from another Computer</h2>
 <p>Once the Nano has fully booted, it will connect to the existing network at the specified static ip. You should then be able to ssh into it (with a separate computer on the same network) with the static IP you set earlier.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ ssh robot@172.16.77.Z</code></pre></div>
+<h2 id="troubleshooting-wifi">Troubleshooting WiFi</h2>
+<h3 id="ifconfig-output-not-what-expected">ifconfig Output Not What Expected</h3>
+<p>IP addresses 172, 192, and 10 are all private IPV4 addresses. If your ifconig output displays one of these instead of the exact one you typed, please try the SSH step. If you can SSH into the car, no need to worry about this step! Otherwise, try deleting the wifi connection and making a new with the correct settings.</p>
+<h3 id="cant-ssh">Can&rsquo;t SSH</h3>
+<p>One issue that might arise on your robot is that even though it is connected to a wifi network, you cannot ssh into the car or view websites from the browser built into the car. This can occur if the date/time of your car is very different from the real time. Try manually setting the date/time and once you verify that the internet is working, you can switch back to automatic date/time mode.</p>
 <h2 id="connect-the-bluetooth-controller">Connect the bluetooth controller</h2>
-<p>Note the column of icons on the left-side of the Ubuntu GUI. Click on the uppermost one, and type <strong>Bluetooth</strong>. Use the search result to open the <strong>Bluetooth</strong> dialog. Turn on the PS4 controller by pressing on the <strong>Playstation</strong> button. <strong>Note that the controller must first be charged using a USB-mini cable.</strong> The LED on the front of the controller should flash. Put the controller into pairing mode by simultaneously holding down the <strong>Playstation</strong> button and the <strong>Share</strong> button. The LED on the front of the controller should continuously emit quick flashes.</p>
+<p>Note the column of icons on the left-side of the Ubuntu GUI. Click on the uppermost one, and type <strong>Bluetooth</strong>. Use the search result to open the <strong>Bluetooth</strong> dialog. Turn on the PS4 controller by pressing on the <strong>Playstation</strong> button. <strong>Note that the controller must first be charged using a USB-mini cable.</strong> The LED on the front of the controller should flash. Put the controller into pairing mode by simultaneously pressing and holding down the <strong>Playstation</strong> button and the <strong>Share</strong> button. The LED on the front of the controller should continuously emit quick, strobe-like flashes.</p>
 <p>Next, in the <strong>Devices</strong> sidebar, click on the plus icon in the lower left corner. In the dialog that pops up, choose <strong>Input devices(mice,keyboards,etc.)</strong> in the <strong>Device type</strong> drop down. There should now be a single entry labelled <strong>Wireless Controller</strong>. Click it, and then click <strong>Next</strong> in the lower right corner. After the dialog reports <strong>Successfully set up new device &lsquo;Wireless Controller&rsquo;</strong>, close the <strong>Bluetooth</strong> dialog.</p>
+<p>Note that this can sometimes take a few tries to get it working on the Jetson Nano, so no worries if it didn&rsquo;t work immediately on the first attempt</p>
 <figure><img src="/hardware/build_instructions/15_07_pair_controller.png" width="800"/>
 </figure>
 
 <h2 id="setup-docker--install-mushr-stack">Setup Docker &amp; Install MuSHR stack</h2>
-<p>Now we are going to install MuSHR. Fortunately, robot setup is similar to the simulation setup. Follow the following from the <a href="/tutorials/noetic_quickstart">noetic quickstart tutorial</a>.</p>
+<p>Now we are going to install MuSHR. Unlike installing Docker on a desktop/laptop computer, some extra steps need to be taken to install on a Jetson Nano/Orin platform.</p>
+<p>First off, the nvidia-docker/docker is pre-installed for the specific hardware using the NVIDIA image we provided earlier, but Docker Compose is not. THe following steps are what is needed in order to get Docker Compose onto the robot:
+Fortunately, robot setup is similar to the simulation setup. Follow the following from the <a href="/tutorials/noetic_quickstart">noetic quickstart tutorial</a>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ sudo apt-get install curl
+$ sudo curl -L <span class="s2">&#34;https://github.com/docker/compose/releases/download/1.29.2/docker-compose-</span><span class="k">$(</span>uname -s<span class="k">)</span><span class="s2">-</span><span class="k">$(</span>uname -m<span class="k">)</span><span class="s2">&#34;</span> -o /usr/local/bin/docker-compose
+$ sudo chmod +x /usr/local/bin/docker-compose
+$ pip install docker-compose</code></pre></div>
+<p>Now, the steps for installing the MuSHR Docker Container on the car are the same as installing the container on a Desktop device. Please follow the section titled <strong>Installing MuSHR Docker Container</strong> from the <a href="/tutorials/noetic_quickstart">noetic quickstart tutorial</a>.</p>
 <ul>
-<li><strong>Installing Docker</strong>
-<ul>
-<li>IMPORTANT NOTE: Only install <strong>docker-compose</strong> as the nvidia-docker/docker is pre-installed for the specific hardware</li>
-</ul>
-</li>
 <li><strong>Installing MuSHR Docker Container</strong>
 <ul>
 <li>NOTE: when ask &ldquo;Are you installing on robot and need all the sensor drivers? (y/n)&rdquo; respond &ldquo;y&rdquo; so that the sensor drivers are installed.</li>
@@ -213,7 +221,7 @@ Check wlan0 is the IP you set.</p>
 <p>First, all ROS commands must be run inside a docker container. Docker containers are created via the <code>mushr_noetic</code> command. If you need to create multiple terminal sessions we recommend entering one docker container then using tmux (pre-installed). That way you only need to remember to run <code>mushr_noetic</code> once.</p>
 <p>Second, the code itself resides in <code>~/catkin_ws</code> and is attached to the docker container. This allows you to use your favorite editor and tweak code outside the container. Code edited outside the container will automatically be updated inside the container so there is no need to restart a container.</p>
 <h3 id="teleoperation-manual-driving">Teleoperation (manual driving)</h3>
-<p>Turn on the car and vesc by plugging their batteries in. Enter the docker container.</p>
+<p>Turn on the car and vesc by plugging their batteries in. Turn on the controller and make sure it&rsquo;s connected to the car (solid light). Enter the docker container.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ mushr_noetic</code></pre></div>
 <p>Then run teleop
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ roslaunch mushr_base teleop.launch</code></pre></div></p>
@@ -234,7 +242,9 @@ Check wlan0 is the IP you set.</p>
 
 <p>Fill out the WebSocket URL with the robot&rsquo;s IP and port that the simulator output before. For example if you set your robot&rsquo;s IP to 172.77.16.27 then it should be <code>ws://172.77.16.27:9090</code>. The IP will differ from the one pictured. Then, click <code>Open</code> in the bottom right corner. The left sidebar should show that a connection has been made.</p>
 <p>On the right of the middle panel it will say <code>map</code>. Click on that and switch it to <code>car/base_link</code>. A red laser scan should appear.</p>
-<p>TODO real image, Consider a separate real panel</p>
+<!-- TODO real image, Consider a separate real panel -->
+<h2 id="tuning">Tuning</h2>
+<p>If your car does not drive in a straight line or you run into other similar issues, please check out the following <a href="https://mushr.io/tutorials/tuning/">tuning</a> tutorial.</p>
 <h2 id="next-steps">Next Steps</h2>
 <p>To learn about programming the car continue to the <a href="/tutorials/intro-to-ros">Intro to ROS Tutorial</a></p>
 

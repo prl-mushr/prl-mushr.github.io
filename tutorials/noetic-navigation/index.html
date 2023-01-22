@@ -255,6 +255,7 @@ Or alternatively
 <h2 id="running-the-navigation-stack">Running the navigation stack</h2>
 <p>To operate the navigation stack, we will use foxglove to send pose targets to the vehicle. The <a href="https://mushr.io/tutorials/quickstart/">quickstart tutorial</a> tutorial goes over how to use foxglove with the MuSHR stack. When operating in the real world, the pose estimate of the car may be incorrect. You can correct this by providing the particle filter with the correct pose estimate using the <code>Set Pose Estimate</code> button on the bottom right of the foxglove window and then using the button to publish clicked points.</p>
 <p><strong>Note</strong>: When publishing a pose, the pose will correspond to the pose at the tip of the arrow and not the base of the arrow. Set the pose accordingly.</p>
+<p><strong>Note</strong>: Sometimes Foxglove might not show certain ROS topics (for example, the path published by the global planner) because these topics are hidden initially. To unhide them, press the gear icon in the 3D window, and then in the topics dropdown, press the closed eye button (or open eye button if you want to rehide them).</p>
 <p><figure><img src="/tutorials/autonomous-navigation/set_pose_estimate.png" width="800"/>
 </figure>
 <br/></p>

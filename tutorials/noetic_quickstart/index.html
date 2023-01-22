@@ -188,22 +188,22 @@ recent version, or update it if you already have it downloaded.</p>
 </code></pre></div><p>to specify a different map. MuSHR provides some basic maps, but if you want to map your own space, try the <a href="/tutorials/mapping">SLAM Tutorial for MuSHR</a>.</p>
 <!-- (TODO: provide instructions for overriding map from the command-line.) -->
 <h2 id="troubleshooting">Troubleshooting</h2>
-<h3 id="docker-error-while-fetching-server-api-version">Docker: Error while fetching server API version</h3>
+<h4 id="docker-error-while-fetching-server-api-version">Docker: Error while fetching server API version</h4>
 <p>Ensure that Docker is running. In your terminal, <code>docker ps -a</code> should not cause an error.</p>
-<h3 id="docker-network-mode-is-incompatible-with-port-bindings">Docker: network mode is incompatible with port bindings</h3>
+<h4 id="docker-network-mode-is-incompatible-with-port-bindings">Docker: network mode is incompatible with port bindings</h4>
 <p>Navigate to the install directory <code>mushr/mushr_utils/install</code>. Edit the <code>docker-compose-cpu.yml</code> file in this folder to remove the line: <code>network_mode: &quot;host&quot;</code>.</p>
-<h3 id="wlan0-device-not-found">wlan0: Device not found</h3>
+<h4 id="wlan0-device-not-found">wlan0: Device not found</h4>
 <p>Edit the <code>.bashrc</code> file in the Docker container and manually set the <code>ROS_IP</code> to the IP of your Docker container.
 One way to find this is to run the following command:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ ifconfig
 </code></pre></div><p>After manually setting this value, make to source the <code>.bashrc</code> in the Docker container.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">source</span> ~/.bashrc
-</code></pre></div><h3 id="error-get-httpsregistry-1dockeriov2-dial-tcp-lookup-registry-1dockerio-on-153-read-udp-142546-153-read-connection-refused"><code>ERROR: Get https://registry-1.docker.io/v2/: dial tcp: lookup registry-1.docker.io on [::1]:53: read udp [::1]:42546-&gt;[::1]:53: read: connection refused</code></h3>
+</code></pre></div><h4 id="error-get-httpsregistry-1dockeriov2-dial-tcp-lookup-registry-1dockerio-on-153-read-udp-142546-153-read-connection-refused">ERROR: Get <a href="https://registry-1.docker.io/v2/:">https://registry-1.docker.io/v2/:</a> dial tcp: lookup registry-1.docker.io on [::1]:53: read udp [::1]:42546-&gt;[::1]:53: read: connection refused</h4>
 <p>This error seems to stem from a <a href="https://github.com/docker/cli/issues/2618">nameserver issue</a>. Add the following to <code>/etc/resolv.conf</code></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">nameserver 8.8.8.8
 nameserver 8.8.4.4
 </code></pre></div><h2 id="faq">FAQ</h2>
-<h3 id="i-installed-some-packages-in-my-docker-container-how-can-i-save-them-for-next-time-i-run-mushr_noetic">I installed some packages in my docker container, how can I &ldquo;save&rdquo; them for next time I run <code>mushr_noetic</code></h3>
+<h4 id="i-installed-some-packages-in-my-docker-container-how-can-i-save-them-for-next-time-i-run-mushr_noetic">I installed some packages in my docker container, how can I &ldquo;save&rdquo; them for next time I run <code>mushr_noetic</code></h4>
 <p>You can save this using the <code>docker commit</code> command. First find your container ID</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ docker ps
 </code></pre></div><p>It should be the only one or the one with <code>mushr/mushr:XXX</code> under the image name (XXX different on different systems). Now commit the CONTAINER ID to the IMAGE name. For example:</p>
