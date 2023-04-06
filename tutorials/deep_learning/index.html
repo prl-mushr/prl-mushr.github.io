@@ -1,448 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Applying Deep Learning to Autonomous Driving - MuSHR: The UW Open Racecar Project</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-  <link rel="icon" href="https://mushr.io/favicon.png">
-
-  
-  
-  <link rel="stylesheet" href="/css/style.min.d6c2c7df4a2b74e47c295ee499fec19eb99dfe63f90766a829090f557e381bdc.css">
-  
-
-  
-
-</head>
-
-<body class='page page-tutorials-single'>
-  
-<div id="main-menu-mobile" class="main-menu-mobile">
-  <ul>
-    <li class="menu-item-quickstart">
-      <a href="/tutorials/quickstart/"><span>Quickstart</span></a>
-    </li>
-    <li class="menu-item-about">
-      <a href="/about/"><span>About</span></a>
-    </li>
-    <li class="menu-item-docs">
-      <a href="https://github.com/prl-mushr/mushr#component-documentation"><span>Docs</span></a>
-    </li>
-    <li class="menu-item-hardware">
-      <a href="/hardware/"><span>Hardware</span></a>
-    </li>
-    <li class="menu-item-tutorials active">
-      <a href="/tutorials/"><span>Tutorials</span></a>
-    </li>
-    <li class="menu-item-press">
-      <a href="/press/"><span>Press</span></a>
-    </li>
-    <li class="menu-item-team">
-      <a href="https://personalrobotics.cs.washington.edu/people/"><span>Team</span></a>
-    </li>
-    <li class="menu-item-forum">
-      <a href="https://github.com/prl-mushr/mushr/discussions"><span>Community Forum</span></a>
-    </li>
-    <li class="menu-item-contact">
-      <a href="/contact/"><span>Contact</span></a>
-    </li>
-  </ul>
-</div>
-
-  <div class="wrapper">
-    <div class='header'>
-  <div class="container">
-    <div class="logo">
-      <a href="https://mushr.io/"><img alt="Figurit Homepage" src="https://mushr.io/imgs/mushr-logo.svg" /></a>
-    </div>
-    <div class="logo-mobile">
-      <a href="https://mushr.io/"><img alt="Figurit Homepage" src="https://mushr.io/imgs/mushr-logo.svg" /></a>
-    </div>
-    <div id="main-menu" class="main-menu">
-  <ul>
-    <li class="menu-item-quickstart">
-      <a href="/tutorials/quickstart/"><span>Quickstart</span></a>
-    </li>
-    <li class="menu-item-about">
-      <a href="/about/"><span>About</span></a>
-    </li>
-    <li class="menu-item-docs">
-      <a href="https://github.com/prl-mushr/mushr#component-documentation"><span>Docs</span></a>
-    </li>
-    <li class="menu-item-hardware">
-      <a href="/hardware/"><span>Hardware</span></a>
-    </li>
-    <li class="menu-item-tutorials active">
-      <a href="/tutorials/"><span>Tutorials</span></a>
-    </li>
-    <li class="menu-item-press">
-      <a href="/press/"><span>Press</span></a>
-    </li>
-    <li class="menu-item-team">
-      <a href="https://personalrobotics.cs.washington.edu/people/"><span>Team</span></a>
-    </li>
-    <li class="menu-item-forum">
-      <a href="https://github.com/prl-mushr/mushr/discussions"><span>Community Forum</span></a>
-    </li>
-    <li class="menu-item-contact">
-      <a href="/contact/"><span>Contact</span></a>
-    </li>
-  </ul>
-</div>
-
-    <button id="toggle-main-menu-mobile" class="hamburger hamburger--slider" role="presentation" aria-label="mobile menu trigger">
-  <span class="hamburger-box">
-    <span class="hamburger-inner"></span>
-  </span>
-</button>
-  </div>
-</div>
-    
-<div class="container pb-6 pt-6 pt-md-10 pb-md-10">
-  <div class="row justify-content-start">
-    <div class="col-12 col-md-8">
-      <div class="tutorial tutorial-single">
-        <h1 class="title">Applying Deep Learning to Autonomous Driving</h1>
-        <div class="content"> 
-          
-          <p>A basic tutorial on using Imitation learning and Reinforcement learning for driving the MuSHR car</p> 
-          
-          <h4 class="properties">Intermediate Tutorial | Expected duration is 90 minutes</h4> 
-          <h2> By: <a href=https://www.sidharthtalia.com>Sidharth Talia</a></h2>
-<p><figure>
-<video width="800" muted autoplay loop>
-  <source src="/tutorials/MUSHR-DL/mushr_DL.mp4" type="video/mp4" />
-</video>
-
-
-
-</figure>
-
-<br></p>
-<h3 id="introduction">Introduction</h3>
-<p>Deep learning is part of a broader family of machine learning methods based on artificial neural networks with representation learning. Learning can be supervised, semi-supervised or unsupervised. In this tutorial, we&rsquo;ll see how to get started with applying imitation learning as well as reinforcement learning to the MuSHR car through the use of a modified simulator developed by the DIYRobcars community, named <a href="https://github.com/tawnkramer/sdsandbox">Donkey Simulator</a>.</p>
-<h3 id="goal">Goal</h3>
-<p>This tutorial will help you get familiar with the framework developed for creating, training and testing the neural network models in the modified driving simulator.</p>
-<h3 id="prerequisites">Prerequisites</h3>
-<p>In order to successfully complete this tutorial you will need:</p>
-<ol>
-<li>Familiarity with python</li>
-<li>Python version &gt;= 3.6 (the dependency <a href="https://pypi.org/project/screeninfo/">screeninfo</a> doesn&rsquo;t work well with python&lt;3.6), pip version &gt;= 20, setuptools &gt;=44</li>
-<li>Pytorch. For installing PyTorch, follow the instructions on this <a href="https://pytorch.org/get-started/locally/">link</a>. You&rsquo;ll have to select the options that match the configuration of your computer. For example, if you have a Windows computer with CUDA NOT enabled, you&rsquo;d pick :</li>
-</ol>
-<figure><img src="/tutorials/MUSHR-DL/pytorch_install.PNG" width="800"/>
-</figure>
-
-<p>If you have CUDA enabled, you&rsquo;d pick the option for the CUDA version you have installed on your computer. Copy the highlighted command and paste it in the terminal/cmd and hit enter. (use pip3 instead of pip if you have python 2.x and 3.x on the same system)</p>
-<ol start="4">
-<li>Git installed. Refer to this <a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">&rsquo;link&rsquo;</a> for installation instructions. Follow the instructions for the type of OS you have.</li>
-<li>A system with a minimum of 8 Gigabytes of RAM, preferably with the GPU enabled.</li>
-</ol>
-<h4 id="note">Note:</h4>
-<p>It is advised to use a GPU enabled machine for running the models, as the inference time for the models can be high when running on CPU, which may lead to control related issues when actually using the model to drive the car.</p>
-<h3 id="setting-up-the-environment">Setting up the environment</h3>
-<ol>
-<li>Downloading the simulator:
+<!doctype html><html lang=en><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="ie=edge"><title>Applying Deep Learning to Autonomous Driving - MuSHR: The UW Open Racecar Project</title><meta name=viewport content="width=device-width,initial-scale=1"><link rel=icon href=https://mushr.io/favicon.png><link rel=stylesheet href=/css/style.min.d6c2c7df4a2b74e47c295ee499fec19eb99dfe63f90766a829090f557e381bdc.css></head><body class='page page-tutorials-single'><div id=main-menu-mobile class=main-menu-mobile><ul><li class=menu-item-quickstart><a href=/tutorials/quickstart/><span>Quickstart</span></a></li><li class=menu-item-about><a href=/about/><span>About</span></a></li><li class=menu-item-docs><a href=https://github.com/prl-mushr/mushr#component-documentation><span>Docs</span></a></li><li class=menu-item-hardware><a href=/hardware/><span>Hardware</span></a></li><li class="menu-item-tutorials active"><a href=/tutorials/><span>Tutorials</span></a></li><li class=menu-item-press><a href=/press/><span>Press</span></a></li><li class=menu-item-team><a href=https://personalrobotics.cs.washington.edu/people/><span>Team</span></a></li><li class=menu-item-forum><a href=https://github.com/prl-mushr/mushr/discussions><span>Community Forum</span></a></li><li class=menu-item-contact><a href=/contact/><span>Contact</span></a></li></ul></div><div class=wrapper><div class=header><div class=container><div class=logo><a href=https://mushr.io/><img alt="Figurit Homepage" src=https://mushr.io/imgs/mushr-logo.svg></a></div><div class=logo-mobile><a href=https://mushr.io/><img alt="Figurit Homepage" src=https://mushr.io/imgs/mushr-logo.svg></a></div><div id=main-menu class=main-menu><ul><li class=menu-item-quickstart><a href=/tutorials/quickstart/><span>Quickstart</span></a></li><li class=menu-item-about><a href=/about/><span>About</span></a></li><li class=menu-item-docs><a href=https://github.com/prl-mushr/mushr#component-documentation><span>Docs</span></a></li><li class=menu-item-hardware><a href=/hardware/><span>Hardware</span></a></li><li class="menu-item-tutorials active"><a href=/tutorials/><span>Tutorials</span></a></li><li class=menu-item-press><a href=/press/><span>Press</span></a></li><li class=menu-item-team><a href=https://personalrobotics.cs.washington.edu/people/><span>Team</span></a></li><li class=menu-item-forum><a href=https://github.com/prl-mushr/mushr/discussions><span>Community Forum</span></a></li><li class=menu-item-contact><a href=/contact/><span>Contact</span></a></li></ul></div><button id=toggle-main-menu-mobile class="hamburger hamburger--slider" role=presentation aria-label="mobile menu trigger">
+<span class=hamburger-box><span class=hamburger-inner></span></span></button></div></div><div class="container pb-6 pt-6 pt-md-10 pb-md-10"><div class="row justify-content-start"><div class="col-12 col-md-8"><div class="tutorial tutorial-single"><h1 class=title>Applying Deep Learning to Autonomous Driving</h1><div class=content><p>A basic tutorial on using Imitation learning and Reinforcement learning for driving the MuSHR car</p><h4 class=properties>Intermediate Tutorial | Expected duration is 90 minutes</h4><h2>By: <a href=https://www.sidharthtalia.com>Sidharth Talia</a></h2><p><figure><video width=800 muted autoplay loop>
+<source src=/tutorials/MUSHR-DL/mushr_DL.mp4 type=video/mp4></video></figure><br></p><h3 id=introduction>Introduction</h3><p>Deep learning is part of a broader family of machine learning methods based on artificial neural networks with representation learning. Learning can be supervised, semi-supervised or unsupervised. In this tutorial, we&rsquo;ll see how to get started with applying imitation learning as well as reinforcement learning to the MuSHR car through the use of a modified simulator developed by the DIYRobcars community, named <a href=https://github.com/tawnkramer/sdsandbox>Donkey Simulator</a>.</p><h3 id=goal>Goal</h3><p>This tutorial will help you get familiar with the framework developed for creating, training and testing the neural network models in the modified driving simulator.</p><h3 id=prerequisites>Prerequisites</h3><p>In order to successfully complete this tutorial you will need:</p><ol><li>Familiarity with python</li><li>Python version >= 3.6 (the dependency <a href=https://pypi.org/project/screeninfo/>screeninfo</a> doesn&rsquo;t work well with python&lt;3.6), pip version >= 20, setuptools >=44</li><li>Pytorch. For installing PyTorch, follow the instructions on this <a href=https://pytorch.org/get-started/locally/>link</a>. You&rsquo;ll have to select the options that match the configuration of your computer. For example, if you have a Windows computer with CUDA NOT enabled, you&rsquo;d pick :</li></ol><figure><img src=/tutorials/MUSHR-DL/pytorch_install.PNG width=800></figure><p>If you have CUDA enabled, you&rsquo;d pick the option for the CUDA version you have installed on your computer. Copy the highlighted command and paste it in the terminal/cmd and hit enter. (use pip3 instead of pip if you have python 2.x and 3.x on the same system)</p><ol start=4><li>Git installed. Refer to this <a href=https://git-scm.com/book/en/v2/Getting-Started-Installing-Git>&rsquo;link&rsquo;</a> for installation instructions. Follow the instructions for the type of OS you have.</li><li>A system with a minimum of 8 Gigabytes of RAM, preferably with the GPU enabled.</li></ol><h4 id=note>Note:</h4><p>It is advised to use a GPU enabled machine for running the models, as the inference time for the models can be high when running on CPU, which may lead to control related issues when actually using the model to drive the car.</p><h3 id=setting-up-the-environment>Setting up the environment</h3><ol><li>Downloading the simulator:
 Download the precompiled binary for the simulator from these links:
 <a href="https://drive.google.com/file/d/172JgedopITw5YjcfuUrok48TTYuL_nTV/view?usp=sharing">Windows</a>,
 <a href="https://drive.google.com/file/d/1GGI-ncz4MxzhaQJP_6Uyzgbt1BOvwzPk/view?usp=sharing">Linux</a>,
 <a href="https://drive.google.com/file/d/1NNWISqEf5k_ZUFfq8sRoGAUXKw8tOFPo/view?usp=sharing">Mac OS</a>.
-Extract it into the home directory (or wherever you prefer to extract it, just remember where you extract it) and rename it to &ldquo;DonkeySim&rdquo;. Within the extracted folder, you should see the following contents(for Linux. In windows, you&rsquo;ll see a donkey_sim.exe instead and find .dll instead of .so, but the overall contents will be the same)</li>
-</ol>
-<figure><img src="/tutorials/MUSHR-DL/direct_struct.PNG"/>
-</figure>
-
-<p>In the case of macOS, the files will have a slightly different arrangement but they&rsquo;ll all be there when you download the binaries.</p>
-<ol start="2">
-<li>Downloading other files related to MUSHR-DL:
-Open the terminal(Linux) or command-line interface (Windows) and navigate to the folder where the simulator files are kept.</li>
-</ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ <span class="nb">cd</span> PATH<span class="se">\\</span>TO<span class="se">\\</span>DonkeySim
-</span></span></code></pre></div><h5 id="note-1">Note:</h5>
-<p>Note that from here onwards,</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ <span class="nb">cd</span> DonkeySim
-</span></span></code></pre></div><p>Refers to:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ <span class="nb">cd</span> PATH<span class="se">\\</span>TO<span class="se">\\</span>DonkeySim
-</span></span></code></pre></div><p>Execute these commands in the DonkeySim directory:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ git clone https://github.com/prl-mushr/gym-donkeycar.git
-</span></span><span class="line"><span class="cl">$ pip3 install -e gym-donkeycar
-</span></span><span class="line"><span class="cl">$ git clone https://github.com/prl-mushr/MUSHR-DL.git
+Extract it into the home directory (or wherever you prefer to extract it, just remember where you extract it) and rename it to &ldquo;DonkeySim&rdquo;. Within the extracted folder, you should see the following contents(for Linux. In windows, you&rsquo;ll see a donkey_sim.exe instead and find .dll instead of .so, but the overall contents will be the same)</li></ol><figure><img src=/tutorials/MUSHR-DL/direct_struct.PNG></figure><p>In the case of macOS, the files will have a slightly different arrangement but they&rsquo;ll all be there when you download the binaries.</p><ol start=2><li>Downloading other files related to MUSHR-DL:
+Open the terminal(Linux) or command-line interface (Windows) and navigate to the folder where the simulator files are kept.</li></ol><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>$ <span class=nb>cd</span> PATH<span class=se>\\</span>TO<span class=se>\\</span>DonkeySim
+</span></span></code></pre></div><h5 id=note-1>Note:</h5><p>Note that from here onwards,</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>$ <span class=nb>cd</span> DonkeySim
+</span></span></code></pre></div><p>Refers to:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>$ <span class=nb>cd</span> PATH<span class=se>\\</span>TO<span class=se>\\</span>DonkeySim
+</span></span></code></pre></div><p>Execute these commands in the DonkeySim directory:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>$ git clone https://github.com/prl-mushr/gym-donkeycar.git
+</span></span><span class=line><span class=cl>$ pip3 install -e gym-donkeycar
+</span></span><span class=line><span class=cl>$ git clone https://github.com/prl-mushr/MUSHR-DL.git
 </span></span></code></pre></div><p>Dependencies:
-The remaining dependencies can be installed by running</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ <span class="nb">cd</span> MUSHR-DL
-</span></span><span class="line"><span class="cl">$ pip3 install -r requirements.txt
-</span></span></code></pre></div><h3 id="running-the-examples">Running the examples:</h3>
-<h4 id="running-the-simulator">Running the simulator:</h4>
-<p>Find the donkey_sim.exe or donkey_sim.x86_64 file (it will essentially be an application) within the DonkeySim directory. On Linux, you&rsquo;ll have to give permission for the execution to this application. You can do this by entering the following command in the terminal:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ <span class="nb">cd</span> DonkeySim
-</span></span><span class="line"><span class="cl">$ sudo chmod +x donkey_sim.x86_64
-</span></span></code></pre></div><p>Now double click on it to start the simulator. Right now, the simulator is running in stand-alone mode. Your screen should look something like this:</p>
-<figure><img src="/tutorials/MUSHR-DL/main_menu.PNG" width="400"/>
-</figure>
-
-<p>Click on the box with &ldquo;Generated road&rdquo; caption. You should see something like this:</p>
-<figure><img src="/tutorials/MUSHR-DL/standalone.PNG" width="400"/>
-</figure>
-
-<p>Note that each time you start the generated track, you will get a different track layout. This is useful for producing a rich dataset for training. The donkey sim by default allows you to record steering and image data. However, we won&rsquo;t be using this feature.</p>
-<figure><img src="/tutorials/MUSHR-DL/driving_standalone.PNG" width="400"/>
-</figure>
-
-<p>Driving the car with the keyboard should give you a feel for the dynamics of the car. Drive till you&rsquo;re content, then click on &ldquo;STOP&rdquo; on the top right corner. You can try out other environments or quit the simulator at this point.</p>
-<h3 id="reinforcement-learning">Reinforcement Learning:</h3>
-<p>The reinforcement learning example is already provided by the gym-donkey car package. The aforementioned package provides an open-AI-gym interface for training and inference.</p>
-<p><strong>Training:</strong>
-a) Start the simulator by double-clicking it.</p>
-<p>b) Execute the following commands in the terminal:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ <span class="nb">cd</span> DonkeySim
-</span></span><span class="line"><span class="cl">$ python3 gym-donkeycar/examples/reinforcement_learning/ddqn.py
-</span></span></code></pre></div><p>It is possible to start the simulator by passing an argument as well but it&rsquo;s not the most user-friendly method, so it has been omitted for the sake of simplicity.</p>
-<p>You can expect the car to start moving erratically and resetting to its initial position every time it hits something or crosses the lane boundary like so:</p>
-<figure>
-<video width="800" muted autoplay loop>
-  <source src="/tutorials/MUSHR-DL/RL.mp4" type="video/mp4" />
-</video>
-
-
-
-</figure>
-
-<p>The trained model is saved as &ldquo;rl_driver.h5&rdquo; in the \MUSHR-DL\gym-donkeycar\examples\reinforcement_learning directory. The training can be aborted at any time by pressing &ldquo;Ctrl+C&rdquo;. The model is saved after each episode (an episode lasts until the car hits something or crosses the lane).</p>
-<p><strong>Testing:</strong>
-You can test your model with the following command:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ <span class="nb">cd</span> DonkeySim
-</span></span><span class="line"><span class="cl">$ python3 gym-donkeycar/examples/reinforcement_learning/ddqn.py --test
-</span></span></code></pre></div><h3 id="imitation-learning">Imitation Learning:</h3>
-<p>Imitation learning: Imitation learning involves 4 steps; data collection, post-processing, training, and testing. For collecting training data as well as for running the models, the same file &ldquo;run_sim.py&rdquo; needs to be run.</p>
-<ol>
-<li>
-<p><strong>Collecting data</strong>:
+The remaining dependencies can be installed by running</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>$ <span class=nb>cd</span> MUSHR-DL
+</span></span><span class=line><span class=cl>$ pip3 install -r requirements.txt
+</span></span></code></pre></div><h3 id=running-the-examples>Running the examples:</h3><h4 id=running-the-simulator>Running the simulator:</h4><p>Find the donkey_sim.exe or donkey_sim.x86_64 file (it will essentially be an application) within the DonkeySim directory. On Linux, you&rsquo;ll have to give permission for the execution to this application. You can do this by entering the following command in the terminal:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>$ <span class=nb>cd</span> DonkeySim
+</span></span><span class=line><span class=cl>$ sudo chmod +x donkey_sim.x86_64
+</span></span></code></pre></div><p>Now double click on it to start the simulator. Right now, the simulator is running in stand-alone mode. Your screen should look something like this:</p><figure><img src=/tutorials/MUSHR-DL/main_menu.PNG width=400></figure><p>Click on the box with &ldquo;Generated road&rdquo; caption. You should see something like this:</p><figure><img src=/tutorials/MUSHR-DL/standalone.PNG width=400></figure><p>Note that each time you start the generated track, you will get a different track layout. This is useful for producing a rich dataset for training. The donkey sim by default allows you to record steering and image data. However, we won&rsquo;t be using this feature.</p><figure><img src=/tutorials/MUSHR-DL/driving_standalone.PNG width=400></figure><p>Driving the car with the keyboard should give you a feel for the dynamics of the car. Drive till you&rsquo;re content, then click on &ldquo;STOP&rdquo; on the top right corner. You can try out other environments or quit the simulator at this point.</p><h3 id=reinforcement-learning>Reinforcement Learning:</h3><p>The reinforcement learning example is already provided by the gym-donkey car package. The aforementioned package provides an open-AI-gym interface for training and inference.</p><p><strong>Training:</strong>
+a) Start the simulator by double-clicking it.</p><p>b) Execute the following commands in the terminal:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>$ <span class=nb>cd</span> DonkeySim
+</span></span><span class=line><span class=cl>$ python3 gym-donkeycar/examples/reinforcement_learning/ddqn.py
+</span></span></code></pre></div><p>It is possible to start the simulator by passing an argument as well but it&rsquo;s not the most user-friendly method, so it has been omitted for the sake of simplicity.</p><p>You can expect the car to start moving erratically and resetting to its initial position every time it hits something or crosses the lane boundary like so:</p><figure><video width=800 muted autoplay loop>
+<source src=/tutorials/MUSHR-DL/RL.mp4 type=video/mp4></video></figure><p>The trained model is saved as &ldquo;rl_driver.h5&rdquo; in the \MUSHR-DL\gym-donkeycar\examples\reinforcement_learning directory. The training can be aborted at any time by pressing &ldquo;Ctrl+C&rdquo;. The model is saved after each episode (an episode lasts until the car hits something or crosses the lane).</p><p><strong>Testing:</strong>
+You can test your model with the following command:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>$ <span class=nb>cd</span> DonkeySim
+</span></span><span class=line><span class=cl>$ python3 gym-donkeycar/examples/reinforcement_learning/ddqn.py --test
+</span></span></code></pre></div><h3 id=imitation-learning>Imitation Learning:</h3><p>Imitation learning: Imitation learning involves 4 steps; data collection, post-processing, training, and testing. For collecting training data as well as for running the models, the same file &ldquo;run_sim.py&rdquo; needs to be run.</p><ol><li><p><strong>Collecting data</strong>:
 For collecting data, first, start the simulator, then, using the command line (in the same directory), execute run_sim.py.
-Options available for this file are:</p>
-<p><em>dataset_name:</em>  A suffix that will be added to the standard dataset name. for example: MUSHR_320x240_test.npy, where &ldquo;test&rdquo; is the suffix</p>
-<p><em>model:</em>  Type of model: image to steering, image to bezier or image to image. This does not apply when collecting data</p>
-<p><em>test:</em>  Whether we&rsquo;re testing the model or not. It is False by default</p>
-<p><em>manual_control:</em>  How the car is driven manually. The default is to use the mouse for steering and throttle and use keyboard keys to record/
-abort and change driving mode (auto or manual).</p>
-<p><em>env_name:</em> Name of the environment that you want to be loaded in. The list can be seen by typing -h after the above command</p>
-<p>Enter the following command in the terminal/cmd after starting the simulator (don&rsquo;t select the environment manually, just double click the exe file and that’s it, the python script takes care of the rest):</p>
-</li>
-</ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ <span class="nb">cd</span> DonkeySim
-</span></span><span class="line"><span class="cl">$ python3 run_sim.py --dataset_name<span class="o">=</span>testing
-</span></span></code></pre></div><p>You will notice a similar interface as before:</p>
-<figure><img src="/tutorials/MUSHR-DL/driving_standalone.PNG" width="400"/>
-</figure>
-
-<p>However, you&rsquo;ll also notice that right as the environment is loaded, your mouse gets centered on the screen. Moving the mouse up and down will increase the throttle or apply brakes (or reverse the car if it has come to a halt already). Moving the mouse left will turn the steering left and vice-versa. Small mouse movements should be sufficient to completely control both the throttle and the steering.</p>
-<p>Once you&rsquo;re confident in your driving ability with the mouse, you can start recording the data.
-Key bindings:</p>
-<p><strong>K:</strong> toggles recording (does not save the recording to the hard drive when recording is turned off)</p>
-<p><strong>O:</strong> aborts recording (and saves it to the hard drive in the same directory as MUSHR-DL) and shuts down the simulator. It can also shut down the simulator even if recording has not started; its essentially an abort button)</p>
-<p><strong>M:</strong> enables manual steering control</p>
-<p><strong>A:</strong> enables autonomous steering control (if neural net model exits)</p>
-<p>The last two key bindings are not relevant for data collection, so just pay attention to the first two keys for now.</p>
-<h5 id="note-2">Note:</h5>
-<p>If you&rsquo;re running this tutorial on python version &lt;3.6, you may get an error related to the screeninfo package. In that case, open the file MUSHR-DL/key_check.py and remove all the lines related to screeninfo and set <strong>screen_width</strong> and <strong>screen_height</strong> to the pixel width and height of your monitor</p>
-<ol start="2">
-<li>
-<p><strong>Post-processing</strong>:
-The next step is to run post-processing on the collected data: post-processing involves, at minimum, shuffling of the data, and creation of the labels for each image.</p>
-<p>Options available for this file are:</p>
-<p><em>dataset_name:</em> The output file will have the name MUSHR_320x240_shuffled_dataset_name.npy.</p>
-<p><em>model:</em> Type of model to create the dataset for (for now we&rsquo;ll only consider steering).</p>
-</li>
-</ol>
-<p>In this tutorial, we will create a dataset for training an image-to-steering network.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ <span class="nb">cd</span> DonkeySim/MUSHR-DL
-</span></span><span class="line"><span class="cl">$ python3 post_processing_mushr.py --dataset_name<span class="o">=</span><span class="nb">test</span> --model<span class="o">=</span>steering
-</span></span></code></pre></div><ol start="3">
-<li><strong>Training</strong>:
-Execute the following command to begin training the steering predicting model (assuming the dataset for steering prediction has been generated in the previous step):</li>
-</ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ <span class="nb">cd</span> DonkeySim/MUSHR-DL
-</span></span><span class="line"><span class="cl">$ python3 pytorch_img_to_steering_train.py --dataset_name<span class="o">=</span><span class="nb">test</span>
-</span></span></code></pre></div><p>the model will be saved with a preset name. The same model name is used in testing as well as the model running script, and so for the sake of the tutorial, the name should be left as is.</p>
-<p>Testing:
-The following command can be used to test the model. The printed numbers are the error (or difference) between the ground truth (human driver or supervisor&rsquo;s response to the input image) and the network output.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ python3 pytorch_img_to_steering_test.py --dataset_name<span class="o">=</span><span class="nb">test</span>
-</span></span></code></pre></div><ol start="4">
-<li><strong>Driving the car using the trained model</strong>:</li>
-</ol>
-<p>To use a model for driving the car (assuming that the model exists), start the simulator again by double-clicking the donkey_sim.exe/x86_64 and then run the following commands:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ <span class="nb">cd</span> DonkeySim/MUSHR-DL
-</span></span><span class="line"><span class="cl">$ python3 run_sim.py --test<span class="o">=</span>True --model<span class="o">=</span>steering --env_name<span class="o">=</span>MUSHR_benchmark
+Options available for this file are:</p><p><em>dataset_name:</em> A suffix that will be added to the standard dataset name. for example: MUSHR_320x240_test.npy, where &ldquo;test&rdquo; is the suffix</p><p><em>model:</em> Type of model: image to steering, image to bezier or image to image. This does not apply when collecting data</p><p><em>test:</em> Whether we&rsquo;re testing the model or not. It is False by default</p><p><em>manual_control:</em> How the car is driven manually. The default is to use the mouse for steering and throttle and use keyboard keys to record/
+abort and change driving mode (auto or manual).</p><p><em>env_name:</em> Name of the environment that you want to be loaded in. The list can be seen by typing -h after the above command</p><p>Enter the following command in the terminal/cmd after starting the simulator (don&rsquo;t select the environment manually, just double click the exe file and that’s it, the python script takes care of the rest):</p></li></ol><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>$ <span class=nb>cd</span> DonkeySim
+</span></span><span class=line><span class=cl>$ python3 run_sim.py --dataset_name<span class=o>=</span>testing
+</span></span></code></pre></div><p>You will notice a similar interface as before:</p><figure><img src=/tutorials/MUSHR-DL/driving_standalone.PNG width=400></figure><p>However, you&rsquo;ll also notice that right as the environment is loaded, your mouse gets centered on the screen. Moving the mouse up and down will increase the throttle or apply brakes (or reverse the car if it has come to a halt already). Moving the mouse left will turn the steering left and vice-versa. Small mouse movements should be sufficient to completely control both the throttle and the steering.</p><p>Once you&rsquo;re confident in your driving ability with the mouse, you can start recording the data.
+Key bindings:</p><p><strong>K:</strong> toggles recording (does not save the recording to the hard drive when recording is turned off)</p><p><strong>O:</strong> aborts recording (and saves it to the hard drive in the same directory as MUSHR-DL) and shuts down the simulator. It can also shut down the simulator even if recording has not started; its essentially an abort button)</p><p><strong>M:</strong> enables manual steering control</p><p><strong>A:</strong> enables autonomous steering control (if neural net model exits)</p><p>The last two key bindings are not relevant for data collection, so just pay attention to the first two keys for now.</p><h5 id=note-2>Note:</h5><p>If you&rsquo;re running this tutorial on python version &lt;3.6, you may get an error related to the screeninfo package. In that case, open the file MUSHR-DL/key_check.py and remove all the lines related to screeninfo and set <strong>screen_width</strong> and <strong>screen_height</strong> to the pixel width and height of your monitor</p><ol start=2><li><p><strong>Post-processing</strong>:
+The next step is to run post-processing on the collected data: post-processing involves, at minimum, shuffling of the data, and creation of the labels for each image.</p><p>Options available for this file are:</p><p><em>dataset_name:</em> The output file will have the name MUSHR_320x240_shuffled_dataset_name.npy.</p><p><em>model:</em> Type of model to create the dataset for (for now we&rsquo;ll only consider steering).</p></li></ol><p>In this tutorial, we will create a dataset for training an image-to-steering network.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>$ <span class=nb>cd</span> DonkeySim/MUSHR-DL
+</span></span><span class=line><span class=cl>$ python3 post_processing_mushr.py --dataset_name<span class=o>=</span><span class=nb>test</span> --model<span class=o>=</span>steering
+</span></span></code></pre></div><ol start=3><li><strong>Training</strong>:
+Execute the following command to begin training the steering predicting model (assuming the dataset for steering prediction has been generated in the previous step):</li></ol><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>$ <span class=nb>cd</span> DonkeySim/MUSHR-DL
+</span></span><span class=line><span class=cl>$ python3 pytorch_img_to_steering_train.py --dataset_name<span class=o>=</span><span class=nb>test</span>
+</span></span></code></pre></div><p>the model will be saved with a preset name. The same model name is used in testing as well as the model running script, and so for the sake of the tutorial, the name should be left as is.</p><p>Testing:
+The following command can be used to test the model. The printed numbers are the error (or difference) between the ground truth (human driver or supervisor&rsquo;s response to the input image) and the network output.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>$ python3 pytorch_img_to_steering_test.py --dataset_name<span class=o>=</span><span class=nb>test</span>
+</span></span></code></pre></div><ol start=4><li><strong>Driving the car using the trained model</strong>:</li></ol><p>To use a model for driving the car (assuming that the model exists), start the simulator again by double-clicking the donkey_sim.exe/x86_64 and then run the following commands:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>$ <span class=nb>cd</span> DonkeySim/MUSHR-DL
+</span></span><span class=line><span class=cl>$ python3 run_sim.py --test<span class=o>=</span>True --model<span class=o>=</span>steering --env_name<span class=o>=</span>MUSHR_benchmark
 </span></span></code></pre></div><p>The environment &ldquo;MUSHR_benchmark&rdquo; is a simpler, fixed environment that you can use to compare the performance of different networks.
-the model type is set to steering as we trained a simple image to steering prediction network.</p>
-<p>When the environment loads, you&rsquo;ll notice that you can still control the car manually with the mouse. To enable the neural net steering, press &ldquo;A&rdquo;. You will notice that the steering will now operate on its own and will not be affected by your mouse inputs. The throttle will still be in your control and so you will have to use the mouse to apply throttle.</p>
-<h1 id="implementation-details">Implementation details:</h1>
-<p>This section provides information on how the underlying code works and how one could test their own models within this framework. The RL pipeline is fairly straightforward and the steps for it have been provided <a href="https://github.com/tawnkramer/gym-donkeycar">here</a>, therefore, we can jump to the Imitation learning pipeline.</p>
-<h2 id="note-3">Note:</h2>
-<p>This section assumes that the reader is well versed with Python, NumPy, OpenCV, and has some understanding of pytorch (a high-level understanding is sufficient).</p>
-<p>As stated before, the imitation learning pipeline involves 4 steps, data recording, post-processing, training and finally running the trained model on real-time data (which can be considered as &ldquo;testing&rdquo;). For the purposes of data recording as well as running the model, we use the same script <a href="https://github.com/prl-mushr/MUSHR-DL/blob/master/run_sim.py">run_sim.py</a>, for post-processing, we use <a href="https://github.com/prl-mushr/MUSHR-DL/blob/master/post_processing_mushr.py">post_processing_mushr.py</a>, and for training, we use <a href="https://github.com/prl-mushr/MUSHR-DL/blob/master/pytorch_img_to_steer_train.py">pytorch_img_to_steering_train.py</a>.</p>
-<h2 id="simulator">Simulator:</h2>
-<p>Before we get to the code part, lets first quickly consider what we get from the simulator. The simulator provides the following state information about the car:</p>
-<ol>
-<li>Position (x,y,z): (x,y,z) position of the car relative to a predefined origin (note that the car does not start at 0,0,0)</li>
-<li>Speed (scalar): the absolute speed of the car</li>
-<li>Steering and throttle values</li>
-<li>Hit: whether the car has hit something</li>
-<li>Cross-track error (CTE): distance from the centerline of the track; this is useful for training RL agents</li>
-<li>Camera image(s): 3 images of size 320x320 with a horizontal field of view (fov) of 87 degrees. There are 3 cameras on the car, one camera pointing straight ahead, and the other two pointing towards the left and right at an angle of 15 degrees. The center camera image is RGB, while the other two are greyscale (but still have 3 color dimensions because the images are transferred in a png format, therefore necessitating the use of 3 color dimensions). To mimic the real camera characteristics on the MUSHR car, we need 320x240 pixel images (the actual camera has 87-degree horizontal fov and a 58-degree vertical fov, the simulator does not allow that, so this is a workaround to get the same fov as the real camera). After cropping the top and bottom 40 pixels from these images, you&rsquo;d get something like this (the images are from left to right in that order):</li>
-</ol>
-<img src="/tutorials/MUSHR-DL/left.png" width="200">
-<img src="/tutorials/MUSHR-DL/center.png" width="200">
-<img src="/tutorials/MUSHR-DL/right.png" width="200">
-<h2 id="main-script">Main script:</h2>
-<p>The main script &ldquo;run_sim.py&rdquo; performs the following tasks:</p>
-<ol>
-<li>Selects the desired environment in the simulator,</li>
-<li>Communicates with the simulator (in a client-server manner, where the simulator is the server)</li>
-<li>Collects and saves training data</li>
-<li>Runs the Imitation learning models</li>
-<li>Recording analysis data (this is useful for comparing different models)</li>
-</ol>
-<p>The main script is actually a modified version of this <a href="https://github.com/tawnkramer/sdsandbox/blob/master/src/test_client.py">script</a> from the donkey simulator source code.</p>
-<h3 id="the-interface-script">The interface script:</h3>
-<p>The main script (run_sim.py) defines a class <a href="https://github.com/prl-mushr/MUSHR-DL/blob/master/run_sim.py#L17">SimpleClient</a>, which derives from the SDClient class. As far as we are concerned, the object of this class performs the job of getting and sending data using the functions <a href="https://github.com/prl-mushr/MUSHR-DL/blob/master/run_sim.py#L25">on_msg_recv</a> and <a href="https://github.com/prl-mushr/MUSHR-DL/blob/master/run_sim.py#L57">send_controls</a> respectively. We don&rsquo;t have to call these functions to pass or get the values. They are called automatically and asynchronously, therefore we merely need to create class members that can be used within these functions to set or get the required data.</p>
-<h3 id="the-car-specific-script">The car-specific script:</h3>
-<p>In order to avoid chaos, we create a separate module called <a href="https://github.com/prl-mushr/MUSHR-DL/blob/master/CAR.py">CAR.py</a> which defines a class called <a href="https://github.com/prl-mushr/MUSHR-DL/blob/master/CAR.py#L11">driver</a>, which contains all the variables related to the car itself; the state (position, speed, steering, throttle, image) as well as other information which may be useful such as the wheelbase of the car and status flags for whether the data is being recorded or not.
-<figure><img src="/tutorials/MUSHR-DL/class_driver.PNG" width="500"/>
-</figure>
-</p>
-<p>In the SimpleClient class inside run_sim.py, we create an <a href="https://github.com/prl-mushr/MUSHR-DL/blob/master/run_sim.py#L23">object</a> of the &ldquo;driver&rdquo; class and call the <a href="https://github.com/prl-mushr/MUSHR-DL/blob/master/CAR.py#L83">update_state</a> function in the <a href="https://github.com/prl-mushr/MUSHR-DL/blob/master/run_sim.py#L50">on_msg_recv</a> function. This function is the core of the driver class, as it updates the state of the car and records the data. Note that it records the state of the car along with all the 3 camera images (grayscale). The data is appended to a list, which is then saved as NumPy array by the main script (run_sim.py)</p>
-<p>Within the same script, in the init function you will find variables for <a href="https://github.com/prl-mushr/MUSHR-DL/blob/master/CAR.py#L26">input</a> and the <a href="https://github.com/prl-mushr/MUSHR-DL/blob/master/CAR.py#L41">Neural net</a> being defined. These are objects that are responsible for updating the control commands. The main functions of these objects are run in a separate thread to allow asynchronous operation.</p>
-<h3 id="commandcontrol-scripts">Command/Control scripts:</h3>
-<h4 id="manual-control">Manual control:</h4>
-<p>The control inputs are captured by the object of class <a href="https://github.com/prl-mushr/MUSHR-DL/blob/master/controller.py#L14">keyboard_input</a>. This class further makes use of the key_check module which further uses pynput library for getting the keyboard strokes and mouse inputs. The job of this module is to act as a middle-man so that the key bindings may be modified in the future.</p>
-<h4 id="autonomous-control">Autonomous control</h4>
-<p>The imitation learning model (or any autonomous approach based model) is run using the object of class <a href="https://github.com/prl-mushr/MUSHR-DL/blob/master/model_runner.py">model_runner</a>. The <a href="https://github.com/prl-mushr/MUSHR-DL/blob/master/model_runner.py#L54">update_model_input</a> is used for getting the data, while the <a href="https://github.com/prl-mushr/MUSHR-DL/blob/master/model_runner.py#L67">run_model</a> is used for processing the input asynchronously.</p>
-<p>The overall structure of all these modules looks like this:
-<figure><img src="/tutorials/MUSHR-DL/flowchart.png" width="300"/>
-</figure>
-</p>
-<p>Going through these files should tell you how you could add your own methods (ideally, you should add your autonomous control code in the model_runner file).</p>
-<h2 id="the-model">The model:</h2>
-<p>The file <a href="https://github.com/prl-mushr/MUSHR-DL/blob/master/pytorch_model.py#L7">pytorch_model.py</a> provides an example model for controlling the steering angle with the input as an image. Feel free to play around with the architecture of the model. If you change the output type or dimensions, you&rsquo;ll have to do the same with the dataset as well and write your own code block for converting your output to a steering angle. The script contains 2 other models as examples to show how the model could be modified to output</p>
-<ol>
-<li>Parameters for a bezier curve trajectory that the car has to follow</li>
-<li>An image which displays the trajectory that the car has to follow</li>
-</ol>
-<p>The model is imported during training to the training script. This script is essentially a repository for all the models you create, which makes making complex models convenient as you could borrow and swap code blocks from other existing models fairly easily.</p>
-<h2 id="the-post-processing-script">The post-processing script:</h2>
-<p>The post_processing_mushr.py file is used for performing any and all post-processing on the data. We&rsquo;ll consider the post-processing approach for the steering data in the <a href="https://github.com/prl-mushr/MUSHR-DL/blob/master/model_runner.py#L67">create_steering_data</a> function. The variable &lsquo;N&rsquo; is for controlling the frames that you want to exclude; for instance, if the recording was stopped due to some glitch or a driver error, the driver error would also be recorded in the last 1 second (last 15 frames). The model we have here expects a 320x240x1 image as input and produces a 2x1 output. The output essentially represents how much the model thinks the car should go left and how much it should go right. If both numbers are 0.5 and 0.5, the net steering angle would be 0.</p>
-<p>The purpose of the function is to convert the single steering angle value between -1 and 1 to 2 variables representing left or right. You could design your own custom functions for a different kind of output (for example, a 30x1 array where each entry represents a steering angle between +/-15 degrees). For the camera images looking 15 degrees away from the center, add or remove 10 degrees of steering angle before converting to a 2x1 format. Finally, shuffle the data and then save it.</p>
-<p>The same file includes 2 other functions for utilizing a different approach towards imitation learning. The first is to predict the trajectory of the car as a bezier curve up to some distance into the future. The other is to predict the trajectory of the car in the image plane itself and then make the car follow that trajectory. These other functions should show you how you could create datasets that require action-sequence preservation (with shuffling). The shuffling step is common across all approaches.</p>
-<h2 id="the-training-script">The training script:</h2>
-<p>The <a href="https://github.com/prl-mushr/MUSHR-DL/blob/master/pytorch_img_to_steer_train.py">pytorch_img_to_steer_train.py</a> shows how the image-to-steering model can be trained. Here we assume that the model has already been defined and accepts a 320x240x1 image (or Tensor) and spits out a 2x1 output. The <a href="https://github.com/prl-mushr/MUSHR-DL/blob/master/pytorch_high_level.py">pytorch_high_level.py</a> module provides a high-level interface for training any model.</p>
-<p>If you create a model with different outputs, like the Bezier or image-to-image model, you will have to write your own code for converting the model&rsquo;s output into control commands. The scripts mentioned here can be used as a template for you to make your own scripts.</p>
-
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="strip strip-primary-gradient-top-bottom">
-  <div class="container pt-3 pb-3 pt-md-6 pb-md-3 px-2">
-    <div class="row justify-content-left citation-row">
-      <h1 id="citation">Citation</h1>
-      <p>
-  If you plan to use any part of the the MuSHR platform (including tutorials, codebase, or hardware instructions) for a project or paper, please cite
-  <em><a href="https://arxiv.org/abs/1908.08031">MuSHR: A Low-Cost, Open-Source Robotic Racecar for Education and Research</a></em>.
-</p>
-
-<div class="highlight"><pre class="chroma">@article{srinivasa2019mushr,
+the model type is set to steering as we trained a simple image to steering prediction network.</p><p>When the environment loads, you&rsquo;ll notice that you can still control the car manually with the mouse. To enable the neural net steering, press &ldquo;A&rdquo;. You will notice that the steering will now operate on its own and will not be affected by your mouse inputs. The throttle will still be in your control and so you will have to use the mouse to apply throttle.</p><h1 id=implementation-details>Implementation details:</h1><p>This section provides information on how the underlying code works and how one could test their own models within this framework. The RL pipeline is fairly straightforward and the steps for it have been provided <a href=https://github.com/tawnkramer/gym-donkeycar>here</a>, therefore, we can jump to the Imitation learning pipeline.</p><h2 id=note-3>Note:</h2><p>This section assumes that the reader is well versed with Python, NumPy, OpenCV, and has some understanding of pytorch (a high-level understanding is sufficient).</p><p>As stated before, the imitation learning pipeline involves 4 steps, data recording, post-processing, training and finally running the trained model on real-time data (which can be considered as &ldquo;testing&rdquo;). For the purposes of data recording as well as running the model, we use the same script <a href=https://github.com/prl-mushr/MUSHR-DL/blob/master/run_sim.py>run_sim.py</a>, for post-processing, we use <a href=https://github.com/prl-mushr/MUSHR-DL/blob/master/post_processing_mushr.py>post_processing_mushr.py</a>, and for training, we use <a href=https://github.com/prl-mushr/MUSHR-DL/blob/master/pytorch_img_to_steer_train.py>pytorch_img_to_steering_train.py</a>.</p><h2 id=simulator>Simulator:</h2><p>Before we get to the code part, lets first quickly consider what we get from the simulator. The simulator provides the following state information about the car:</p><ol><li>Position (x,y,z): (x,y,z) position of the car relative to a predefined origin (note that the car does not start at 0,0,0)</li><li>Speed (scalar): the absolute speed of the car</li><li>Steering and throttle values</li><li>Hit: whether the car has hit something</li><li>Cross-track error (CTE): distance from the centerline of the track; this is useful for training RL agents</li><li>Camera image(s): 3 images of size 320x320 with a horizontal field of view (fov) of 87 degrees. There are 3 cameras on the car, one camera pointing straight ahead, and the other two pointing towards the left and right at an angle of 15 degrees. The center camera image is RGB, while the other two are greyscale (but still have 3 color dimensions because the images are transferred in a png format, therefore necessitating the use of 3 color dimensions). To mimic the real camera characteristics on the MUSHR car, we need 320x240 pixel images (the actual camera has 87-degree horizontal fov and a 58-degree vertical fov, the simulator does not allow that, so this is a workaround to get the same fov as the real camera). After cropping the top and bottom 40 pixels from these images, you&rsquo;d get something like this (the images are from left to right in that order):</li></ol><img src=/tutorials/MUSHR-DL/left.png width=200>
+<img src=/tutorials/MUSHR-DL/center.png width=200>
+<img src=/tutorials/MUSHR-DL/right.png width=200><h2 id=main-script>Main script:</h2><p>The main script &ldquo;run_sim.py&rdquo; performs the following tasks:</p><ol><li>Selects the desired environment in the simulator,</li><li>Communicates with the simulator (in a client-server manner, where the simulator is the server)</li><li>Collects and saves training data</li><li>Runs the Imitation learning models</li><li>Recording analysis data (this is useful for comparing different models)</li></ol><p>The main script is actually a modified version of this <a href=https://github.com/tawnkramer/sdsandbox/blob/master/src/test_client.py>script</a> from the donkey simulator source code.</p><h3 id=the-interface-script>The interface script:</h3><p>The main script (run_sim.py) defines a class <a href=https://github.com/prl-mushr/MUSHR-DL/blob/master/run_sim.py#L17>SimpleClient</a>, which derives from the SDClient class. As far as we are concerned, the object of this class performs the job of getting and sending data using the functions <a href=https://github.com/prl-mushr/MUSHR-DL/blob/master/run_sim.py#L25>on_msg_recv</a> and <a href=https://github.com/prl-mushr/MUSHR-DL/blob/master/run_sim.py#L57>send_controls</a> respectively. We don&rsquo;t have to call these functions to pass or get the values. They are called automatically and asynchronously, therefore we merely need to create class members that can be used within these functions to set or get the required data.</p><h3 id=the-car-specific-script>The car-specific script:</h3><p>In order to avoid chaos, we create a separate module called <a href=https://github.com/prl-mushr/MUSHR-DL/blob/master/CAR.py>CAR.py</a> which defines a class called <a href=https://github.com/prl-mushr/MUSHR-DL/blob/master/CAR.py#L11>driver</a>, which contains all the variables related to the car itself; the state (position, speed, steering, throttle, image) as well as other information which may be useful such as the wheelbase of the car and status flags for whether the data is being recorded or not.<figure><img src=/tutorials/MUSHR-DL/class_driver.PNG width=500></figure></p><p>In the SimpleClient class inside run_sim.py, we create an <a href=https://github.com/prl-mushr/MUSHR-DL/blob/master/run_sim.py#L23>object</a> of the &ldquo;driver&rdquo; class and call the <a href=https://github.com/prl-mushr/MUSHR-DL/blob/master/CAR.py#L83>update_state</a> function in the <a href=https://github.com/prl-mushr/MUSHR-DL/blob/master/run_sim.py#L50>on_msg_recv</a> function. This function is the core of the driver class, as it updates the state of the car and records the data. Note that it records the state of the car along with all the 3 camera images (grayscale). The data is appended to a list, which is then saved as NumPy array by the main script (run_sim.py)</p><p>Within the same script, in the init function you will find variables for <a href=https://github.com/prl-mushr/MUSHR-DL/blob/master/CAR.py#L26>input</a> and the <a href=https://github.com/prl-mushr/MUSHR-DL/blob/master/CAR.py#L41>Neural net</a> being defined. These are objects that are responsible for updating the control commands. The main functions of these objects are run in a separate thread to allow asynchronous operation.</p><h3 id=commandcontrol-scripts>Command/Control scripts:</h3><h4 id=manual-control>Manual control:</h4><p>The control inputs are captured by the object of class <a href=https://github.com/prl-mushr/MUSHR-DL/blob/master/controller.py#L14>keyboard_input</a>. This class further makes use of the key_check module which further uses pynput library for getting the keyboard strokes and mouse inputs. The job of this module is to act as a middle-man so that the key bindings may be modified in the future.</p><h4 id=autonomous-control>Autonomous control</h4><p>The imitation learning model (or any autonomous approach based model) is run using the object of class <a href=https://github.com/prl-mushr/MUSHR-DL/blob/master/model_runner.py>model_runner</a>. The <a href=https://github.com/prl-mushr/MUSHR-DL/blob/master/model_runner.py#L54>update_model_input</a> is used for getting the data, while the <a href=https://github.com/prl-mushr/MUSHR-DL/blob/master/model_runner.py#L67>run_model</a> is used for processing the input asynchronously.</p><p>The overall structure of all these modules looks like this:<figure><img src=/tutorials/MUSHR-DL/flowchart.png width=300></figure></p><p>Going through these files should tell you how you could add your own methods (ideally, you should add your autonomous control code in the model_runner file).</p><h2 id=the-model>The model:</h2><p>The file <a href=https://github.com/prl-mushr/MUSHR-DL/blob/master/pytorch_model.py#L7>pytorch_model.py</a> provides an example model for controlling the steering angle with the input as an image. Feel free to play around with the architecture of the model. If you change the output type or dimensions, you&rsquo;ll have to do the same with the dataset as well and write your own code block for converting your output to a steering angle. The script contains 2 other models as examples to show how the model could be modified to output</p><ol><li>Parameters for a bezier curve trajectory that the car has to follow</li><li>An image which displays the trajectory that the car has to follow</li></ol><p>The model is imported during training to the training script. This script is essentially a repository for all the models you create, which makes making complex models convenient as you could borrow and swap code blocks from other existing models fairly easily.</p><h2 id=the-post-processing-script>The post-processing script:</h2><p>The post_processing_mushr.py file is used for performing any and all post-processing on the data. We&rsquo;ll consider the post-processing approach for the steering data in the <a href=https://github.com/prl-mushr/MUSHR-DL/blob/master/model_runner.py#L67>create_steering_data</a> function. The variable &lsquo;N&rsquo; is for controlling the frames that you want to exclude; for instance, if the recording was stopped due to some glitch or a driver error, the driver error would also be recorded in the last 1 second (last 15 frames). The model we have here expects a 320x240x1 image as input and produces a 2x1 output. The output essentially represents how much the model thinks the car should go left and how much it should go right. If both numbers are 0.5 and 0.5, the net steering angle would be 0.</p><p>The purpose of the function is to convert the single steering angle value between -1 and 1 to 2 variables representing left or right. You could design your own custom functions for a different kind of output (for example, a 30x1 array where each entry represents a steering angle between +/-15 degrees). For the camera images looking 15 degrees away from the center, add or remove 10 degrees of steering angle before converting to a 2x1 format. Finally, shuffle the data and then save it.</p><p>The same file includes 2 other functions for utilizing a different approach towards imitation learning. The first is to predict the trajectory of the car as a bezier curve up to some distance into the future. The other is to predict the trajectory of the car in the image plane itself and then make the car follow that trajectory. These other functions should show you how you could create datasets that require action-sequence preservation (with shuffling). The shuffling step is common across all approaches.</p><h2 id=the-training-script>The training script:</h2><p>The <a href=https://github.com/prl-mushr/MUSHR-DL/blob/master/pytorch_img_to_steer_train.py>pytorch_img_to_steer_train.py</a> shows how the image-to-steering model can be trained. Here we assume that the model has already been defined and accepts a 320x240x1 image (or Tensor) and spits out a 2x1 output. The <a href=https://github.com/prl-mushr/MUSHR-DL/blob/master/pytorch_high_level.py>pytorch_high_level.py</a> module provides a high-level interface for training any model.</p><p>If you create a model with different outputs, like the Bezier or image-to-image model, you will have to write your own code for converting the model&rsquo;s output into control commands. The scripts mentioned here can be used as a template for you to make your own scripts.</p></div></div></div></div></div><div class="strip strip-primary-gradient-top-bottom"><div class="container pt-3 pb-3 pt-md-6 pb-md-3 px-2"><div class="row justify-content-left citation-row"><h1 id=citation>Citation</h1><p>If you plan to use any part of the the MuSHR platform (including tutorials, codebase, or hardware instructions) for a project or paper, please cite
+<em><a href=https://arxiv.org/abs/1908.08031>MuSHR: A Low-Cost, Open-Source Robotic Racecar for Education and Research</a></em>.</p><div class=highlight><pre class=chroma>@article{srinivasa2019mushr,
  title={{MuSHR}: A Low-Cost, Open-Source Robotic Racecar for Education and Research},
  author={Srinivasa, Siddhartha S. and Lancaster, Patrick and Michalove, Johan and Schmittle, Matt and Summers, Colin and Rockett, Matthew and Smith, Joshua R. and Chouhury, Sanjiban and Mavrogiannis, Christoforos and Sadeghi, Fereshteh},
  journal={CoRR},
  volume={abs/1908.08031},
  year={2019}
 }
-</pre></div>
-
-<br/>
-
-    </div>
-  </div>
-</div>
-
-
-  </div>
-
-  <div class="footer">
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <div class="footer-inner">
-          <h3 class="footer-title">MuSHR: The UW Open Racecar Project</h3>
-          <ul>
-            
-            
-            <li class="menu-item-forum"><a href="https://github.com/prl-mushr/mushr/discussions">Community Forum</a></li>
-            
-            <li class="menu-item-contact"><a href="/contact/">Contact</a></li>
-            
-            <li class="menu-item-home"><a href="/">Home</a></li>
-            
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-  <div class="sub-footer">
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <div class="sub-footer-inner">
-          <ul>
-            
-          </ul>
-          <ul>
-            <li class="prl">Made with <font color="#FF1690">♥</font> at the <a href="https://personalrobotics.cs.washington.edu/">Personal Robotics Lab</a></li>
-          </ul>
-          <ul>
-            <li class="prl">Website by <a href="https://micha.love/"><font color="#36CDC4">Johan</font></a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-  
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/scripts.min.8504133605a277da18f0d58cfd2e90d154962f4a961543a6e2f0a459a2d05462.js"></script>
-  
-
-  
-
-
-
-
+</pre></div><br></div></div></div></div><div class=footer><div class=container><div class=row><div class=col-12><div class=footer-inner><h3 class=footer-title>MuSHR: The UW Open Racecar Project</h3><ul><li class=menu-item-forum><a href=https://github.com/prl-mushr/mushr/discussions>Community Forum</a></li><li class=menu-item-contact><a href=/contact/>Contact</a></li><li class=menu-item-home><a href=/>Home</a></li></ul></div></div></div></div></div><div class=sub-footer><div class=container><div class=row><div class=col-12><div class=sub-footer-inner><ul></ul><ul><li class=prl>Made with <font color=#FF1690>♥</font> at the <a href=https://personalrobotics.cs.washington.edu/>Personal Robotics Lab</a></li></ul><ul><li class=prl>Website by <a href=https://micha.love/><font color=#36CDC4>Johan</font></a></li></ul></div></div></div></div></div><script type=text/javascript src=/js/scripts.min.8504133605a277da18f0d58cfd2e90d154962f4a961543a6e2f0a459a2d05462.js></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-146151202-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-
-  function gtag() {
-    dataLayer.push(arguments);
-  }
-  gtag('js', new Date());
-  gtag('config', 'UA-146151202-1');
-</script>
-
-
-
-
-</body>
-
-</html>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","UA-146151202-1")</script></body></html>
