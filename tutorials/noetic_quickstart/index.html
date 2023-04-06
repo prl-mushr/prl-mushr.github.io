@@ -129,18 +129,18 @@
 <p>If on Linux, follow the <a href="https://docs.docker.com/engine/install/linux-postinstall/">post install</a> steps to make sure you can run Docker without root privileges.</p>
 <h2 id="installing-mushr-docker-container">Installing MuSHR Docker Container</h2>
 <p>Make <code>catkin_ws</code> where all the code will be.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ mkdir -p catkin_ws/src
-$ <span class="nb">cd</span> catkin_ws/src
-</code></pre></div><p>Clone the MuSHR repository <!--(TODO: `noetic` will be main soon) --></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ git clone --branch noetic https://github.com/prl-mushr/mushr.git
-</code></pre></div><p>Run the installation script. It will prompt you with two questions. For running the MuSHR simulator, the answers should be no, no. This will install a series of necessary packages, and create a script <code>mushr_noetic</code> in <code>/usr/local/bin</code> which initializes a docker container with all of the mushr configs installed. Note it attaches the <code>catkin_ws</code> volume so you can edit code outsideor inside the docker container. Other files made inside the docker container will not persist unless you commit (see FAQ).</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ ./mushr/mushr_utils/install/mushr_install.bash
-</code></pre></div><p>Close the terminal and open a new one. Then run</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ mushr_noetic
-</code></pre></div><p>This should start up the Docker container. (The first time running this command will take some time to download the Docker image.) If the prefix switches to <code>root</code>, the installation was successful. If not, please check the &ldquo;Troubleshooting&rdquo; section at the end of the tutorial.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ mkdir -p catkin_ws/src
+</span></span><span class="line"><span class="cl">$ <span class="nb">cd</span> catkin_ws/src
+</span></span></code></pre></div><p>Clone the MuSHR repository <!--(TODO: `noetic` will be main soon) --></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ git clone --branch noetic https://github.com/prl-mushr/mushr.git
+</span></span></code></pre></div><p>Run the installation script. It will prompt you with two questions. For running the MuSHR simulator, the answers should be no, no. This will install a series of necessary packages, and create a script <code>mushr_noetic</code> in <code>/usr/local/bin</code> which initializes a docker container with all of the mushr configs installed. Note it attaches the <code>catkin_ws</code> volume so you can edit code outsideor inside the docker container. Other files made inside the docker container will not persist unless you commit (see FAQ).</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ ./mushr/mushr_utils/install/mushr_install.bash
+</span></span></code></pre></div><p>Close the terminal and open a new one. Then run</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ mushr_noetic
+</span></span></code></pre></div><p>This should start up the Docker container. (The first time running this command will take some time to download the Docker image.) If the prefix switches to <code>root</code>, the installation was successful. If not, please check the &ldquo;Troubleshooting&rdquo; section at the end of the tutorial.</p>
 <p>In the same terminal (within the Docker container), build the MuSHR software stack.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">source</span> .bashrc <span class="o">&amp;&amp;</span> <span class="nb">cd</span> catkin_ws <span class="o">&amp;&amp;</span> catkin build
-</code></pre></div><h2 id="downloading-foxglove-studio">Downloading Foxglove Studio</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ <span class="nb">source</span> .bashrc <span class="o">&amp;&amp;</span> <span class="nb">cd</span> catkin_ws <span class="o">&amp;&amp;</span> catkin build
+</span></span></code></pre></div><h2 id="downloading-foxglove-studio">Downloading Foxglove Studio</h2>
 <p>Since we can run the MuSHR stack now, we can use Foxglove Studio to visualize our robot and map.</p>
 <p>First, download <a href="https://foxglove.dev/download">Foxglove Studio</a>. Foxglove is
 still in development and has many features that are added frequently, so make sure to download the most
@@ -152,22 +152,22 @@ recent version, or update it if you already have it downloaded.</p>
 </figure>
 </p>
 <p>Import the preset layout from:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">mushr/mushr_utils/foxglove/foxglove_layout.json
-</code></pre></div><p>Three panels should appear after selecting this layout, as pictured below. The left panel is for the data source, the central panel is for the map, and the right panel is for teleop driving.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mushr/mushr_utils/foxglove/foxglove_layout.json
+</span></span></code></pre></div><p>Three panels should appear after selecting this layout, as pictured below. The left panel is for the data source, the central panel is for the map, and the right panel is for teleop driving.</p>
 <figure><img src="/tutorials/noetic_quickstart/layout_example.png" width="700"/>
 </figure>
 
 <p>The layout can be edited with the <code>Add panel</code> button on the left sidebar if desired.</p>
 <h2 id="connecting-to-data-with-foxglove-studio">Connecting to Data With Foxglove Studio</h2>
 <p>Now that Foxglove is set up, we can connect the visualization to our Docker container ROS setup. Start the Docker container:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ mushr_noetic
-</code></pre></div><p>Once the <code>root</code> prompt appears, source <code>~/.bashrc</code>. Note that this does not occur automatically in the Docker container.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">source</span> ~/.bashrc
-</code></pre></div><p>In the same terminal, start up the simulator with the command:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ roslaunch mushr_sim teleop.launch
-</code></pre></div><p>After starting up, the simulator should print out a line similar to</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">Rosbridge WebSocket server started at ws://0.0.0.0:9090
-</code></pre></div><p>In Foxglove, click the top button in the sidebar, labeled <code>Data source</code>. Then select the Plus button in the left panel. This should open up an interface to connect to data.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ mushr_noetic
+</span></span></code></pre></div><p>Once the <code>root</code> prompt appears, source <code>~/.bashrc</code>. Note that this does not occur automatically in the Docker container.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ <span class="nb">source</span> ~/.bashrc
+</span></span></code></pre></div><p>In the same terminal, start up the simulator with the command:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ roslaunch mushr_sim teleop.launch
+</span></span></code></pre></div><p>After starting up, the simulator should print out a line similar to</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">Rosbridge WebSocket server started at ws://0.0.0.0:9090
+</span></span></code></pre></div><p>In Foxglove, click the top button in the sidebar, labeled <code>Data source</code>. Then select the Plus button in the left panel. This should open up an interface to connect to data.</p>
 <figure><img src="/tutorials/noetic_quickstart/data_panel.png" width="400"/>
 </figure>
 
@@ -182,10 +182,10 @@ recent version, or update it if you already have it downloaded.</p>
 <!-- TODO: Get robot model to appear & update image -->
 <h3 id="changing-the-map">Changing the map</h3>
 <p>The map can be changed by editing the following file:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">src/mushr_sim/launch/teleop.launch
-</code></pre></div><p>In this file, edit the line:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&#34;map&#34;</span> <span class="na">default=</span><span class="s">&#34;$(find mushr_sim)/maps/sandbox.yaml&#34;</span><span class="nt">/&gt;</span>
-</code></pre></div><p>to specify a different map. MuSHR provides some basic maps, but if you want to map your own space, try the <a href="/tutorials/mapping">SLAM Tutorial for MuSHR</a>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">src/mushr_sim/launch/teleop.launch
+</span></span></code></pre></div><p>In this file, edit the line:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&#34;map&#34;</span> <span class="na">default=</span><span class="s">&#34;$(find mushr_sim)/maps/sandbox.yaml&#34;</span><span class="nt">/&gt;</span>
+</span></span></code></pre></div><p>to specify a different map. MuSHR provides some basic maps, but if you want to map your own space, try the <a href="/tutorials/mapping">SLAM Tutorial for MuSHR</a>.</p>
 <!-- (TODO: provide instructions for overriding map from the command-line.) -->
 <h2 id="troubleshooting">Troubleshooting</h2>
 <h4 id="docker-error-while-fetching-server-api-version">Docker: Error while fetching server API version</h4>
@@ -195,20 +195,20 @@ recent version, or update it if you already have it downloaded.</p>
 <h4 id="wlan0-device-not-found">wlan0: Device not found</h4>
 <p>Edit the <code>.bashrc</code> file in the Docker container and manually set the <code>ROS_IP</code> to the IP of your Docker container.
 One way to find this is to run the following command:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ ifconfig
-</code></pre></div><p>After manually setting this value, make to source the <code>.bashrc</code> in the Docker container.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">source</span> ~/.bashrc
-</code></pre></div><h4 id="error-get-httpsregistry-1dockeriov2-dial-tcp-lookup-registry-1dockerio-on-153-read-udp-142546-153-read-connection-refused">ERROR: Get <a href="https://registry-1.docker.io/v2/:">https://registry-1.docker.io/v2/:</a> dial tcp: lookup registry-1.docker.io on [::1]:53: read udp [::1]:42546-&gt;[::1]:53: read: connection refused</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ ifconfig
+</span></span></code></pre></div><p>After manually setting this value, make to source the <code>.bashrc</code> in the Docker container.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ <span class="nb">source</span> ~/.bashrc
+</span></span></code></pre></div><h4 id="error-get-httpsregistry-1dockeriov2-dial-tcp-lookup-registry-1dockerio-on-153-read-udp-142546-153-read-connection-refused">ERROR: Get <a href="https://registry-1.docker.io/v2/">https://registry-1.docker.io/v2/</a>: dial tcp: lookup registry-1.docker.io on [::1]:53: read udp [::1]:42546-&gt;[::1]:53: read: connection refused</h4>
 <p>This error seems to stem from a <a href="https://github.com/docker/cli/issues/2618">nameserver issue</a>. Add the following to <code>/etc/resolv.conf</code></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">nameserver 8.8.8.8
-nameserver 8.8.4.4
-</code></pre></div><h2 id="faq">FAQ</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nameserver 8.8.8.8
+</span></span><span class="line"><span class="cl">nameserver 8.8.4.4
+</span></span></code></pre></div><h2 id="faq">FAQ</h2>
 <h4 id="i-installed-some-packages-in-my-docker-container-how-can-i-save-them-for-next-time-i-run-mushr_noetic">I installed some packages in my docker container, how can I &ldquo;save&rdquo; them for next time I run <code>mushr_noetic</code></h4>
 <p>You can save this using the <code>docker commit</code> command. First find your container ID</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ docker ps
-</code></pre></div><p>It should be the only one or the one with <code>mushr/mushr:XXX</code> under the image name (XXX different on different systems). Now commit the CONTAINER ID to the IMAGE name. For example:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ docker commit de878d464895 mushr/mushr:x86_64
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ docker ps
+</span></span></code></pre></div><p>It should be the only one or the one with <code>mushr/mushr:XXX</code> under the image name (XXX different on different systems). Now commit the CONTAINER ID to the IMAGE name. For example:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ docker commit de878d464895 mushr/mushr:x86_64
+</span></span></code></pre></div>
         </div>
       </div>
     </div>
@@ -290,7 +290,7 @@ nameserver 8.8.4.4
   
 
   
-  <script type="text/javascript" src="/js/scripts.min.98ee06cc35517b5800b382aecb0fc59893e95b9c11dd21842d0d57e4f68043e3.js"></script>
+  <script type="text/javascript" src="/js/scripts.min.8504133605a277da18f0d58cfd2e90d154962f4a961543a6e2f0a459a2d05462.js"></script>
   
 
   

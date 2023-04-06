@@ -129,28 +129,28 @@ survey the area to be mapped.</p>
 <h3 id="ssh-into-the-car">Ssh into the car</h3>
 <p>Boot up the car and connect the controller.</p>
 <p>Ssh into the car on your computer, using the following command while connected to the ROBOT_AP network.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ ssh robot@10.42.0.1 -X
-</code></pre></div><p>Or, if you set up Wifi connect in the <a href="/tutorials/first_steps">first steps</a> tutorial, use the following command while connected to the same wifi network as your robot. Replace the IP listed below with the IP of your robot.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ ssh robot@172.16.77.37 -X
-</code></pre></div><h3 id="updateinstall-gmapping">Update/Install gmapping</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ ssh robot@10.42.0.1 -X
+</span></span></code></pre></div><p>Or, if you set up Wifi connect in the <a href="/tutorials/first_steps">first steps</a> tutorial, use the following command while connected to the same wifi network as your robot. Replace the IP listed below with the IP of your robot.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ ssh robot@172.16.77.37 -X
+</span></span></code></pre></div><h3 id="updateinstall-gmapping">Update/Install gmapping</h3>
 <p>In a terminal sshed into the car using the above steps, make sure gmapping is installed.</p>
 <p>If you installed ros-kinetic in the quickstart tutorial:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ sudo apt install ros-kinetic-gmapping
-</code></pre></div><p>If you installed ros-melodic in the quickstart tutorial:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ sudo apt install ros-melodic-gmapping
-</code></pre></div><h3 id="start-teleop-and-gmapping">Start teleop and gmapping</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ sudo apt install ros-kinetic-gmapping
+</span></span></code></pre></div><p>If you installed ros-melodic in the quickstart tutorial:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ sudo apt install ros-melodic-gmapping
+</span></span></code></pre></div><h3 id="start-teleop-and-gmapping">Start teleop and gmapping</h3>
 <p>Once you have sshed into the car, start teleop (on the car) to start the laser scanner and control the car.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ roslaunch mushr_base teleop.launch
-</code></pre></div><p>Verify that the controller is working and you can move the car. If not, try reconnecting the controller and/or restarting teleop.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ roslaunch mushr_base teleop.launch
+</span></span></code></pre></div><p>Verify that the controller is working and you can move the car. If not, try reconnecting the controller and/or restarting teleop.</p>
 <p>In a separate terminal sshed into the robot, using the above process, set <code>ROS_IP</code> to the IP of your robot, then start slam (also on the robot). Slam will take the data gathered from the laser scanner started by teleop and transform that into a 2D map.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">export</span> <span class="nv">ROS_IP</span><span class="o">=</span>CAR-IP
-$ roslaunch mushr_base slam.launch
-</code></pre></div><h3 id="start-rviz-to-visualize-the-map-building">Start rviz to visualize the map building</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ <span class="nb">export</span> <span class="nv">ROS_IP</span><span class="o">=</span>CAR-IP
+</span></span><span class="line"><span class="cl">$ roslaunch mushr_base slam.launch
+</span></span></code></pre></div><h3 id="start-rviz-to-visualize-the-map-building">Start rviz to visualize the map building</h3>
 <p>In a terminal on your computer (not ssh-ed into the robot), set <code>ROS_IP</code> to your computer&rsquo;s IP and <code>ROS_MASTER_URI</code> to the IP of the car, and then start rviz.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">export</span> <span class="nv">ROS_IP</span><span class="o">=</span>COMPUTER-IP
-$ <span class="nb">export</span> <span class="nv">ROS_MASTER_URI</span><span class="o">=</span>http://ROBOT_IP:11311
-$ rviz
-</code></pre></div><p>Most likely, you will not see the map your car is creating. In order to see it, make sure the <code>/car/map</code> topic is added to the left sidebar (different from the /map/ topic!). If it is not, you will need to add it manually. Next, set the Fixed Frame value in the Displays &gt; Global Options menu in rviz to /car/map/ instead of /map/. Now, the car should be postioned in the map (see screenshot below). The map will dynamically update and refine as the laser scanner gathers new data.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ <span class="nb">export</span> <span class="nv">ROS_IP</span><span class="o">=</span>COMPUTER-IP
+</span></span><span class="line"><span class="cl">$ <span class="nb">export</span> <span class="nv">ROS_MASTER_URI</span><span class="o">=</span>http://ROBOT_IP:11311
+</span></span><span class="line"><span class="cl">$ rviz
+</span></span></code></pre></div><p>Most likely, you will not see the map your car is creating. In order to see it, make sure the <code>/car/map</code> topic is added to the left sidebar (different from the /map/ topic!). If it is not, you will need to add it manually. Next, set the Fixed Frame value in the Displays &gt; Global Options menu in rviz to /car/map/ instead of /map/. Now, the car should be postioned in the map (see screenshot below). The map will dynamically update and refine as the laser scanner gathers new data.</p>
 <p><figure><img src="/tutorials/mapping/start_map_large.png" width="400"/>
 </figure>
 
@@ -160,18 +160,18 @@ $ rviz
 <h3 id="save-the-map">Save the map</h3>
 <p>When you&rsquo;re satisfied with the map in rviz, you can save it to your computer using the following steps.</p>
 <p>In a local terminal, ensure <code>ROS_IP</code> is set to your computer&rsquo;s IP and <code>ROS_MASTER_URI</code> is set to the IP of the car. Then, in that terminal, run map_saver using the following command, replacing <code>map_name</code> with the desired name of the map.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">export</span> <span class="nv">ROS_IP</span><span class="o">=</span>COMPUTER-IP
-$ <span class="nb">export</span> <span class="nv">ROS_MASTER_URI</span><span class="o">=</span>http://ROBOT_IP:11311
-$ rosrun map_server map_saver -f map_name map:<span class="o">=</span>/car/map
-</code></pre></div><p>This should create a .pgm file with the map and a .yaml file with the map metadata.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ <span class="nb">export</span> <span class="nv">ROS_IP</span><span class="o">=</span>COMPUTER-IP
+</span></span><span class="line"><span class="cl">$ <span class="nb">export</span> <span class="nv">ROS_MASTER_URI</span><span class="o">=</span>http://ROBOT_IP:11311
+</span></span><span class="line"><span class="cl">$ rosrun map_server map_saver -f map_name map:<span class="o">=</span>/car/map
+</span></span></code></pre></div><p>This should create a .pgm file with the map and a .yaml file with the map metadata.</p>
 <h3 id="using-the-map">Using the map</h3>
 <h4 id="on-the-sim">On the sim</h4>
 <p>To load your new map into the simulator, move both files to <code>~/catkin_ws/src/mushr/mushr_base/mushr_base/mushr_base/maps/</code>, replacing map_name with the name of your map.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ mv map_name.pgm ~/catkin_ws/src/mushr/mushr_base/mushr_base/mushr_base/maps/
-$ mv map_name.yaml ~/catkin_ws/src/mushr/mushr_base/mushr_base/mushr_base/maps/
-</code></pre></div><p>Then, edit <code>~/catkin_ws/src/mushr/mushr_base/mushr_base/mushr_base/launch/includes/map_server.launch</code> to set the map to the name of the .yaml file.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ nano ~/catkin_ws/src/mushr/mushr_base/mushr_base/mushr_base/launch/includes/map_server.launch
-</code></pre></div><p>It should look like the following, replacing map_name with the name of your map.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ mv map_name.pgm ~/catkin_ws/src/mushr/mushr_base/mushr_base/mushr_base/maps/
+</span></span><span class="line"><span class="cl">$ mv map_name.yaml ~/catkin_ws/src/mushr/mushr_base/mushr_base/mushr_base/maps/
+</span></span></code></pre></div><p>Then, edit <code>~/catkin_ws/src/mushr/mushr_base/mushr_base/mushr_base/launch/includes/map_server.launch</code> to set the map to the name of the .yaml file.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ nano ~/catkin_ws/src/mushr/mushr_base/mushr_base/mushr_base/launch/includes/map_server.launch
+</span></span></code></pre></div><p>It should look like the following, replacing map_name with the name of your map.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -180,24 +180,24 @@ $ mv map_name.yaml ~/catkin_ws/src/mushr/mushr_base/mushr_base/mushr_base/maps/
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="o">&lt;</span><span class="n">launch</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="n">arg</span> <span class="n">name</span><span class="o">=</span><span class="s2">&#34;map&#34;</span> <span class="n">default</span><span class="o">=</span><span class="s2">&#34;$(find mushr_base)/maps/map_name.yaml&#34;</span> <span class="o">/&gt;</span>
-    <span class="o">&lt;</span><span class="n">node</span> <span class="n">pkg</span><span class="o">=</span><span class="s2">&#34;map_server&#34;</span> <span class="n">name</span><span class="o">=</span><span class="s2">&#34;map_server&#34;</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&#34;map_server&#34;</span> <span class="n">args</span><span class="o">=</span><span class="s2">&#34;$(arg map)&#34;</span> <span class="o">/&gt;</span>
-<span class="o">&lt;/</span><span class="n">launch</span><span class="o">&gt;</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="o">&lt;</span><span class="n">launch</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;</span><span class="n">arg</span> <span class="n">name</span><span class="o">=</span><span class="s2">&#34;map&#34;</span> <span class="n">default</span><span class="o">=</span><span class="s2">&#34;$(find mushr_base)/maps/map_name.yaml&#34;</span> <span class="o">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;</span><span class="n">node</span> <span class="n">pkg</span><span class="o">=</span><span class="s2">&#34;map_server&#34;</span> <span class="n">name</span><span class="o">=</span><span class="s2">&#34;map_server&#34;</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&#34;map_server&#34;</span> <span class="n">args</span><span class="o">=</span><span class="s2">&#34;$(arg map)&#34;</span> <span class="o">/&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="o">&lt;/</span><span class="n">launch</span><span class="o">&gt;</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>Now, launch the sim to use your new map!</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ roslaunch mushr_sim teleop.launch
-</code></pre></div><p>In a new terminal, run rviz.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ rviz
-</code></pre></div><p>Your new map and the car should appear in the sim! If you don&rsquo;t see the map, make sure you are subscribed to the <code>/map</code> topic in the left sidebar. The map might not be in the center of the grid, and you may have to zoom out to see it.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ roslaunch mushr_sim teleop.launch
+</span></span></code></pre></div><p>In a new terminal, run rviz.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ rviz
+</span></span></code></pre></div><p>Your new map and the car should appear in the sim! If you don&rsquo;t see the map, make sure you are subscribed to the <code>/map</code> topic in the left sidebar. The map might not be in the center of the grid, and you may have to zoom out to see it.</p>
 <h4 id="on-the-car">On the car</h4>
 <p>To get the map from your computer to the robot, we need to use <code>scp</code>, replacing <code>map_name</code> with the name of your map and <code>ROBOT_IP</code> with the IP of your robot. From your computer, run the following from where you saved your maps:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ scp map_name.pgm robot@ROBOT_IP:~/catkin_ws/src/mushr/mushr_base/mushr_base/mushr_base/maps/
-$ scp map_name.yaml robot@ROBOT_IP:~/catkin_ws/src/mushr/mushr_base/mushr_base/mushr_base/maps/
-</code></pre></div><p>Then, edit <code>~/catkin_ws/src/mushr/mushr_base/mushr_base/mushr_base/launch/includes/map_server.launch</code> on the robot to set the map to the name of the .yaml file.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ nano ~/catkin_ws/src/mushr/mushr_base/mushr_base/mushr_base/launch/includes/map_server.launch
-</code></pre></div><p>It should look like the following, replacing map_name with the name of your map.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ scp map_name.pgm robot@ROBOT_IP:~/catkin_ws/src/mushr/mushr_base/mushr_base/mushr_base/maps/
+</span></span><span class="line"><span class="cl">$ scp map_name.yaml robot@ROBOT_IP:~/catkin_ws/src/mushr/mushr_base/mushr_base/mushr_base/maps/
+</span></span></code></pre></div><p>Then, edit <code>~/catkin_ws/src/mushr/mushr_base/mushr_base/mushr_base/launch/includes/map_server.launch</code> on the robot to set the map to the name of the .yaml file.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ nano ~/catkin_ws/src/mushr/mushr_base/mushr_base/mushr_base/launch/includes/map_server.launch
+</span></span></code></pre></div><p>It should look like the following, replacing map_name with the name of your map.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -206,19 +206,19 @@ $ scp map_name.yaml robot@ROBOT_IP:~/catkin_ws/src/mushr/mushr_base/mushr_base/m
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="o">&lt;</span><span class="n">launch</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="n">arg</span> <span class="n">name</span><span class="o">=</span><span class="s2">&#34;map&#34;</span> <span class="n">default</span><span class="o">=</span><span class="s2">&#34;$(find mushr_base)/maps/map_name.yaml&#34;</span> <span class="o">/&gt;</span>
-    <span class="o">&lt;</span><span class="n">node</span> <span class="n">pkg</span><span class="o">=</span><span class="s2">&#34;map_server&#34;</span> <span class="n">name</span><span class="o">=</span><span class="s2">&#34;map_server&#34;</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&#34;map_server&#34;</span> <span class="n">args</span><span class="o">=</span><span class="s2">&#34;$(arg map)&#34;</span> <span class="o">/&gt;</span>
-<span class="o">&lt;/</span><span class="n">launch</span><span class="o">&gt;</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="o">&lt;</span><span class="n">launch</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;</span><span class="n">arg</span> <span class="n">name</span><span class="o">=</span><span class="s2">&#34;map&#34;</span> <span class="n">default</span><span class="o">=</span><span class="s2">&#34;$(find mushr_base)/maps/map_name.yaml&#34;</span> <span class="o">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;</span><span class="n">node</span> <span class="n">pkg</span><span class="o">=</span><span class="s2">&#34;map_server&#34;</span> <span class="n">name</span><span class="o">=</span><span class="s2">&#34;map_server&#34;</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&#34;map_server&#34;</span> <span class="n">args</span><span class="o">=</span><span class="s2">&#34;$(arg map)&#34;</span> <span class="o">/&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="o">&lt;/</span><span class="n">launch</span><span class="o">&gt;</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>Now, start teleop on the robot:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ roslaunch mushr_base teleop.launch
-</code></pre></div><p>And on your computer, set the IPs and start rviz to see the map!</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">export</span> <span class="nv">ROS_IP</span><span class="o">=</span>COMPUTER-IP
-$ <span class="nb">export</span> <span class="nv">ROS_MASTER_URI</span><span class="o">=</span>http://ROBOT_IP:11311
-$ rviz
-</code></pre></div><p>The map should appear, and you can move your robot into the map using <code>Set 2D Pos Estimate</code>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ roslaunch mushr_base teleop.launch
+</span></span></code></pre></div><p>And on your computer, set the IPs and start rviz to see the map!</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ <span class="nb">export</span> <span class="nv">ROS_IP</span><span class="o">=</span>COMPUTER-IP
+</span></span><span class="line"><span class="cl">$ <span class="nb">export</span> <span class="nv">ROS_MASTER_URI</span><span class="o">=</span>http://ROBOT_IP:11311
+</span></span><span class="line"><span class="cl">$ rviz
+</span></span></code></pre></div><p>The map should appear, and you can move your robot into the map using <code>Set 2D Pos Estimate</code>.</p>
 <h3 id="touching-up-the-map">Touching up the map</h3>
 <p>The map may have some stray pixels or jagged lines. To touch this up, we recommend using <a href="https://www.gimp.org/">gimp</a> to edit the .pgm file.</p>
 <p>When doing this, use solid black (hex: <code>#000000</code>) pixels for edges, solid white (hex: <code>#FEFEFE</code>) areas for areas valid for the car, and solid gray areas (hex: <code>#CDCDCD</code>) for invalid space for the car.</p>
@@ -307,7 +307,7 @@ $ rviz
   
 
   
-  <script type="text/javascript" src="/js/scripts.min.98ee06cc35517b5800b382aecb0fc59893e95b9c11dd21842d0d57e4f68043e3.js"></script>
+  <script type="text/javascript" src="/js/scripts.min.8504133605a277da18f0d58cfd2e90d154962f4a961543a6e2f0a459a2d05462.js"></script>
   
 
   

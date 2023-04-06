@@ -143,14 +143,13 @@
 <h2 id="software-components">Software Components</h2>
 <p>Now that we have a better understanding of the hardware components let&rsquo;s checkout the software components and see how it all ties together.
 On the car go to your catkin workspace<br>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"> <span class="nb">cd</span> ~/catkin_ws/</code></pre></div></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"> <span class="nb">cd</span> ~/catkin_ws/</span></span></code></pre></div></p>
 <p>and list the directories</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ ls
-build  devel  src</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ ls
+</span></span><span class="line"><span class="cl">build  devel  src</span></span></code></pre></div>
 <p>So what we have is 3 directories. <code>build</code> is where code is compiled to. <code>devel</code> has setup files for your environment. The most important thing about <code>devel</code> is that it contains <code>setup.**</code> which sets up environment variables and paths amongst other things.
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">robot@digger:~/catkin_ws/devel$ ls
-bin  env.sh  include  lib  setup.bash  setup.sh  _setup_util.py  setup.zsh  share
- </code></pre></div></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">robot@digger:~/catkin_ws/devel$ ls
+</span></span><span class="line"><span class="cl">bin  env.sh  include  lib  setup.bash  setup.sh  _setup_util.py  setup.zsh  share</span></span></code></pre></div></p>
 <p>So <code>setup.**</code> (&quot;<code>**</code>&quot; because you can run .bashrc, .sh, or .zsh and get the same effect) sets up ROS environment variables and paths. So if you ever see an error that says that it can&rsquo;t find a package, or that roscore isn&rsquo;t a command, it is because you have not sourced your <code>setup.**</code> like so
 <code>source ~/catkin_ws/devel/setup.bash</code>
 We usually prevent this by putting the above in your <code>~/.bashrc</code> a file that is run everytime you log in.
@@ -162,7 +161,7 @@ So now if you change directories to <code>~/catkin_ws/src/</code> you will see a
         </figcaption>
 </figure>
 
-<p>Let&rsquo;s unpack this, starting from the top. The sensor nodes take the raw input, do some processing, and  convert it to ros friendly topics. The map server converts a <code>.yaml</code> map file to a ros topic. Your controller (orange) takes in sensor topics coming in from the each sensors' ros node and the map. It then outputs some command to drive the car. That command is put into the mux which listens on multiple <code>/mux/ackermann_cmd_mux/input</code> channels and selects the highest priority. <code>*/input/default</code> is a zero throttle/steering command that is passed whenever your controller and teleop are not publishing.
+<p>Let&rsquo;s unpack this, starting from the top. The sensor nodes take the raw input, do some processing, and  convert it to ros friendly topics. The map server converts a <code>.yaml</code> map file to a ros topic. Your controller (orange) takes in sensor topics coming in from the each sensors&rsquo; ros node and the map. It then outputs some command to drive the car. That command is put into the mux which listens on multiple <code>/mux/ackermann_cmd_mux/input</code> channels and selects the highest priority. <code>*/input/default</code> is a zero throttle/steering command that is passed whenever your controller and teleop are not publishing.
 Currently, MuSHR does not have a explicit safety controller publishing to the <code>*/input/safety</code> topic. The mux priorities can be found <code>mushr_base/ackermann_cmd_mux/param/mux.yaml</code> and they are listed in order of priority below.</p>
 <pre><code>1. Safety  
 2. Teleop  
@@ -271,7 +270,7 @@ Currently, MuSHR does not have a explicit safety controller publishing to the <c
   
 
   
-  <script type="text/javascript" src="/js/scripts.min.98ee06cc35517b5800b382aecb0fc59893e95b9c11dd21842d0d57e4f68043e3.js"></script>
+  <script type="text/javascript" src="/js/scripts.min.8504133605a277da18f0d58cfd2e90d154962f4a961543a6e2f0a459a2d05462.js"></script>
   
 
   

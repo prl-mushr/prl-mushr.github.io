@@ -179,11 +179,11 @@ Connect to the network that the robot should have a static IP on.</p>
 <p>Click the <strong>Save</strong> button and close the connection editor.</p>
 <p>Reboot the Nano.</p>
 <p>After the Jetson reboots, verify that the robot has obtained the expected static ip.</p>
-<p><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ ifconfig</code></pre></div>
+<p><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ ifconfig</span></span></code></pre></div>
 Check wlan0 is the IP you set. Note that it may be set to an equivalent IP address depending on your network. A good way to troubleshoot is to try the next step of the tutorial (SSH). If you can SSH, then everything worked correctly.</p>
 <h2 id="ssh-from-another-computer">SSH from another Computer</h2>
 <p>Once the Nano has fully booted, it will connect to the existing network at the specified static ip. You should then be able to ssh into it (with a separate computer on the same network) with the static IP you set earlier.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ ssh robot@172.16.77.Z</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ ssh robot@172.16.77.Z</span></span></code></pre></div>
 <h2 id="troubleshooting-wifi">Troubleshooting WiFi</h2>
 <h3 id="ifconfig-output-not-what-expected">ifconfig Output Not What Expected</h3>
 <p>IP addresses 172, 192, and 10 are all private IPV4 addresses. If your ifconig output displays one of these instead of the exact one you typed, please try the SSH step. If you can SSH into the car, no need to worry about this step! Otherwise, try deleting the wifi connection and making a new with the correct settings.</p>
@@ -200,10 +200,10 @@ Check wlan0 is the IP you set. Note that it may be set to an equivalent IP addre
 <p>Now we are going to install MuSHR. Unlike installing Docker on a desktop/laptop computer, some extra steps need to be taken to install on a Jetson Nano/Orin platform.</p>
 <p>First off, the nvidia-docker/docker is pre-installed for the specific hardware using the NVIDIA image we provided earlier, but Docker Compose is not. THe following steps are what is needed in order to get Docker Compose onto the robot:
 Fortunately, robot setup is similar to the simulation setup. Follow the following from the <a href="/tutorials/noetic_quickstart">noetic quickstart tutorial</a>.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ sudo apt-get install curl
-$ sudo curl -L <span class="s2">&#34;https://github.com/docker/compose/releases/download/1.29.2/docker-compose-</span><span class="k">$(</span>uname -s<span class="k">)</span><span class="s2">-</span><span class="k">$(</span>uname -m<span class="k">)</span><span class="s2">&#34;</span> -o /usr/local/bin/docker-compose
-$ sudo chmod +x /usr/local/bin/docker-compose
-$ pip install docker-compose</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ sudo apt-get install curl
+</span></span><span class="line"><span class="cl">$ sudo curl -L <span class="s2">&#34;https://github.com/docker/compose/releases/download/1.29.2/docker-compose-</span><span class="k">$(</span>uname -s<span class="k">)</span><span class="s2">-</span><span class="k">$(</span>uname -m<span class="k">)</span><span class="s2">&#34;</span> -o /usr/local/bin/docker-compose
+</span></span><span class="line"><span class="cl">$ sudo chmod +x /usr/local/bin/docker-compose
+</span></span><span class="line"><span class="cl">$ pip install docker-compose</span></span></code></pre></div>
 <p>Now, the steps for installing the MuSHR Docker Container on the car are the same as installing the container on a Desktop device. Please follow the section titled <strong>Installing MuSHR Docker Container</strong> from the <a href="/tutorials/noetic_quickstart">noetic quickstart tutorial</a>.</p>
 <ul>
 <li><strong>Installing MuSHR Docker Container</strong>
@@ -222,17 +222,17 @@ $ pip install docker-compose</code></pre></div>
 <p>Second, the code itself resides in <code>~/catkin_ws</code> and is attached to the docker container. This allows you to use your favorite editor and tweak code outside the container. Code edited outside the container will automatically be updated inside the container so there is no need to restart a container.</p>
 <h3 id="teleoperation-manual-driving">Teleoperation (manual driving)</h3>
 <p>Turn on the car and vesc by plugging their batteries in. Turn on the controller and make sure it&rsquo;s connected to the car (solid light). Enter the docker container.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ mushr_noetic</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ mushr_noetic</span></span></code></pre></div>
 <p>Then run teleop
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ roslaunch mushr_base teleop.launch</code></pre></div></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ roslaunch mushr_base teleop.launch</span></span></code></pre></div></p>
 <p>You should see the lidar spinning and be able to steer with the controller. While holding down the left bumper, use the left joystick to throttle, and the right joystick to turn. See diagram below.</p>
 <figure><img src="/tutorials/first_steps/teleop_controls.png" width="350"/>
 </figure>
 
 <h2 id="visualization">Visualization</h2>
 <p>After starting up, the robot terminal should print out a line similar to</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">Rosbridge WebSocket server started at ws://0.0.0.0:9090
-</code></pre></div><p>In Foxglove, click the top button in the sidebar, labeled <code>Data Source</code>. Then select the Plus button in the left panel. This should open up an interface to connect to data.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">Rosbridge WebSocket server started at ws://0.0.0.0:9090
+</span></span></code></pre></div><p>In Foxglove, click the top button in the sidebar, labeled <code>Data Source</code>. Then select the Plus button in the left panel. This should open up an interface to connect to data.</p>
 <figure><img src="/tutorials/noetic_quickstart/data_panel.png" width="400"/>
 </figure>
 
@@ -329,7 +329,7 @@ $ pip install docker-compose</code></pre></div>
   
 
   
-  <script type="text/javascript" src="/js/scripts.min.98ee06cc35517b5800b382aecb0fc59893e95b9c11dd21842d0d57e4f68043e3.js"></script>
+  <script type="text/javascript" src="/js/scripts.min.8504133605a277da18f0d58cfd2e90d154962f4a961543a6e2f0a459a2d05462.js"></script>
   
 
   

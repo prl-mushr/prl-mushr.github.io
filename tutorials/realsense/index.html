@@ -130,40 +130,40 @@
 <li>An SSH-capable text editor, like Vim or Visual Studio Code (requires the SSH plugin)</li>
 </ul>
 <h2 id="ssh-into-the-car">SSH into the Car</h2>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ ssh &lt;user&gt;@&lt;car ip&gt; </code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ ssh &lt;user&gt;@&lt;car ip&gt; </span></span></code></pre></div>
 <p>Power on the Jetson, and SSH into the car, like in the <a href="/tutorials/first_steps/">first_steps</a> tutorial. Do this in three separate terminal windows. If you&rsquo;re familiar with tools like tmux or GNU Screen, feel free to use those, but they are outside the scope of the tutorial.</p>
 <h2 id="ros-setup">ROS Setup</h2>
 <p>Now that you&rsquo;re connected to the car, let&rsquo;s launch ROS.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ roscore </code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ roscore </span></span></code></pre></div>
 <p>Normally, we would launch tele-op here in order to be able to drive the car around, but let&rsquo;s try launching just the camera.</p>
 <h2 id="launching-the-intel-realsense-camera">Launching the Intel RealSense Camera</h2>
 <p>First, navigate to the directory containing the <code>realsense2</code> package for ROS.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> ~/catkin_ws/src/realsense2/realsense2_camera/launch/</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ <span class="nb">cd</span> ~/catkin_ws/src/realsense2/realsense2_camera/launch/</span></span></code></pre></div>
 <p>Here, you can now launch the camera by running the launchfile. Ensure your RealSense camera is connected to the Jetson&rsquo;s USB port. You can verify this with the <code>lsusb</code> command.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ roslaunch rs_camera.launch</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ roslaunch rs_camera.launch</span></span></code></pre></div>
 <p>If you get an error along the lines of <code>failed to find nodelet to unload</code> try reconnecting the camera to the Jetson and running the command again.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ rostopic list</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ rostopic list</span></span></code></pre></div>
 <p>Run the above command, and you should be able to see the topics for the camera, like this:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">/camera/color/camera_info
-/camera/color/image_raw</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">/camera/color/camera_info
+</span></span><span class="line"><span class="cl">/camera/color/image_raw</span></span></code></pre></div>
 <h2 id="launching-rviz-on-your-computer">Launching RViz on your computer</h2>
 <p>Set the <code>ROS_IP</code> to your IP. Your IP can be found in a variety of ways: <a href="https://ubuntu.com/server/docs/network-configuration">Linux</a>, <a href="https://www.wikihow.com/Find-Your-IP-Address-on-a-Mac">Mac</a>, <a href="https://support.microsoft.com/en-us/help/4026518/windows-10-find-your-ip-address">Windows</a>.</p>
 <p>Note: the following commands in this section should be run in a terminal window connected to your local device, NOT the SSH window to the car.</p>
 <p>Set <code>ROS_IP</code> with:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">export</span> <span class="nv">ROS_IP</span><span class="o">=</span>YOUR-IP</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ <span class="nb">export</span> <span class="nv">ROS_IP</span><span class="o">=</span>YOUR-IP</span></span></code></pre></div>
 <p>Set the <code>ROS_MASTER_URI</code> to the IP of the car. (You used this to SSH into it earlier.)</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">export</span> <span class="nv">ROS_MASTER_URI</span><span class="o">=</span>http://CAR_IP_GOES_HERE:11311</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ <span class="nb">export</span> <span class="nv">ROS_MASTER_URI</span><span class="o">=</span>http://CAR_IP_GOES_HERE:11311</span></span></code></pre></div>
 <p>Now, launch RViz.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ rviz</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ rviz</span></span></code></pre></div>
 <p>If you get errors make sure the following are correct:</p>
 <ul>
 <li>Teleop is running</li>
 <li>Your laptop is connnected properly
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ rostopic list</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ rostopic list</span></span></code></pre></div>
 This should output a bunch of camera-related topics. If not, check your <code>ROS_MASTER_URI</code> and <code>ROS_IP</code> to ensure they are correct.</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">/camera/color/camera_info
-/camera/color/image_raw</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">/camera/color/camera_info
+</span></span><span class="line"><span class="cl">/camera/color/image_raw</span></span></code></pre></div>
 <h2 id="viewing-camera-output-in-rviz">Viewing Camera Output in RViz</h2>
 <figure><img src="/tutorials/realsense/rvizadd.png"/>
 </figure>
@@ -263,7 +263,7 @@ After selecting the topic, you should be able to see the camera feed in RViz.</p
   
 
   
-  <script type="text/javascript" src="/js/scripts.min.98ee06cc35517b5800b382aecb0fc59893e95b9c11dd21842d0d57e4f68043e3.js"></script>
+  <script type="text/javascript" src="/js/scripts.min.8504133605a277da18f0d58cfd2e90d154962f4a961543a6e2f0a459a2d05462.js"></script>
   
 
   

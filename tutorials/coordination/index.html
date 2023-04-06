@@ -126,61 +126,61 @@
 <p>There is a team of <code>num_agents</code> MuSHR cars and a set of <code>num_goals</code> tasks. Each task requires one car to follow all of the <code>num_waypoints</code> points and stop at the last one. The environment is a grid world where the movement of the car is restricted to orthongonal movement. This approximate approach can work well when combined with the <a href="https://github.com/naughtyStark/nhttc_ros">nhttc controller</a>. The coordination planner has the ability to create an initial path for each car that is avoiding all possible collisions. This path is leveraged with the nhttc controller to adapt a car&rsquo;s path and avoid collisions in real-time if need be. The combination of these two services is more powerful than just the nhttc controller by itself as potential conflicts are sorted out prior to declaring each car&rsquo;s path. It is possible that some cars will not have any tasks and others will have multiple to complete sequentially.</p>
 <h2 id="install">Install</h2>
 <p>Clone repo and install the package:
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> ~/catkin_ws/src/
-$ git clone https://github.com/prl-mushr/mushr_coordination.git
-$ <span class="nb">cd</span> mushr_coordination
-$ git clone https://github.com/whoenig/libMultiRobotPlanning.git
-$ <span class="nb">cd</span> ~/catkin_ws/
-$ catkin_make</code></pre></div></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ <span class="nb">cd</span> ~/catkin_ws/src/
+</span></span><span class="line"><span class="cl">$ git clone https://github.com/prl-mushr/mushr_coordination.git
+</span></span><span class="line"><span class="cl">$ <span class="nb">cd</span> mushr_coordination
+</span></span><span class="line"><span class="cl">$ git clone https://github.com/whoenig/libMultiRobotPlanning.git
+</span></span><span class="line"><span class="cl">$ <span class="nb">cd</span> ~/catkin_ws/
+</span></span><span class="line"><span class="cl">$ catkin_make</span></span></code></pre></div></p>
 <h2 id="api">API</h2>
 <p>For adjusting params see <code>launch/mushr_coordination.launch</code> it has the environment params for the planner. Change the number of waypoints for each goal by setting parameter <code>num_waypoint</code>. Change the car team setting by editing or creating new config file.</p>
 <h2 id="running-the-coordination-planner">Running the coordination planner</h2>
 <p>Run the planner that will set up the environment publishers and subscribers.
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ roslaunch mushr_coordination mushr_coordination.launch cars_file:<span class="o">={</span>car<span class="err">&#39;</span>s team config file<span class="o">}</span></code></pre></div></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ roslaunch mushr_coordination mushr_coordination.launch cars_file:<span class="o">={</span>car<span class="err">&#39;</span>s team config file<span class="o">}</span></span></span></code></pre></div></p>
 <p>For simulation, first launch the mushr_sim. Download the <a href="/tutorials/coordination_planner/multi_teleop.launch">multi_teleop.launch</a> to the mushr_sim repository. Run <code>rviz</code> then and subscribe to planner&rsquo;s topics. Download the <a href="/tutorials/coordination_planner/nhttc.rviz">rviz config file</a> for an out-of-box rviz setup. This setup subscribes to all the important rostopics and organizes them in categories.</p>
 <p>Launch the mushr_sim.
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ roslaunch mushr_sim multi_teleop.launch</code></pre></div></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ rviz</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ roslaunch mushr_sim multi_teleop.launch</span></span></code></pre></div></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ rviz</span></span></code></pre></div>
 <p>Below is the format for setting the initial position for a team of cars and a set of tasks to complete. For out-of-box examples, look at the <strong>Examples of Initializing the Planner</strong> section which utilizes files already part of the repository.
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ roslaunch mushr_coordination init_planner.launch cars_file:<span class="o">={</span>car<span class="err">&#39;</span>s team config file<span class="o">}</span> tasks_file:<span class="o">={</span>task benchmark file<span class="o">}</span></code></pre></div></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ roslaunch mushr_coordination init_planner.launch cars_file:<span class="o">={</span>car<span class="err">&#39;</span>s team config file<span class="o">}</span> tasks_file:<span class="o">={</span>task benchmark file<span class="o">}</span></span></span></code></pre></div></p>
 <h3 id="configuration-file-example-for-car-information">Configuration File Example for Car Information</h3>
 <p>This <code>4cars1.yaml</code> file shows how to edit and create a config file. The file will have the number of agents (<code>num_agent</code>) following with <code>car{n}</code>&rsquo;s <code>name</code> and <code>color</code> in hex.</p>
 <p>Note that, It would be advised to use the same config file for both <code>mushr_coordination</code> and <code>init_planner</code>.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">num_agent: 4
-car1:
-    name: &#34;car1&#34;
-    color: &#34;FF0000&#34; #red
-car2:
-    name: &#34;car2&#34;
-    color: &#34;00FF00&#34; #green
-car3:
-    name: &#34;car3&#34;
-    color: &#34;0000FF&#34; #blue
-car4:
-    name: &#34;car4&#34;
-    color: &#34;DB921D&#34; #orange
-</code></pre></div><h2 id="examples-of-initializing-the-planner">Examples of Initializing the Planner</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">num_agent: 4
+</span></span><span class="line"><span class="cl">car1:
+</span></span><span class="line"><span class="cl">    name: &#34;car1&#34;
+</span></span><span class="line"><span class="cl">    color: &#34;FF0000&#34; #red
+</span></span><span class="line"><span class="cl">car2:
+</span></span><span class="line"><span class="cl">    name: &#34;car2&#34;
+</span></span><span class="line"><span class="cl">    color: &#34;00FF00&#34; #green
+</span></span><span class="line"><span class="cl">car3:
+</span></span><span class="line"><span class="cl">    name: &#34;car3&#34;
+</span></span><span class="line"><span class="cl">    color: &#34;0000FF&#34; #blue
+</span></span><span class="line"><span class="cl">car4:
+</span></span><span class="line"><span class="cl">    name: &#34;car4&#34;
+</span></span><span class="line"><span class="cl">    color: &#34;DB921D&#34; #orange
+</span></span></code></pre></div><h2 id="examples-of-initializing-the-planner">Examples of Initializing the Planner</h2>
 <h3 id="example-1">Example #1</h3>
 <p>In this environment, there are 4 cars and have been given 4 tasks to complete within a 5 by 3 space.
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ roslaunch mushr_coordination mushr_coordination.launch cars_file:<span class="o">=</span>4cars.yaml
-$ rviz
-$ roslaunch mushr_coordination init_planner.launch cars_file:<span class="o">=</span>4cars.yaml tasks_file:<span class="o">=</span>4cars4tasks5x3.yaml</code></pre></div></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ roslaunch mushr_coordination mushr_coordination.launch cars_file:<span class="o">=</span>4cars.yaml
+</span></span><span class="line"><span class="cl">$ rviz
+</span></span><span class="line"><span class="cl">$ roslaunch mushr_coordination init_planner.launch cars_file:<span class="o">=</span>4cars.yaml tasks_file:<span class="o">=</span>4cars4tasks5x3.yaml</span></span></code></pre></div></p>
 <p>Each car get assigned to their respective task, in which their accumulated distance would be minimal.</p>
-<p><img src="/tutorials/coordination_planner/example1.jpg" width="800" ></p>
+<img src="/tutorials/coordination_planner/example1.jpg" width="800" >
 <h3 id="example-2">Example #2</h3>
 <p>In this environment, there are 4 cars and have been given 6 tasks to complete within a 6 by 6 space.
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ roslaunch mushr_coordination mushr_coordination.launch cars_file:<span class="o">=</span>4cars.yaml
-$ rviz
-$ roslaunch mushr_coordination init_planner.launch cars_file:<span class="o">=</span>4cars.yaml tasks_file:<span class="o">=</span>4cars6tasks6x6.yaml</code></pre></div></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ roslaunch mushr_coordination mushr_coordination.launch cars_file:<span class="o">=</span>4cars.yaml
+</span></span><span class="line"><span class="cl">$ rviz
+</span></span><span class="line"><span class="cl">$ roslaunch mushr_coordination init_planner.launch cars_file:<span class="o">=</span>4cars.yaml tasks_file:<span class="o">=</span>4cars6tasks6x6.yaml</span></span></code></pre></div></p>
 <p>Number of tasks is more than number of cars, so the blue car and the green car have been given one task more than the others to complete.</p>
-<p><img src="/tutorials/coordination_planner/example2.jpg" width="800" ></p>
+<img src="/tutorials/coordination_planner/example2.jpg" width="800" >
 <h3 id="example-3">Example #3</h3>
 <p>In this environment, there are 4 cars and have been given 2 tasks to complete within a 5 by 3 space.
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ roslaunch mushr_coordination mushr_coordination.launch cars_file:<span class="o">=</span>4cars.yaml
-$ rviz
-$ roslaunch mushr_coordination init_planner.launch cars_file:<span class="o">=</span>4cars.yaml tasks_file:<span class="o">=</span>4cars2tasks5x3.yaml</code></pre></div></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ roslaunch mushr_coordination mushr_coordination.launch cars_file:<span class="o">=</span>4cars.yaml
+</span></span><span class="line"><span class="cl">$ rviz
+</span></span><span class="line"><span class="cl">$ roslaunch mushr_coordination init_planner.launch cars_file:<span class="o">=</span>4cars.yaml tasks_file:<span class="o">=</span>4cars2tasks5x3.yaml</span></span></code></pre></div></p>
 <p>There is not enough task to assign to every cars. In this case, the red car and green car are idle and stay in place.</p>
-<p><img src="/tutorials/coordination_planner/example3.jpg" width="800" ></p>
+<img src="/tutorials/coordination_planner/example3.jpg" width="800" >
 
         </div>
       </div>
@@ -263,7 +263,7 @@ $ roslaunch mushr_coordination init_planner.launch cars_file:<span class="o">=</
   
 
   
-  <script type="text/javascript" src="/js/scripts.min.98ee06cc35517b5800b382aecb0fc59893e95b9c11dd21842d0d57e4f68043e3.js"></script>
+  <script type="text/javascript" src="/js/scripts.min.8504133605a277da18f0d58cfd2e90d154962f4a961543a6e2f0a459a2d05462.js"></script>
   
 
   

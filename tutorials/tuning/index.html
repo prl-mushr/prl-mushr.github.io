@@ -114,25 +114,25 @@
           <h2> By: <a href=https://github.com/Rockett8855>Matthew Rockett</a></h2>                              
 <figure>
   
-<video width="32%" muted autoplay loop>
-  <source src="/tutorials/tuning/steering_angle_offset/left.mp4" type="video/mp4" />
-</video>
-
-
+  <video width="32%" muted autoplay loop>
+    <source src="/tutorials/tuning/steering_angle_offset/left.mp4" type="video/mp4" />
+  </video>
+  
+  
 
   
-<video width="32%" muted autoplay loop>
-  <source src="/tutorials/tuning/steering_angle_offset/straight.mp4" type="video/mp4" />
-</video>
-
-
+  <video width="32%" muted autoplay loop>
+    <source src="/tutorials/tuning/steering_angle_offset/straight.mp4" type="video/mp4" />
+  </video>
+  
+  
 
   
-<video width="32%" muted autoplay loop>
-  <source src="/tutorials/tuning/steering_angle_offset/right.mp4" type="video/mp4" />
-</video>
-
-
+  <video width="32%" muted autoplay loop>
+    <source src="/tutorials/tuning/steering_angle_offset/right.mp4" type="video/mp4" />
+  </video>
+  
+  
 
 </figure>
 <h3 id="introduction">Introduction</h3>
@@ -163,23 +163,23 @@
 </div>
 <p>If you have a different version of the car, you&rsquo;ll choose that one instead. If you don&rsquo;t know which car you have, you likely have the <code>racecar-uw-nano</code> version.</p>
 <p>The file will look like this:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="c"># erpm (electrical rpm) = speed_to_erpm_gain * speed (meters / second) + speed_to_erpm_offset</span><span class="w">
-</span><span class="w"></span><span class="c">#-4614</span><span class="w">
-</span><span class="w"></span><span class="nt">speed_to_erpm_gain</span><span class="p">:</span><span class="w"> </span>-<span class="m">2000</span><span class="w">
-</span><span class="w"></span><span class="nt">speed_to_erpm_offset</span><span class="p">:</span><span class="w"> </span><span class="m">0.0</span><span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="p">[</span><span class="l">...omited for brevity]</span><span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="c"># servo value (0 to 1) =  steering_angle_to_servo_gain * steering angle (radians) + steering_angle_to_servo_offset</span><span class="w">
-</span><span class="w"></span><span class="nt">steering_angle_to_servo_gain</span><span class="p">:</span><span class="w"> </span><span class="m">1.2135</span><span class="w">
-</span><span class="w"></span><span class="nt">steering_angle_to_servo_offset</span><span class="p">:</span><span class="w"> </span><span class="m">0.55</span><span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="p">[</span><span class="l">...omited for brevity]</span><span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="nt">vesc_driver</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l">/dev/vesc</span><span class="w">
-</span><span class="w">  </span><span class="p">[</span><span class="l">...omited for brevity]</span><span class="w">
-</span></code></pre></div><h2 id="steering-angle-offset">Steering Angle Offset</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># erpm (electrical rpm) = speed_to_erpm_gain * speed (meters / second) + speed_to_erpm_offset</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">#-4614</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">speed_to_erpm_gain</span><span class="p">:</span><span class="w"> </span>-<span class="m">2000</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">speed_to_erpm_offset</span><span class="p">:</span><span class="w"> </span><span class="m">0.0</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">[</span><span class="l">...omited for brevity]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># servo value (0 to 1) =  steering_angle_to_servo_gain * steering angle (radians) + steering_angle_to_servo_offset</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">steering_angle_to_servo_gain</span><span class="p">:</span><span class="w"> </span><span class="m">1.2135</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">steering_angle_to_servo_offset</span><span class="p">:</span><span class="w"> </span><span class="m">0.55</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">[</span><span class="l">...omited for brevity]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">vesc_driver</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l">/dev/vesc</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">[</span><span class="l">...omited for brevity]</span><span class="w">
+</span></span></span></code></pre></div><h2 id="steering-angle-offset">Steering Angle Offset</h2>
 <p>This offset sets the default servo position when the car is driving straight.</p>
 <h3 id="how-to-tune">How to Tune</h3>
 <p>You will be changing the variable: <code>steering_angle_to_servo_offset</code>.</p>
@@ -188,8 +188,8 @@
 <ol>
 <li>Start teleop:</li>
 </ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">roslaunch mushr_base teleop.launch
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">roslaunch mushr_base teleop.launch
+</span></span></code></pre></div><ul>
 <li>Drive car in a straight line a few times. It&rsquo;s never going to be perfectly straight, so as long as it goes straight most of the time, it&rsquo;ll be fine. You can always come back to retune if it&rsquo;s not sufficiently precise.</li>
 <li>Adjust <code>steering_angle_offset</code> in <code>vesc.yaml</code>. Increase the offset if the car veers too much left, decrease if it veers too much right.</li>
 <li>Stop teleop (<code>Ctrl-C</code> in the window you started <code>teleop.launch</code> in) and go back to Step 1.</li>
@@ -197,25 +197,25 @@
 <p><strong>Note: Usually this value is between 0.4 and 0.6</strong></p>
 <figure>
   
-<video width="32%" muted autoplay loop>
-  <source src="/tutorials/tuning/steering_angle_offset/left.mp4" type="video/mp4" />
-</video>
-
-
+  <video width="32%" muted autoplay loop>
+    <source src="/tutorials/tuning/steering_angle_offset/left.mp4" type="video/mp4" />
+  </video>
+  
+  
 
   
-<video width="32%" muted autoplay loop>
-  <source src="/tutorials/tuning/steering_angle_offset/straight.mp4" type="video/mp4" />
-</video>
-
-
+  <video width="32%" muted autoplay loop>
+    <source src="/tutorials/tuning/steering_angle_offset/straight.mp4" type="video/mp4" />
+  </video>
+  
+  
 
   
-<video width="32%" muted autoplay loop>
-  <source src="/tutorials/tuning/steering_angle_offset/right.mp4" type="video/mp4" />
-</video>
-
-
+  <video width="32%" muted autoplay loop>
+    <source src="/tutorials/tuning/steering_angle_offset/right.mp4" type="video/mp4" />
+  </video>
+  
+  
 
   <figcaption>
 	<p>The car during the tuning process. In all tests, the car is commanded to drive straight forward. In the left image, the car's steering angle offset is too high. In the center image, the offset is good. In the right image the offset is too low. <b>Note: the car will never drive perfectly straight. It just has to be good enough. In the future your controller will be able to make small corrections!</b></p>
@@ -244,8 +244,8 @@
 <li>Start teleop.</li>
 <li>Open another terminal on the car and run the command:</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">rostopic echo /car/vesc/odom/pose/pose/position/x
-</code></pre></div><p>This will echo all the odometry information &ndash; how far the car has driven (in meters) in the <code>x</code> direction since teleop started. The value should be <code>0.0</code> at the start, as the car hasn&rsquo;t moved yet.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">rostopic echo /car/vesc/odom/pose/pose/position/x
+</span></span></code></pre></div><p>This will echo all the odometry information &ndash; how far the car has driven (in meters) in the <code>x</code> direction since teleop started. The value should be <code>0.0</code> at the start, as the car hasn&rsquo;t moved yet.</p>
 <ul>
 <li>Drive the car forward about 7-8 ft. The car will drive slightly further as it decelerates and stops. Make sure you only drive forward, not altering the servo position, otherwise you&rsquo;ll have both <code>x</code> and <code>y</code> directional changes (which makes it only slightly harder to check distance traveled).</li>
 <li>Record the distance traveled. If your tape measure is in inches, convert to meters.
@@ -370,7 +370,7 @@
   
 
   
-  <script type="text/javascript" src="/js/scripts.min.98ee06cc35517b5800b382aecb0fc59893e95b9c11dd21842d0d57e4f68043e3.js"></script>
+  <script type="text/javascript" src="/js/scripts.min.8504133605a277da18f0d58cfd2e90d154962f4a961543a6e2f0a459a2d05462.js"></script>
   
 
   

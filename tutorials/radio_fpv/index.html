@@ -134,13 +134,13 @@
 <h2 id="setting-up-crazyradio">Setting up CrazyRadio</h2>
 <p>Plug one CrazyRadio USB transceiver into the jetson on the racecar, and one into your computer. Download the code from <a href="https://github.com/prl-mushr/mushr-radio-controller">this GitHub repository</a> onto both the jetson and the computer. Connect the dualshock controller to your teleoperating laptop over Bluetooth or USB.</p>
 <p>First, run <code>tx.py</code> on the transmitting computer.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"> $ sudo python tx.py </code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"> $ sudo python tx.py </span></span></code></pre></div>
 <p>Then, run <code>rx.py</code> on the Jetson. Verify that joystick input appears on your screen and is being sent to the car with the acknowledgements.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"> $ sudo python rx.py </code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"> $ sudo python rx.py </span></span></code></pre></div>
 <h2 id="teleoperation">Teleoperation</h2>
 <p>Launch teleop as per normal on the jetson by SSH-ing into the car. (ensure the python scripts from the previous step are still running on both the PC &amp; the racecar).</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ ssh &lt;user&gt;@&lt;car ip&gt; </code></pre></div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ roslaunch racecar teleop.launch </code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ ssh &lt;user&gt;@&lt;car ip&gt; </span></span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ roslaunch racecar teleop.launch </span></span></code></pre></div>
 <p>The controller should now be able to drive the car. This system should have a much higher range when compared to the traditional Bluetooth teleoperation system, and will continue to work outside WiFi or Bluetooth range, provided that line-of-sight is maintained. This may be particularly advantageous in dynamic outdoors environments.</p>
 <h2 id="pairing-this-system-with-an-fpv-camera">Pairing this system with an FPV camera</h2>
 <figure><img src="/tutorials/radio_fpv/fpv_camera.jpg"/>
@@ -232,7 +232,7 @@
   
 
   
-  <script type="text/javascript" src="/js/scripts.min.98ee06cc35517b5800b382aecb0fc59893e95b9c11dd21842d0d57e4f68043e3.js"></script>
+  <script type="text/javascript" src="/js/scripts.min.8504133605a277da18f0d58cfd2e90d154962f4a961543a6e2f0a459a2d05462.js"></script>
   
 
   

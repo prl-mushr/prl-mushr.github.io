@@ -221,7 +221,7 @@
       
       <guid>https://mushr.io/contact/</guid>
       <description>We want to hear from you! Feel free to post to our forum with questions or comments about:
- Using MuSHR for education. (See the course website for &amp;ldquo;Mobile Robotics&amp;rdquo; for an example.) A project you&amp;rsquo;ve done with the car. The platform (hardware and software issues). Also see the Troubleshooting Tutorial.  The MuSHR Donation Program The MuSHR team is providing a small number of pre-built MuSHR cars to interested parties who would otherwise not have the means of building the cars themselves, with priority given to schools, groups, and labs whose members are underrepresented in robotics and do not have the financial means to purchase a car themselves.</description>
+Using MuSHR for education. (See the course website for &amp;ldquo;Mobile Robotics&amp;rdquo; for an example.) A project you&amp;rsquo;ve done with the car. The platform (hardware and software issues). Also see the Troubleshooting Tutorial. The MuSHR Donation Program The MuSHR team is providing a small number of pre-built MuSHR cars to interested parties who would otherwise not have the means of building the cars themselves, with priority given to schools, groups, and labs whose members are underrepresented in robotics and do not have the financial means to purchase a car themselves.</description>
     </item>
     
     <item>
@@ -239,7 +239,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://mushr.io/about/</guid>
-      <description>The Multi-agent System for non-Holonomic Racing (MuSHR)  is an open-source, full-stack robotics platform designed to advance robotics research and education by making a fully integrated robotic race car available in an easy-to-assemble and economic package.
+      <description>The Multi-agent System for non-Holonomic Racing (MuSHR) is an open-source, full-stack robotics platform designed to advance robotics research and education by making a fully integrated robotic race car available in an easy-to-assemble and economic package.
 Using rapid-prototyping techniques and off-the-shelf parts, we provide the instructions you need to assemble a robotic race car and code to hit the ground running. MuSHR also contains an ever-expanding set of tutorials to make you acquainted with the race car and robotic principles.</description>
     </item>
     
